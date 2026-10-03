@@ -1,7 +1,7 @@
 {
   "ntfy_topic": null,
-  "similarity_threshold_notify": 0.30,
-  "similarity_threshold_list": 0.20,
+  "similarity_threshold_notify": 0.55,
+  "similarity_threshold_list": 0.45,
   "use_image_matching": true,
   "enabled_sites": [
     "bazos_cz",
