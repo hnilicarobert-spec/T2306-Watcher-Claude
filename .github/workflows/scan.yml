@@ -22,6 +22,12 @@ concurrency:
 jobs:
   scan:
     runs-on: ubuntu-latest
+    env:
+      # GitHub Actions doesn't allow the `secrets` context directly inside
+      # an `if:` condition — only in `env:`/`run:`. So the secret is copied
+      # into a job-level env var here once, and steps below check that
+      # instead of `secrets.FACEBOOK_SESSION_B64` directly.
+      FACEBOOK_SESSION_B64: ${{ secrets.FACEBOOK_SESSION_B64 }}
     steps:
       - name: Check out repo
         uses: actions/checkout@v4
@@ -51,8 +57,8 @@ jobs:
         run: playwright install --with-deps chromium
 
       - name: Restore Facebook session (optional)
-        if: ${{ secrets.FACEBOOK_SESSION_B64 != '' }}
-        run: echo "${{ secrets.FACEBOOK_SESSION_B64 }}" | base64 -d > facebook_session.json
+        if: ${{ env.FACEBOOK_SESSION_B64 != '' }}
+        run: echo "$FACEBOOK_SESSION_B64" | base64 -d > facebook_session.json
         # This keeps your Facebook login session out of the public repo entirely —
         # it only ever exists as an encrypted GitHub secret and a temporary file
         # on the runner, which is deleted when the job finishes. See README.md's
@@ -61,7 +67,7 @@ jobs:
       - name: Run the scan and build the results page
         env:
           NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
-          FACEBOOK_SESSION_PATH: ${{ secrets.FACEBOOK_SESSION_B64 != '' && 'facebook_session.json' || '' }}
+          FACEBOOK_SESSION_PATH: ${{ env.FACEBOOK_SESSION_B64 != '' && 'facebook_session.json' || '' }}
         run: python3 build_report.py
 
       - name: Commit updated results
