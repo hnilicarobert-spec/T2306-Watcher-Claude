@@ -600,9 +600,22 @@ def run_once(config):
             l["site"] = "facebook_marketplace"
         all_listings.extend(fb_listings)
 
-    new_listings = [l for l in all_listings if listing_id(l["url"]) not in seen]
+    # De-duplicate by URL first: the same ad routinely gets returned by
+    # several different search queries (e.g. both "kodreta" and "t2306"
+    # find the same listing), and without this step each occurrence would
+    # be scored and notified separately — the same ad pinging your phone
+    # several times in one run. Keep the first occurrence of each URL.
+    deduped_by_url = {}
+    for l in all_listings:
+        lid = listing_id(l["url"])
+        if lid not in deduped_by_url:
+            deduped_by_url[lid] = l
+    deduped_listings = list(deduped_by_url.values())
+
+    new_listings = [l for l in deduped_listings if listing_id(l["url"]) not in seen]
     total_new_listings = len(new_listings)
-    print(f"\n{total_new_listings} new listing(s) to check across all sites.\n")
+    print(f"\n{len(all_listings)} raw result(s) -> {len(deduped_listings)} unique listing(s) -> "
+          f"{total_new_listings} new (not seen before).\n")
 
     if new_listings and config.get("use_image_matching", True):
         matcher = ImageMatcher(REF_DIR)
