@@ -95,14 +95,34 @@ WEAK_NAME_KEYWORDS = ["hreščák", "hrescak"]
 NAME_KEYWORDS = ["kodreta", "jaroslav hreščák", "hreščák", "t2306"]
 
 # Broad, generic terms — these catch listings where the seller has NO idea
-# what the chair is and just described it by appearance. Site modules
-# combine these with furniture-category filters where the site supports it.
+# what the chair is and just described it by material/appearance (e.g. just
+# "chrome chair" or "metal chair"). Deliberately 2-word material+furniture
+# phrases rather than a single bare word like "židle"/"stolička" alone:
+# a bare word matches literally every chair ever listed on these sites
+# (plastic patio chairs, office chairs, kids' chairs...), which balloons
+# scan time for little benefit — the pair with material narrows the raw
+# candidate pool while still catching an unbranded listing. Precision from
+# here on is the job of the image-similarity score (see config.json), not
+# the keyword list — that's deliberate: casting a slightly wider net here
+# is low-risk as long as the threshold calibration downstream holds.
 BROAD_KEYWORDS_CZ_SK = [
     "trubková židle plátno", "trubkové kreslo", "chromová židle režná",
     "stolička kodreta", "kreslo chróm plátno", "retro trubková stolička",
+    "stolička chrom", "stoličky chrom", "stolička kov", "stoličky kov",
+    "židle chrom", "židle kov", "kovová židle", "kovová stolička",
+    "jídelní židle kov", "jedálenská stolička kov",
+    "retro kovová židle", "vintage stolička kov",
 ] + NAME_KEYWORDS
-BROAD_KEYWORDS_DE = ["Kodreta stuhl", "Stahlrohr stuhl Leinen Vintage"] + NAME_KEYWORDS
-BROAD_KEYWORDS_PL = ["krzeslo chromowane vintage plotno", "kodreta krzeslo"] + NAME_KEYWORDS
+BROAD_KEYWORDS_DE = [
+    "Kodreta stuhl", "Stahlrohr stuhl Leinen Vintage",
+    "Chrom Stuhl Vintage", "Metallstuhl Vintage", "verchromter Stuhl",
+    "Stahlrohrstuhl retro",
+] + NAME_KEYWORDS
+BROAD_KEYWORDS_PL = [
+    "krzeslo chromowane vintage plotno", "kodreta krzeslo",
+    "krzesło chrom", "krzesło metalowe", "krzesła chrom vintage",
+    "metalowe krzesło retro",
+] + NAME_KEYWORDS
 
 
 _ENV_CONFIG_MAP = {
