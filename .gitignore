@@ -1,0 +1,4 @@
+__pycache__/
+*.pyc
+facebook_session.json
+.DS_Store

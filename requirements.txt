@@ -1,0 +1,6 @@
+requests
+beautifulsoup4
+Pillow
+torch
+open_clip_torch
+playwright

@@ -1,0 +1,18 @@
+{
+  "ntfy_topic": null,
+  "similarity_threshold_notify": 0.30,
+  "similarity_threshold_list": 0.20,
+  "use_image_matching": true,
+  "enabled_sites": [
+    "bazos_cz",
+    "bazos_sk",
+    "sbazar",
+    "modry_konik",
+    "aukro_cz",
+    "aukro_sk",
+    "olx_pl",
+    "kleinanzeigen_de"
+  ],
+  "facebook_session_path": null,
+  "facebook_location": "czech-republic"
+}
