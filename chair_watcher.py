@@ -219,6 +219,36 @@ def text_has_weak_name_keyword(text):
     return any(k in t for k in WEAK_NAME_KEYWORDS)
 
 
+# Hard exclusion list: your chair is a chrome tubular frame with a fabric
+# sling seat/back. These are unambiguous category mismatches — a children's
+# chair, an office chair, or a garden/patio chair is never going to be it,
+# whatever an image score says. Checked BEFORE image scoring, so excluded
+# listings are skipped entirely (saves time too, not just precision).
+# Deliberately narrow and unambiguous: broader material terms like "dřevěná"
+# (wooden) are NOT included here, since this chair has wooden armrest
+# variants in the wild — a blanket wood exclusion would risk rejecting a
+# real near-match, which the image-similarity threshold is better placed to
+# judge case by case.
+EXCLUDE_KEYWORDS = [
+    # Children's furniture (CZ/SK/DE/PL)
+    "dětská", "dětské", "dětský", "detská", "detské", "detský",
+    "kinderstuhl", "kinderstoel", "fotelik dziecięcy", "krzesełko dziecięce",
+    "jedálenská stolička pre dieťa", "vysoká stolička", "jídelní židlička",
+    # Office furniture
+    "kancelářská", "kancelářské", "kancelárska", "kancelárske",
+    "bürostuhl", "fotel biurowy", "krzesło biurowe", "otočná stolička kancelárska",
+    # Plastic / resin garden furniture (as the PRIMARY material — distinct
+    # from a chrome-frame chair that just happens to be outdoors)
+    "plastová stolička", "plastová židle", "záhradná plastová", "zahradní plastová",
+    "gartenstuhl kunststoff", "krzesło plastikowe ogrodowe",
+]
+
+
+def is_excluded(text):
+    t = text.lower()
+    return any(k in t for k in EXCLUDE_KEYWORDS)
+
+
 # ---------------------------------------------------------------------------
 # CLIP-based image similarity
 # ---------------------------------------------------------------------------
@@ -279,6 +309,70 @@ def download_image(url, timeout=15):
 # ---------------------------------------------------------------------------
 # Site modules — each returns a list of dicts: {url, title, text, image_urls}
 # ---------------------------------------------------------------------------
+
+# General web search queries — this is what covers "search Google/other
+# engines too" and doubles as a safety net for marketplaces whose own
+# scraper is unreliable or disallows automated access (Sbazar's robots.txt
+# explicitly disallows scraping, for instance — this reaches it indirectly
+# via search engine indexing instead, which is a different, acceptable
+# thing from scraping the site directly). Only the first results page is
+# read per query — deliberately shallow and fast, since a ranked search
+# engine already puts the best matches first; there's little value digging
+# past page 1, and it's what keeps this step quick.
+WEB_SEARCH_QUERIES = [
+    "kodreta myjava stolička prodej",
+    "kodreta myjava kreslo predaj",
+    "Jaroslav Hreščák T2306 stolička",
+    "Viliam Chlebo kodreta křeslo bazar",
+    "site:aukro.cz kodreta",
+    "site:aukro.sk kodreta",
+    "site:sbazar.cz kodreta křeslo",
+    "site:olx.pl kodreta krzeslo",
+    "site:kleinanzeigen.de kodreta stuhl",
+    "site:vinted.com kodreta chair",
+]
+
+
+def fetch_web_search(queries=None):
+    """
+    DuckDuckGo's HTML endpoint (no API key, no login) — used instead of a
+    real Google API since that needs a paid/registered key. Text-only: no
+    image available from a search snippet, so these candidates are judged
+    purely on keyword/exclusion matching, not the CLIP score. First page
+    of results only (DuckDuckGo already ranks best matches first).
+    """
+    results = []
+    for q in (queries or WEB_SEARCH_QUERIES):
+        try:
+            resp = requests.post(
+                "https://html.duckduckgo.com/html/",
+                data={"q": q},
+                headers=HEADERS,
+                timeout=20,
+            )
+            resp.raise_for_status()
+            soup = BeautifulSoup(resp.text, "html.parser")
+            for result in soup.select("div.result")[:10]:  # first page, top 10 per query
+                link_tag = result.select_one("a.result__a")
+                if not link_tag:
+                    continue
+                href = link_tag.get("href", "")
+                title = link_tag.get_text(strip=True)
+                snippet_tag = result.select_one("a.result__snippet, div.result__snippet")
+                snippet = snippet_tag.get_text(strip=True) if snippet_tag else ""
+                if not href or not title:
+                    continue
+                results.append({
+                    "url": href,
+                    "title": title,
+                    "text": f"{title} {snippet}",
+                    "image_urls": [],  # search snippets don't carry a usable photo
+                })
+            time.sleep(random.uniform(1.5, 2.5))
+        except Exception as e:
+            print(f"  [!] Web search error for '{q}': {e}")
+    return results
+
 
 def fetch_bazos(country="cz", keywords=None):
     """Bazoš.cz / Bazoš.sk — simple server-rendered HTML, easy to parse."""
@@ -413,15 +507,28 @@ def fetch_modry_konik(keywords=None):
     return results
 
 
+# A smaller, curated subset for the slow Playwright-driven sites — real
+# browser page loads (~3-5s each) make the full broad keyword list too
+# slow here. The full list is still used for fast requests-based sites.
+AUKRO_KEYWORDS = [
+    "kodreta", "t2306", "jaroslav hreščák",
+    "trubkové křeslo", "retro trubková stolička", "chromová stolička",
+]
+
+
 def fetch_aukro_playwright(country="cz", keywords=None):
     """
     Aukro.cz / Aukro.sk — listings are loaded via JavaScript, so this uses
     Playwright (a real headless browser) instead of plain requests.
 
-    NOTE: built without the ability to load the live site in this sandbox,
-    so the selectors are a best-effort guess. If it returns 0 results,
-    the debug screenshot/html dump (see debug_dir) will help pin down the
-    real selectors to fix.
+    Real Aukro item URLs look like aukro.cz/{slug}-{long numeric id}
+    (confirmed via search engine results, e.g.
+    aukro.cz/kresla-kodreta-myjava-design-viliam-2-kus-6968056434) — matched
+    here by a trailing-digits pattern rather than a guessed path segment,
+    since that's more robust to not knowing the exact search-results page
+    markup. If this still returns 0 results, the general web-search module
+    (fetch_web_search, using site:aukro.cz) acts as a fallback net for this
+    site regardless.
     """
     try:
         from playwright.sync_api import sync_playwright
@@ -430,17 +537,19 @@ def fetch_aukro_playwright(country="cz", keywords=None):
         return []
 
     domain = "aukro.cz" if country == "cz" else "aukro.sk"
+    item_url_pattern = re.compile(r"-\d{6,}(?:[/?#]|$)")
     results = []
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
         page = browser.new_page(user_agent=HEADERS["User-Agent"])
-        for kw in (keywords or BROAD_KEYWORDS_CZ_SK):
+        for kw in (keywords or AUKRO_KEYWORDS):
             try:
                 url = f"https://www.{domain}/vysledky-hledani?q={quote(kw)}"
                 page.goto(url, timeout=30000)
                 page.wait_for_load_state("networkidle", timeout=15000)
                 time.sleep(1.5)
-                anchors = page.query_selector_all("a[href*='/nabidka/'], a[href*='/ponuka/'], a[href*='/item/']")
+                anchors = [a for a in page.query_selector_all("a[href]")
+                           if item_url_pattern.search(a.get_attribute("href") or "")]
                 for a in anchors:
                     href = a.get_attribute("href") or ""
                     if href.startswith("/"):
@@ -546,21 +655,119 @@ def fetch_facebook_marketplace(session_path=None, keywords=None, location="czech
     return results
 
 
+# sbazar and modry_konik are deliberately NOT registered here:
+# - Sbazar's robots.txt explicitly disallows automated access (confirmed
+#   directly against the live site) — scraping it would ignore that.
+#   fetch_web_search's "site:sbazar.cz" query reaches it indirectly via
+#   search engine indexing instead, which is a different, acceptable thing.
+# - Modrý Koník turned out to be primarily a CHILDREN'S resale marketplace
+#   ("kvalitný detský bazár") — confirmed against the live site. Its
+#   furniture section exists but is a poor fit for this search and was a
+#   real source of the kids'-chair false positives. Dropped rather than
+#   patched. The functions remain defined above in case either is useful
+#   again later, just not wired in by default.
 SITE_MODULES = {
     "bazos_cz": lambda: fetch_bazos("cz"),
     "bazos_sk": lambda: fetch_bazos("sk"),
-    "sbazar": fetch_sbazar,
-    "modry_konik": fetch_modry_konik,
     "aukro_cz": lambda: fetch_aukro_playwright("cz"),
     "aukro_sk": lambda: fetch_aukro_playwright("sk"),
     "olx_pl": fetch_olx_pl,
     "kleinanzeigen_de": fetch_kleinanzeigen,
+    "web_search": fetch_web_search,
 }
+
+
+_DEAD_LISTING_PHRASES = [
+    "inzerát nenalezen", "inzerát byl smazán", "inzerát bol vymazaný",
+    "inzerát neexistuje", "stránka nenalezena", "stránka nebola nájdená",
+    "nabídka byla ukončena", "ponuka bola ukončená", "tato nabídka již neni",
+    "page not found", "nicht gefunden", "diese anzeige ist nicht mehr",
+    "ogłoszenie zostało usunięte", "nie znaleziono strony",
+]
+
+LIVENESS_CHECK_BATCH_SIZE = 20  # per run — spreads the cost across runs rather than checking everything at once
+
+
+def _listing_is_dead(url):
+    """True only on a high-confidence signal (404/410, or an explicit
+    'removed' phrase on the page) — a network hiccup or timeout does NOT
+    count as dead, since a false removal is worse than checking again next
+    run."""
+    try:
+        resp = requests.get(url, headers=HEADERS, timeout=12, allow_redirects=True)
+    except Exception:
+        return None  # couldn't tell — leave it alone, try again next time
+    if resp.status_code in (404, 410):
+        return True
+    if resp.status_code >= 400:
+        return None  # ambiguous (403, 503, etc.) — don't remove on this alone
+    body = resp.text.lower()
+    if any(phrase in body for phrase in _DEAD_LISTING_PHRASES):
+        return True
+    return False
+
+
+def prune_found(found, config):
+    """
+    Keeps the dashboard honest in two ways:
+    1. Relevance: re-checks every stored listing against the CURRENT
+       exclusion list and thresholds (using the score/keyword_hit already
+       stored, no network needed) — so tightening a threshold or adding an
+       exclusion term cleans up old entries too, not just future ones.
+    2. Liveness: a bounded batch of the longest-unchecked entries get a
+       real HTTP check each run, removing ones that are genuinely gone
+       (404, or an explicit "removed" page). Bounded on purpose so this
+       doesn't balloon scan time — it cycles through the whole list over
+       several runs instead of all at once.
+    """
+    notify_threshold = config.get("similarity_threshold_notify", 0.55)
+    list_threshold = config.get("similarity_threshold_list", 0.45)
+
+    relevant = []
+    dropped_relevance = 0
+    for item in found:
+        text = item.get("title", "")
+        if is_excluded(text):
+            dropped_relevance += 1
+            continue
+        keyword_hit = item.get("keyword_hit", item.get("tier") == "keyword")
+        score = item.get("score")
+        if keyword_hit:
+            still_qualifies = True
+        elif score is not None and score >= list_threshold:
+            still_qualifies = True
+        else:
+            still_qualifies = False
+        if still_qualifies:
+            item.setdefault("keyword_hit", keyword_hit)
+            item.setdefault("last_checked", item.get("found_at"))
+            relevant.append(item)
+        else:
+            dropped_relevance += 1
+
+    # Liveness check: a bounded batch of the longest-unchecked entries,
+    # each checked exactly once.
+    relevant.sort(key=lambda x: x.get("last_checked", ""))
+    to_check = relevant[:LIVENESS_CHECK_BATCH_SIZE]
+    dead_ids = set()
+    for item in to_check:
+        if _listing_is_dead(item["url"]) is True:
+            dead_ids.add(item["id"])
+        else:
+            item["last_checked"] = time.strftime("%Y-%m-%d %H:%M:%S")
+
+    final = [item for item in relevant if item["id"] not in dead_ids]
+
+    if dropped_relevance or dead_ids:
+        print(f"  Pruned {dropped_relevance} listing(s) no longer meeting current rules, "
+              f"{len(dead_ids)} dead link(s) (checked {len(to_check)}).")
+    return final
 
 
 def run_once(config):
     seen = load_seen()
     found = load_found()
+    found = prune_found(found, config)
     matcher = None
     # Two tiers: "notify" = confident enough to push a notification;
     # "list" = looser — shown in the dashboard for you to eyeball, but no push.
@@ -623,6 +830,10 @@ def run_once(config):
     for l in new_listings:
         lid = listing_id(l["url"])
         seen.add(lid)
+        if is_excluded(l["text"]):
+            print(f"  [{l['site']}] {l['title'][:60]!r} -> excluded (category mismatch)")
+            continue
+
         keyword_hit = text_has_strong_keyword(l["text"])
         weak_name_hit = text_has_weak_name_keyword(l["text"])  # logged only, doesn't auto-qualify a tier
         best_score = None
@@ -647,6 +858,7 @@ def run_once(config):
         print(f"  [{l['site']}] {l['title'][:60]!r} | keyword_hit={keyword_hit} | score={score_str}{weak_note} -> {tier or 'skip'}")
 
         if tier:
+            now_str = time.strftime("%Y-%m-%d %H:%M:%S")
             found.append({
                 "id": lid,
                 "url": l["url"],
@@ -655,7 +867,9 @@ def run_once(config):
                 "image_url": (l.get("image_urls") or [None])[0],
                 "score": best_score,
                 "tier": tier,
-                "found_at": time.strftime("%Y-%m-%d %H:%M:%S"),
+                "keyword_hit": keyword_hit,
+                "found_at": now_str,
+                "last_checked": now_str,
             })
             new_listed += 1
             if tier in ("keyword", "strong") and topic:
