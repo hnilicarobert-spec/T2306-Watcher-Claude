@@ -1,5 +1,6 @@
 {
   "ntfy_topic": null,
+  "site_url": "https://hnilicarobert-spec.github.io/T2306-Watcher-Claude/",
   "similarity_threshold_notify": 0.55,
   "similarity_threshold_list": 0.50,
   "use_image_matching": true,
