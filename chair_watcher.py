@@ -778,6 +778,7 @@ def run_once(config):
     new_matches = 0
     new_listed = 0
     total_new_listings = 0
+    notify_worthy = []  # titles of this run's notify-tier matches, for the single batched notification at the end
 
     enabled_sites = config.get("enabled_sites", list(SITE_MODULES.keys()))
 
@@ -872,21 +873,34 @@ def run_once(config):
                 "last_checked": now_str,
             })
             new_listed += 1
-            if tier in ("keyword", "strong") and topic:
+            if tier in ("keyword", "strong"):
                 new_matches += 1
-                reason = "keyword match" if keyword_hit else f"visual similarity {score_str}"
-                send_notification(
-                    topic,
-                    title="Possible chair match!",
-                    message=f"{l['title']}\n({reason})\n{l['url']}",
-                    url=l["url"],
-                )
+                notify_worthy.append(l["title"])
+
+    # One notification for the whole run, not one per listing — a run that
+    # turns up several matches at once used to fire a separate push for
+    # each, which is what was flooding your phone. This fires at most once
+    # per scan, summarizing however many were found.
+    if new_matches and topic:
+        if new_matches == 1:
+            message = notify_worthy[0]
+        else:
+            preview = "\n".join(f"• {t}" for t in notify_worthy[:5])
+            more = f"\n…and {new_matches - 5} more" if new_matches > 5 else ""
+            message = f"{preview}{more}"
+        click_url = config.get("site_url")  # optional: your GitHub Pages URL, if set in config.json
+        send_notification(
+            topic,
+            title=f"{new_matches} possible chair match{'es' if new_matches != 1 else ''} found",
+            message=message,
+            url=click_url,
+        )
 
     found.sort(key=lambda x: x["found_at"], reverse=True)
     save_found(found)
     save_seen(seen)
-    print(f"\nDone. {new_matches} notification(s) sent, {new_listed} listing(s) added to dashboard, "
-          f"out of {total_new_listings} new listings checked.")
+    print(f"\nDone. {new_matches} match(es) found this run ({'1 notification sent' if new_matches and topic else 'no notification'}), "
+          f"{new_listed} listing(s) added to dashboard, out of {total_new_listings} new listings checked.")
     return {"new_matches": new_matches, "new_listed": new_listed, "total_new_listings": total_new_listings}
 
 
