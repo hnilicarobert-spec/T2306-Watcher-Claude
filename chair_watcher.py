@@ -74,9 +74,21 @@ HEADERS = {
     "Accept-Language": "cs-CZ,cs;q=0.9,sk;q=0.8,en;q=0.5",
 }
 
+# Safe to auto-trust: distinctive brand/model terms with no real-world
+# name-collision risk. A hit on any of these alone is treated as a confident
+# match regardless of image score.
 STRONG_KEYWORDS = [
-    "kodreta", "hreščák", "hrescak", "t2306", "t 2306", "chlebo",
+    "kodreta", "t2306", "t 2306", "chlebo",
 ]
+
+# NOT auto-trusted on their own: "hreščák"/"hrescak" is a real Slovak surname
+# (confirmed via real scan data — unrelated sellers named Jaroslav Hreščák
+# turned up selling fire extinguishers, garden sprayers, a motorcycle, none
+# of it furniture). Still searched for directly below, since a seller who
+# knows the designer's name is a great signal — but a hit on JUST this word
+# still has to clear the image-similarity bar like any other listing,
+# instead of auto-qualifying as a "Name match".
+WEAK_NAME_KEYWORDS = ["hreščák", "hrescak"]
 
 # Name/model search terms — searched directly on every site, in case a
 # seller who DOES know what they have used these exact words.
@@ -180,6 +192,11 @@ def send_notification(topic, title, message, url=None):
 def text_has_strong_keyword(text):
     t = text.lower()
     return any(k in t for k in STRONG_KEYWORDS)
+
+
+def text_has_weak_name_keyword(text):
+    t = text.lower()
+    return any(k in t for k in WEAK_NAME_KEYWORDS)
 
 
 # ---------------------------------------------------------------------------
@@ -574,6 +591,7 @@ def run_once(config):
         lid = listing_id(l["url"])
         seen.add(lid)
         keyword_hit = text_has_strong_keyword(l["text"])
+        weak_name_hit = text_has_weak_name_keyword(l["text"])  # logged only, doesn't auto-qualify a tier
         best_score = None
         if matcher and l.get("image_urls"):
             try:
@@ -592,7 +610,8 @@ def run_once(config):
             tier = None
 
         score_str = f"{best_score:.3f}" if best_score is not None else "n/a"
-        print(f"  [{l['site']}] {l['title'][:60]!r} | keyword_hit={keyword_hit} | score={score_str} -> {tier or 'skip'}")
+        weak_note = " | weak_name_hit=True (not auto-trusted)" if weak_name_hit and not keyword_hit else ""
+        print(f"  [{l['site']}] {l['title'][:60]!r} | keyword_hit={keyword_hit} | score={score_str}{weak_note} -> {tier or 'skip'}")
 
         if tier:
             found.append({
