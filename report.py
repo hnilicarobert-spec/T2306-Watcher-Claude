@@ -80,8 +80,22 @@ PAGE_TEMPLATE = """
 """
 
 
+def _confidence_sort_key(item):
+    """Highest-probability first. A keyword/brand-name hit is the most
+    confident signal we have (ranked above pure image-similarity tiers),
+    then sorted by the actual CLIP score within each tier — so a keyword
+    match that ALSO has a strong photo match (e.g. score 0.94) still sorts
+    above one with no photo at all, and "similar" entries sort by how close
+    they actually scored rather than by when they were found."""
+    tier_rank = {"keyword": 2, "strong": 1, "similar": 0}.get(item.get("tier"), -1)
+    score = item.get("score")
+    score_for_sort = score if score is not None else -1  # no photo available sorts last within its tier
+    return (tier_rank, score_for_sort)
+
+
 def render_static(found, last_run_text, repo_actions_url=None):
-    status_line = f"Last scan: {last_run_text} · {len(found)} total candidate(s) tracked"
+    found = sorted(found, key=_confidence_sort_key, reverse=True)
+    status_line = f"Last scan: {last_run_text} · {len(found)} total candidate(s) tracked, sorted by match strength"
 
     if not found:
         cards_html = ('<div class="empty">No candidate listings yet. '
