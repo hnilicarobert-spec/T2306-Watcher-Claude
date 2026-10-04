@@ -15,13 +15,19 @@
     .status { font-size: 0.85em; color: #666; margin-bottom: 10px; }
     .scan-hint {
       background: #eef3ee; border-radius: 10px; padding: 10px 14px; font-size: 0.85em;
-      margin-bottom: 18px; color: #2b6b4f;
+      margin-bottom: 14px; color: #2b6b4f;
     }
     .scan-hint a { color: #2b6b4f; font-weight: 600; }
+    .sort-controls { display: flex; gap: 8px; margin-bottom: 16px; }
+    .sort-btn {
+      flex: 1; padding: 9px 0; border-radius: 10px; border: 1px solid #ccc;
+      background: white; font-size: 0.85em; font-weight: 600; color: #444;
+    }
+    .sort-btn.active { background: #2b6b4f; color: white; border-color: #2b6b4f; }
     .empty { color: #777; padding: 30px 0; text-align: center; }
     .card {
       background: white; border-radius: 14px; overflow: hidden; margin-bottom: 14px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.12); position: relative;
     }
     .card a { text-decoration: none; color: inherit; display: block; }
     .card img { width: 100%; height: 200px; object-fit: cover; display: block; background: #ddd; }
@@ -30,11 +36,17 @@
     .meta { font-size: 0.8em; color: #777; }
     .badge {
       display: inline-block; font-size: 0.7em; font-weight: 700; text-transform: uppercase;
-      padding: 3px 8px; border-radius: 6px; letter-spacing: 0.03em;
+      padding: 3px 8px; border-radius: 6px; letter-spacing: 0.03em; margin-right: 6px;
     }
     .badge-keyword { background: #ffe4b8; color: #8a5600; }
     .badge-strong { background: #c9f2d8; color: #146c3a; }
     .badge-similar { background: #e3e3e3; color: #555; }
+    .badge-new { background: #ff5c5c; color: white; }
+    .dismiss-btn {
+      position: absolute; top: 8px; right: 8px; z-index: 5;
+      width: 28px; height: 28px; border-radius: 50%; border: none;
+      background: rgba(0,0,0,0.55); color: white; font-size: 0.85em; line-height: 1;
+    }
     @media (prefers-color-scheme: dark) {
       body { background: #15161a; color: #eee; }
       .card { background: #1f2127; }
@@ -42,24 +54,33 @@
       .status { color: #999; }
       .scan-hint { background: #10281c; color: #8fd6ab; }
       .scan-hint a { color: #8fd6ab; }
+      .sort-btn { background: #1f2127; border-color: #444; color: #ccc; }
     }
   </style>
 </head>
 <body>
   <h1>🪑 Chair Watcher</h1>
-  <div class="status">Last scan: 2026-10-04 04:40 UTC · 148 total candidate(s) tracked, sorted by match strength</div>
+  <div class="status">Last scan: 2026-10-04 07:55 UTC · <span id="visible-count">155</span> candidate(s) shown · tap Remove on anything irrelevant to hide it for good</div>
+
   <div class="scan-hint">
     Want to check right now instead of waiting for the next automatic scan?
     Open this repo's <strong>Actions</strong> tab on GitHub (works fine from
     your iPhone's browser or the GitHub app) → select "Scan for chair" →
     tap <strong>Run workflow</strong>. New results appear here a minute or two later.
   </div>
-  
-<div class="card">
+
+  <div class="sort-controls">
+    <button class="sort-btn active" id="sort-match">Best match</button>
+    <button class="sort-btn" id="sort-newest">Newest</button>
+  </div>
+  <div id="cards-container">
+
+<div class="card" data-id="2a54099679673b18" data-score="0.9448773264884949" data-tier-rank="2" data-found-at="2026-10-03 16:08:09">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytok.bazos.sk/inzerat/195976327/kupim-stolicku-t2306-kodreta-myjava.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.sk/img/1t/327/195976327.jpg?t=1790674635" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-keyword">Name match</div>
+      <span class="badge badge-keyword">Name match</span>
       <div class="title">Kúpim stoličku T2306 Kodreta Myjava</div>
       <div class="meta">bazos_sk · similarity 0.94 · 2026-10-03 16:08:09</div>
     </div>
@@ -67,11 +88,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="2a54099679673b18" data-score="0.9448773264884949" data-tier-rank="2" data-found-at="2026-10-03 16:08:02">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytok.bazos.sk/inzerat/195976327/kupim-stolicku-t2306-kodreta-myjava.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.sk/img/1t/327/195976327.jpg?t=1790674635" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-keyword">Name match</div>
+      <span class="badge badge-keyword">Name match</span>
       <div class="title">Kúpim stoličku T2306 Kodreta Myjava</div>
       <div class="meta">bazos_sk · similarity 0.94 · 2026-10-03 16:08:02</div>
     </div>
@@ -79,11 +101,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="2a54099679673b18" data-score="0.9448773264884949" data-tier-rank="2" data-found-at="2026-10-03 16:07:56">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytok.bazos.sk/inzerat/195976327/kupim-stolicku-t2306-kodreta-myjava.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.sk/img/1t/327/195976327.jpg?t=1790674635" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-keyword">Name match</div>
+      <span class="badge badge-keyword">Name match</span>
       <div class="title">Kúpim stoličku T2306 Kodreta Myjava</div>
       <div class="meta">bazos_sk · similarity 0.94 · 2026-10-03 16:07:56</div>
     </div>
@@ -91,11 +114,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="2a54099679673b18" data-score="0.9448773264884949" data-tier-rank="2" data-found-at="2026-10-03 16:07:52">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytok.bazos.sk/inzerat/195976327/kupim-stolicku-t2306-kodreta-myjava.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.sk/img/1t/327/195976327.jpg?t=1790674635" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-keyword">Name match</div>
+      <span class="badge badge-keyword">Name match</span>
       <div class="title">Kúpim stoličku T2306 Kodreta Myjava</div>
       <div class="meta">bazos_sk · similarity 0.94 · 2026-10-03 16:07:52</div>
     </div>
@@ -103,11 +127,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="0a677925762463f4" data-score="0.9448773264884949" data-tier-rank="2" data-found-at="2026-10-03 16:07:49">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytek.bazos.cz/inzerat/224374941/koupim-zidli-t2306-kodreta-myjava.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.cz/img/1t/941/224374941.jpg?t=1790674592" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-keyword">Name match</div>
+      <span class="badge badge-keyword">Name match</span>
       <div class="title">Koupím židli T2306 Kodreta Myjava</div>
       <div class="meta">bazos_cz · similarity 0.94 · 2026-10-03 16:07:49</div>
     </div>
@@ -115,11 +140,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="0a677925762463f4" data-score="0.9448773264884949" data-tier-rank="2" data-found-at="2026-10-03 16:07:47">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytek.bazos.cz/inzerat/224374941/koupim-zidli-t2306-kodreta-myjava.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.cz/img/1t/941/224374941.jpg?t=1790674592" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-keyword">Name match</div>
+      <span class="badge badge-keyword">Name match</span>
       <div class="title">Koupím židli T2306 Kodreta Myjava</div>
       <div class="meta">bazos_cz · similarity 0.94 · 2026-10-03 16:07:47</div>
     </div>
@@ -127,11 +153,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="0a677925762463f4" data-score="0.9448773264884949" data-tier-rank="2" data-found-at="2026-10-03 16:07:46">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytek.bazos.cz/inzerat/224374941/koupim-zidli-t2306-kodreta-myjava.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.cz/img/1t/941/224374941.jpg?t=1790674592" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-keyword">Name match</div>
+      <span class="badge badge-keyword">Name match</span>
       <div class="title">Koupím židli T2306 Kodreta Myjava</div>
       <div class="meta">bazos_cz · similarity 0.94 · 2026-10-03 16:07:46</div>
     </div>
@@ -139,11 +166,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="0a677925762463f4" data-score="0.9448773264884949" data-tier-rank="2" data-found-at="2026-10-03 16:07:41">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytek.bazos.cz/inzerat/224374941/koupim-zidli-t2306-kodreta-myjava.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.cz/img/1t/941/224374941.jpg?t=1790674592" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-keyword">Name match</div>
+      <span class="badge badge-keyword">Name match</span>
       <div class="title">Koupím židli T2306 Kodreta Myjava</div>
       <div class="meta">bazos_cz · similarity 0.94 · 2026-10-03 16:07:41</div>
     </div>
@@ -151,11 +179,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="c30c83edaaa4f05c" data-score="0.6856180429458618" data-tier-rank="2" data-found-at="2026-10-03 16:07:44">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://ostatni.bazos.cz/inzerat/223790683/retro-skladaci-kreslo-kodreta.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.cz/img/1t/683/223790683.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-keyword">Name match</div>
+      <span class="badge badge-keyword">Name match</span>
       <div class="title">Retro skládací křeslo Kodreta</div>
       <div class="meta">bazos_cz · similarity 0.69 · 2026-10-03 16:07:44</div>
     </div>
@@ -163,11 +192,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="66f209f70e33099d" data-score="0.611524760723114" data-tier-rank="2" data-found-at="2026-10-03 16:07:42">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytek.bazos.cz/inzerat/224283093/retro-chromova-pohovka-dvoukreslo-t-2403-viliam-chlebo.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.cz/img/1t/093/224283093.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-keyword">Name match</div>
+      <span class="badge badge-keyword">Name match</span>
       <div class="title">Retro chromová pohovka / dvoukřeslo T-2403 – Viliam Chlebo (</div>
       <div class="meta">bazos_cz · similarity 0.61 · 2026-10-03 16:07:42</div>
     </div>
@@ -175,11 +205,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="cfa78027135562ef" data-score="0.5597085952758789" data-tier-rank="2" data-found-at="2026-10-03 16:07:45">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytek.bazos.cz/inzerat/223321019/stolek-konferencni-chrom-sklo-kodreta-myjava.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.cz/img/1t/019/223321019.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-keyword">Name match</div>
+      <span class="badge badge-keyword">Name match</span>
       <div class="title">Stolek konferenční chrom, sklo Kodreta Myjava</div>
       <div class="meta">bazos_cz · similarity 0.56 · 2026-10-03 16:07:45</div>
     </div>
@@ -187,11 +218,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="32e90e12e3a44ad6" data-score="0.5543655753135681" data-tier-rank="2" data-found-at="2026-10-03 16:07:43">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://ostatni.bazos.cz/inzerat/223824827/nabizim-retro-stolek-kodreta-myjavadesign-viliam-chlebo-c.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.cz/img/1t/827/223824827.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-keyword">Name match</div>
+      <span class="badge badge-keyword">Name match</span>
       <div class="title">Nabízím retro stolek Kodreta Myjava,design Viliam Chlebo.  C</div>
       <div class="meta">bazos_cz · similarity 0.55 · 2026-10-03 16:07:43</div>
     </div>
@@ -199,11 +231,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="ce3b430ead996a40" data-score="0.5455963015556335" data-tier-rank="2" data-found-at="2026-10-03 16:07:53">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytok.bazos.sk/inzerat/195716660/konferencny-stolik-kodreta-stomy-sklo-ocel-120x80.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.sk/img/1t/660/195716660.jpg?t=1789889411" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-keyword">Name match</div>
+      <span class="badge badge-keyword">Name match</span>
       <div class="title">Konferenčný a jedálenský stôl Kodreta zo serie Stomy</div>
       <div class="meta">bazos_sk · similarity 0.55 · 2026-10-03 16:07:53</div>
     </div>
@@ -211,11 +244,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="376dd4d190e8b66f" data-score="0.5311279296875" data-tier-rank="2" data-found-at="2026-10-03 16:07:56">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytok.bazos.sk/inzerat/194604483/kodreta-stolik-viliam-chleba-1990s.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.sk/img/1t/483/194604483.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-keyword">Name match</div>
+      <span class="badge badge-keyword">Name match</span>
       <div class="title">KODRETA stolik Viliam Chlebo 1990s</div>
       <div class="meta">bazos_sk · similarity 0.53 · 2026-10-03 16:07:56</div>
     </div>
@@ -223,11 +257,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="98919c9b932e91aa" data-score="0.47566255927085876" data-tier-rank="2" data-found-at="2026-10-03 16:07:55">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://ostatne.bazos.sk/inzerat/194631683/retro-lehatko.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.sk/img/1t/683/194631683.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-keyword">Name match</div>
+      <span class="badge badge-keyword">Name match</span>
       <div class="title">Retro lehatko,postrekovač Kodreta , vianocne žiarovky</div>
       <div class="meta">bazos_sk · similarity 0.48 · 2026-10-03 16:07:55</div>
     </div>
@@ -235,11 +270,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="ce56266401f98705" data-score="0.39098623394966125" data-tier-rank="2" data-found-at="2026-10-03 16:07:46">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://stroje.bazos.cz/inzerat/223117307/hasici-snehovy-dvoulahvovy-na-voziku.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.cz/img/1t/307/223117307.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-keyword">Name match</div>
+      <span class="badge badge-keyword">Name match</span>
       <div class="title">hasící sněhový dvoulahvový na vozíku</div>
       <div class="meta">bazos_cz · similarity 0.39 · 2026-10-03 16:07:46</div>
     </div>
@@ -247,11 +283,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="a30de535ac779f17" data-score="0.3691820502281189" data-tier-rank="2" data-found-at="2026-10-03 16:07:55">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://dom.bazos.sk/inzerat/195194228/hasiaci-pristroj.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.sk/img/1t/228/195194228.jpg?t=1789156631" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-keyword">Name match</div>
+      <span class="badge badge-keyword">Name match</span>
       <div class="title">Hasiaci pristroj</div>
       <div class="meta">bazos_sk · similarity 0.37 · 2026-10-03 16:07:55</div>
     </div>
@@ -259,11 +296,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="89bd656bac741762" data-score="0.36760690808296204" data-tier-rank="2" data-found-at="2026-10-03 16:07:50">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://motorky.bazos.cz/inzerat/224303947/triumph-speed-triple-r.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.cz/img/1t/947/224303947.jpg?t=1790409730" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-keyword">Name match</div>
+      <span class="badge badge-keyword">Name match</span>
       <div class="title">Triumph Speed Triple R</div>
       <div class="meta">bazos_cz · similarity 0.37 · 2026-10-03 16:07:50</div>
     </div>
@@ -271,11 +309,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="e974fccc339d5160" data-score="0.3491422235965729" data-tier-rank="2" data-found-at="2026-10-03 16:07:53">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://ostatne.bazos.sk/inzerat/195775071/predam-praskove-hasiace-pristroje-6kg.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.sk/img/1t/071/195775071.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-keyword">Name match</div>
+      <span class="badge badge-keyword">Name match</span>
       <div class="title">Predám práškové hasiace prístroje 6kg</div>
       <div class="meta">bazos_sk · similarity 0.35 · 2026-10-03 16:07:53</div>
     </div>
@@ -283,11 +322,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="4f4c34d1c01d8fce" data-score="0.3456246852874756" data-tier-rank="2" data-found-at="2026-10-03 16:07:44">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://ostatni.bazos.cz/inzerat/223713795/rucni-zahradni-postrikovac.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.cz/img/1t/795/223713795.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-keyword">Name match</div>
+      <span class="badge badge-keyword">Name match</span>
       <div class="title">RUČNÍ  ZAHRADNÍ  POSTŘIKOVAČ</div>
       <div class="meta">bazos_cz · similarity 0.35 · 2026-10-03 16:07:44</div>
     </div>
@@ -295,11 +335,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="0432bd045022d400" data-score="0.30136874318122864" data-tier-rank="2" data-found-at="2026-10-03 16:07:54">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://ostatne.bazos.sk/inzerat/195093065/hasiaci-pristroj-praskovy-6kg.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.sk/img/1t/065/195093065.jpg?t=1788173869" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-keyword">Name match</div>
+      <span class="badge badge-keyword">Name match</span>
       <div class="title">Hasiaci prístroj práškový 6kg</div>
       <div class="meta">bazos_sk · similarity 0.30 · 2026-10-03 16:07:54</div>
     </div>
@@ -307,11 +348,25 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="a04cdcf617b1b871" data-score="-1" data-tier-rank="2" data-found-at="2026-10-04 07:55:56">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
+  <a href="https://nabytok.bazos.sk/inzeraty/kodreta/" target="_blank" rel="noopener">
+    
+    <div class="card-body">
+      <span class="badge badge-keyword">Name match</span>
+      <div class="title">Kodreta bazár - Nábytok | Bazoš.sk</div>
+      <div class="meta">web_search · keyword match · 2026-10-04 07:55:56</div>
+    </div>
+  </a>
+</div>
+
+
+<div class="card" data-id="dbbd1b43f43d9370" data-score="-1" data-tier-rank="2" data-found-at="2026-10-04 04:40:55">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytok.bazos.sk/inzeraty/stol%C3%ADk-kodreta/" target="_blank" rel="noopener">
     
     <div class="card-body">
-      <div class="badge badge-keyword">Name match</div>
+      <span class="badge badge-keyword">Name match</span>
       <div class="title">Stolík kodreta bazár - Nábytok | Bazoš.sk</div>
       <div class="meta">web_search · keyword match · 2026-10-04 04:40:55</div>
     </div>
@@ -319,11 +374,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="7120e09f6d4f6001" data-score="-1" data-tier-rank="2" data-found-at="2026-10-04 02:49:04">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytok.bazos.sk/inzerat/177995757/kreslo-kodreta-myjava.php" target="_blank" rel="noopener">
     
     <div class="card-body">
-      <div class="badge badge-keyword">Name match</div>
+      <span class="badge badge-keyword">Name match</span>
       <div class="title">Kreslo Kodreta Myjava - Bratislava | Bazoš.sk</div>
       <div class="meta">web_search · keyword match · 2026-10-04 02:49:04</div>
     </div>
@@ -331,11 +387,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="eeff0fc3e60d0a40" data-score="-1" data-tier-rank="2" data-found-at="2026-10-04 02:49:04">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://www.dnb.com/business-directory/company-profiles.kodreta_furniture_sro.1caec9d1906948fef1c9198944613d91.html" target="_blank" rel="noopener">
     
     <div class="card-body">
-      <div class="badge badge-keyword">Name match</div>
+      <span class="badge badge-keyword">Name match</span>
       <div class="title">KODRETA furniture, s.r.o. Company Profile | Stará Myjava, PT Javorina ...</div>
       <div class="meta">web_search · keyword match · 2026-10-04 02:49:04</div>
     </div>
@@ -343,11 +400,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="4075411471cdec6d" data-score="-1" data-tier-rank="2" data-found-at="2026-10-03 20:42:07">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="http://www.kodreta.com/?lang=sk" target="_blank" rel="noopener">
     
     <div class="card-body">
-      <div class="badge badge-keyword">Name match</div>
+      <span class="badge badge-keyword">Name match</span>
       <div class="title">chrómovaný nábytok, kovové chrómované stoličky, kreslá, drevené stoličky</div>
       <div class="meta">web_search · keyword match · 2026-10-03 20:42:07</div>
     </div>
@@ -355,11 +413,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="67fe707813679ed7" data-score="-1" data-tier-rank="2" data-found-at="2026-10-03 20:42:07">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://aukro.sk/kupim-stolicku-t2306-kodreta-myjava-7135208694" target="_blank" rel="noopener">
     
     <div class="card-body">
-      <div class="badge badge-keyword">Name match</div>
+      <span class="badge badge-keyword">Name match</span>
       <div class="title">Kúpim stoličku T2306 Kodreta Myjava - Aukro</div>
       <div class="meta">web_search · keyword match · 2026-10-03 20:42:07</div>
     </div>
@@ -367,11 +426,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="68b7b2588871a140" data-score="-1" data-tier-rank="2" data-found-at="2026-10-03 20:42:07">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://aukro.cz/nabizim-retro-stolek-kodreta-myjava-design-viliam-chlebo-7133626597" target="_blank" rel="noopener">
     
     <div class="card-body">
-      <div class="badge badge-keyword">Name match</div>
+      <span class="badge badge-keyword">Name match</span>
       <div class="title">Nabízím retro stolek Kodreta Myjava,design Viliam Chlebo</div>
       <div class="meta">web_search · keyword match · 2026-10-03 20:42:07</div>
     </div>
@@ -379,11 +439,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="d3b2a26e65a1f66d" data-score="-1" data-tier-rank="2" data-found-at="2026-10-03 20:42:07">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://www.furniturestoresfinder.com/SK/Myjava/336970629701162/KODRETA-furniture%2C-s.r.o." target="_blank" rel="noopener">
     
     <div class="card-body">
-      <div class="badge badge-keyword">Name match</div>
+      <span class="badge badge-keyword">Name match</span>
       <div class="title">KODRETA furniture, s.r.o., Myjava (2026)</div>
       <div class="meta">web_search · keyword match · 2026-10-03 20:42:07</div>
     </div>
@@ -391,11 +452,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="482de2d671f9baa6" data-score="-1" data-tier-rank="2" data-found-at="2026-10-03 20:42:07">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytok.bazos.sk/inzeraty/kodreta/" target="_blank" rel="noopener">
     
     <div class="card-body">
-      <div class="badge badge-keyword">Name match</div>
+      <span class="badge badge-keyword">Name match</span>
       <div class="title">Kodreta bazár - Nábytok | Bazoš.sk</div>
       <div class="meta">web_search · keyword match · 2026-10-03 20:42:07</div>
     </div>
@@ -403,11 +465,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="88614b6df79bfa94" data-score="-1" data-tier-rank="2" data-found-at="2026-10-03 20:42:07">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://www.furniture1000.com/SK/Myjava/336970629701162/KODRETA-furniture%2C-s.r.o." target="_blank" rel="noopener">
     
     <div class="card-body">
-      <div class="badge badge-keyword">Name match</div>
+      <span class="badge badge-keyword">Name match</span>
       <div class="title">KODRETA furniture, s.r.o., Myjava (2025)</div>
       <div class="meta">web_search · keyword match · 2026-10-03 20:42:07</div>
     </div>
@@ -415,11 +478,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="f9be10d29d9c9952" data-score="-1" data-tier-rank="2" data-found-at="2026-10-03 20:42:07">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://www.cylex.sk/myjava/kodreta+furniture+s.r.o.myjava-11097449.html" target="_blank" rel="noopener">
     
     <div class="card-body">
-      <div class="badge badge-keyword">Name match</div>
+      <span class="badge badge-keyword">Name match</span>
       <div class="title">Kodreta Furniture S.r.o.myjava</div>
       <div class="meta">web_search · keyword match · 2026-10-03 20:42:07</div>
     </div>
@@ -427,11 +491,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="d72815de1af3b4d2" data-score="-1" data-tier-rank="2" data-found-at="2026-10-03 20:42:07">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://www.zoznam.sk/firma/86786/Kodreta-furniture-Myjava" target="_blank" rel="noopener">
     
     <div class="card-body">
-      <div class="badge badge-keyword">Name match</div>
+      <span class="badge badge-keyword">Name match</span>
       <div class="title">Kodreta furniture, s.r.o., Myjava | Zoznam.sk</div>
       <div class="meta">web_search · keyword match · 2026-10-03 20:42:07</div>
     </div>
@@ -439,11 +504,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="5e7afb675eea0031" data-score="-1" data-tier-rank="2" data-found-at="2026-10-03 20:42:07">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://ostatne.bazos.sk/inzerat/194739151/kreslo-viliam-chlebo-kodreta-myjava.php" target="_blank" rel="noopener">
     
     <div class="card-body">
-      <div class="badge badge-keyword">Name match</div>
+      <span class="badge badge-keyword">Name match</span>
       <div class="title">kreslo Viliam Chlebo - Kodreta Myjava - Levice | Bazoš.sk</div>
       <div class="meta">web_search · keyword match · 2026-10-03 20:42:07</div>
     </div>
@@ -451,11 +517,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="32406e6be2d40559" data-score="-1" data-tier-rank="2" data-found-at="2026-10-03 20:42:07">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://www.dnb.com/business-directory/company-profiles.kodreta_furniture_sro.5147031718ebc9d12b163d6f861f9906.html" target="_blank" rel="noopener">
     
     <div class="card-body">
-      <div class="badge badge-keyword">Name match</div>
+      <span class="badge badge-keyword">Name match</span>
       <div class="title">KODRETA furniture, s.r.o. Company Profile | Myjava, Trenčiansky kraj ...</div>
       <div class="meta">web_search · keyword match · 2026-10-03 20:42:07</div>
     </div>
@@ -463,11 +530,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="b04e4f323613560b" data-score="-1" data-tier-rank="2" data-found-at="2026-10-03 20:42:07">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytok.bazos.sk/inzerat/180308667/kreslo-kodreta-myjava.php" target="_blank" rel="noopener">
     
     <div class="card-body">
-      <div class="badge badge-keyword">Name match</div>
+      <span class="badge badge-keyword">Name match</span>
       <div class="title">Kreslo Kodreta Myjava - Bratislava | Bazoš.sk</div>
       <div class="meta">web_search · keyword match · 2026-10-03 20:42:07</div>
     </div>
@@ -475,11 +543,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="5806bffb99e32a70" data-score="-1" data-tier-rank="2" data-found-at="2026-10-03 20:42:07">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://www.zlatestranky.sk/firmy/Myjava/H768100/KODRETA+Slovakia,+s.r.o./" target="_blank" rel="noopener">
     
     <div class="card-body">
-      <div class="badge badge-keyword">Name match</div>
+      <span class="badge badge-keyword">Name match</span>
       <div class="title">KODRETA Slovakia, s.r.o., Myjava - Tel.: +421244454... >> Nábytok ...</div>
       <div class="meta">web_search · keyword match · 2026-10-03 20:42:07</div>
     </div>
@@ -487,11 +556,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="31c4eac421920458" data-score="-1" data-tier-rank="2" data-found-at="2026-10-03 20:42:07">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://www.dnb.com/business-directory/company-profiles.kodreta_furniture_sro.5272c7745835147d771da7b33aa13ffd.html" target="_blank" rel="noopener">
     
     <div class="card-body">
-      <div class="badge badge-keyword">Name match</div>
+      <span class="badge badge-keyword">Name match</span>
       <div class="title">KODRETA furniture, s.r.o. Company Profile | Stará Myjava, PT Javorina ...</div>
       <div class="meta">web_search · keyword match · 2026-10-03 20:42:07</div>
     </div>
@@ -499,11 +569,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="639b7ac2ce4cf43a" data-score="0.6878588199615479" data-tier-rank="1" data-found-at="2026-10-03 16:51:52">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://dom.bazos.sk/inzerat/196143600/stolicka-vodeodolna-skladacia.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.sk/img/1t/600/196143600.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-strong">Strong match</div>
+      <span class="badge badge-strong">Strong match</span>
       <div class="title">stolička vodeodolná skladacia</div>
       <div class="meta">bazos_sk · similarity 0.69 · 2026-10-03 16:51:52</div>
     </div>
@@ -511,11 +582,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="89c94ef98dc59bc2" data-score="0.6848680377006531" data-tier-rank="1" data-found-at="2026-10-03 16:50:21">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytek.bazos.cz/inzerat/224480509/retro-zidle.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.cz/img/1t/509/224480509.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-strong">Strong match</div>
+      <span class="badge badge-strong">Strong match</span>
       <div class="title">retro židle</div>
       <div class="meta">bazos_cz · similarity 0.68 · 2026-10-03 16:50:21</div>
     </div>
@@ -523,11 +595,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="b3be3e4a02c9e8a6" data-score="0.6824198961257935" data-tier-rank="1" data-found-at="2026-10-03 16:07:38">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://ostatni.bazos.cz/inzerat/224565415/trubkove-kreslo-bile.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.cz/img/1t/415/224565415.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-strong">Strong match</div>
+      <span class="badge badge-strong">Strong match</span>
       <div class="title">Trubkové křeslo bílé</div>
       <div class="meta">bazos_cz · similarity 0.68 · 2026-10-03 16:07:38</div>
     </div>
@@ -535,11 +608,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="3901581a05d0a97c" data-score="0.682010293006897" data-tier-rank="1" data-found-at="2026-10-03 16:52:24">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytok.bazos.sk/inzerat/194401135/retro-stolickakreslo-sass-2kusy.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.sk/img/1t/135/194401135.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-strong">Strong match</div>
+      <span class="badge badge-strong">Strong match</span>
       <div class="title">Retro stolička/kreslo SASS 2kusy</div>
       <div class="meta">bazos_sk · similarity 0.68 · 2026-10-03 16:52:24</div>
     </div>
@@ -547,11 +621,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="2cb058714e1d1178" data-score="0.6807252764701843" data-tier-rank="1" data-found-at="2026-10-03 16:51:02">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytek.bazos.cz/inzerat/223913878/zidle-3-kusy-kovova-calounena-retro-celek-za-700-kc.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.cz/img/1t/878/223913878.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-strong">Strong match</div>
+      <span class="badge badge-strong">Strong match</span>
       <div class="title">Židle 3 kusy kovová čalouněná RETRO celek za 500 kč</div>
       <div class="meta">bazos_cz · similarity 0.68 · 2026-10-03 16:51:02</div>
     </div>
@@ -559,11 +634,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="99c92b6f86c26384" data-score="0.672590434551239" data-tier-rank="1" data-found-at="2026-10-03 16:51:56">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://dom.bazos.sk/inzerat/196019740/stolicka.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.sk/img/1t/740/196019740.jpg?t=1790852675" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-strong">Strong match</div>
+      <span class="badge badge-strong">Strong match</span>
       <div class="title">Stolicky a stolik</div>
       <div class="meta">bazos_sk · similarity 0.67 · 2026-10-03 16:51:56</div>
     </div>
@@ -571,11 +647,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="68611b2926e3b6f5" data-score="0.6724950075149536" data-tier-rank="1" data-found-at="2026-10-03 16:51:04">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytek.bazos.cz/inzerat/223462281/skladaci-zidle-kovova-konstrukce.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.cz/img/1t/281/223462281.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-strong">Strong match</div>
+      <span class="badge badge-strong">Strong match</span>
       <div class="title">Skladaci zidle kovova konstrukce</div>
       <div class="meta">bazos_cz · similarity 0.67 · 2026-10-03 16:51:04</div>
     </div>
@@ -583,11 +660,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="c7ffb509865e6074" data-score="0.6605051159858704" data-tier-rank="1" data-found-at="2026-10-03 16:51:13">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytok.bazos.sk/inzerat/195965448/moderna-biela-jedalenska-stolicka-chrom.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.sk/img/1t/448/195965448.jpg?t=1790538985" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-strong">Strong match</div>
+      <span class="badge badge-strong">Strong match</span>
       <div class="title">Moderná biela jedálenská stolička – chróm</div>
       <div class="meta">bazos_sk · similarity 0.66 · 2026-10-03 16:51:13</div>
     </div>
@@ -595,11 +673,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="22cd995aeb89de38" data-score="0.6522072553634644" data-tier-rank="1" data-found-at="2026-10-03 16:51:04">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytek.bazos.cz/inzerat/223324803/zidle-masivni-kovova-konstrukce.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.cz/img/1t/803/223324803.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-strong">Strong match</div>
+      <span class="badge badge-strong">Strong match</span>
       <div class="title">Židle- masivní kovová konstrukce</div>
       <div class="meta">bazos_cz · similarity 0.65 · 2026-10-03 16:51:04</div>
     </div>
@@ -607,11 +686,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="5fe1dbac8ad110f0" data-score="0.6484074592590332" data-tier-rank="1" data-found-at="2026-10-03 16:51:28">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytok.bazos.sk/inzerat/195729516/predam-stolicky-4ks.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.sk/img/1t/516/195729516.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-strong">Strong match</div>
+      <span class="badge badge-strong">Strong match</span>
       <div class="title">Predám stoličky 4ks</div>
       <div class="meta">bazos_sk · similarity 0.65 · 2026-10-03 16:51:28</div>
     </div>
@@ -619,11 +699,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="1aa361b691970060" data-score="0.6457383632659912" data-tier-rank="1" data-found-at="2026-10-03 16:51:13">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytok.bazos.sk/inzerat/195917563/predam-barovu-stolicku-jola.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.sk/img/1t/563/195917563.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-strong">Strong match</div>
+      <span class="badge badge-strong">Strong match</span>
       <div class="title">Predám barovú stoličku Jola</div>
       <div class="meta">bazos_sk · similarity 0.65 · 2026-10-03 16:51:13</div>
     </div>
@@ -631,11 +712,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="ec79e384a4d22921" data-score="0.6427921056747437" data-tier-rank="1" data-found-at="2026-10-03 16:51:18">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytok.bazos.sk/inzerat/195789109/philip-starck-tango-4-ks.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.sk/img/1t/109/195789109.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-strong">Strong match</div>
+      <span class="badge badge-strong">Strong match</span>
       <div class="title">Philip Starck - Tango  (4 ks)</div>
       <div class="meta">bazos_sk · similarity 0.64 · 2026-10-03 16:51:18</div>
     </div>
@@ -643,11 +725,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="758a46e8c56d11a2" data-score="0.6413924694061279" data-tier-rank="1" data-found-at="2026-10-03 16:50:42">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytek.bazos.cz/inzerat/224429944/nove-ratanove-zahradni-zidle-s-podruckami-15-ks.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.cz/img/1t/944/224429944.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-strong">Strong match</div>
+      <span class="badge badge-strong">Strong match</span>
       <div class="title">Nové ratanové zahradní židle s područkami – 15 ks</div>
       <div class="meta">bazos_cz · similarity 0.64 · 2026-10-03 16:50:42</div>
     </div>
@@ -655,11 +738,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="905ec1468d507e3e" data-score="0.6410832405090332" data-tier-rank="1" data-found-at="2026-10-03 16:50:22">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytek.bazos.cz/inzerat/224479938/2x-trubkova-zidle.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.cz/img/1t/938/224479938.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-strong">Strong match</div>
+      <span class="badge badge-strong">Strong match</span>
       <div class="title">2x trubková židle</div>
       <div class="meta">bazos_cz · similarity 0.64 · 2026-10-03 16:50:22</div>
     </div>
@@ -667,11 +751,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="65cb21aa22415436" data-score="0.6304432153701782" data-tier-rank="1" data-found-at="2026-10-03 16:52:01">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://ostatne.bazos.sk/inzerat/195907212/vanova-stolicka-zdravotnicka-pomocka.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.sk/img/1t/212/195907212.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-strong">Strong match</div>
+      <span class="badge badge-strong">Strong match</span>
       <div class="title">Vaňová stolička - zdravotnícka pomôcka</div>
       <div class="meta">bazos_sk · similarity 0.63 · 2026-10-03 16:52:01</div>
     </div>
@@ -679,11 +764,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="5d5f1dea54677edc" data-score="0.6291281580924988" data-tier-rank="1" data-found-at="2026-10-03 16:51:03">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytek.bazos.cz/inzerat/223537973/zidle-kovova-s-calounenym-sedakem.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.cz/img/1t/973/223537973.jpg?t=1789630860" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-strong">Strong match</div>
+      <span class="badge badge-strong">Strong match</span>
       <div class="title">Židle kovová s čalouněným sedákem 16ks</div>
       <div class="meta">bazos_cz · similarity 0.63 · 2026-10-03 16:51:03</div>
     </div>
@@ -691,11 +777,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="377f0d9d10426eaa" data-score="0.6290155053138733" data-tier-rank="1" data-found-at="2026-10-03 16:07:38">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytek.bazos.cz/inzerat/223907066/vintage-trubkove-kreslo-sede-calouneni-drevene-podrucky.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.cz/img/1t/066/223907066.jpg?t=1789583227" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-strong">Strong match</div>
+      <span class="badge badge-strong">Strong match</span>
       <div class="title">Vintage trubkové křeslo – šedé čalounění, dřevěné područky</div>
       <div class="meta">bazos_cz · similarity 0.63 · 2026-10-03 16:07:38</div>
     </div>
@@ -703,11 +790,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="138b219c25f0717f" data-score="0.6287451982498169" data-tier-rank="1" data-found-at="2026-10-03 16:50:37">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytek.bazos.cz/inzerat/224522419/prodam-6x-zidle-ikea-leifarne-kovova-podnoz-jako-nove.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.cz/img/1t/419/224522419.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-strong">Strong match</div>
+      <span class="badge badge-strong">Strong match</span>
       <div class="title">Prodám 6x židle IKEA LEIFARNE (kovová podnož), jako NOVÉ</div>
       <div class="meta">bazos_cz · similarity 0.63 · 2026-10-03 16:50:37</div>
     </div>
@@ -715,11 +803,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="8b6567813957c52b" data-score="0.6274847388267517" data-tier-rank="1" data-found-at="2026-10-03 16:51:57">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytok.bazos.sk/inzerat/195991281/lavice.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.sk/img/1t/281/195991281.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-strong">Strong match</div>
+      <span class="badge badge-strong">Strong match</span>
       <div class="title">Lavice</div>
       <div class="meta">bazos_sk · similarity 0.63 · 2026-10-03 16:51:57</div>
     </div>
@@ -727,11 +816,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="5399229fe8abdfef" data-score="0.6237443685531616" data-tier-rank="1" data-found-at="2026-10-03 16:51:27">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytok.bazos.sk/inzerat/195787884/predam-stolicku-molino.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.sk/img/1t/884/195787884.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-strong">Strong match</div>
+      <span class="badge badge-strong">Strong match</span>
       <div class="title">Predám stoličku Molino</div>
       <div class="meta">bazos_sk · similarity 0.62 · 2026-10-03 16:51:27</div>
     </div>
@@ -739,11 +829,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="1b3a9f1d4fd72c64" data-score="0.6157825589179993" data-tier-rank="1" data-found-at="2026-10-03 16:51:02">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytek.bazos.cz/inzerat/223590680/4x-bile-skladaci-vintage-zidle-opp-vejprty-belet.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.cz/img/1t/680/223590680.jpg?t=1789632205" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-strong">Strong match</div>
+      <span class="badge badge-strong">Strong match</span>
       <div class="title">4x bílé skládací vintage židle O.P.P. Vejprty Belet</div>
       <div class="meta">bazos_cz · similarity 0.62 · 2026-10-03 16:51:02</div>
     </div>
@@ -751,11 +842,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="21465ecb75005b60" data-score="0.6102188229560852" data-tier-rank="1" data-found-at="2026-10-03 16:49:47">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytek.bazos.cz/inzerat/223592788/ikea-franklin-barova-stolicka-skladaci-chrom-briza.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.cz/img/1t/788/223592788.jpg?t=1788942063" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-strong">Strong match</div>
+      <span class="badge badge-strong">Strong match</span>
       <div class="title">IKEA Franklin, barová stolička, skládací, chrom / bříza</div>
       <div class="meta">bazos_cz · similarity 0.61 · 2026-10-03 16:49:47</div>
     </div>
@@ -763,11 +855,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="072f1039aa548830" data-score="0.6098863482475281" data-tier-rank="1" data-found-at="2026-10-03 16:51:05">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytek.bazos.cz/inzerat/222688996/zidle-kovova-calounena-kozenkou-stara-retro-za-800-kc.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.cz/img/1t/996/222688996.jpg?t=1787024834" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-strong">Strong match</div>
+      <span class="badge badge-strong">Strong match</span>
       <div class="title">Židle kovová čalouněná koženkou stará RETRO za 300 kč</div>
       <div class="meta">bazos_cz · similarity 0.61 · 2026-10-03 16:51:05</div>
     </div>
@@ -775,11 +868,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="fb5e348a6e54846f" data-score="0.6046785712242126" data-tier-rank="1" data-found-at="2026-10-03 16:50:41">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytek.bazos.cz/inzerat/224450471/2x-kovova-zidle-na-zahradu.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.cz/img/1t/471/224450471.jpg?t=1790758184" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-strong">Strong match</div>
+      <span class="badge badge-strong">Strong match</span>
       <div class="title">2x kovová židle na zahradu</div>
       <div class="meta">bazos_cz · similarity 0.60 · 2026-10-03 16:50:41</div>
     </div>
@@ -787,11 +881,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="9f78c17ca12c52bf" data-score="0.6035088300704956" data-tier-rank="1" data-found-at="2026-10-03 16:50:49">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytek.bazos.cz/inzerat/222348111/zahradni-barova-zidlicka-stolicka.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.cz/img/1t/111/222348111.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-strong">Strong match</div>
+      <span class="badge badge-strong">Strong match</span>
       <div class="title">Zahradní barová židlička / stolička</div>
       <div class="meta">bazos_cz · similarity 0.60 · 2026-10-03 16:50:49</div>
     </div>
@@ -799,11 +894,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="1413d364272632e1" data-score="0.6030248403549194" data-tier-rank="1" data-found-at="2026-10-03 16:07:51">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://ostatne.bazos.sk/inzerat/194888634/chromove-kreslo-funkcionalizmus.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.sk/img/1t/634/194888634.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-strong">Strong match</div>
+      <span class="badge badge-strong">Strong match</span>
       <div class="title">Chrómové kreslo funkcionalizmus</div>
       <div class="meta">bazos_sk · similarity 0.60 · 2026-10-03 16:07:51</div>
     </div>
@@ -811,11 +907,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="b084603f6460d1a5" data-score="0.6008117198944092" data-tier-rank="1" data-found-at="2026-10-03 16:51:22">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytok.bazos.sk/inzerat/196069766/4-stolicky.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.sk/img/1t/766/196069766.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-strong">Strong match</div>
+      <span class="badge badge-strong">Strong match</span>
       <div class="title">4 stoličky</div>
       <div class="meta">bazos_sk · similarity 0.60 · 2026-10-03 16:51:22</div>
     </div>
@@ -823,11 +920,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="6428e4c94d436b8f" data-score="0.6007990837097168" data-tier-rank="1" data-found-at="2026-10-03 16:50:59">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytek.bazos.cz/inzerat/224596929/originalni-zidle-thonet-po-renovacim-4-ks.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.cz/img/1t/929/224596929.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-strong">Strong match</div>
+      <span class="badge badge-strong">Strong match</span>
       <div class="title">ORIGINÁLNÍ židle THONET po renovaciM 4 ks.</div>
       <div class="meta">bazos_cz · similarity 0.60 · 2026-10-03 16:50:59</div>
     </div>
@@ -835,11 +933,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="c2f27dce7462b5db" data-score="0.5986244678497314" data-tier-rank="1" data-found-at="2026-10-03 16:51:01">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://dum.bazos.cz/inzerat/224222089/zidle-zahradni-skladaci.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.cz/img/1t/089/224222089.jpg?t=1790229756" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-strong">Strong match</div>
+      <span class="badge badge-strong">Strong match</span>
       <div class="title">Židle zahradní,  skládací</div>
       <div class="meta">bazos_cz · similarity 0.60 · 2026-10-03 16:51:01</div>
     </div>
@@ -847,11 +946,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="157703fca15a2051" data-score="0.5977754592895508" data-tier-rank="1" data-found-at="2026-10-03 16:50:36">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytek.bazos.cz/inzerat/224544194/otocna-kovova-zidle.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.cz/img/1t/194/224544194.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-strong">Strong match</div>
+      <span class="badge badge-strong">Strong match</span>
       <div class="title">Otočná kovová židle.</div>
       <div class="meta">bazos_cz · similarity 0.60 · 2026-10-03 16:50:36</div>
     </div>
@@ -859,11 +959,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="493f458273423386" data-score="0.5952484607696533" data-tier-rank="1" data-found-at="2026-10-03 16:51:49">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytok.bazos.sk/inzerat/195551142/thonet-luxusni-designova-zidle-pc-40-tis-kc.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.sk/img/1t/142/195551142.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-strong">Strong match</div>
+      <span class="badge badge-strong">Strong match</span>
       <div class="title">THONET luxusní designová židle, PC 40 tis. Kč</div>
       <div class="meta">bazos_sk · similarity 0.60 · 2026-10-03 16:51:49</div>
     </div>
@@ -871,11 +972,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="9c2b7956861ef5ce" data-score="0.5951828360557556" data-tier-rank="1" data-found-at="2026-10-03 16:51:06">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytek.bazos.cz/inzerat/222569731/kovova-zidle-6x-zahradni-zidle-pozink.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.cz/img/1t/731/222569731.jpg?t=1787128554" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-strong">Strong match</div>
+      <span class="badge badge-strong">Strong match</span>
       <div class="title">KOVOVÁ ŽIDLE - zahradní židle pozink</div>
       <div class="meta">bazos_cz · similarity 0.60 · 2026-10-03 16:51:06</div>
     </div>
@@ -883,11 +985,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="ee50ca2ec64f1155" data-score="0.5947062373161316" data-tier-rank="1" data-found-at="2026-10-03 16:52:00">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytok.bazos.sk/inzerat/195912049/kovova-stolicka.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.sk/img/1t/049/195912049.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-strong">Strong match</div>
+      <span class="badge badge-strong">Strong match</span>
       <div class="title">Kovová stolička</div>
       <div class="meta">bazos_sk · similarity 0.59 · 2026-10-03 16:52:00</div>
     </div>
@@ -895,11 +998,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="1a2b77b76e3c9a50" data-score="0.5904993414878845" data-tier-rank="1" data-found-at="2026-10-03 16:07:39">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytek.bazos.cz/inzerat/223624000/kreslo-chromove-trubkove-funkcionalismus-mucke-melder.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.cz/img/1t/000/223624000.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-strong">Strong match</div>
+      <span class="badge badge-strong">Strong match</span>
       <div class="title">Křeslo chromové trubkové funkcionalismus MÜCKE MELDER</div>
       <div class="meta">bazos_cz · similarity 0.59 · 2026-10-03 16:07:39</div>
     </div>
@@ -907,11 +1011,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="1bdda3cd0b502fc3" data-score="0.5902253985404968" data-tier-rank="1" data-found-at="2026-10-03 16:50:55">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://dum.bazos.cz/inzerat/224439514/kvalitni-jidelni-zidle-z-masivniho-bukoveho-dreva.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.cz/img/1t/514/224439514.jpg?t=1790696305" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-strong">Strong match</div>
+      <span class="badge badge-strong">Strong match</span>
       <div class="title">Kvalitní jídelní židle z masivního bukového dřeva</div>
       <div class="meta">bazos_cz · similarity 0.59 · 2026-10-03 16:50:55</div>
     </div>
@@ -919,11 +1024,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="19a933a3a93afee4" data-score="0.5854513645172119" data-tier-rank="1" data-found-at="2026-10-03 16:50:52">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytek.bazos.cz/inzerat/224510095/jidelni-zidle-kresilka.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.cz/img/1t/095/224510095.jpg?t=1790951946" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-strong">Strong match</div>
+      <span class="badge badge-strong">Strong match</span>
       <div class="title">Jídelní židle / křesílka</div>
       <div class="meta">bazos_cz · similarity 0.59 · 2026-10-03 16:50:52</div>
     </div>
@@ -931,11 +1037,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="6a49b6edc56014f0" data-score="0.5846107006072998" data-tier-rank="1" data-found-at="2026-10-03 16:50:33">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytek.bazos.cz/inzerat/224579686/zidle.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.cz/img/1t/686/224579686.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-strong">Strong match</div>
+      <span class="badge badge-strong">Strong match</span>
       <div class="title">Židle</div>
       <div class="meta">bazos_cz · similarity 0.58 · 2026-10-03 16:50:33</div>
     </div>
@@ -943,11 +1050,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="4b8cf8baed5ec775" data-score="0.5838286280632019" data-tier-rank="1" data-found-at="2026-10-03 16:50:21">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytek.bazos.cz/inzerat/224479945/vitra-visavis-2.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.cz/img/1t/945/224479945.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-strong">Strong match</div>
+      <span class="badge badge-strong">Strong match</span>
       <div class="title">Vitra Visavis 2</div>
       <div class="meta">bazos_cz · similarity 0.58 · 2026-10-03 16:50:21</div>
     </div>
@@ -955,11 +1063,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="38c0463af6195e84" data-score="0.5833783745765686" data-tier-rank="1" data-found-at="2026-10-03 16:51:17">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytok.bazos.sk/inzerat/195825887/chromova-stolicka.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.sk/img/1t/887/195825887.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-strong">Strong match</div>
+      <span class="badge badge-strong">Strong match</span>
       <div class="title">Chrómová stolička</div>
       <div class="meta">bazos_sk · similarity 0.58 · 2026-10-03 16:51:17</div>
     </div>
@@ -967,11 +1076,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="322222f1035ca606" data-score="0.5829817056655884" data-tier-rank="1" data-found-at="2026-10-03 16:52:18">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytok.bazos.sk/inzerat/195980027/vintage-stolicky.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.sk/img/1t/027/195980027.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-strong">Strong match</div>
+      <span class="badge badge-strong">Strong match</span>
       <div class="title">Vintage stoličky</div>
       <div class="meta">bazos_sk · similarity 0.58 · 2026-10-03 16:52:18</div>
     </div>
@@ -979,11 +1089,25 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="feff3506d8016e47" data-score="0.5812380909919739" data-tier-rank="1" data-found-at="2026-10-04 07:55:34">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
+  <a href="https://nabytok.bazos.sk/inzerat/196160734/jedalenske-stolicky-a-stoly.php" target="_blank" rel="noopener">
+    <img src="https://www.bazos.sk/img/1t/734/196160734.jpg" loading="lazy" alt="">
+    <div class="card-body">
+      <span class="badge badge-strong">Strong match</span>
+      <div class="title">Jedalenske stolicky a stoly</div>
+      <div class="meta">bazos_sk · similarity 0.58 · 2026-10-04 07:55:34</div>
+    </div>
+  </a>
+</div>
+
+
+<div class="card" data-id="fb2bf979a56b4044" data-score="0.5766909718513489" data-tier-rank="1" data-found-at="2026-10-03 16:07:40">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytek.bazos.cz/inzerat/223599167/unikatni-starozitne-polohovaci-kreslo-funkcionalismus-chrom.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.cz/img/1t/167/223599167.jpg?t=1788951872" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-strong">Strong match</div>
+      <span class="badge badge-strong">Strong match</span>
       <div class="title">Unikátní Starožitné Polohovací KŘESLO FUNKCIONALISMUS -Chrom</div>
       <div class="meta">bazos_cz · similarity 0.58 · 2026-10-03 16:07:40</div>
     </div>
@@ -991,11 +1115,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="119bf388a937406b" data-score="0.5745163559913635" data-tier-rank="1" data-found-at="2026-10-03 16:50:34">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytek.bazos.cz/inzerat/224566535/drevena-zidle-lisa-s-lakovanou-kovovou-konstrukci.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.cz/img/1t/535/224566535.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-strong">Strong match</div>
+      <span class="badge badge-strong">Strong match</span>
       <div class="title">Dřevěná židle LISA s lakovanou kovovou konstrukcí</div>
       <div class="meta">bazos_cz · similarity 0.57 · 2026-10-03 16:50:34</div>
     </div>
@@ -1003,11 +1128,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="c074cdc15779575c" data-score="0.573917031288147" data-tier-rank="1" data-found-at="2026-10-03 16:52:10">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://deti.bazos.sk/inzerat/196143765/jedalenska-stolicka-ikea.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.sk/img/1t/765/196143765.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-strong">Strong match</div>
+      <span class="badge badge-strong">Strong match</span>
       <div class="title">Jedálenská stolička IKEA</div>
       <div class="meta">bazos_sk · similarity 0.57 · 2026-10-03 16:52:10</div>
     </div>
@@ -1015,11 +1141,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="faa7234720054fc3" data-score="0.5726211071014404" data-tier-rank="1" data-found-at="2026-10-03 16:52:11">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://deti.bazos.sk/inzerat/196134048/jedalenska-stolicka.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.sk/img/1t/048/196134048.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-strong">Strong match</div>
+      <span class="badge badge-strong">Strong match</span>
       <div class="title">Jedálenská stolička</div>
       <div class="meta">bazos_sk · similarity 0.57 · 2026-10-03 16:52:11</div>
     </div>
@@ -1027,11 +1154,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="58d9e1ddf2cde830" data-score="0.571328341960907" data-tier-rank="1" data-found-at="2026-10-03 16:51:11">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytok.bazos.sk/inzerat/196017197/chromova-stolicka.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.sk/img/1t/197/196017197.jpg?t=1790679650" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-strong">Strong match</div>
+      <span class="badge badge-strong">Strong match</span>
       <div class="title">Chrómová stolička</div>
       <div class="meta">bazos_sk · similarity 0.57 · 2026-10-03 16:51:11</div>
     </div>
@@ -1039,11 +1167,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="a9e4d5e53fee48f1" data-score="0.5693333745002747" data-tier-rank="1" data-found-at="2026-10-03 16:51:12">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytok.bazos.sk/inzerat/195999576/stolicka.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.sk/img/1t/576/195999576.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-strong">Strong match</div>
+      <span class="badge badge-strong">Strong match</span>
       <div class="title">Stolička</div>
       <div class="meta">bazos_sk · similarity 0.57 · 2026-10-03 16:51:12</div>
     </div>
@@ -1051,11 +1180,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="3e82c460479c353f" data-score="0.5690287947654724" data-tier-rank="1" data-found-at="2026-10-03 16:51:58">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytok.bazos.sk/inzerat/195976408/kovova-otacacia-stolickakreslo.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.sk/img/1t/408/195976408.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-strong">Strong match</div>
+      <span class="badge badge-strong">Strong match</span>
       <div class="title">KOVOVA OTACACIA STOLICKA,KRESLO</div>
       <div class="meta">bazos_sk · similarity 0.57 · 2026-10-03 16:51:58</div>
     </div>
@@ -1063,11 +1193,25 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="6b056eefc8527e36" data-score="0.5684674978256226" data-tier-rank="1" data-found-at="2026-10-04 07:55:36">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
+  <a href="https://deti.bazos.sk/inzerat/196163100/detska-jedalenska-stolicka.php" target="_blank" rel="noopener">
+    <img src="https://www.bazos.sk/img/1t/100/196163100.jpg" loading="lazy" alt="">
+    <div class="card-body">
+      <span class="badge badge-strong">Strong match</span>
+      <div class="title">Detska jedalenska stolička</div>
+      <div class="meta">bazos_sk · similarity 0.57 · 2026-10-04 07:55:36</div>
+    </div>
+  </a>
+</div>
+
+
+<div class="card" data-id="8cb6eb71f8387683" data-score="0.5680004954338074" data-tier-rank="1" data-found-at="2026-10-03 16:51:10">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytok.bazos.sk/inzerat/196096639/kancelarska-stolicka.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.sk/img/1t/639/196096639.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-strong">Strong match</div>
+      <span class="badge badge-strong">Strong match</span>
       <div class="title">Kancelarska stolicka</div>
       <div class="meta">bazos_sk · similarity 0.57 · 2026-10-03 16:51:10</div>
     </div>
@@ -1075,11 +1219,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="7e00b7cb52bf8b0a" data-score="0.5675882697105408" data-tier-rank="1" data-found-at="2026-10-03 16:50:46">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://sport.bazos.cz/inzerat/223095346/nova-nepouzita-rybarska-stolicka-s-batohem-agfa.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.cz/img/1t/346/223095346.jpg?t=1788065144" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-strong">Strong match</div>
+      <span class="badge badge-strong">Strong match</span>
       <div class="title">NOVÁ ,NEPOUŽITÁ RYBÁŘSKÁ STOLIČKA S BATOHEM  AGFA-</div>
       <div class="meta">bazos_cz · similarity 0.57 · 2026-10-03 16:50:46</div>
     </div>
@@ -1087,11 +1232,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="7e71ad15b6517ac8" data-score="0.5672770142555237" data-tier-rank="1" data-found-at="2026-10-03 16:50:28">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://dum.bazos.cz/inzerat/224597466/terasove-zidle-celkem-10ks.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.cz/img/1t/466/224597466.jpg?t=1791019238" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-strong">Strong match</div>
+      <span class="badge badge-strong">Strong match</span>
       <div class="title">Terasové židle celkem 10ks</div>
       <div class="meta">bazos_cz · similarity 0.57 · 2026-10-03 16:50:28</div>
     </div>
@@ -1099,11 +1245,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="a85aae7245926576" data-score="0.5671557784080505" data-tier-rank="1" data-found-at="2026-10-03 16:50:12">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytek.bazos.cz/inzerat/224346719/4x-designove-zidle.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.cz/img/1t/719/224346719.jpg?t=1791026756" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-strong">Strong match</div>
+      <span class="badge badge-strong">Strong match</span>
       <div class="title">4x designové židle</div>
       <div class="meta">bazos_cz · similarity 0.57 · 2026-10-03 16:50:12</div>
     </div>
@@ -1111,11 +1258,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="9f7d3893f1023f0d" data-score="0.5670520067214966" data-tier-rank="1" data-found-at="2026-10-03 16:51:22">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytok.bazos.sk/inzerat/196102054/stolicky.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.sk/img/1t/054/196102054.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-strong">Strong match</div>
+      <span class="badge badge-strong">Strong match</span>
       <div class="title">Stoličky</div>
       <div class="meta">bazos_sk · similarity 0.57 · 2026-10-03 16:51:22</div>
     </div>
@@ -1123,11 +1271,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="1e12a269aebb4e24" data-score="0.5669045448303223" data-tier-rank="1" data-found-at="2026-10-03 16:50:58">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytek.bazos.cz/inzerat/224610741/atraktivni-ceske-jidelni-zidle-ton-top-stav-6-ks.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.cz/img/1t/741/224610741.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-strong">Strong match</div>
+      <span class="badge badge-strong">Strong match</span>
       <div class="title">Atraktivní české jídelní židle TON, TOP stav, 6 ks.</div>
       <div class="meta">bazos_cz · similarity 0.57 · 2026-10-03 16:50:58</div>
     </div>
@@ -1135,11 +1284,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="4fab3ea6c6a85e98" data-score="0.565785825252533" data-tier-rank="1" data-found-at="2026-10-03 16:51:26">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytok.bazos.sk/inzerat/195942735/predam-dve-stolicky-len-za-20e.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.sk/img/1t/735/195942735.jpg?t=1790866870" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-strong">Strong match</div>
+      <span class="badge badge-strong">Strong match</span>
       <div class="title">Predam dve stolicky spolu len za 20€</div>
       <div class="meta">bazos_sk · similarity 0.57 · 2026-10-03 16:51:26</div>
     </div>
@@ -1147,11 +1297,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="c3c154136fb29eae" data-score="0.5651389360427856" data-tier-rank="1" data-found-at="2026-10-03 16:51:55">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytok.bazos.sk/inzerat/196040773/stol-a-8-stoliciek-na-terasu.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.sk/img/1t/773/196040773.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-strong">Strong match</div>
+      <span class="badge badge-strong">Strong match</span>
       <div class="title">Stôl a 8 stoličiek na terasu</div>
       <div class="meta">bazos_sk · similarity 0.57 · 2026-10-03 16:51:55</div>
     </div>
@@ -1159,11 +1310,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="e8d32bab87631c5c" data-score="0.5649468898773193" data-tier-rank="1" data-found-at="2026-10-03 16:52:23">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytok.bazos.sk/inzerat/194677056/vintage-danska-stolicka-z-teakoveho-dreva.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.sk/img/1t/056/194677056.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-strong">Strong match</div>
+      <span class="badge badge-strong">Strong match</span>
       <div class="title">Vintage dánska stolička z teakového dreva</div>
       <div class="meta">bazos_sk · similarity 0.56 · 2026-10-03 16:52:23</div>
     </div>
@@ -1171,11 +1323,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="c3184ac58b416174" data-score="0.5639594793319702" data-tier-rank="1" data-found-at="2026-10-03 16:51:14">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytok.bazos.sk/inzerat/195912457/stolicka-chrom.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.sk/img/1t/457/195912457.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-strong">Strong match</div>
+      <span class="badge badge-strong">Strong match</span>
       <div class="title">Konferenčná stolička</div>
       <div class="meta">bazos_sk · similarity 0.56 · 2026-10-03 16:51:14</div>
     </div>
@@ -1183,11 +1336,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="c3b0e7933024203d" data-score="0.5613960027694702" data-tier-rank="1" data-found-at="2026-10-03 16:52:06">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytok.bazos.sk/inzerat/195495606/rustikalni-rohova-lavice-stul-zidle-dub.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.sk/img/1t/606/195495606.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-strong">Strong match</div>
+      <span class="badge badge-strong">Strong match</span>
       <div class="title">Rustikální rohová lavice, stůl, židle, dub</div>
       <div class="meta">bazos_sk · similarity 0.56 · 2026-10-03 16:52:06</div>
     </div>
@@ -1195,11 +1349,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="1f1ace64548d3d49" data-score="0.5601256489753723" data-tier-rank="1" data-found-at="2026-10-03 16:52:19">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytok.bazos.sk/inzerat/195573800/starozitna-stolicka-thonet.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.sk/img/1t/800/195573800.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-strong">Strong match</div>
+      <span class="badge badge-strong">Strong match</span>
       <div class="title">Starozitna stolicka THONET</div>
       <div class="meta">bazos_sk · similarity 0.56 · 2026-10-03 16:52:19</div>
     </div>
@@ -1207,11 +1362,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="67e03681dfccbf9a" data-score="0.5594885349273682" data-tier-rank="1" data-found-at="2026-10-03 16:52:08">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytok.bazos.sk/inzerat/195921187/jedalenska-hlinikova-vypletana-suprava-pre-4-ludi.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.sk/img/1t/187/195921187.jpg?t=1790501666" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-strong">Strong match</div>
+      <span class="badge badge-strong">Strong match</span>
       <div class="title">Jedálenská hliníková vypletaná súprava pre 4 ľudí</div>
       <div class="meta">bazos_sk · similarity 0.56 · 2026-10-03 16:52:08</div>
     </div>
@@ -1219,11 +1375,25 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="c5d8b3d85ed4954d" data-score="0.5594374537467957" data-tier-rank="1" data-found-at="2026-10-04 07:55:29">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
+  <a href="https://nabytek.bazos.cz/inzerat/224625004/2-barove-zidle-chromovany-nabytek.php" target="_blank" rel="noopener">
+    <img src="https://www.bazos.cz/img/1t/004/224625004.jpg" loading="lazy" alt="">
+    <div class="card-body">
+      <span class="badge badge-strong">Strong match</span>
+      <div class="title">2 barové židle - chromovaný nábytek</div>
+      <div class="meta">bazos_cz · similarity 0.56 · 2026-10-04 07:55:29</div>
+    </div>
+  </a>
+</div>
+
+
+<div class="card" data-id="4a85720e85715bd6" data-score="0.5575879216194153" data-tier-rank="1" data-found-at="2026-10-03 16:51:15">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://ostatne.bazos.sk/inzerat/195890477/kresla-bratislava.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.sk/img/1t/477/195890477.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-strong">Strong match</div>
+      <span class="badge badge-strong">Strong match</span>
       <div class="title">kreslá Bratislava</div>
       <div class="meta">bazos_sk · similarity 0.56 · 2026-10-03 16:51:15</div>
     </div>
@@ -1231,11 +1401,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="44916b62ddfde632" data-score="0.5571121573448181" data-tier-rank="1" data-found-at="2026-10-03 16:52:19">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytok.bazos.sk/inzerat/195782264/retro-stolicky-suman-vintage.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.sk/img/1t/264/195782264.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-strong">Strong match</div>
+      <span class="badge badge-strong">Strong match</span>
       <div class="title">Retro Stoličky Suman Vintage</div>
       <div class="meta">bazos_sk · similarity 0.56 · 2026-10-03 16:52:19</div>
     </div>
@@ -1243,11 +1414,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="234022afe1f02cda" data-score="0.555200457572937" data-tier-rank="1" data-found-at="2026-10-03 16:51:25">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytok.bazos.sk/inzerat/195989853/retro-kovove-stolicky-s-calunenim-3-ks.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.sk/img/1t/853/195989853.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-strong">Strong match</div>
+      <span class="badge badge-strong">Strong match</span>
       <div class="title">Retro kovové stoličky s čalúnením (3 ks)</div>
       <div class="meta">bazos_sk · similarity 0.56 · 2026-10-03 16:51:25</div>
     </div>
@@ -1255,11 +1427,25 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="4549ba87397d4606" data-score="0.5548566579818726" data-tier-rank="1" data-found-at="2026-10-04 07:55:36">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
+  <a href="https://nabytok.bazos.sk/inzerat/196157196/predam-stylovu-otocnu-kancelarsku-stolicku.php" target="_blank" rel="noopener">
+    <img src="https://www.bazos.sk/img/1t/196/196157196.jpg" loading="lazy" alt="">
+    <div class="card-body">
+      <span class="badge badge-strong">Strong match</span>
+      <div class="title">Predám štýlovú otočnú kancelársku stoličku</div>
+      <div class="meta">bazos_sk · similarity 0.55 · 2026-10-04 07:55:36</div>
+    </div>
+  </a>
+</div>
+
+
+<div class="card" data-id="05e7a7733cdd4a0c" data-score="0.5548566579818726" data-tier-rank="1" data-found-at="2026-10-03 16:52:25">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytok.bazos.sk/inzerat/194278247/predam-stylovu-otocnu-kancelarsku-stolicku.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.sk/img/1t/247/194278247.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-strong">Strong match</div>
+      <span class="badge badge-strong">Strong match</span>
       <div class="title">Predám štýlovú otočnú kancelársku stoličku</div>
       <div class="meta">bazos_sk · similarity 0.55 · 2026-10-03 16:52:25</div>
     </div>
@@ -1267,11 +1453,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="41a3b42961dd3e9a" data-score="0.5534906387329102" data-tier-rank="1" data-found-at="2026-10-03 16:49:50">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytek.bazos.cz/inzerat/222134475/barova-zidle-glenn.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.cz/img/1t/475/222134475.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-strong">Strong match</div>
+      <span class="badge badge-strong">Strong match</span>
       <div class="title">Barová židle GLENN</div>
       <div class="meta">bazos_cz · similarity 0.55 · 2026-10-03 16:49:50</div>
     </div>
@@ -1279,11 +1466,25 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="08de668ca6343c11" data-score="0.5524768829345703" data-tier-rank="1" data-found-at="2026-10-04 07:55:28">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
+  <a href="https://nabytek.bazos.cz/inzerat/224631306/trubkove-kreslo-thon.php" target="_blank" rel="noopener">
+    <img src="https://www.bazos.cz/img/1t/306/224631306.jpg" loading="lazy" alt="">
+    <div class="card-body">
+      <span class="badge badge-strong">Strong match</span>
+      <div class="title">Trubkové křeslo Thon</div>
+      <div class="meta">bazos_cz · similarity 0.55 · 2026-10-04 07:55:28</div>
+    </div>
+  </a>
+</div>
+
+
+<div class="card" data-id="5a76ed52ad1fe546" data-score="0.5516869425773621" data-tier-rank="1" data-found-at="2026-10-03 16:52:13">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://deti.bazos.sk/inzerat/196118040/jedalenska-stolicka-peg-perego-siesta-follow-me.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.sk/img/1t/040/196118040.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-strong">Strong match</div>
+      <span class="badge badge-strong">Strong match</span>
       <div class="title">Jedálenská stolička Peg perego - siesta follow me</div>
       <div class="meta">bazos_sk · similarity 0.55 · 2026-10-03 16:52:13</div>
     </div>
@@ -1291,11 +1492,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="c62450fbd681ba7f" data-score="0.5512316226959229" data-tier-rank="1" data-found-at="2026-10-03 20:20:43">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytek.bazos.cz/inzerat/224615554/jidelni-zidle-4ks.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.cz/img/1t/554/224615554.jpg?t=1791054522" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-strong">Strong match</div>
+      <span class="badge badge-strong">Strong match</span>
       <div class="title">Jídelní židle 4ks</div>
       <div class="meta">bazos_cz · similarity 0.55 · 2026-10-03 20:20:43</div>
     </div>
@@ -1303,11 +1505,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="78f02b3d21733d28" data-score="0.5509166121482849" data-tier-rank="1" data-found-at="2026-10-03 16:50:23">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytek.bazos.cz/inzerat/224472479/konferencni-zidle-cerne-6-ks.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.cz/img/1t/479/224472479.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-strong">Strong match</div>
+      <span class="badge badge-strong">Strong match</span>
       <div class="title">Konferenční židle – černé (6 ks)</div>
       <div class="meta">bazos_cz · similarity 0.55 · 2026-10-03 16:50:23</div>
     </div>
@@ -1315,11 +1518,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="17581fb16351c13c" data-score="0.5500156283378601" data-tier-rank="1" data-found-at="2026-10-03 16:51:39">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytok.bazos.sk/inzerat/195912865/barove-stolicky-nizke-4ks.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.sk/img/1t/865/195912865.jpg?t=1791025843" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-strong">Strong match</div>
+      <span class="badge badge-strong">Strong match</span>
       <div class="title">Barové stoličky nízke (4ks)</div>
       <div class="meta">bazos_sk · similarity 0.55 · 2026-10-03 16:51:39</div>
     </div>
@@ -1327,11 +1531,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="6103c6966bc4e3ee" data-score="0.5485857725143433" data-tier-rank="1" data-found-at="2026-10-03 16:07:41">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytek.bazos.cz/inzerat/223495961/houpaci-kresilko.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.cz/img/1t/961/223495961.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-strong">Strong match</div>
+      <span class="badge badge-strong">Strong match</span>
       <div class="title">houpací křesílko</div>
       <div class="meta">bazos_cz · similarity 0.55 · 2026-10-03 16:07:41</div>
     </div>
@@ -1339,11 +1544,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="eb7e6ac4f4e833e8" data-score="0.5485273003578186" data-tier-rank="0" data-found-at="2026-10-03 16:50:26">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytek.bazos.cz/inzerat/224607958/jidelni-zidle.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.cz/img/1t/958/224607958.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-similar">Similar</div>
+      <span class="badge badge-similar">Similar</span>
       <div class="title">Jídelní židle</div>
       <div class="meta">bazos_cz · similarity 0.55 · 2026-10-03 16:50:26</div>
     </div>
@@ -1351,11 +1557,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="4bb43e7ebcb45fa9" data-score="0.5476364493370056" data-tier-rank="0" data-found-at="2026-10-03 16:52:21">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://ostatne.bazos.sk/inzerat/195114051/vintage-industrialna-stolicka-lekarskalaboratorna.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.sk/img/1t/051/195114051.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-similar">Similar</div>
+      <span class="badge badge-similar">Similar</span>
       <div class="title">Vintage industrialna stolička lekárska/laboratórna</div>
       <div class="meta">bazos_sk · similarity 0.55 · 2026-10-03 16:52:21</div>
     </div>
@@ -1363,11 +1570,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="c4fb027ba9a53b66" data-score="0.5473617911338806" data-tier-rank="0" data-found-at="2026-10-03 16:50:08">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytek.bazos.cz/inzerat/224420004/stolicka-stokrle-40x40x53cm.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.cz/img/1t/004/224420004.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-similar">Similar</div>
+      <span class="badge badge-similar">Similar</span>
       <div class="title">Stolička (štokrle) 40x40x53cm,.,</div>
       <div class="meta">bazos_cz · similarity 0.55 · 2026-10-03 16:50:08</div>
     </div>
@@ -1375,11 +1583,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="97df81152ffe6e69" data-score="0.5455808043479919" data-tier-rank="0" data-found-at="2026-10-03 16:51:00">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytek.bazos.cz/inzerat/224596810/6x-kvalitni-jidelni-zidle-ton-nove-calouneni.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.cz/img/1t/810/224596810.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-similar">Similar</div>
+      <span class="badge badge-similar">Similar</span>
       <div class="title">6x kvalitní jídelní židle TON, nové čalounění.</div>
       <div class="meta">bazos_cz · similarity 0.55 · 2026-10-03 16:51:00</div>
     </div>
@@ -1387,11 +1596,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="c51173b8a284bde4" data-score="0.544622004032135" data-tier-rank="0" data-found-at="2026-10-03 16:50:13">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytek.bazos.cz/inzerat/224491125/bily-barovy-stul-plus-2-zidle.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.cz/img/1t/125/224491125.jpg?t=1790783550" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-similar">Similar</div>
+      <span class="badge badge-similar">Similar</span>
       <div class="title">Bílý barový stůl plus 2 židle</div>
       <div class="meta">bazos_cz · similarity 0.54 · 2026-10-03 16:50:13</div>
     </div>
@@ -1399,11 +1609,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="da169c47aeeac13c" data-score="0.5443719029426575" data-tier-rank="0" data-found-at="2026-10-03 16:50:51">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytek.bazos.cz/inzerat/223414524/sestava-nabytku-z-prvni-republiky.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.cz/img/1t/524/223414524.jpg?t=1790924352" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-similar">Similar</div>
+      <span class="badge badge-similar">Similar</span>
       <div class="title">Reprezentativní sestava nábytku z první republiky</div>
       <div class="meta">bazos_cz · similarity 0.54 · 2026-10-03 16:50:51</div>
     </div>
@@ -1411,11 +1622,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="b945514b74ab5f0b" data-score="0.5435068011283875" data-tier-rank="0" data-found-at="2026-10-04 02:48:45">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytek.bazos.cz/inzerat/224617359/klavirni-otocna-retro-stolicka.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.cz/img/1t/359/224617359.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-similar">Similar</div>
+      <span class="badge badge-similar">Similar</span>
       <div class="title">Klavírní otočná retro stolička</div>
       <div class="meta">bazos_cz · similarity 0.54 · 2026-10-04 02:48:45</div>
     </div>
@@ -1423,11 +1635,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="595b9ed9536b6cc0" data-score="0.542698085308075" data-tier-rank="0" data-found-at="2026-10-03 16:51:16">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytok.bazos.sk/inzerat/195826205/cervena-barova-stolicka-chromovana-konstrukcia.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.sk/img/1t/205/195826205.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-similar">Similar</div>
+      <span class="badge badge-similar">Similar</span>
       <div class="title">Červená barová stolička – chrómovaná konštrukcia</div>
       <div class="meta">bazos_sk · similarity 0.54 · 2026-10-03 16:51:16</div>
     </div>
@@ -1435,11 +1648,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="61e8e8dd58de8a7f" data-score="0.5414968132972717" data-tier-rank="0" data-found-at="2026-10-03 16:50:05">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytek.bazos.cz/inzerat/224605791/3-ks-stolicek.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.cz/img/1t/791/224605791.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-similar">Similar</div>
+      <span class="badge badge-similar">Similar</span>
       <div class="title">3 ks stolicek</div>
       <div class="meta">bazos_cz · similarity 0.54 · 2026-10-03 16:50:05</div>
     </div>
@@ -1447,11 +1661,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="ccc8468927857075" data-score="0.5395505428314209" data-tier-rank="0" data-found-at="2026-10-03 16:51:52">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytok.bazos.sk/inzerat/196133358/barova-stolicka.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.sk/img/1t/358/196133358.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-similar">Similar</div>
+      <span class="badge badge-similar">Similar</span>
       <div class="title">Barová stolička</div>
       <div class="meta">bazos_sk · similarity 0.54 · 2026-10-03 16:51:52</div>
     </div>
@@ -1459,11 +1674,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="0678b91f4fb80456" data-score="0.538731038570404" data-tier-rank="0" data-found-at="2026-10-03 16:52:03">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytok.bazos.sk/inzerat/195880072/stolicky.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.sk/img/1t/072/195880072.jpg?t=1790461228" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-similar">Similar</div>
+      <span class="badge badge-similar">Similar</span>
       <div class="title">Skrinka, kreslá, obrázky, stoličky.</div>
       <div class="meta">bazos_sk · similarity 0.54 · 2026-10-03 16:52:03</div>
     </div>
@@ -1471,11 +1687,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="7ef0d3308c9b7e42" data-score="0.5368210077285767" data-tier-rank="0" data-found-at="2026-10-03 16:50:44">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytek.bazos.cz/inzerat/224068485/otocna-kovova-stolicka.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.cz/img/1t/485/224068485.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-similar">Similar</div>
+      <span class="badge badge-similar">Similar</span>
       <div class="title">otočná kovová stolička</div>
       <div class="meta">bazos_cz · similarity 0.54 · 2026-10-03 16:50:44</div>
     </div>
@@ -1483,11 +1700,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="3cac81c7f471c466" data-score="0.5334417819976807" data-tier-rank="0" data-found-at="2026-10-04 02:48:46">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytek.bazos.cz/inzerat/224620317/zidle-venkovni-retro-dva-kusy-za-500-kc.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.cz/img/1t/317/224620317.jpg?t=1791080648" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-similar">Similar</div>
+      <span class="badge badge-similar">Similar</span>
       <div class="title">Židle venkovní RETRO dva kusy za 500 kč</div>
       <div class="meta">bazos_cz · similarity 0.53 · 2026-10-04 02:48:46</div>
     </div>
@@ -1495,11 +1713,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="ccdd6bc4a6ffee18" data-score="0.5334417819976807" data-tier-rank="0" data-found-at="2026-10-03 16:51:07">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytek.bazos.cz/inzerat/222132717/zidle-venkovni-retro-dva-kusy-za-500-kc.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.cz/img/1t/717/222132717.jpg?t=1785821263" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-similar">Similar</div>
+      <span class="badge badge-similar">Similar</span>
       <div class="title">Židle venkovní RETRO dva kusy za 500 kč</div>
       <div class="meta">bazos_cz · similarity 0.53 · 2026-10-03 16:51:07</div>
     </div>
@@ -1507,11 +1726,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="478ab8e0deacb7cb" data-score="0.5331281423568726" data-tier-rank="0" data-found-at="2026-10-03 16:50:27">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytek.bazos.cz/inzerat/224606871/zahradni-nabytek.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.cz/img/1t/871/224606871.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-similar">Similar</div>
+      <span class="badge badge-similar">Similar</span>
       <div class="title">Zahradní nábytek</div>
       <div class="meta">bazos_cz · similarity 0.53 · 2026-10-03 16:50:27</div>
     </div>
@@ -1519,11 +1739,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="eb16bb1da97227c7" data-score="0.5323410034179688" data-tier-rank="0" data-found-at="2026-10-03 16:50:19">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://ostatni.bazos.cz/inzerat/224522102/vyjimecny-jidelni-set-stul-a-zidle.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.cz/img/1t/102/224522102.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-similar">Similar</div>
+      <span class="badge badge-similar">Similar</span>
       <div class="title">Výjimečný jídelní set stůl a židle</div>
       <div class="meta">bazos_cz · similarity 0.53 · 2026-10-03 16:50:19</div>
     </div>
@@ -1531,11 +1752,12 @@
 </div>
 
 
-<div class="card">
+<div class="card" data-id="d391806315ea3824" data-score="0.5316056609153748" data-tier-rank="0" data-found-at="2026-10-03 20:41:59">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://www.aukro.sk/pisaci-stol-7124916849" target="_blank" rel="noopener">
     <img src="https://cdn.aukro.sk/images/sk1782857839298/thumbnail/pisaci-stol-283646164.jpeg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-similar">Similar</div>
+      <span class="badge badge-similar">Similar</span>
       <div class="title">ZACHOVANÉ
 písací stôl
 Kúp teraz
@@ -1546,11 +1768,12 @@ Kúp teraz
 </div>
 
 
-<div class="card">
+<div class="card" data-id="0370256239032621" data-score="0.5306575298309326" data-tier-rank="0" data-found-at="2026-10-03 16:49:45">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytek.bazos.cz/inzerat/223840296/barova-stolicka.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.cz/img/1t/296/223840296.jpg?t=1789457509" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-similar">Similar</div>
+      <span class="badge badge-similar">Similar</span>
       <div class="title">barová stolička</div>
       <div class="meta">bazos_cz · similarity 0.53 · 2026-10-03 16:49:45</div>
     </div>
@@ -1558,11 +1781,12 @@ Kúp teraz
 </div>
 
 
-<div class="card">
+<div class="card" data-id="3ae376f9bfd45f54" data-score="0.5304219722747803" data-tier-rank="0" data-found-at="2026-10-03 16:50:07">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytek.bazos.cz/inzerat/224446172/kuchynsky-stol-z-masivu-4-stolicky.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.cz/img/1t/172/224446172.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-similar">Similar</div>
+      <span class="badge badge-similar">Similar</span>
       <div class="title">Kuchynský stôl z masívu + 4 stoličky</div>
       <div class="meta">bazos_cz · similarity 0.53 · 2026-10-03 16:50:07</div>
     </div>
@@ -1570,11 +1794,25 @@ Kúp teraz
 </div>
 
 
-<div class="card">
+<div class="card" data-id="5e4c498393140c3c" data-score="0.5288811326026917" data-tier-rank="0" data-found-at="2026-10-04 07:55:31">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
+  <a href="https://nabytek.bazos.cz/inzerat/224623347/dekorativni-kovova-zidle.php" target="_blank" rel="noopener">
+    <img src="https://www.bazos.cz/img/1t/347/224623347.jpg" loading="lazy" alt="">
+    <div class="card-body">
+      <span class="badge badge-similar">Similar</span>
+      <div class="title">Dekorativní kovová židle</div>
+      <div class="meta">bazos_cz · similarity 0.53 · 2026-10-04 07:55:31</div>
+    </div>
+  </a>
+</div>
+
+
+<div class="card" data-id="8ac578e8b156b9a2" data-score="0.5284833908081055" data-tier-rank="0" data-found-at="2026-10-03 16:50:06">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytek.bazos.cz/inzerat/224560785/barove-skladaci-zidlicky.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.cz/img/1t/785/224560785.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-similar">Similar</div>
+      <span class="badge badge-similar">Similar</span>
       <div class="title">Barové skládací židličky</div>
       <div class="meta">bazos_cz · similarity 0.53 · 2026-10-03 16:50:06</div>
     </div>
@@ -1582,11 +1820,12 @@ Kúp teraz
 </div>
 
 
-<div class="card">
+<div class="card" data-id="92b0314ea0b0b589" data-score="0.527668833732605" data-tier-rank="0" data-found-at="2026-10-03 16:51:19">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytok.bazos.sk/inzerat/195718177/pevne-stolicky-socialisticke.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.sk/img/1t/177/195718177.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-similar">Similar</div>
+      <span class="badge badge-similar">Similar</span>
       <div class="title">🪑stoličky socialistické,hojdacie kreslo🪑</div>
       <div class="meta">bazos_sk · similarity 0.53 · 2026-10-03 16:51:19</div>
     </div>
@@ -1594,11 +1833,12 @@ Kúp teraz
 </div>
 
 
-<div class="card">
+<div class="card" data-id="dafca3bb41e2e722" data-score="0.5266475081443787" data-tier-rank="0" data-found-at="2026-10-03 16:50:32">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytek.bazos.cz/inzerat/224585786/barovy-stulzidle.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.cz/img/1t/786/224585786.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-similar">Similar</div>
+      <span class="badge badge-similar">Similar</span>
       <div class="title">Barový stůl+židle</div>
       <div class="meta">bazos_cz · similarity 0.53 · 2026-10-03 16:50:32</div>
     </div>
@@ -1606,11 +1846,12 @@ Kúp teraz
 </div>
 
 
-<div class="card">
+<div class="card" data-id="799c4bf2c888c386" data-score="0.5261581540107727" data-tier-rank="0" data-found-at="2026-10-03 16:50:11">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytek.bazos.cz/inzerat/224383770/prodam-nabytek-z-chalupy.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.cz/img/1t/770/224383770.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-similar">Similar</div>
+      <span class="badge badge-similar">Similar</span>
       <div class="title">Prodám nábytek z chalupy</div>
       <div class="meta">bazos_cz · similarity 0.53 · 2026-10-03 16:50:11</div>
     </div>
@@ -1618,11 +1859,12 @@ Kúp teraz
 </div>
 
 
-<div class="card">
+<div class="card" data-id="22c05f40e5186775" data-score="0.5259974002838135" data-tier-rank="0" data-found-at="2026-10-03 16:51:17">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytok.bazos.sk/inzerat/195812262/jedalensky-stol-so-stolickami.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.sk/img/1t/262/195812262.jpg?t=1790844394" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-similar">Similar</div>
+      <span class="badge badge-similar">Similar</span>
       <div class="title">Jedálenský stôl so stoličkami</div>
       <div class="meta">bazos_sk · similarity 0.53 · 2026-10-03 16:51:17</div>
     </div>
@@ -1630,11 +1872,12 @@ Kúp teraz
 </div>
 
 
-<div class="card">
+<div class="card" data-id="47fd07ff50287266" data-score="0.5241634249687195" data-tier-rank="0" data-found-at="2026-10-03 16:50:16">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytek.bazos.cz/inzerat/224583726/psaci-stul-a-kontejner-tmavy-na-koleckach.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.cz/img/1t/726/224583726.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-similar">Similar</div>
+      <span class="badge badge-similar">Similar</span>
       <div class="title">Psací stůl, kontejner tmavý, židle , křeslo , svítidlo</div>
       <div class="meta">bazos_cz · similarity 0.52 · 2026-10-03 16:50:16</div>
     </div>
@@ -1642,11 +1885,12 @@ Kúp teraz
 </div>
 
 
-<div class="card">
+<div class="card" data-id="b1dc82ac2e765a19" data-score="0.5235623717308044" data-tier-rank="0" data-found-at="2026-10-03 16:49:53">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytek.bazos.cz/inzerat/224595853/retro-stolicka.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.cz/img/1t/853/224595853.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-similar">Similar</div>
+      <span class="badge badge-similar">Similar</span>
       <div class="title">Retro stolička</div>
       <div class="meta">bazos_cz · similarity 0.52 · 2026-10-03 16:49:53</div>
     </div>
@@ -1654,11 +1898,12 @@ Kúp teraz
 </div>
 
 
-<div class="card">
+<div class="card" data-id="3471980b13df9f06" data-score="0.5232083201408386" data-tier-rank="0" data-found-at="2026-10-03 16:50:19">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytek.bazos.cz/inzerat/224532651/komoda-barova-zidle-postel-rozkladaci.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.cz/img/1t/651/224532651.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-similar">Similar</div>
+      <span class="badge badge-similar">Similar</span>
       <div class="title">Komoda, barová židle, postel rozkládací</div>
       <div class="meta">bazos_cz · similarity 0.52 · 2026-10-03 16:50:19</div>
     </div>
@@ -1666,11 +1911,12 @@ Kúp teraz
 </div>
 
 
-<div class="card">
+<div class="card" data-id="10826cc397bea39c" data-score="0.521358072757721" data-tier-rank="0" data-found-at="2026-10-03 16:50:08">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytek.bazos.cz/inzerat/224431364/retro-stolicky-na-zavazadla-brusel-60-leta-4ks.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.cz/img/1t/364/224431364.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-similar">Similar</div>
+      <span class="badge badge-similar">Similar</span>
       <div class="title">Retro stoličky na zavazadla - Brusel 60. léta, 4ks</div>
       <div class="meta">bazos_cz · similarity 0.52 · 2026-10-03 16:50:08</div>
     </div>
@@ -1678,11 +1924,12 @@ Kúp teraz
 </div>
 
 
-<div class="card">
+<div class="card" data-id="d3c40b97f3fda626" data-score="0.5192126631736755" data-tier-rank="0" data-found-at="2026-10-03 16:52:21">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytok.bazos.sk/inzerat/195219395/starozitne-stolicky-thonet-ton-s-reliefom-sada-4-ks-na.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.sk/img/1t/395/195219395.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-similar">Similar</div>
+      <span class="badge badge-similar">Similar</span>
       <div class="title">Starožitné stoličky Thonet / TON s reliéfom – sada 4 ks (na</div>
       <div class="meta">bazos_sk · similarity 0.52 · 2026-10-03 16:52:21</div>
     </div>
@@ -1690,11 +1937,12 @@ Kúp teraz
 </div>
 
 
-<div class="card">
+<div class="card" data-id="fb93e2babdd53435" data-score="0.5178631544113159" data-tier-rank="0" data-found-at="2026-10-03 16:50:29">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytek.bazos.cz/inzerat/224597251/kovove-zidle.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.cz/img/1t/251/224597251.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-similar">Similar</div>
+      <span class="badge badge-similar">Similar</span>
       <div class="title">Kovove zidle</div>
       <div class="meta">bazos_cz · similarity 0.52 · 2026-10-03 16:50:29</div>
     </div>
@@ -1702,11 +1950,12 @@ Kúp teraz
 </div>
 
 
-<div class="card">
+<div class="card" data-id="7891fd6c818fb180" data-score="0.5167295932769775" data-tier-rank="0" data-found-at="2026-10-03 16:50:50">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytek.bazos.cz/inzerat/222311854/barova-stolicka-kovova.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.cz/img/1t/854/222311854.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-similar">Similar</div>
+      <span class="badge badge-similar">Similar</span>
       <div class="title">Barová stolička kovová</div>
       <div class="meta">bazos_cz · similarity 0.52 · 2026-10-03 16:50:50</div>
     </div>
@@ -1714,11 +1963,12 @@ Kúp teraz
 </div>
 
 
-<div class="card">
+<div class="card" data-id="ab8d1613225d1e13" data-score="0.5167027711868286" data-tier-rank="0" data-found-at="2026-10-03 16:49:49">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytek.bazos.cz/inzerat/222553604/barova-stolicka-2ksy.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.cz/img/1t/604/222553604.jpg?t=1790767923" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-similar">Similar</div>
+      <span class="badge badge-similar">Similar</span>
       <div class="title">Barová stolička, 3 ksy</div>
       <div class="meta">bazos_cz · similarity 0.52 · 2026-10-03 16:49:49</div>
     </div>
@@ -1726,11 +1976,12 @@ Kúp teraz
 </div>
 
 
-<div class="card">
+<div class="card" data-id="9d406ee6f49dbed3" data-score="0.5147684216499329" data-tier-rank="0" data-found-at="2026-10-03 16:51:54">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytok.bazos.sk/inzerat/196094515/retro-stollicka.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.sk/img/1t/515/196094515.jpg?t=1790878077" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-similar">Similar</div>
+      <span class="badge badge-similar">Similar</span>
       <div class="title">Otočná retro stolička</div>
       <div class="meta">bazos_sk · similarity 0.51 · 2026-10-03 16:51:54</div>
     </div>
@@ -1738,11 +1989,12 @@ Kúp teraz
 </div>
 
 
-<div class="card">
+<div class="card" data-id="4c584d23534f84d6" data-score="0.5133196115493774" data-tier-rank="0" data-found-at="2026-10-03 16:52:23">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://sluzby.bazos.sk/inzerat/194401272/prepravka-pre-psa-s-dvierkami-4-rozmery.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.sk/img/1t/272/194401272.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-similar">Similar</div>
+      <span class="badge badge-similar">Similar</span>
       <div class="title">Stolička kreslo do jedálne alebo kancelárie - 4 druhy</div>
       <div class="meta">bazos_sk · similarity 0.51 · 2026-10-03 16:52:23</div>
     </div>
@@ -1750,11 +2002,12 @@ Kúp teraz
 </div>
 
 
-<div class="card">
+<div class="card" data-id="09847b66fe8f6e00" data-score="0.5129579305648804" data-tier-rank="0" data-found-at="2026-10-03 16:49:47">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytek.bazos.cz/inzerat/223487546/glenn-barova-stolicka-6-ks.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.cz/img/1t/546/223487546.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-similar">Similar</div>
+      <span class="badge badge-similar">Similar</span>
       <div class="title">GLENN Barová stolička 6 ks</div>
       <div class="meta">bazos_cz · similarity 0.51 · 2026-10-03 16:49:47</div>
     </div>
@@ -1762,11 +2015,12 @@ Kúp teraz
 </div>
 
 
-<div class="card">
+<div class="card" data-id="56570daa9c16733a" data-score="0.510150134563446" data-tier-rank="0" data-found-at="2026-10-03 16:51:59">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytok.bazos.sk/inzerat/195914272/stolicka-do-kancelarie-ku-pocitacu.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.sk/img/1t/272/195914272.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-similar">Similar</div>
+      <span class="badge badge-similar">Similar</span>
       <div class="title">Stolička do kancelárie (ku počítaču)</div>
       <div class="meta">bazos_sk · similarity 0.51 · 2026-10-03 16:51:59</div>
     </div>
@@ -1774,11 +2028,12 @@ Kúp teraz
 </div>
 
 
-<div class="card">
+<div class="card" data-id="1aff8f18520fcc36" data-score="0.5085322260856628" data-tier-rank="0" data-found-at="2026-10-03 16:49:46">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://ostatni.bazos.cz/inzerat/223778400/funkcionalismus-chromov-vesak-a-klavirni-stolicka.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.cz/img/1t/400/223778400.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-similar">Similar</div>
+      <span class="badge badge-similar">Similar</span>
       <div class="title">funkcionalismus chromov. věšák a klavírní stolička</div>
       <div class="meta">bazos_cz · similarity 0.51 · 2026-10-03 16:49:46</div>
     </div>
@@ -1786,11 +2041,12 @@ Kúp teraz
 </div>
 
 
-<div class="card">
+<div class="card" data-id="49952156e9b97daf" data-score="0.5078181624412537" data-tier-rank="0" data-found-at="2026-10-03 16:50:17">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytek.bazos.cz/inzerat/224564517/zidle-4-ks-a-gauc-1x.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.cz/img/1t/517/224564517.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-similar">Similar</div>
+      <span class="badge badge-similar">Similar</span>
       <div class="title">Prodám židle 4 ks</div>
       <div class="meta">bazos_cz · similarity 0.51 · 2026-10-03 16:50:17</div>
     </div>
@@ -1798,11 +2054,12 @@ Kúp teraz
 </div>
 
 
-<div class="card">
+<div class="card" data-id="cfbc7eeee9e09e0f" data-score="0.5074829459190369" data-tier-rank="0" data-found-at="2026-10-03 16:49:53">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytek.bazos.cz/inzerat/224604629/kovova-stolicka.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.cz/img/1t/629/224604629.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-similar">Similar</div>
+      <span class="badge badge-similar">Similar</span>
       <div class="title">Kovová stolička</div>
       <div class="meta">bazos_cz · similarity 0.51 · 2026-10-03 16:49:53</div>
     </div>
@@ -1810,11 +2067,12 @@ Kúp teraz
 </div>
 
 
-<div class="card">
+<div class="card" data-id="9a25040efd5dd2f9" data-score="0.5049587488174438" data-tier-rank="0" data-found-at="2026-10-03 16:52:22">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://ostatne.bazos.sk/inzerat/195110578/historicka-stolicka-19storocie.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.sk/img/1t/578/195110578.jpg" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-similar">Similar</div>
+      <span class="badge badge-similar">Similar</span>
       <div class="title">Historická stolička 19.storočie</div>
       <div class="meta">bazos_sk · similarity 0.50 · 2026-10-03 16:52:22</div>
     </div>
@@ -1822,16 +2080,107 @@ Kúp teraz
 </div>
 
 
-<div class="card">
+<div class="card" data-id="8ec0c128aa963351" data-score="0.5031349062919617" data-tier-rank="0" data-found-at="2026-10-03 16:51:11">
+  <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
   <a href="https://nabytok.bazos.sk/inzerat/196039969/otocna-stolicka-carryhome.php" target="_blank" rel="noopener">
     <img src="https://www.bazos.sk/img/1t/969/196039969.jpg?t=1790746759" loading="lazy" alt="">
     <div class="card-body">
-      <div class="badge badge-similar">Similar</div>
+      <span class="badge badge-similar">Similar</span>
       <div class="title">OTOČNÁ STOLIČKA Carryhome</div>
       <div class="meta">bazos_sk · similarity 0.50 · 2026-10-03 16:51:11</div>
     </div>
   </a>
 </div>
+
+  </div>
+
+<script>
+(function() {
+  var VIEWED_KEY = 'cw_viewed_ids';
+  var DISMISSED_KEY = 'cw_dismissed_ids';
+
+  function getSet(key) {
+    try { return new Set(JSON.parse(localStorage.getItem(key) || '[]')); }
+    catch (e) { return new Set(); }
+  }
+  function saveSet(key, set) {
+    try { localStorage.setItem(key, JSON.stringify(Array.from(set))); } catch (e) {}
+  }
+
+  var viewed = getSet(VIEWED_KEY);
+  var dismissed = getSet(DISMISSED_KEY);
+  var cards = Array.prototype.slice.call(document.querySelectorAll('.card'));
+  var container = document.getElementById('cards-container');
+
+  function updateCount() {
+    var visibleCount = cards.filter(function(c) { return c.style.display !== 'none'; }).length;
+    var el = document.getElementById('visible-count');
+    if (el) el.textContent = visibleCount;
+  }
+
+  cards.forEach(function(card) {
+    var id = card.dataset.id;
+    if (dismissed.has(id)) {
+      card.style.display = 'none';
+      return;
+    }
+    if (!viewed.has(id)) {
+      var badgeEl = card.querySelector('.badge');
+      if (badgeEl) {
+        var newBadge = document.createElement('span');
+        newBadge.className = 'badge badge-new';
+        newBadge.textContent = 'NEW';
+        badgeEl.parentNode.insertBefore(newBadge, badgeEl);
+      }
+    }
+  });
+
+  // Mark everything currently on the page as viewed, so next visit only
+  // genuinely new listings since now get the NEW badge.
+  cards.forEach(function(card) { viewed.add(card.dataset.id); });
+  saveSet(VIEWED_KEY, viewed);
+
+  document.querySelectorAll('.dismiss-btn').forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      var card = btn.closest('.card');
+      dismissed.add(card.dataset.id);
+      saveSet(DISMISSED_KEY, dismissed);
+      card.style.display = 'none';
+      updateCount();
+    });
+  });
+
+  function applySort(mode) {
+    var sorted = cards.slice().sort(function(a, b) {
+      if (mode === 'newest') {
+        return b.dataset.foundAt.localeCompare(a.dataset.foundAt);
+      }
+      var ta = parseInt(a.dataset.tierRank, 10), tb = parseInt(b.dataset.tierRank, 10);
+      if (tb !== ta) return tb - ta;
+      return parseFloat(b.dataset.score) - parseFloat(a.dataset.score);
+    });
+    sorted.forEach(function(c) { container.appendChild(c); });
+  }
+
+  var matchBtn = document.getElementById('sort-match');
+  var newestBtn = document.getElementById('sort-newest');
+  if (matchBtn && newestBtn) {
+    matchBtn.addEventListener('click', function() {
+      applySort('match');
+      matchBtn.classList.add('active');
+      newestBtn.classList.remove('active');
+    });
+    newestBtn.addEventListener('click', function() {
+      applySort('newest');
+      newestBtn.classList.add('active');
+      matchBtn.classList.remove('active');
+    });
+  }
+
+  updateCount();
+})();
+</script>
 
 </body>
 </html>

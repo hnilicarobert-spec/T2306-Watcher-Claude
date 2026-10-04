@@ -1,5 +1,89 @@
 [
   {
+    "id": "a04cdcf617b1b871",
+    "url": "https://nabytok.bazos.sk/inzeraty/kodreta/",
+    "title": "Kodreta bazár - Nábytok | Bazoš.sk",
+    "site": "web_search",
+    "image_url": null,
+    "score": null,
+    "tier": "keyword",
+    "keyword_hit": true,
+    "found_at": "2026-10-04 07:55:56",
+    "last_checked": "2026-10-04 07:55:56"
+  },
+  {
+    "id": "6b056eefc8527e36",
+    "url": "https://deti.bazos.sk/inzerat/196163100/detska-jedalenska-stolicka.php",
+    "title": "Detska jedalenska stolička",
+    "site": "bazos_sk",
+    "image_url": "https://www.bazos.sk/img/1t/100/196163100.jpg",
+    "score": 0.5684674978256226,
+    "tier": "strong",
+    "keyword_hit": false,
+    "found_at": "2026-10-04 07:55:36",
+    "last_checked": "2026-10-04 07:55:36"
+  },
+  {
+    "id": "4549ba87397d4606",
+    "url": "https://nabytok.bazos.sk/inzerat/196157196/predam-stylovu-otocnu-kancelarsku-stolicku.php",
+    "title": "Predám štýlovú otočnú kancelársku stoličku",
+    "site": "bazos_sk",
+    "image_url": "https://www.bazos.sk/img/1t/196/196157196.jpg",
+    "score": 0.5548566579818726,
+    "tier": "strong",
+    "keyword_hit": false,
+    "found_at": "2026-10-04 07:55:36",
+    "last_checked": "2026-10-04 07:55:36"
+  },
+  {
+    "id": "feff3506d8016e47",
+    "url": "https://nabytok.bazos.sk/inzerat/196160734/jedalenske-stolicky-a-stoly.php",
+    "title": "Jedalenske stolicky a stoly",
+    "site": "bazos_sk",
+    "image_url": "https://www.bazos.sk/img/1t/734/196160734.jpg",
+    "score": 0.5812380909919739,
+    "tier": "strong",
+    "keyword_hit": false,
+    "found_at": "2026-10-04 07:55:34",
+    "last_checked": "2026-10-04 07:55:34"
+  },
+  {
+    "id": "5e4c498393140c3c",
+    "url": "https://nabytek.bazos.cz/inzerat/224623347/dekorativni-kovova-zidle.php",
+    "title": "Dekorativní kovová židle",
+    "site": "bazos_cz",
+    "image_url": "https://www.bazos.cz/img/1t/347/224623347.jpg",
+    "score": 0.5288811326026917,
+    "tier": "similar",
+    "keyword_hit": false,
+    "found_at": "2026-10-04 07:55:31",
+    "last_checked": "2026-10-04 07:55:31"
+  },
+  {
+    "id": "c5d8b3d85ed4954d",
+    "url": "https://nabytek.bazos.cz/inzerat/224625004/2-barove-zidle-chromovany-nabytek.php",
+    "title": "2 barové židle - chromovaný nábytek",
+    "site": "bazos_cz",
+    "image_url": "https://www.bazos.cz/img/1t/004/224625004.jpg",
+    "score": 0.5594374537467957,
+    "tier": "strong",
+    "keyword_hit": false,
+    "found_at": "2026-10-04 07:55:29",
+    "last_checked": "2026-10-04 07:55:29"
+  },
+  {
+    "id": "08de668ca6343c11",
+    "url": "https://nabytek.bazos.cz/inzerat/224631306/trubkove-kreslo-thon.php",
+    "title": "Trubkové křeslo Thon",
+    "site": "bazos_cz",
+    "image_url": "https://www.bazos.cz/img/1t/306/224631306.jpg",
+    "score": 0.5524768829345703,
+    "tier": "strong",
+    "keyword_hit": false,
+    "found_at": "2026-10-04 07:55:28",
+    "last_checked": "2026-10-04 07:55:28"
+  },
+  {
     "id": "dbbd1b43f43d9370",
     "url": "https://nabytok.bazos.sk/inzeraty/stol%C3%ADk-kodreta/",
     "title": "Stolík kodreta bazár - Nábytok | Bazoš.sk",
@@ -825,7 +909,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:51:06",
     "keyword_hit": false,
-    "last_checked": "2026-10-03 16:51:06"
+    "last_checked": "2026-10-04 07:51:02"
   },
   {
     "id": "072f1039aa548830",
@@ -837,7 +921,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:51:05",
     "keyword_hit": false,
-    "last_checked": "2026-10-03 16:51:05"
+    "last_checked": "2026-10-04 07:51:02"
   },
   {
     "id": "68611b2926e3b6f5",
@@ -849,7 +933,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:51:04",
     "keyword_hit": false,
-    "last_checked": "2026-10-03 16:51:04"
+    "last_checked": "2026-10-04 07:51:00"
   },
   {
     "id": "22cd995aeb89de38",
@@ -861,7 +945,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:51:04",
     "keyword_hit": false,
-    "last_checked": "2026-10-03 16:51:04"
+    "last_checked": "2026-10-04 07:51:01"
   },
   {
     "id": "5d5f1dea54677edc",
@@ -873,7 +957,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:51:03",
     "keyword_hit": false,
-    "last_checked": "2026-10-03 16:51:03"
+    "last_checked": "2026-10-04 07:51:00"
   },
   {
     "id": "2cb058714e1d1178",
@@ -885,7 +969,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:51:02",
     "keyword_hit": false,
-    "last_checked": "2026-10-03 16:51:02"
+    "last_checked": "2026-10-04 07:50:58"
   },
   {
     "id": "1b3a9f1d4fd72c64",
@@ -897,7 +981,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:51:02",
     "keyword_hit": false,
-    "last_checked": "2026-10-03 16:51:02"
+    "last_checked": "2026-10-04 07:50:59"
   },
   {
     "id": "c2f27dce7462b5db",
@@ -909,7 +993,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:51:01",
     "keyword_hit": false,
-    "last_checked": "2026-10-03 16:51:01"
+    "last_checked": "2026-10-04 07:50:58"
   },
   {
     "id": "97df81152ffe6e69",
@@ -921,7 +1005,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:51:00",
     "keyword_hit": false,
-    "last_checked": "2026-10-03 16:51:00"
+    "last_checked": "2026-10-04 07:50:57"
   },
   {
     "id": "6428e4c94d436b8f",
@@ -933,7 +1017,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:50:59",
     "keyword_hit": false,
-    "last_checked": "2026-10-03 16:50:59"
+    "last_checked": "2026-10-04 07:50:57"
   },
   {
     "id": "1e12a269aebb4e24",
@@ -945,7 +1029,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:50:58",
     "keyword_hit": false,
-    "last_checked": "2026-10-03 16:50:58"
+    "last_checked": "2026-10-04 07:50:56"
   },
   {
     "id": "1bdda3cd0b502fc3",
@@ -957,7 +1041,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:50:55",
     "keyword_hit": false,
-    "last_checked": "2026-10-03 16:50:55"
+    "last_checked": "2026-10-04 07:50:56"
   },
   {
     "id": "19a933a3a93afee4",
@@ -969,7 +1053,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:50:52",
     "keyword_hit": false,
-    "last_checked": "2026-10-03 16:50:52"
+    "last_checked": "2026-10-04 07:50:55"
   },
   {
     "id": "da169c47aeeac13c",
@@ -981,7 +1065,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:50:51",
     "keyword_hit": false,
-    "last_checked": "2026-10-03 16:50:51"
+    "last_checked": "2026-10-04 07:50:54"
   },
   {
     "id": "7891fd6c818fb180",
@@ -993,7 +1077,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:50:50",
     "keyword_hit": false,
-    "last_checked": "2026-10-03 16:50:50"
+    "last_checked": "2026-10-04 07:50:54"
   },
   {
     "id": "9f78c17ca12c52bf",
@@ -1005,7 +1089,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:50:49",
     "keyword_hit": false,
-    "last_checked": "2026-10-03 16:50:49"
+    "last_checked": "2026-10-04 07:50:53"
   },
   {
     "id": "7e00b7cb52bf8b0a",
@@ -1017,7 +1101,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:50:46",
     "keyword_hit": false,
-    "last_checked": "2026-10-03 16:50:46"
+    "last_checked": "2026-10-04 07:50:52"
   },
   {
     "id": "7ef0d3308c9b7e42",
@@ -1029,7 +1113,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:50:44",
     "keyword_hit": false,
-    "last_checked": "2026-10-03 16:50:44"
+    "last_checked": "2026-10-04 07:50:52"
   },
   {
     "id": "758a46e8c56d11a2",
@@ -1041,7 +1125,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:50:42",
     "keyword_hit": false,
-    "last_checked": "2026-10-03 16:50:42"
+    "last_checked": "2026-10-04 07:50:51"
   },
   {
     "id": "fb5e348a6e54846f",
@@ -1053,7 +1137,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:50:41",
     "keyword_hit": false,
-    "last_checked": "2026-10-03 16:50:41"
+    "last_checked": "2026-10-04 07:50:50"
   },
   {
     "id": "138b219c25f0717f",
