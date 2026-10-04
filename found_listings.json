@@ -1,5 +1,65 @@
 [
   {
+    "id": "303e30235a8a0ea0",
+    "url": "https://www.aukro.sk/kalhoty-gap-7110242876",
+    "title": "POUŽITÉ\nKalhoty Gap\nŽiadne prihodenie\n3,34 €",
+    "site": "aukro_sk",
+    "image_url": "https://cdn.aukro.sk/images/sk1770237329099/thumbnail/kalhoty-gap-257741226.jpeg",
+    "score": 0.5086129307746887,
+    "tier": "similar",
+    "keyword_hit": false,
+    "found_at": "2026-10-04 17:44:01",
+    "last_checked": "2026-10-04 17:44:01"
+  },
+  {
+    "id": "2ce017a2c1c53ff3",
+    "url": "https://nabytok.bazos.sk/inzerat/196180007/jedalensky-stol-steffi-4-stolicka-gasela.php",
+    "title": "Jedálenský stôl STEFFI + 4× stolička GASELA",
+    "site": "bazos_sk",
+    "image_url": "https://www.bazos.sk/img/1t/007/196180007.jpg",
+    "score": 0.5170166492462158,
+    "tier": "similar",
+    "keyword_hit": false,
+    "found_at": "2026-10-04 17:43:48",
+    "last_checked": "2026-10-04 17:43:48"
+  },
+  {
+    "id": "5a2626d55435d596",
+    "url": "https://nabytok.bazos.sk/inzerat/196179386/kresla4-kusy.php",
+    "title": "Kreslá_4 kusy",
+    "site": "bazos_sk",
+    "image_url": "https://www.bazos.sk/img/1t/386/196179386.jpg",
+    "score": 0.5242642164230347,
+    "tier": "keyword",
+    "keyword_hit": true,
+    "found_at": "2026-10-04 17:43:48",
+    "last_checked": "2026-10-04 17:43:48"
+  },
+  {
+    "id": "cc33912c93e69049",
+    "url": "https://nabytok.bazos.sk/inzerat/196180302/2-ks-retro-barove-stolicky-chrom-hnedy-sedak.php",
+    "title": "2 ks retro barové stoličky – chróm / hnedý sedák",
+    "site": "bazos_sk",
+    "image_url": "https://www.bazos.sk/img/1t/302/196180302.jpg",
+    "score": 0.5579743385314941,
+    "tier": "strong",
+    "keyword_hit": false,
+    "found_at": "2026-10-04 17:43:46",
+    "last_checked": "2026-10-04 17:43:46"
+  },
+  {
+    "id": "de7ffeb19375a8cd",
+    "url": "https://nabytek.bazos.cz/inzerat/224654428/prodam-3-druhy-kancelarskych-zidli.php",
+    "title": "Prodám 3 druhy kancelářských židlí",
+    "site": "bazos_cz",
+    "image_url": "https://www.bazos.cz/img/1t/428/224654428.jpg",
+    "score": 0.598388671875,
+    "tier": "strong",
+    "keyword_hit": false,
+    "found_at": "2026-10-04 17:43:44",
+    "last_checked": "2026-10-04 17:43:44"
+  },
+  {
     "id": "c82eadf386698f69",
     "url": "https://www.aukro.cz/poutni-medailonek-svata-hora-pribram-kovovy-privesek-7097884076",
     "title": "Poutní medailonek – Svatá Hora Příbram (kovový přívěsek)\nŽádný příhoz\n50 Kč\nKup teď\n150 Kč",
@@ -297,31 +357,7 @@
     "tier": "keyword",
     "keyword_hit": true,
     "found_at": "2026-10-03 20:42:07",
-    "last_checked": "2026-10-03 20:42:07"
-  },
-  {
-    "id": "67fe707813679ed7",
-    "url": "https://aukro.sk/kupim-stolicku-t2306-kodreta-myjava-7135208694",
-    "title": "Kúpim stoličku T2306 Kodreta Myjava - Aukro",
-    "site": "web_search",
-    "image_url": null,
-    "score": null,
-    "tier": "keyword",
-    "keyword_hit": true,
-    "found_at": "2026-10-03 20:42:07",
-    "last_checked": "2026-10-03 20:42:07"
-  },
-  {
-    "id": "68b7b2588871a140",
-    "url": "https://aukro.cz/nabizim-retro-stolek-kodreta-myjava-design-viliam-chlebo-7133626597",
-    "title": "Nabízím retro stolek Kodreta Myjava,design Viliam Chlebo",
-    "site": "web_search",
-    "image_url": null,
-    "score": null,
-    "tier": "keyword",
-    "keyword_hit": true,
-    "found_at": "2026-10-03 20:42:07",
-    "last_checked": "2026-10-03 20:42:07"
+    "last_checked": "2026-10-04 17:39:38"
   },
   {
     "id": "d3b2a26e65a1f66d",
@@ -333,7 +369,7 @@
     "tier": "keyword",
     "keyword_hit": true,
     "found_at": "2026-10-03 20:42:07",
-    "last_checked": "2026-10-03 20:42:07"
+    "last_checked": "2026-10-04 17:39:39"
   },
   {
     "id": "482de2d671f9baa6",
@@ -345,7 +381,7 @@
     "tier": "keyword",
     "keyword_hit": true,
     "found_at": "2026-10-03 20:42:07",
-    "last_checked": "2026-10-03 20:42:07"
+    "last_checked": "2026-10-04 17:39:40"
   },
   {
     "id": "88614b6df79bfa94",
@@ -357,7 +393,7 @@
     "tier": "keyword",
     "keyword_hit": true,
     "found_at": "2026-10-03 20:42:07",
-    "last_checked": "2026-10-03 20:42:07"
+    "last_checked": "2026-10-04 17:39:40"
   },
   {
     "id": "f9be10d29d9c9952",
@@ -369,7 +405,7 @@
     "tier": "keyword",
     "keyword_hit": true,
     "found_at": "2026-10-03 20:42:07",
-    "last_checked": "2026-10-03 20:42:07"
+    "last_checked": "2026-10-04 17:39:40"
   },
   {
     "id": "d72815de1af3b4d2",
@@ -381,19 +417,7 @@
     "tier": "keyword",
     "keyword_hit": true,
     "found_at": "2026-10-03 20:42:07",
-    "last_checked": "2026-10-03 20:42:07"
-  },
-  {
-    "id": "5e7afb675eea0031",
-    "url": "https://ostatne.bazos.sk/inzerat/194739151/kreslo-viliam-chlebo-kodreta-myjava.php",
-    "title": "kreslo Viliam Chlebo - Kodreta Myjava - Levice | Bazoš.sk",
-    "site": "web_search",
-    "image_url": null,
-    "score": null,
-    "tier": "keyword",
-    "keyword_hit": true,
-    "found_at": "2026-10-03 20:42:07",
-    "last_checked": "2026-10-03 20:42:07"
+    "last_checked": "2026-10-04 17:39:40"
   },
   {
     "id": "32406e6be2d40559",
@@ -405,7 +429,7 @@
     "tier": "keyword",
     "keyword_hit": true,
     "found_at": "2026-10-03 20:42:07",
-    "last_checked": "2026-10-03 20:42:07"
+    "last_checked": "2026-10-04 17:39:41"
   },
   {
     "id": "b04e4f323613560b",
@@ -442,18 +466,6 @@
     "keyword_hit": true,
     "found_at": "2026-10-03 20:42:07",
     "last_checked": "2026-10-03 20:42:07"
-  },
-  {
-    "id": "d391806315ea3824",
-    "url": "https://www.aukro.sk/pisaci-stol-7124916849",
-    "title": "ZACHOVANÉ\npísací stôl\nKúp teraz\n62,57 €",
-    "site": "aukro_sk",
-    "image_url": "https://cdn.aukro.sk/images/sk1782857839298/thumbnail/pisaci-stol-283646164.jpeg",
-    "score": 0.5316056609153748,
-    "tier": "similar",
-    "keyword_hit": false,
-    "found_at": "2026-10-03 20:41:59",
-    "last_checked": "2026-10-03 20:41:59"
   },
   {
     "id": "c62450fbd681ba7f",
@@ -540,18 +552,6 @@
     "last_checked": "2026-10-04 15:29:27"
   },
   {
-    "id": "1f1ace64548d3d49",
-    "url": "https://nabytok.bazos.sk/inzerat/195573800/starozitna-stolicka-thonet.php",
-    "title": "Starozitna stolicka THONET",
-    "site": "bazos_sk",
-    "image_url": "https://www.bazos.sk/img/1t/800/195573800.jpg",
-    "score": 0.5601256489753723,
-    "tier": "strong",
-    "found_at": "2026-10-03 16:52:19",
-    "keyword_hit": false,
-    "last_checked": "2026-10-04 15:29:26"
-  },
-  {
     "id": "44916b62ddfde632",
     "url": "https://nabytok.bazos.sk/inzerat/195782264/retro-stolicky-suman-vintage.php",
     "title": "Retro Stoličky Suman Vintage",
@@ -562,6 +562,18 @@
     "found_at": "2026-10-03 16:52:19",
     "keyword_hit": false,
     "last_checked": "2026-10-04 15:18:10"
+  },
+  {
+    "id": "1f1ace64548d3d49",
+    "url": "https://nabytok.bazos.sk/inzerat/195573800/starozitna-stolicka-thonet.php",
+    "title": "Starozitna stolicka THONET",
+    "site": "bazos_sk",
+    "image_url": "https://www.bazos.sk/img/1t/800/195573800.jpg",
+    "score": 0.5601256489753723,
+    "tier": "strong",
+    "found_at": "2026-10-03 16:52:19",
+    "keyword_hit": false,
+    "last_checked": "2026-10-04 15:29:26"
   },
   {
     "id": "322222f1035ca606",
@@ -1761,7 +1773,7 @@
     "tier": "keyword",
     "found_at": "2026-10-03 16:07:53",
     "keyword_hit": true,
-    "last_checked": "2026-10-03 20:37:20"
+    "last_checked": "2026-10-04 17:39:33"
   },
   {
     "id": "ce3b430ead996a40",
@@ -1773,7 +1785,7 @@
     "tier": "keyword",
     "found_at": "2026-10-03 16:07:53",
     "keyword_hit": true,
-    "last_checked": "2026-10-03 20:37:21"
+    "last_checked": "2026-10-04 17:39:34"
   },
   {
     "id": "2a54099679673b18",
@@ -1785,7 +1797,7 @@
     "tier": "keyword",
     "found_at": "2026-10-03 16:07:52",
     "keyword_hit": true,
-    "last_checked": "2026-10-03 20:37:20"
+    "last_checked": "2026-10-04 17:39:33"
   },
   {
     "id": "1413d364272632e1",
@@ -1797,7 +1809,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:07:51",
     "keyword_hit": false,
-    "last_checked": "2026-10-03 20:37:19"
+    "last_checked": "2026-10-04 17:39:33"
   },
   {
     "id": "89bd656bac741762",
@@ -1809,7 +1821,7 @@
     "tier": "keyword",
     "found_at": "2026-10-03 16:07:50",
     "keyword_hit": true,
-    "last_checked": "2026-10-03 20:37:18"
+    "last_checked": "2026-10-04 17:39:32"
   },
   {
     "id": "0a677925762463f4",
@@ -1821,7 +1833,7 @@
     "tier": "keyword",
     "found_at": "2026-10-03 16:07:49",
     "keyword_hit": true,
-    "last_checked": "2026-10-03 20:37:18"
+    "last_checked": "2026-10-04 17:39:32"
   },
   {
     "id": "0a677925762463f4",
@@ -1833,7 +1845,7 @@
     "tier": "keyword",
     "found_at": "2026-10-03 16:07:47",
     "keyword_hit": true,
-    "last_checked": "2026-10-03 20:37:17"
+    "last_checked": "2026-10-04 17:39:31"
   },
   {
     "id": "ce56266401f98705",
@@ -1845,7 +1857,7 @@
     "tier": "keyword",
     "found_at": "2026-10-03 16:07:46",
     "keyword_hit": true,
-    "last_checked": "2026-10-03 20:37:16"
+    "last_checked": "2026-10-04 17:39:30"
   },
   {
     "id": "0a677925762463f4",
@@ -1857,7 +1869,7 @@
     "tier": "keyword",
     "found_at": "2026-10-03 16:07:46",
     "keyword_hit": true,
-    "last_checked": "2026-10-03 20:37:16"
+    "last_checked": "2026-10-04 17:39:31"
   },
   {
     "id": "cfa78027135562ef",
