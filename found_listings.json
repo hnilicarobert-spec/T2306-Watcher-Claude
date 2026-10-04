@@ -1,5 +1,53 @@
 [
   {
+    "id": "7120e09f6d4f6001",
+    "url": "https://nabytok.bazos.sk/inzerat/177995757/kreslo-kodreta-myjava.php",
+    "title": "Kreslo Kodreta Myjava - Bratislava | Bazoš.sk",
+    "site": "web_search",
+    "image_url": null,
+    "score": null,
+    "tier": "keyword",
+    "keyword_hit": true,
+    "found_at": "2026-10-04 02:49:04",
+    "last_checked": "2026-10-04 02:49:04"
+  },
+  {
+    "id": "eeff0fc3e60d0a40",
+    "url": "https://www.dnb.com/business-directory/company-profiles.kodreta_furniture_sro.1caec9d1906948fef1c9198944613d91.html",
+    "title": "KODRETA furniture, s.r.o. Company Profile | Stará Myjava, PT Javorina ...",
+    "site": "web_search",
+    "image_url": null,
+    "score": null,
+    "tier": "keyword",
+    "keyword_hit": true,
+    "found_at": "2026-10-04 02:49:04",
+    "last_checked": "2026-10-04 02:49:04"
+  },
+  {
+    "id": "3cac81c7f471c466",
+    "url": "https://nabytek.bazos.cz/inzerat/224620317/zidle-venkovni-retro-dva-kusy-za-500-kc.php",
+    "title": "Židle venkovní RETRO dva kusy za 500 kč",
+    "site": "bazos_cz",
+    "image_url": "https://www.bazos.cz/img/1t/317/224620317.jpg?t=1791080648",
+    "score": 0.5334417819976807,
+    "tier": "similar",
+    "keyword_hit": false,
+    "found_at": "2026-10-04 02:48:46",
+    "last_checked": "2026-10-04 02:48:46"
+  },
+  {
+    "id": "b945514b74ab5f0b",
+    "url": "https://nabytek.bazos.cz/inzerat/224617359/klavirni-otocna-retro-stolicka.php",
+    "title": "Klavírní otočná retro stolička",
+    "site": "bazos_cz",
+    "image_url": "https://www.bazos.cz/img/1t/359/224617359.jpg",
+    "score": 0.5435068011283875,
+    "tier": "similar",
+    "keyword_hit": false,
+    "found_at": "2026-10-04 02:48:45",
+    "last_checked": "2026-10-04 02:48:45"
+  },
+  {
     "id": "4075411471cdec6d",
     "url": "http://www.kodreta.com/?lang=sk",
     "title": "chrómovaný nábytok, kovové chrómované stoličky, kreslá, drevené stoličky",
@@ -1245,7 +1293,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:50:08",
     "keyword_hit": false,
-    "last_checked": "2026-10-03 16:50:08"
+    "last_checked": "2026-10-04 02:44:35"
   },
   {
     "id": "c4fb027ba9a53b66",
@@ -1257,7 +1305,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:50:08",
     "keyword_hit": false,
-    "last_checked": "2026-10-03 16:50:08"
+    "last_checked": "2026-10-04 02:44:36"
   },
   {
     "id": "3ae376f9bfd45f54",
@@ -1269,7 +1317,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:50:07",
     "keyword_hit": false,
-    "last_checked": "2026-10-03 16:50:07"
+    "last_checked": "2026-10-04 02:44:35"
   },
   {
     "id": "8ac578e8b156b9a2",
@@ -1281,7 +1329,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:50:06",
     "keyword_hit": false,
-    "last_checked": "2026-10-03 16:50:06"
+    "last_checked": "2026-10-04 02:44:34"
   },
   {
     "id": "61e8e8dd58de8a7f",
@@ -1293,7 +1341,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:50:05",
     "keyword_hit": false,
-    "last_checked": "2026-10-03 16:50:05"
+    "last_checked": "2026-10-04 02:44:33"
   },
   {
     "id": "cfbc7eeee9e09e0f",
@@ -1305,7 +1353,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:49:53",
     "keyword_hit": false,
-    "last_checked": "2026-10-03 16:49:53"
+    "last_checked": "2026-10-04 02:44:32"
   },
   {
     "id": "b1dc82ac2e765a19",
@@ -1317,7 +1365,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:49:53",
     "keyword_hit": false,
-    "last_checked": "2026-10-03 16:49:53"
+    "last_checked": "2026-10-04 02:44:33"
   },
   {
     "id": "41a3b42961dd3e9a",
@@ -1329,7 +1377,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:49:50",
     "keyword_hit": false,
-    "last_checked": "2026-10-03 16:49:50"
+    "last_checked": "2026-10-04 02:44:32"
   },
   {
     "id": "ab8d1613225d1e13",
@@ -1341,7 +1389,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:49:49",
     "keyword_hit": false,
-    "last_checked": "2026-10-03 16:49:49"
+    "last_checked": "2026-10-04 02:44:31"
   },
   {
     "id": "21465ecb75005b60",
@@ -1353,7 +1401,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:49:47",
     "keyword_hit": false,
-    "last_checked": "2026-10-03 16:49:47"
+    "last_checked": "2026-10-04 02:44:30"
   },
   {
     "id": "09847b66fe8f6e00",
@@ -1365,7 +1413,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:49:47",
     "keyword_hit": false,
-    "last_checked": "2026-10-03 16:49:47"
+    "last_checked": "2026-10-04 02:44:31"
   },
   {
     "id": "1aff8f18520fcc36",
@@ -1377,7 +1425,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:49:46",
     "keyword_hit": false,
-    "last_checked": "2026-10-03 16:49:46"
+    "last_checked": "2026-10-04 02:44:30"
   },
   {
     "id": "0370256239032621",
@@ -1389,7 +1437,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:49:45",
     "keyword_hit": false,
-    "last_checked": "2026-10-03 16:49:45"
+    "last_checked": "2026-10-04 02:44:29"
   },
   {
     "id": "2a54099679673b18",
@@ -1401,7 +1449,7 @@
     "tier": "keyword",
     "found_at": "2026-10-03 16:08:09",
     "keyword_hit": true,
-    "last_checked": "2026-10-03 16:08:09"
+    "last_checked": "2026-10-04 02:44:29"
   },
   {
     "id": "2a54099679673b18",
@@ -1413,7 +1461,7 @@
     "tier": "keyword",
     "found_at": "2026-10-03 16:08:02",
     "keyword_hit": true,
-    "last_checked": "2026-10-03 16:08:02"
+    "last_checked": "2026-10-04 02:44:28"
   },
   {
     "id": "376dd4d190e8b66f",
@@ -1425,7 +1473,7 @@
     "tier": "keyword",
     "found_at": "2026-10-03 16:07:56",
     "keyword_hit": true,
-    "last_checked": "2026-10-03 16:07:56"
+    "last_checked": "2026-10-04 02:44:27"
   },
   {
     "id": "2a54099679673b18",
@@ -1437,7 +1485,7 @@
     "tier": "keyword",
     "found_at": "2026-10-03 16:07:56",
     "keyword_hit": true,
-    "last_checked": "2026-10-03 16:07:56"
+    "last_checked": "2026-10-04 02:44:28"
   },
   {
     "id": "a30de535ac779f17",
@@ -1449,7 +1497,7 @@
     "tier": "keyword",
     "found_at": "2026-10-03 16:07:55",
     "keyword_hit": true,
-    "last_checked": "2026-10-03 16:07:55"
+    "last_checked": "2026-10-04 02:44:26"
   },
   {
     "id": "98919c9b932e91aa",
@@ -1461,7 +1509,7 @@
     "tier": "keyword",
     "found_at": "2026-10-03 16:07:55",
     "keyword_hit": true,
-    "last_checked": "2026-10-03 16:07:55"
+    "last_checked": "2026-10-04 02:44:27"
   },
   {
     "id": "0432bd045022d400",
@@ -1473,7 +1521,7 @@
     "tier": "keyword",
     "found_at": "2026-10-03 16:07:54",
     "keyword_hit": true,
-    "last_checked": "2026-10-03 16:07:54"
+    "last_checked": "2026-10-04 02:44:26"
   },
   {
     "id": "e974fccc339d5160",
