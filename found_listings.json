@@ -1,5 +1,29 @@
 [
   {
+    "id": "c2cf14f267f26ada",
+    "url": "https://nabytok.bazos.sk/inzeraty/stol%C3%ADk-kodreta/",
+    "title": "Stolík kodreta bazár - Nábytok | Bazoš.sk",
+    "site": "web_search",
+    "image_url": null,
+    "score": null,
+    "tier": "keyword",
+    "keyword_hit": true,
+    "found_at": "2026-10-04 21:04:28",
+    "last_checked": "2026-10-04 21:04:28"
+  },
+  {
+    "id": "bdb71755f5d8d1f6",
+    "url": "https://nabytek.bazos.cz/inzerat/224662402/jidelni-sestava.php",
+    "title": "Jídelní sestava",
+    "site": "bazos_cz",
+    "image_url": "https://www.bazos.cz/img/1t/402/224662402.jpg",
+    "score": 0.5041316151618958,
+    "tier": "similar",
+    "keyword_hit": false,
+    "found_at": "2026-10-04 21:04:13",
+    "last_checked": "2026-10-04 21:04:13"
+  },
+  {
     "id": "2e40ee40b1f87814",
     "url": "https://www.aukro.sk/starozitna-damska-kosielka-c-12-7136052004",
     "title": "1\nStarožitná dámska košieľka č. 12\nŽiadne prihodenie\n7,14 €",
@@ -345,7 +369,7 @@
     "tier": "keyword",
     "keyword_hit": true,
     "found_at": "2026-10-04 04:40:55",
-    "last_checked": "2026-10-04 04:40:55"
+    "last_checked": "2026-10-04 20:59:52"
   },
   {
     "id": "eeff0fc3e60d0a40",
@@ -1173,7 +1197,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:51:00",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 07:50:57"
+    "last_checked": "2026-10-04 20:59:58"
   },
   {
     "id": "6428e4c94d436b8f",
@@ -1185,7 +1209,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:50:59",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 07:50:57"
+    "last_checked": "2026-10-04 20:59:59"
   },
   {
     "id": "1e12a269aebb4e24",
@@ -1197,7 +1221,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:50:58",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 07:50:56"
+    "last_checked": "2026-10-04 20:59:57"
   },
   {
     "id": "1bdda3cd0b502fc3",
@@ -1209,7 +1233,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:50:55",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 07:50:56"
+    "last_checked": "2026-10-04 20:59:58"
   },
   {
     "id": "19a933a3a93afee4",
@@ -1221,7 +1245,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:50:52",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 07:50:55"
+    "last_checked": "2026-10-04 20:59:56"
   },
   {
     "id": "da169c47aeeac13c",
@@ -1233,7 +1257,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:50:51",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 07:50:54"
+    "last_checked": "2026-10-04 20:59:55"
   },
   {
     "id": "7891fd6c818fb180",
@@ -1245,7 +1269,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:50:50",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 07:50:54"
+    "last_checked": "2026-10-04 20:59:56"
   },
   {
     "id": "9f78c17ca12c52bf",
@@ -1257,7 +1281,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:50:49",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 07:50:53"
+    "last_checked": "2026-10-04 20:59:55"
   },
   {
     "id": "7e00b7cb52bf8b0a",
@@ -1269,7 +1293,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:50:46",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 07:50:52"
+    "last_checked": "2026-10-04 20:59:53"
   },
   {
     "id": "7ef0d3308c9b7e42",
@@ -1281,7 +1305,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:50:44",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 07:50:52"
+    "last_checked": "2026-10-04 20:59:54"
   },
   {
     "id": "758a46e8c56d11a2",
@@ -1293,7 +1317,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:50:42",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 07:50:51"
+    "last_checked": "2026-10-04 20:59:53"
   },
   {
     "id": "fb5e348a6e54846f",
@@ -1305,7 +1329,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:50:41",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 07:50:50"
+    "last_checked": "2026-10-04 20:59:52"
   },
   {
     "id": "138b219c25f0717f",
@@ -1317,7 +1341,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:50:37",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 04:36:14"
+    "last_checked": "2026-10-04 20:59:50"
   },
   {
     "id": "157703fca15a2051",
@@ -1329,7 +1353,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:50:36",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 04:36:14"
+    "last_checked": "2026-10-04 20:59:51"
   },
   {
     "id": "119bf388a937406b",
@@ -1341,7 +1365,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:50:34",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 04:36:13"
+    "last_checked": "2026-10-04 20:59:50"
   },
   {
     "id": "6a49b6edc56014f0",
@@ -1353,19 +1377,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:50:33",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 04:36:12"
-  },
-  {
-    "id": "dafca3bb41e2e722",
-    "url": "https://nabytek.bazos.cz/inzerat/224585786/barovy-stulzidle.php",
-    "title": "Barový stůl+židle",
-    "site": "bazos_cz",
-    "image_url": "https://www.bazos.cz/img/1t/786/224585786.jpg",
-    "score": 0.5266475081443787,
-    "tier": "similar",
-    "found_at": "2026-10-03 16:50:32",
-    "keyword_hit": false,
-    "last_checked": "2026-10-04 04:36:12"
+    "last_checked": "2026-10-04 20:59:48"
   },
   {
     "id": "fb93e2babdd53435",
@@ -1377,7 +1389,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:50:29",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 04:36:11"
+    "last_checked": "2026-10-04 20:59:47"
   },
   {
     "id": "7e71ad15b6517ac8",
@@ -1389,7 +1401,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:50:28",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 04:36:11"
+    "last_checked": "2026-10-04 20:59:48"
   },
   {
     "id": "478ab8e0deacb7cb",
