@@ -2,13 +2,23 @@ name: Scan for chair
 
 on:
   schedule:
-    # Every 30 minutes. GitHub may delay scheduled runs somewhat during
-    # busy periods — that's normal and free-tier expected behavior.
-    - cron: "*/30 * * * *"
+    # Hourly. This native GitHub schedule trigger is kept as a BACKUP —
+    # GitHub's own docs call scheduled triggers "best-effort, not
+    # guaranteed," and in practice (confirmed via current GitHub Community
+    # reports) frequent schedules on public repos can be delayed by hours
+    # or dropped entirely, especially during platform load. That's almost
+    # certainly why "every 30 minutes" was actually landing every ~3 hours.
+    # The RELIABLE trigger is an external cron service calling the GitHub
+    # API's workflow_dispatch endpoint directly — see SETUP.md's "Reliable
+    # hourly scheduling" section. This native schedule just fires as a
+    # free second attempt on top of that, in case the external one ever
+    # misses.
+    - cron: "0 * * * *"
   workflow_dispatch: {}
     # ^ This is the "push a search from my iPhone" button: open this repo's
     # Actions tab → "Scan for chair" → Run workflow. Works from mobile Safari
-    # or the GitHub mobile app, no computer needed.
+    # or the GitHub mobile app, no computer needed. Also what the external
+    # cron-job.org trigger below calls, via the GitHub API.
 
 permissions:
   contents: write   # needed so the workflow can commit updated results back to the repo
