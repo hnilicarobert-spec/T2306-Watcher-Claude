@@ -114,14 +114,72 @@ edit → commit) and raise `"similarity_threshold_list"` slightly (e.g.
 instead. Every edit you commit takes effect on the next scheduled or
 manually triggered run.
 
+## Reliable hourly scheduling (fixes "it only runs every few hours")
+
+GitHub's own documentation calls its scheduled workflow trigger
+"best-effort, not guaranteed" — in practice, frequent schedules on public
+repos are known (as of 2026, widely reported on GitHub's own community
+forum) to get delayed by hours or dropped entirely during platform load.
+That's almost certainly why a 30-minute schedule was actually landing
+every ~3 hours. Changing the cron interval doesn't fix this — the fix is
+to stop relying on GitHub's native scheduler as the only trigger.
+
+The reliable approach: a free external cron service calls the GitHub API
+directly to start the workflow, on a real, dependable schedule. GitHub's
+native `schedule:` trigger (now set to hourly in `scan.yml`) stays in
+place too, as a free backup in case the external one is ever missed —
+having both costs nothing and only helps.
+
+**Step 1 — Create a GitHub Personal Access Token (fine-grained, minimal scope)**
+
+1. On GitHub, go to **Settings** (your account, top-right avatar menu) →
+   **Developer settings** → **Personal access tokens** → **Fine-grained tokens**.
+2. Click **Generate new token**. Name it `chair-watcher-trigger`.
+3. **Resource owner**: you. **Repository access**: "Only select
+   repositories" → choose this repo specifically — not all repos.
+4. **Permissions** → **Repository permissions** → find **Actions** → set
+   to **Read and write**. Leave everything else as default (no access).
+5. Set an **expiration** (GitHub requires one for fine-grained tokens; a
+   year out is fine). Generate, then **copy the token** — you won't be
+   able to see it again. Treat it like a password.
+
+**Step 2 — Create a free cron-job.org account**
+
+1. Sign up at [cron-job.org](https://cron-job.org) — free, no credit card.
+2. Create a new cron job:
+   - **URL**: `https://api.github.com/repos/YOUR_USERNAME/YOUR_REPO/actions/workflows/scan.yml/dispatches`
+     (replace with your actual username/repo name)
+   - **Request method**: `POST`
+   - **Schedule**: every hour
+   - Under **Advanced** → **Headers**, add two headers:
+     - `Authorization` → `Bearer YOUR_TOKEN_FROM_STEP_1`
+     - `Accept` → `application/vnd.github+json`
+   - Under **Advanced** → **Request body**, set it to: `{"ref":"main"}`
+     (or whatever your default branch is called)
+3. Save and enable the job.
+
+This token lives only in your private cron-job.org account — never in the
+public repo — so it's safe even though the repo itself is public.
+
+**Step 3 — Verify it**
+
+Wait a bit past the next hour mark, then check your repo's Actions tab.
+You should see a new run whose trigger says "Scheduled" via the API (shows
+the same as a normal dispatch). If cron-job.org's job history shows a
+successful `204` response, the trigger worked — GitHub just didn't create
+a visible difference in the UI between this and a manual run.
+
 ## Changing the scan frequency
 
 Open `.github/workflows/scan.yml`, find this line:
 ```yaml
-- cron: "*/30 * * * *"
+- cron: "0 * * * *"
 ```
-`*/30` means every 30 minutes. Change to `*/15` for every 15 minutes, `*/60`
-for hourly, etc. Commit the change — it takes effect on the next run.
+This is the free native-GitHub backup schedule (hourly). The reliable
+primary schedule is the cron-job.org job from the section above — change
+its interval there instead if you want more/less frequent scans; GitHub's
+own throttling on public repos means asking the native trigger for
+anything much more frequent than hourly tends not to be honored anyway.
 
 ## Updating the code later
 
