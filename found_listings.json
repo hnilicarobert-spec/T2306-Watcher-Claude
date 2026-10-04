@@ -1,5 +1,29 @@
 [
   {
+    "id": "5bdd8cf1ab790901",
+    "url": "https://aukro.cz/koupim-zidli-t2306-kodreta-myjava-7135208694",
+    "title": "Koupím židli T2306 Kodreta Myjava | Aukro",
+    "site": "web_search",
+    "image_url": null,
+    "score": null,
+    "tier": "keyword",
+    "keyword_hit": true,
+    "found_at": "2026-10-04 21:41:03",
+    "last_checked": "2026-10-04 21:41:03"
+  },
+  {
+    "id": "eafe1a332a94eaec",
+    "url": "https://nabytek.bazos.cz/inzerat/224663099/jidelni-zidle-autronic.php",
+    "title": "JÍDELNÍ ŽIDLE AUTRONIC",
+    "site": "bazos_cz",
+    "image_url": "https://www.bazos.cz/img/1t/099/224663099.jpg",
+    "score": 0.6141015887260437,
+    "tier": "strong",
+    "keyword_hit": false,
+    "found_at": "2026-10-04 21:40:47",
+    "last_checked": "2026-10-04 21:40:47"
+  },
+  {
     "id": "c2cf14f267f26ada",
     "url": "https://nabytok.bazos.sk/inzeraty/stol%C3%ADk-kodreta/",
     "title": "Stolík kodreta bazár - Nábytok | Bazoš.sk",
@@ -285,7 +309,7 @@
     "tier": "keyword",
     "keyword_hit": true,
     "found_at": "2026-10-04 07:55:56",
-    "last_checked": "2026-10-04 07:55:56"
+    "last_checked": "2026-10-04 21:36:37"
   },
   {
     "id": "6b056eefc8527e36",
@@ -297,7 +321,7 @@
     "tier": "strong",
     "keyword_hit": false,
     "found_at": "2026-10-04 07:55:36",
-    "last_checked": "2026-10-04 07:55:36"
+    "last_checked": "2026-10-04 21:36:36"
   },
   {
     "id": "4549ba87397d4606",
@@ -309,7 +333,7 @@
     "tier": "strong",
     "keyword_hit": false,
     "found_at": "2026-10-04 07:55:36",
-    "last_checked": "2026-10-04 07:55:36"
+    "last_checked": "2026-10-04 21:36:37"
   },
   {
     "id": "feff3506d8016e47",
@@ -321,7 +345,7 @@
     "tier": "strong",
     "keyword_hit": false,
     "found_at": "2026-10-04 07:55:34",
-    "last_checked": "2026-10-04 07:55:34"
+    "last_checked": "2026-10-04 21:36:36"
   },
   {
     "id": "5e4c498393140c3c",
@@ -333,7 +357,7 @@
     "tier": "similar",
     "keyword_hit": false,
     "found_at": "2026-10-04 07:55:31",
-    "last_checked": "2026-10-04 07:55:31"
+    "last_checked": "2026-10-04 21:36:35"
   },
   {
     "id": "c5d8b3d85ed4954d",
@@ -345,7 +369,7 @@
     "tier": "strong",
     "keyword_hit": false,
     "found_at": "2026-10-04 07:55:29",
-    "last_checked": "2026-10-04 07:55:29"
+    "last_checked": "2026-10-04 21:36:35"
   },
   {
     "id": "08de668ca6343c11",
@@ -357,7 +381,7 @@
     "tier": "strong",
     "keyword_hit": false,
     "found_at": "2026-10-04 07:55:28",
-    "last_checked": "2026-10-04 07:55:28"
+    "last_checked": "2026-10-04 21:36:35"
   },
   {
     "id": "dbbd1b43f43d9370",
@@ -1041,7 +1065,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:51:12",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 13:54:50"
+    "last_checked": "2026-10-04 21:36:39"
   },
   {
     "id": "8ec0c128aa963351",
@@ -1053,7 +1077,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:51:11",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 13:54:49"
+    "last_checked": "2026-10-04 21:36:38"
   },
   {
     "id": "58d9e1ddf2cde830",
@@ -1065,7 +1089,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:51:11",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 13:54:50"
+    "last_checked": "2026-10-04 21:36:40"
   },
   {
     "id": "8cb6eb71f8387683",
@@ -1077,7 +1101,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:51:10",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 13:54:49"
+    "last_checked": "2026-10-04 21:36:39"
   },
   {
     "id": "ccdd6bc4a6ffee18",
@@ -1089,7 +1113,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:51:07",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 13:54:48"
+    "last_checked": "2026-10-04 21:36:38"
   },
   {
     "id": "9c2b7956861ef5ce",
@@ -1101,7 +1125,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:51:06",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 07:51:02"
+    "last_checked": "2026-10-04 21:36:34"
   },
   {
     "id": "072f1039aa548830",
@@ -1113,7 +1137,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:51:05",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 07:51:02"
+    "last_checked": "2026-10-04 21:36:34"
   },
   {
     "id": "68611b2926e3b6f5",
@@ -1125,7 +1149,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:51:04",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 07:51:00"
+    "last_checked": "2026-10-04 21:36:32"
   },
   {
     "id": "22cd995aeb89de38",
@@ -1137,7 +1161,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:51:04",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 07:51:01"
+    "last_checked": "2026-10-04 21:36:33"
   },
   {
     "id": "5d5f1dea54677edc",
@@ -1149,7 +1173,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:51:03",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 07:51:00"
+    "last_checked": "2026-10-04 21:36:33"
   },
   {
     "id": "2cb058714e1d1178",
@@ -1161,7 +1185,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:51:02",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 07:50:58"
+    "last_checked": "2026-10-04 21:36:31"
   },
   {
     "id": "1b3a9f1d4fd72c64",
@@ -1173,7 +1197,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:51:02",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 07:50:59"
+    "last_checked": "2026-10-04 21:36:32"
   },
   {
     "id": "c2f27dce7462b5db",
@@ -1185,7 +1209,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:51:01",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 07:50:58"
+    "last_checked": "2026-10-04 21:36:31"
   },
   {
     "id": "97df81152ffe6e69",
