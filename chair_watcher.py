@@ -190,8 +190,30 @@ def save_found(items):
     FOUND_PATH.write_text(json.dumps(items, ensure_ascii=False, indent=2))
 
 
+_TRACKING_PARAMS = {"utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content",
+                    "fbclid", "gclid", "rut", "ref", "igshid"}
+
+
+def normalize_url(url):
+    """Collapses trivial variations of the same URL (scheme/host case,
+    trailing slash, tracking params, query-param order) so the same ad
+    hashes identically every time instead of looking like a new listing."""
+    try:
+        from urllib.parse import urlparse, urlencode, parse_qsl
+        p = urlparse(url)
+        scheme = p.scheme.lower() or "https"
+        netloc = p.netloc.lower()
+        path = p.path.rstrip("/") or "/"
+        q = [(k, v) for k, v in parse_qsl(p.query) if k.lower() not in _TRACKING_PARAMS]
+        q.sort()
+        query = urlencode(q)
+        return f"{scheme}://{netloc}{path}" + (f"?{query}" if query else "")
+    except Exception:
+        return url
+
+
 def listing_id(url):
-    return hashlib.sha256(url.encode()).hexdigest()[:16]
+    return hashlib.sha256(normalize_url(url).encode()).hexdigest()[:16]
 
 
 def send_notification(topic, title, message, url=None):
@@ -333,6 +355,52 @@ WEB_SEARCH_QUERIES = [
 ]
 
 
+# Domains we trust to be actual marketplace listings — if a result is from
+# one of these, it's kept regardless of wording. Anything else (a
+# manufacturer's own site, Wikipedia, a blog post, a PDF catalog...) only
+# survives if it ALSO reads like someone actually selling something (see
+# _SELLING_LANGUAGE below). This is specifically what filters out things
+# like Kodreta's own company homepage showing up instead of a listing.
+_TRUSTED_LISTING_DOMAINS = [
+    "bazos.cz", "bazos.sk", "sbazar.cz", "aukro.cz", "aukro.sk",
+    "olx.pl", "kleinanzeigen.de", "vinted.com", "vinted.cz", "vinted.sk",
+    "1stdibs.com", "pamono.com", "etsy.com", "ebay.com", "ebay.de",
+    "ebay-kleinanzeigen.de", "modrykonik.sk", "sbazar.sk", "topanuncios",
+]
+_SELLING_LANGUAGE = [
+    "predám", "predam", "prodám", "prodam", "nabízím", "nabizim", "na predaj",
+    "na prodej", "kúpim", "kupim", "koupím", "koupim", "zu verkaufen",
+    "sprzedam", "for sale", "€", "kč", "eur", " zł", " kc ", " sk ",
+]
+
+
+def _looks_like_a_listing(url, text):
+    domain = url.split("//")[-1].split("/")[0].lower()
+    if any(d in domain for d in _TRUSTED_LISTING_DOMAINS):
+        return True
+    t = text.lower()
+    return any(phrase in t for phrase in _SELLING_LANGUAGE)
+
+
+def _unwrap_duckduckgo_redirect(href):
+    """DuckDuckGo's HTML endpoint wraps result links as
+    //duckduckgo.com/l/?uddg=<url-encoded-real-target>&rut=... — unwrap to
+    the real destination. Matters for two things: clicking through should
+    go straight to the actual listing, and the 'rut' tracking token in the
+    wrapper changes per-request, which was silently defeating de-duplication
+    (the same real listing hashing differently every time it was re-found)."""
+    from urllib.parse import urlparse, parse_qs, unquote
+    if href.startswith("//"):
+        href = "https:" + href
+    if "uddg=" in href:
+        parsed = urlparse(href)
+        qs = parse_qs(parsed.query)
+        target = qs.get("uddg", [None])[0]
+        if target:
+            return unquote(target)
+    return href
+
+
 def fetch_web_search(queries=None):
     """
     DuckDuckGo's HTML endpoint (no API key, no login) — used instead of a
@@ -356,12 +424,15 @@ def fetch_web_search(queries=None):
                 link_tag = result.select_one("a.result__a")
                 if not link_tag:
                     continue
-                href = link_tag.get("href", "")
+                raw_href = link_tag.get("href", "")
+                href = _unwrap_duckduckgo_redirect(raw_href)
                 title = link_tag.get_text(strip=True)
                 snippet_tag = result.select_one("a.result__snippet, div.result__snippet")
                 snippet = snippet_tag.get_text(strip=True) if snippet_tag else ""
                 if not href or not title:
                     continue
+                if not _looks_like_a_listing(href, f"{title} {snippet}"):
+                    continue  # e.g. the manufacturer's own homepage, not someone selling one
                 results.append({
                     "url": href,
                     "title": title,
