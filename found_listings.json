@@ -1,5 +1,17 @@
 [
   {
+    "id": "c82eadf386698f69",
+    "url": "https://www.aukro.cz/poutni-medailonek-svata-hora-pribram-kovovy-privesek-7097884076",
+    "title": "Poutní medailonek – Svatá Hora Příbram (kovový přívěsek)\nŽádný příhoz\n50 Kč\nKup teď\n150 Kč",
+    "site": "aukro_cz",
+    "image_url": "https://cdn.aukro.cz/images/sk1757839357030/thumbnail/poutni-medailonek-svata-hora-pribram-kovovy-privesek-240385056.jpeg",
+    "score": 0.5044068694114685,
+    "tier": "similar",
+    "keyword_hit": false,
+    "found_at": "2026-10-04 15:34:09",
+    "last_checked": "2026-10-04 15:34:09"
+  },
+  {
     "id": "d859fa5ce7aa8e57",
     "url": "https://www.aukro.sk/stara-stojacia-retro-lampa-7120576640",
     "title": "11\nStará stojacia retro lampa\nŽiadne prihodenie\n41,71 €",
@@ -453,19 +465,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 20:20:43",
     "keyword_hit": false,
-    "last_checked": "2026-10-03 20:20:43"
-  },
-  {
-    "id": "05e7a7733cdd4a0c",
-    "url": "https://nabytok.bazos.sk/inzerat/194278247/predam-stylovu-otocnu-kancelarsku-stolicku.php",
-    "title": "Predám štýlovú otočnú kancelársku stoličku",
-    "site": "bazos_sk",
-    "image_url": "https://www.bazos.sk/img/1t/247/194278247.jpg",
-    "score": 0.5548566579818726,
-    "tier": "strong",
-    "found_at": "2026-10-03 16:52:25",
-    "keyword_hit": false,
-    "last_checked": "2026-10-03 16:52:25"
+    "last_checked": "2026-10-04 15:29:31"
   },
   {
     "id": "3901581a05d0a97c",
@@ -477,7 +477,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:52:24",
     "keyword_hit": false,
-    "last_checked": "2026-10-03 16:52:24"
+    "last_checked": "2026-10-04 15:29:29"
   },
   {
     "id": "e8d32bab87631c5c",
@@ -489,7 +489,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:52:23",
     "keyword_hit": false,
-    "last_checked": "2026-10-03 16:52:23"
+    "last_checked": "2026-10-04 15:29:28"
   },
   {
     "id": "4c584d23534f84d6",
@@ -501,7 +501,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:52:23",
     "keyword_hit": false,
-    "last_checked": "2026-10-03 16:52:23"
+    "last_checked": "2026-10-04 15:29:29"
   },
   {
     "id": "9a25040efd5dd2f9",
@@ -513,7 +513,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:52:22",
     "keyword_hit": false,
-    "last_checked": "2026-10-03 16:52:22"
+    "last_checked": "2026-10-04 15:29:28"
   },
   {
     "id": "d3c40b97f3fda626",
@@ -525,7 +525,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:52:21",
     "keyword_hit": false,
-    "last_checked": "2026-10-03 16:52:21"
+    "last_checked": "2026-10-04 15:29:26"
   },
   {
     "id": "4bb43e7ebcb45fa9",
@@ -537,7 +537,19 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:52:21",
     "keyword_hit": false,
-    "last_checked": "2026-10-03 16:52:21"
+    "last_checked": "2026-10-04 15:29:27"
+  },
+  {
+    "id": "1f1ace64548d3d49",
+    "url": "https://nabytok.bazos.sk/inzerat/195573800/starozitna-stolicka-thonet.php",
+    "title": "Starozitna stolicka THONET",
+    "site": "bazos_sk",
+    "image_url": "https://www.bazos.sk/img/1t/800/195573800.jpg",
+    "score": 0.5601256489753723,
+    "tier": "strong",
+    "found_at": "2026-10-03 16:52:19",
+    "keyword_hit": false,
+    "last_checked": "2026-10-04 15:29:26"
   },
   {
     "id": "44916b62ddfde632",
@@ -550,18 +562,6 @@
     "found_at": "2026-10-03 16:52:19",
     "keyword_hit": false,
     "last_checked": "2026-10-04 15:18:10"
-  },
-  {
-    "id": "1f1ace64548d3d49",
-    "url": "https://nabytok.bazos.sk/inzerat/195573800/starozitna-stolicka-thonet.php",
-    "title": "Starozitna stolicka THONET",
-    "site": "bazos_sk",
-    "image_url": "https://www.bazos.sk/img/1t/800/195573800.jpg",
-    "score": 0.5601256489753723,
-    "tier": "strong",
-    "found_at": "2026-10-03 16:52:19",
-    "keyword_hit": false,
-    "last_checked": "2026-10-03 16:52:19"
   },
   {
     "id": "322222f1035ca606",
@@ -1869,7 +1869,7 @@
     "tier": "keyword",
     "found_at": "2026-10-03 16:07:45",
     "keyword_hit": true,
-    "last_checked": "2026-10-03 20:37:15"
+    "last_checked": "2026-10-04 15:29:38"
   },
   {
     "id": "c30c83edaaa4f05c",
@@ -1881,7 +1881,7 @@
     "tier": "keyword",
     "found_at": "2026-10-03 16:07:44",
     "keyword_hit": true,
-    "last_checked": "2026-10-03 20:37:14"
+    "last_checked": "2026-10-04 15:29:37"
   },
   {
     "id": "4f4c34d1c01d8fce",
@@ -1893,7 +1893,7 @@
     "tier": "keyword",
     "found_at": "2026-10-03 16:07:44",
     "keyword_hit": true,
-    "last_checked": "2026-10-03 20:37:14"
+    "last_checked": "2026-10-04 15:29:37"
   },
   {
     "id": "32e90e12e3a44ad6",
@@ -1905,7 +1905,7 @@
     "tier": "keyword",
     "found_at": "2026-10-03 16:07:43",
     "keyword_hit": true,
-    "last_checked": "2026-10-03 20:37:13"
+    "last_checked": "2026-10-04 15:29:36"
   },
   {
     "id": "66f209f70e33099d",
@@ -1917,7 +1917,7 @@
     "tier": "keyword",
     "found_at": "2026-10-03 16:07:42",
     "keyword_hit": true,
-    "last_checked": "2026-10-03 20:37:12"
+    "last_checked": "2026-10-04 15:29:35"
   },
   {
     "id": "6103c6966bc4e3ee",
@@ -1929,7 +1929,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:07:41",
     "keyword_hit": false,
-    "last_checked": "2026-10-03 20:37:11"
+    "last_checked": "2026-10-04 15:29:34"
   },
   {
     "id": "0a677925762463f4",
@@ -1941,7 +1941,7 @@
     "tier": "keyword",
     "found_at": "2026-10-03 16:07:41",
     "keyword_hit": true,
-    "last_checked": "2026-10-03 20:37:12"
+    "last_checked": "2026-10-04 15:29:35"
   },
   {
     "id": "fb2bf979a56b4044",
@@ -1953,7 +1953,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:07:40",
     "keyword_hit": false,
-    "last_checked": "2026-10-03 20:37:10"
+    "last_checked": "2026-10-04 15:29:33"
   },
   {
     "id": "1a2b77b76e3c9a50",
@@ -1965,7 +1965,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:07:39",
     "keyword_hit": false,
-    "last_checked": "2026-10-03 20:37:10"
+    "last_checked": "2026-10-04 15:29:33"
   },
   {
     "id": "b3be3e4a02c9e8a6",
@@ -1977,7 +1977,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:07:38",
     "keyword_hit": false,
-    "last_checked": "2026-10-03 20:37:08"
+    "last_checked": "2026-10-04 15:29:31"
   },
   {
     "id": "377f0d9d10426eaa",
@@ -1989,6 +1989,6 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:07:38",
     "keyword_hit": false,
-    "last_checked": "2026-10-03 20:37:09"
+    "last_checked": "2026-10-04 15:29:32"
   }
 ]
