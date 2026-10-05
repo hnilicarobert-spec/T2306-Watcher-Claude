@@ -31,7 +31,9 @@ concurrency:
 
 jobs:
   scan:
-    runs-on: ubuntu-latest
+    # Pinned: "ubuntu-latest" switches to Ubuntu 26 on 19 Oct 2026, and the
+    # headless browser (Playwright) often lags behind brand-new Ubuntu releases.
+    runs-on: ubuntu-24.04
     env:
       # GitHub Actions doesn't allow the `secrets` context directly inside
       # an `if:` condition — only in `env:`/`run:`. So the secret is copied
