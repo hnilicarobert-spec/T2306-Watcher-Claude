@@ -123,6 +123,8 @@ The scanner compares every listing photo against everything in
 - a **pair or set** of the chairs together.
 
 Upload them in GitHub into `reference_photos/` (Add file → Upload files).
-Use JPG or PNG; any file name works. Every scan's Actions log prints a check
+Any file name works (JPG, PNG, WebP or iPhone HEIC). Any upholstery colour is fine:
+the scanner also compares photos in black and white, so the chrome frame's
+shape decides the match, not the colour of the seat. Every scan's Actions log prints a check
 line for each reference photo ("top category=target"). If one of yours shows
 something else, that photo is confusing the model and is better removed.
