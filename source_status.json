@@ -1,5 +1,5 @@
 {
- "checked_at": "2026-10-05 18:28:06",
+ "checked_at": "2026-10-05 18:48:03",
  "config_errors": [],
  "sources": {
   "bazos_cz": {
@@ -18,25 +18,6 @@
    "results": 2,
    "errors": []
   },
-  "olx_pl": {
-   "results": 0,
-   "errors": [
-    "OLX.pl error for 'krzeslo chromowane vintage plotno': 403 Client Error: Forbidden for url: https://www.olx.pl/oferty/q-krzeslo%20chromowane%20vintage%20plotno/",
-    "OLX.pl error for 'kodreta krzeslo': 403 Client Error: Forbidden for url: https://www.olx.pl/oferty/q-kodreta%20krzeslo/",
-    "OLX.pl error for 'krzesło chrom': 403 Client Error: Forbidden for url: https://www.olx.pl/oferty/q-krzes%C5%82o%20chrom/",
-    "OLX.pl error for 'krzesło metalowe': 403 Client Error: Forbidden for url: https://www.olx.pl/oferty/q-krzes%C5%82o%20metalowe/",
-    "OLX.pl error for 'krzesła chrom vintage': 403 Client Error: Forbidden for url: https://www.olx.pl/oferty/q-krzes%C5%82a%20chrom%20vintage/",
-    "OLX.pl error for 'metalowe krzesło retro': 403 Client Error: Forbidden for url: https://www.olx.pl/oferty/q-metalowe%20krzes%C5%82o%20retro/",
-    "OLX.pl error for 'kodreta': 403 Client Error: Forbidden for url: https://www.olx.pl/oferty/q-kodreta/",
-    "OLX.pl error for 'jaroslav hreščák': 403 Client Error: Forbidden for url: https://www.olx.pl/oferty/q-jaroslav%20hre%C5%A1%C4%8D%C3%A1k/",
-    "OLX.pl error for 'hreščák': 403 Client Error: Forbidden for url: https://www.olx.pl/oferty/q-hre%C5%A1%C4%8D%C3%A1k/",
-    "OLX.pl error for 't2306': 403 Client Error: Forbidden for url: https://www.olx.pl/oferty/q-t2306/"
-   ]
-  },
-  "kleinanzeigen_de": {
-   "results": 0,
-   "errors": []
-  },
   "vinted_cz": {
    "results": 0,
    "errors": []
@@ -45,22 +26,11 @@
    "results": 0,
    "errors": []
   },
-  "web_search": {
-   "results": 0,
-   "errors": [
-    "DuckDuckGo blocked this server (bot check) — use Tavily/SerpApi/Google Alerts instead"
-   ]
-  },
-  "tavily": {
-   "results": 0,
-   "errors": [
-    "not set up yet — add a free TAVILY_API_KEY secret (see SETUP.md)"
-   ]
-  },
   "serpapi": {
-   "results": 4,
+   "results": 21,
    "errors": [],
-   "note": "searched: (kodreta OR \"chromová židle\" OR \"trubková židle\" OR \"chrómov…"
+   "note": "Google Lens with IMG_3808.webp",
+   "added": 19
   }
  }
 }
