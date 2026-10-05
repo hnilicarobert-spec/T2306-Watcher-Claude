@@ -186,3 +186,47 @@ anything much more frequent than hourly tends not to be honored anyway.
 If I send you an updated `.py` file: open that file in your repo, click the
 pencil (✏️) icon to edit, paste in the new content, and commit. No local
 setup needed at all.
+
+## Getting results from more websites (recommended)
+
+GitHub's servers are "datacenter" computers, and several sites (DuckDuckGo,
+Vinted, sometimes Aukro) block those. The **Sources** panel at the top of your
+results page shows each site's status after every scan: ✓ working,
+⚠️ blocked (with the reason), · no results.
+
+To reach the sites that block scraping, add search engines that work through
+an official API. Both are free with no credit card, and the scanner never
+exceeds their free monthly allowance. You can add one, both, or neither.
+
+### Tavily (1,000 free searches/month) — about 10 minutes
+1. Sign up at **tavily.com** (email or Google login, no card).
+2. Copy your API key from the dashboard (starts with `tvly-`).
+3. In your GitHub repo: **Settings → Secrets and variables → Actions →
+   New repository secret**. Name: `TAVILY_API_KEY`, value: the key.
+
+### SerpApi (250 free Google searches/month) — about 10 minutes
+1. Sign up at **serpapi.com** (no card).
+2. Copy your API key from the dashboard.
+3. Add it as a secret named `SERPAPI_KEY` the same way.
+
+These search the whole web, so they also find ads on Sbazar, Vinted, Aukro,
+Facebook and dealer sites that the scanner can't open directly.
+
+### Google Alerts (free, unlimited, no key)
+1. Go to **google.com/alerts** (signed in with Google).
+2. Type a search, e.g. `kodreta židle`, click **Show options**, set
+   **Deliver to: RSS feed**, then **Create alert**.
+3. Click the RSS icon next to the alert and copy its address.
+4. In `config.json`, paste it into `"rss_feeds"`, e.g.
+   `"rss_feeds": ["https://www.google.com/alerts/feeds/123/456"]`.
+   Good alerts to create: `kodreta židle`, `kodreta stolička`, `kodreta křeslo`,
+   `T2306`, `Chlebo kodreta`.
+
+### The marketplaces' own alerts (best for Facebook, Sbazar, Vinted)
+Some sites block every automated reader, but their own apps can notify you
+directly, and nothing beats that for speed:
+- **Facebook Marketplace**: search "kodreta" → tap **Save search** / turn on notifications.
+- **Sbazar**: search, then **Hlídat** (watch) — emails/app alerts on new ads.
+- **Vinted**: search "kodreta" → **Save search** → notifications on.
+- **Bazoš**: "Hlídací pes" (bazos.cz) / "Strážny pes" (bazos.sk) at the bottom of a search.
+- **Aukro**: search → **Uložit hledání**.
