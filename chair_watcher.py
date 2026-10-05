@@ -197,6 +197,13 @@ def warn(msg):
         SOURCE_STATUS.setdefault(src, {"results": 0, "errors": []})["errors"].append(msg[:160])
 
 
+def note(msg):
+    print(f"  [i] {msg}")
+    src = _CURRENT_SOURCE["name"]
+    if src:
+        SOURCE_STATUS.setdefault(src, {"results": 0, "errors": []})["note"] = msg[:160]
+
+
 def load_seen():
     if SEEN_PATH.exists():
         return set(json.loads(SEEN_PATH.read_text()))
@@ -369,6 +376,10 @@ EXCLUDE_URL_SUBSTRINGS = ["deti.bazos.", "auto.bazos.", "motorky.bazos.", "stroj
 _TON_RE = re.compile(r"\bton\b")
 # Word-START match only: "kov" must not match inside "bukového"/"teakového".
 _METAL_RE = re.compile(r"\b(" + "|".join(METAL_STEMS) + ")")
+
+
+# Czech/Slovak words for chair only (no English/German), for Vinted.
+LOCAL_CHAIR_STEMS = ["zidl", "stolic", "kresl", "kresil"]
 
 
 def is_wanted_ad(title):
@@ -1220,6 +1231,11 @@ def fetch_vinted(country="cz", keywords=None):
                 url = site + url
             if not title or not url:
                 continue
+            # The new Vinted search returns items from its whole international
+            # catalogue ("2 sillas", "Beach Chair", US$ prices…). Keep ads
+            # written in Czech/Slovak or naming the brand/model.
+            if not (_has_any(fold(title), LOCAL_CHAIR_STEMS) or name_signal(title, it.get("description") or "")):
+                continue
             img = _first_image_url(it)
             results.append({"url": url, "title": title, "text": f"{title} {it.get('description') or ''}",
                             "image_urls": [img] if img else []})
@@ -1354,28 +1370,102 @@ def fetch_tavily():
     return results
 
 
+# SerpApi's free 250 searches/month = 8 per day, one every 3 hours. Each
+# day's 8 slots: 2 Google Lens reverse-image searches with your photos, and
+# 6 Google searches that each cover many sites at once with "OR". (The old
+# plan cycled 12 narrow queries, so each ran only every 36 hours and none
+# targeted 1stDibs.) "recent" limits a search to the past month — used for
+# fast-moving classifieds; dealer listings stay up for months, so no limit.
+SERPAPI_PLAN = [
+    {"lens": True},
+    {"q": 'T2306 OR "T 2306" OR "T-2306" OR hreščák OR hrescak', "recent": False},
+    {"q": '(kodreta OR "viliam chlebo") (židle OR stolička OR křeslo OR kreslo OR chair OR stuhl)', "recent": True},
+    {"q": '(kodreta OR chlebo OR czechoslovakia OR czechoslovakian) chrome chair '
+          '(site:1stdibs.com OR site:pamono.com OR site:vinterior.co OR site:whoppah.com '
+          'OR site:design-market.eu OR site:catawiki.com)', "recent": False},
+    {"lens": True},
+    {"q": '(kodreta OR chlebo) (site:etsy.com OR site:ebay.com OR site:ebay.de OR site:ebay.co.uk '
+          'OR site:willhaben.at OR site:allegro.pl OR site:kleinanzeigen.de)', "recent": False},
+    {"q": '(kodreta OR "chromová židle" OR "trubková židle" OR "chrómová stolička") '
+          '(site:sbazar.cz OR site:aukro.cz OR site:aukro.sk OR site:bazar.sk)', "recent": True},
+    {"q": 'kodreta (site:facebook.com OR site:vinted.cz OR site:vinted.sk OR site:onebid.cz '
+          'OR site:pelmeldesign.cz OR site:eterle.cz)', "recent": False},
+]
+# Photos used for reverse-image search, best first; missing files are skipped,
+# and any other photo you add to reference_photos/ joins the rotation too.
+LENS_PREFERRED = ["IMG_3808.webp", "chair_ref_1.jpeg", "IMG_3804.jpeg", "IMG_3765.jpeg",
+                  "IMG_3807.jpeg", "chair_ref_2.jpeg"]
+
+
+def _lens_photo_urls():
+    repo = os.environ.get("GITHUB_REPOSITORY")  # set automatically in GitHub Actions
+    if not repo:
+        return []
+    files = [f.name for f in sorted(REF_DIR.glob("*"))
+             if f.suffix.lower() in (".jpg", ".jpeg", ".png", ".webp") and f.stat().st_size < 8_000_000]
+    ordered = [f for f in LENS_PREFERRED if f in files] + [f for f in files if f not in LENS_PREFERRED]
+    branch = os.environ.get("GITHUB_REF_NAME") or "main"
+    return [f"https://raw.githubusercontent.com/{repo}/{branch}/reference_photos/{quote(f)}" for f in ordered]
+
+
+def _serpapi_slot():
+    """Which plan entry runs this hour, or None between slots."""
+    hour = int(time.time() // 3600)
+    if hour % 3:
+        return None, hour
+    return SERPAPI_PLAN[(hour // 3) % len(SERPAPI_PLAN)], hour
+
+
 def fetch_serpapi():
-    """SerpApi: 250 free Google searches/month, no card. 1 query every 3
-    hours (~240/month), restricted to the past month for fresh ads."""
+    """SerpApi: 250 free searches/month, no card (Google search + Google Lens)."""
     key = os.environ.get("SERPAPI_KEY")
     if not key:
         warn("not set up yet — add a free SERPAPI_KEY secret (see SETUP.md)")
         return []
+    plan, hour = _serpapi_slot()
+    if plan is None:
+        nxt = (3 - hour % 3) % 3 or 3
+        note(f"searches every 3 hours — next in about {nxt} h")
+        return []
+    if not _usage_ok("serpapi", 245):
+        return []
     results = []
-    for q in _queries_this_run(3):
-        if not _usage_ok("serpapi", 245):
-            break
-        try:
-            r = requests.get("https://serpapi.com/search.json", timeout=30, params={
-                "engine": "google", "q": q, "api_key": key, "num": 20,
-                "hl": "cs", "gl": "cz", "tbs": "qdr:m"})
+    try:
+        if plan.get("lens"):
+            photos = _lens_photo_urls()
+            if not photos:
+                warn("Google Lens: no reference photo address available")
+                return []
+            photo = photos[(hour // 12) % len(photos)]  # a different photo each lens slot
+            note(f"Google Lens with {photo.rsplit('/', 1)[-1]}")
+            r = requests.get("https://serpapi.com/search.json", timeout=60, params={
+                "engine": "google_lens", "url": photo, "type": "visual_matches",
+                "hl": "cs", "country": "cz", "api_key": key})
+            r.raise_for_status()
+            for it in r.json().get("visual_matches", []):
+                img = it.get("thumbnail") or it.get("image")
+                hit = _web_hit(it.get("link"), it.get("title"), it.get("source"), img)
+                if not hit and it.get("price") and it.get("link") and it.get("title"):
+                    # Unknown shop, but Google says it has a price: a product for sale.
+                    price = it["price"].get("value", "") if isinstance(it["price"], dict) else str(it["price"])
+                    hit = {"url": it["link"], "title": it["title"], "text": f"{it['title']} {price}",
+                           "image_urls": [img] if img else [], "source": site_label(it["link"])}
+                if hit:
+                    hit["lens"] = True
+                    results.append(hit)
+        else:
+            note(f"searched: {plan['q'][:60]}…")
+            params = {"engine": "google", "q": plan["q"], "api_key": key, "num": 20, "hl": "cs", "gl": "cz"}
+            if plan.get("recent"):
+                params["tbs"] = "qdr:m"
+            r = requests.get("https://serpapi.com/search.json", timeout=30, params=params)
             r.raise_for_status()
             for it in r.json().get("organic_results", []):
                 hit = _web_hit(it.get("link"), it.get("title"), it.get("snippet"), it.get("thumbnail"))
                 if hit:
                     results.append(hit)
-        except Exception as e:
-            warn(f"SerpApi error for '{q}': {e}")
+    except Exception as e:
+        warn(f"SerpApi error: {e}")
     return results
 
 
@@ -1561,6 +1651,10 @@ def prune_found(found, config):
     kept, dropped = [], 0
     rescored = 0
     for item in found:
+        if str(item.get("site", "")).startswith("vinted") and not (
+                _has_any(fold(item["title"]), LOCAL_CHAIR_STEMS) or name_signal(item["title"], item.get("text", ""))):
+            dropped += 1  # international Vinted results (see fetch_vinted)
+            continue
         if (item.get("via_search") or str(item.get("site", "")).startswith("web")) and not is_listing_url(item["url"]):
             dropped += 1
             continue
@@ -1673,6 +1767,8 @@ def run_once(config):
         engine = l["site"]
         if engine in SEARCH_SOURCES:
             via = {"web_search": "DuckDuckGo", "tavily": "Tavily", "serpapi": "Google", "rss": "Google Alerts"}[engine]
+            if l.get("lens"):
+                via = "Google Lens"
             l["site"] = f"{l.get('source', site_label(l['url']))} (via {via})"
             l["via_search"] = True
             if not l.get("image_urls") and (reason is None or name_signal(l["title"], text)):
