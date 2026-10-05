@@ -13,10 +13,13 @@
     "kleinanzeigen_de",
     "vinted_cz",
     "vinted_sk",
-    "web_search"
+    "web_search",
+    "tavily",
+    "serpapi"
   ],
   "facebook_session_path": null,
   "facebook_location": "czech-republic",
   "min_chrome_prob": 0.3,
-  "min_target_prob_notify": 0.25
+  "min_target_prob_notify": 0.25,
+  "rss_feeds": []
 }
