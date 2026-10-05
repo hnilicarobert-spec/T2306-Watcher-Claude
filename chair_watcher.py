@@ -64,6 +64,7 @@ BASE_DIR = Path(__file__).parent
 CONFIG_PATH = BASE_DIR / "config.json"
 SEEN_PATH = BASE_DIR / "seen.json"
 FOUND_PATH = BASE_DIR / "found_listings.json"
+STATUS_PATH = BASE_DIR / "source_status.json"
 REF_DIR = BASE_DIR / "reference_photos"
 MAX_FOUND_STORED = 500
 
@@ -154,7 +155,7 @@ def load_config():
         try:
             config[config_key] = caster(raw)
         except Exception as e:
-            print(f"  [!] Could not parse env var {env_key}={raw!r}: {e}")
+            warn(f"Could not parse env var {env_key}={raw!r}: {e}")
 
     if not config:
         sys.exit(
@@ -162,6 +163,19 @@ def load_config():
             "and edit it, or set the equivalent environment variables (see CLOUD_SETUP.md)."
         )
     return config
+
+
+# Per-source health for the current run, shown on the dashboard so a
+# blocked site is visible instead of silently looking like "no results".
+SOURCE_STATUS = {}
+_CURRENT_SOURCE = {"name": None}
+
+
+def warn(msg):
+    print(f"  [!] {msg}")
+    src = _CURRENT_SOURCE["name"]
+    if src:
+        SOURCE_STATUS.setdefault(src, {"results": 0, "errors": []})["errors"].append(msg[:160])
 
 
 def load_seen():
@@ -228,7 +242,7 @@ def send_notification(topic, title, message, url=None):
             timeout=15,
         )
     except Exception as e:
-        print(f"  [!] Failed to send notification: {e}")
+        warn(f"Failed to send notification: {e}")
 
 
 # The exact chair: model number or its designer. Highest tier, always notified.
@@ -504,7 +518,7 @@ class ImageMatcher:
                 self.ref_embeddings.append(self._embed(img))
                 self.ref_gray.append(self._embed(_grayscale(img)))
             except Exception as e:
-                print(f"  [!] Could not load reference photo {f}: {e}")
+                warn(f"Could not load reference photo {f}: {e}")
         if not self.ref_embeddings:
             sys.exit("No usable reference photos could be loaded.")
         print(f"Loaded {len(self.ref_embeddings)} reference photo(s).")
@@ -564,7 +578,7 @@ def get_matcher():
         try:
             _MATCHER["obj"] = ImageMatcher(REF_DIR)
         except Exception as e:
-            print(f"  [!] Image matcher unavailable: {e}")
+            warn(f"Image matcher unavailable: {e}")
             _MATCHER["failed"] = True
     return _MATCHER["obj"]
 
@@ -784,6 +798,12 @@ def fetch_web_search(queries=None):
                 timeout=20,
             )
             resp.raise_for_status()
+            # DuckDuckGo answers datacenter IPs (like GitHub's) with HTTP 202
+            # and a bot-check page instead of results — documented in many
+            # projects. Previously this looked like "0 results".
+            if resp.status_code == 202 or "anomaly" in resp.text[:5000].lower():
+                warn("DuckDuckGo blocked this server (bot check) — use Tavily/SerpApi/Google Alerts instead")
+                break
             soup = BeautifulSoup(resp.text, "html.parser")
             for result in soup.select("div.result")[:10]:  # first page, top 10 per query
                 link_tag = result.select_one("a.result__a")
@@ -809,7 +829,7 @@ def fetch_web_search(queries=None):
                 })
             time.sleep(random.uniform(1.0, 2.0))
         except Exception as e:
-            print(f"  [!] Web search error for '{q}': {e}")
+            warn(f"Web search error for '{q}': {e}")
     return results
 
 
@@ -845,7 +865,7 @@ def fetch_bazos(country="cz", keywords=None):
                 results.append({"url": href, "title": title, "text": f"{title} {desc}", "image_urls": img_urls})
             time.sleep(random.uniform(1, 2))
         except Exception as e:
-            print(f"  [!] Bazoš {country} error for '{kw}': {e}")
+            warn(f"Bazoš {country} error for '{kw}': {e}")
     return results
 
 
@@ -872,7 +892,7 @@ def fetch_sbazar(keywords=None):
                 results.append({"url": href, "title": title, "text": title, "image_urls": img_urls})
             time.sleep(random.uniform(1, 2))
         except Exception as e:
-            print(f"  [!] Sbazar error for '{kw}': {e}")
+            warn(f"Sbazar error for '{kw}': {e}")
     return results
 
 
@@ -897,7 +917,7 @@ def fetch_olx_pl(keywords=None):
                 results.append({"url": href, "title": title, "text": title, "image_urls": img_urls})
             time.sleep(random.uniform(1, 2))
         except Exception as e:
-            print(f"  [!] OLX.pl error for '{kw}': {e}")
+            warn(f"OLX.pl error for '{kw}': {e}")
     return results
 
 
@@ -942,7 +962,7 @@ def fetch_modry_konik(keywords=None):
                 results.append({"url": href, "title": title, "text": title, "image_urls": img_urls})
             time.sleep(random.uniform(1, 2))
         except Exception as e:
-            print(f"  [!] Modrý Koník error for '{kw}': {e}")
+            warn(f"Modrý Koník error for '{kw}': {e}")
     return results
 
 
@@ -983,16 +1003,28 @@ def fetch_aukro_playwright(country="cz", keywords=None):
         page = browser.new_page(user_agent=HEADERS["User-Agent"])
         for kw in (keywords or AUKRO_KEYWORDS):
             try:
-                url = f"https://www.{domain}/vysledky-hledani?q={quote(kw)}"
-                page.goto(url, timeout=30000)
-                page.wait_for_load_state("networkidle", timeout=15000)
-                time.sleep(1.5)
-                anchors = [a for a in page.query_selector_all("a[href]")
-                           if item_url_pattern.search(a.get_attribute("href") or "")]
+                # Real Aukro search: /vysledky-vyhledavani?text=... (the old
+                # /vysledky-hledani?q= path showed a page of RECOMMENDED items,
+                # which is where the car hoses and jackets came from).
+                paths = (["vysledky-vyhledavani"] if country == "cz"
+                         else ["vysledky-vyhladavania", "vysledky-vyhledavani"])
+                anchors = []
+                for path in paths:
+                    page.goto(f"https://{domain}/{path}?text={quote(kw)}", timeout=30000)
+                    page.wait_for_load_state("networkidle", timeout=15000)
+                    time.sleep(1.5)
+                    head = (page.title() or "").lower()
+                    if "just a moment" in head or "captcha" in head or "access denied" in head:
+                        warn(f"Aukro {country} served a bot check")
+                        break
+                    anchors = [a for a in page.query_selector_all("main a[href], a[href]")
+                               if item_url_pattern.search(a.get_attribute("href") or "")]
+                    if anchors:
+                        break
                 for a in anchors:
                     href = a.get_attribute("href") or ""
                     if href.startswith("/"):
-                        href = f"https://www.{domain}" + href
+                        href = f"https://{domain}" + href
                     title = (a.inner_text() or "").strip()
                     if not title:
                         title_attr = a.get_attribute("title")
@@ -1006,9 +1038,11 @@ def fetch_aukro_playwright(country="cz", keywords=None):
                         if src:
                             img_urls.append(src)
                     title = clean_title(title)
+                    if not (has_chair_word(title) or name_signal(title)):
+                        continue  # side panels / "recommended for you"
                     results.append({"url": href, "title": title, "text": title, "image_urls": img_urls})
             except Exception as e:
-                print(f"  [!] Aukro {country} error for '{kw}': {e}")
+                warn(f"Aukro {country} error for '{kw}': {e}")
             time.sleep(random.uniform(1.5, 3))
         browser.close()
     return results
@@ -1036,7 +1070,7 @@ def fetch_kleinanzeigen(keywords=None):
                 results.append({"url": href, "title": title, "text": title, "image_urls": img_urls})
             time.sleep(random.uniform(1, 2))
         except Exception as e:
-            print(f"  [!] Kleinanzeigen error for '{kw}': {e}")
+            warn(f"Kleinanzeigen error for '{kw}': {e}")
     return results
 
 
@@ -1088,7 +1122,7 @@ def fetch_facebook_marketplace(session_path=None, keywords=None, location="czech
                             img_urls.append(src)
                     results.append({"url": href, "title": title, "text": title, "image_urls": img_urls})
             except Exception as e:
-                print(f"  [!] Facebook Marketplace error for '{kw}': {e}")
+                warn(f"Facebook Marketplace error for '{kw}': {e}")
             time.sleep(random.uniform(3, 5))
         context.close()
         browser.close()
@@ -1115,7 +1149,7 @@ def fetch_vinted(country="cz", keywords=None):
     try:
         session.get(base + "/", timeout=20)  # sets the anonymous access cookie
     except Exception as e:
-        print(f"  [!] Vinted {country}: could not open homepage: {e}")
+        warn(f"Vinted {country}: could not open homepage: {e}")
         return results
     for kw in (keywords or VINTED_KEYWORDS.get(country, [])):
         try:
@@ -1143,8 +1177,169 @@ def fetch_vinted(country="cz", keywords=None):
                 })
             time.sleep(random.uniform(1.0, 2.0))
         except Exception as e:
-            print(f"  [!] Vinted {country} error for '{kw}': {e}")
+            warn(f"Vinted {country} error for '{kw}': {e}")
     return results
+
+
+# ---------------------------------------------------------------------------
+# Search-engine APIs and RSS feeds
+# ---------------------------------------------------------------------------
+# Why: GitHub's servers are datacenter IPs, and DuckDuckGo, Vinted, Aukro
+# and others commonly block those. Official search APIs are not scraping,
+# so they aren't blocked. Both below have a free monthly allowance with no
+# credit card; each is optional and only runs if its key is set as a GitHub
+# secret (TAVILY_API_KEY / SERPAPI_KEY). A usage counter (api_usage.json)
+# guarantees the free allowance is never exceeded, even with manual runs.
+
+API_USAGE_PATH = BASE_DIR / "api_usage.json"
+
+# Broad queries: a whole-web search engine finds ads on ANY site (Sbazar,
+# Vinted, Aukro, Facebook, dealers...), including sites we can't scrape.
+SEARCH_API_QUERIES = [
+    "T2306 židle",
+    "kodreta židle",
+    "kodreta stolička",
+    "kodreta křeslo",
+    "Chlebo kodreta židle",
+    "site:sbazar.cz kodreta",
+    "site:vinted.cz kodreta",
+    "site:aukro.cz kodreta",
+    "site:facebook.com kodreta marketplace",
+    "kodreta Stuhl",
+    "kodreta chair vintage",
+    "kodreta krzesło",
+]
+
+
+def _usage_ok(api, monthly_budget):
+    """Counts calls per API per calendar month; refuses beyond the budget."""
+    month = time.strftime("%Y-%m")
+    try:
+        usage = json.loads(API_USAGE_PATH.read_text())
+    except Exception:
+        usage = {}
+    used = usage.get(month, {}).get(api, 0)
+    if used >= monthly_budget:
+        warn(f"{api}: monthly free budget used ({used}/{monthly_budget}) — resumes next month")
+        return False
+    usage = {month: usage.get(month, {})}  # drop old months
+    usage[month][api] = used + 1
+    API_USAGE_PATH.write_text(json.dumps(usage, indent=1))
+    return True
+
+
+def _queries_this_run(every_n_hours):
+    """Rotate through SEARCH_API_QUERIES: one query per run, every N hours."""
+    hour = int(time.time() // 3600)
+    if hour % every_n_hours:
+        return []
+    return [SEARCH_API_QUERIES[(hour // every_n_hours) % len(SEARCH_API_QUERIES)]]
+
+
+def _web_hit(url, title, snippet, image=None):
+    if not url or not title or not is_listing_url(url):
+        return None
+    title = re.split(r"\s+[|\-–]\s+(Bazoš|Bazar|Sbazar|Aukro|Vinted|Facebook)", title)[0].strip()
+    return {"url": url, "title": title, "text": f"{title} {snippet or ''}",
+            "image_urls": [image] if image else [], "source": site_label(url)}
+
+
+def fetch_tavily():
+    """Tavily: 1,000 free searches/month, no card. 1 query per hourly run
+    (~720/month) leaves room for manual runs."""
+    key = os.environ.get("TAVILY_API_KEY")
+    if not key:
+        warn("not set up yet — add a free TAVILY_API_KEY secret (see SETUP.md)")
+        return []
+    results = []
+    for q in _queries_this_run(1):
+        if not _usage_ok("tavily", 950):
+            break
+        body = {"query": q, "max_results": 20, "search_depth": "basic", "time_range": "month"}
+        m = re.match(r"site:(\S+)\s+(.*)", q)
+        if m:  # Tavily takes domains as a parameter rather than "site:"
+            body = {**body, "query": m.group(2), "include_domains": [m.group(1)]}
+        try:
+            r = requests.post("https://api.tavily.com/search", json=body, timeout=30,
+                              headers={"Authorization": f"Bearer {key}"})
+            r.raise_for_status()
+            for it in r.json().get("results", []):
+                hit = _web_hit(it.get("url"), it.get("title"), it.get("content"))
+                if hit:
+                    results.append(hit)
+        except Exception as e:
+            warn(f"Tavily error for '{q}': {e}")
+    return results
+
+
+def fetch_serpapi():
+    """SerpApi: 250 free Google searches/month, no card. 1 query every 3
+    hours (~240/month), restricted to the past month for fresh ads."""
+    key = os.environ.get("SERPAPI_KEY")
+    if not key:
+        warn("not set up yet — add a free SERPAPI_KEY secret (see SETUP.md)")
+        return []
+    results = []
+    for q in _queries_this_run(3):
+        if not _usage_ok("serpapi", 245):
+            break
+        try:
+            r = requests.get("https://serpapi.com/search.json", timeout=30, params={
+                "engine": "google", "q": q, "api_key": key, "num": 20,
+                "hl": "cs", "gl": "cz", "tbs": "qdr:m"})
+            r.raise_for_status()
+            for it in r.json().get("organic_results", []):
+                hit = _web_hit(it.get("link"), it.get("title"), it.get("snippet"), it.get("thumbnail"))
+                if hit:
+                    results.append(hit)
+        except Exception as e:
+            warn(f"SerpApi error for '{q}': {e}")
+    return results
+
+
+def _unwrap_google_redirect(url):
+    from urllib.parse import urlparse, parse_qs
+    if "google." in url and "/url" in url:
+        q = parse_qs(urlparse(url).query)
+        return (q.get("url") or q.get("q") or [url])[0]
+    return url
+
+
+def fetch_rss_feeds(feeds=None):
+    """Google Alerts (or any RSS/Atom feed): set up alerts with 'Deliver to:
+    RSS feed' and paste the feed URLs into config.json "rss_feeds". Google
+    does the crawling; we only read Google's feed. Free, no key."""
+    import xml.etree.ElementTree as ET
+    results = []
+    for feed in (feeds if feeds is not None else []):
+        try:
+            r = requests.get(feed, headers=HEADERS, timeout=20)
+            r.raise_for_status()
+            root = ET.fromstring(r.content)
+            for el in root.iter():
+                tag = el.tag.split("}")[-1]
+                if tag not in ("entry", "item"):
+                    continue
+                title, link, summary = "", "", ""
+                for c in el:
+                    ct = c.tag.split("}")[-1]
+                    if ct == "title":
+                        title = re.sub(r"<[^>]+>", "", c.text or "")
+                    elif ct == "link":
+                        link = c.get("href") or (c.text or "")
+                    elif ct in ("content", "summary", "description"):
+                        summary = re.sub(r"<[^>]+>", "", c.text or "")
+                hit = _web_hit(_unwrap_google_redirect(link.strip()), html_unescape(title), html_unescape(summary))
+                if hit:
+                    results.append(hit)
+        except Exception as e:
+            warn(f"RSS feed error ({feed[:60]}…): {e}")
+    return results
+
+
+def html_unescape(t):
+    import html as _h
+    return _h.unescape(t or "").strip()
 
 
 # sbazar and modry_konik are deliberately NOT registered here:
@@ -1168,7 +1363,12 @@ SITE_MODULES = {
     "vinted_cz": lambda: fetch_vinted("cz"),
     "vinted_sk": lambda: fetch_vinted("sk"),
     "web_search": fetch_web_search,
+    "tavily": fetch_tavily,
+    "serpapi": fetch_serpapi,
 }
+# Sources whose results are links found by a search engine: these get the
+# listing-page filter, a source label and a fetched preview photo.
+SEARCH_SOURCES = ("web_search", "tavily", "serpapi", "rss")
 
 
 _DEAD_LISTING_PHRASES = [
@@ -1211,7 +1411,7 @@ def _analyze(url_of_image):
     try:
         return m.analyze_image_bytes(download_image(url_of_image))
     except Exception as e:
-        print(f"  [!] Could not analyze image {url_of_image[:80]}: {e}")
+        warn(f"Could not analyze image {url_of_image[:80]}: {e}")
         return None
 
 
@@ -1275,7 +1475,7 @@ def prune_found(found, config):
     kept, dropped = [], 0
     rescored = 0
     for item in found:
-        if str(item.get("site", "")).startswith("web") and not is_listing_url(item["url"]):
+        if (item.get("via_search") or str(item.get("site", "")).startswith("web")) and not is_listing_url(item["url"]):
             dropped += 1
             continue
         if item.get("image_url") and "category" not in item and rescored < RESCORE_PER_RUN:
@@ -1335,17 +1535,24 @@ def run_once(config):
     skipped = {}
 
     all_listings = []
-    for site_name in config.get("enabled_sites", list(SITE_MODULES.keys())):
-        fn = SITE_MODULES.get(site_name)
+    SOURCE_STATUS.clear()
+    sources = [(n, SITE_MODULES.get(n)) for n in config.get("enabled_sites", list(SITE_MODULES.keys()))]
+    if config.get("rss_feeds"):
+        sources.append(("rss", lambda: fetch_rss_feeds(config["rss_feeds"])))
+    for site_name, fn in sources:
         if not fn:
             print(f"  [!] Unknown site '{site_name}' in config, skipping.")
             continue
         print(f"Fetching {site_name}...")
+        _CURRENT_SOURCE["name"] = site_name
+        SOURCE_STATUS.setdefault(site_name, {"results": 0, "errors": []})
         try:
             listings = fn()
         except Exception as e:
-            print(f"  [!] {site_name} failed entirely: {e}")
+            warn(f"{site_name} failed entirely: {e}")
             listings = []
+        _CURRENT_SOURCE["name"] = None
+        SOURCE_STATUS[site_name]["results"] = len(listings)
         print(f"  -> {len(listings)} results")
         for l in listings:
             l["site"] = site_name
@@ -1377,8 +1584,11 @@ def run_once(config):
         text = l.get("text", "")
         reason = exclusion_reason(l["title"], l["url"])
         analysis = None
-        if l["site"] == "web_search":
-            l["site"] = "web:" + l.get("source", site_label(l["url"]))
+        engine = l["site"]
+        if engine in SEARCH_SOURCES:
+            via = {"web_search": "DuckDuckGo", "tavily": "Tavily", "serpapi": "Google", "rss": "Google Alerts"}[engine]
+            l["site"] = f"{l.get('source', site_label(l['url']))} (via {via})"
+            l["via_search"] = True
             if not l.get("image_urls") and (reason is None or name_signal(l["title"], text)):
                 img = fetch_preview_image(l["url"])
                 if img:
@@ -1398,7 +1608,10 @@ def run_once(config):
                 "image_url": (l.get("image_urls") or [None])[0], "tier": tier,
                 "keyword_hit": tier in ("exact", "keyword", "collection"), "found_at": now_str, "last_checked": now_str}
         _store_analysis(item, analysis)
+        item["via_search"] = bool(l.get("via_search"))
         found.append(item)
+        SOURCE_STATUS.setdefault(engine, {"results": 0, "errors": []})
+        SOURCE_STATUS[engine]["added"] = SOURCE_STATUS[engine].get("added", 0) + 1
         known_titles.add(title_key(l["title"]))
         new_listed += 1
         if tier in NOTIFY_TIERS:
@@ -1424,6 +1637,8 @@ def run_once(config):
     found.sort(key=lambda x: x["found_at"], reverse=True)
     save_found(found)
     save_seen(seen)
+    STATUS_PATH.write_text(json.dumps({"checked_at": time.strftime("%Y-%m-%d %H:%M:%S"),
+                                       "sources": SOURCE_STATUS}, ensure_ascii=False, indent=1))
     print(f"\nDone. {new_listed} new listing(s) added ({new_matches} strong/name matches"
           f"{', 1 notification sent' if new_matches and topic else ''}).")
     return {"new_matches": new_matches, "new_listed": new_listed, "total_new_listings": len(new_listings)}
