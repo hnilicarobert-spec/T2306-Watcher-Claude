@@ -1,11 +1,10 @@
 {
- "checked_at": "2026-10-05 17:36:18",
+ "checked_at": "2026-10-05 17:52:32",
  "config_errors": [],
  "sources": {
   "bazos_cz": {
    "results": 189,
-   "errors": [],
-   "added": 1
+   "errors": []
   },
   "bazos_sk": {
    "results": 173,
@@ -39,14 +38,12 @@
    "errors": []
   },
   "vinted_cz": {
-   "results": 241,
-   "errors": [],
-   "added": 20
+   "results": 0,
+   "errors": []
   },
   "vinted_sk": {
-   "results": 242,
-   "errors": [],
-   "added": 5
+   "results": 0,
+   "errors": []
   },
   "web_search": {
    "results": 0,
@@ -62,7 +59,8 @@
   },
   "serpapi": {
    "results": 0,
-   "errors": []
+   "errors": [],
+   "note": "searches every 3 hours — next in about 1 h"
   }
  }
 }
