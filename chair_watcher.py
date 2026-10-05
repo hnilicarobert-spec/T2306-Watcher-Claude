@@ -231,6 +231,25 @@ def send_notification(topic, title, message, url=None):
         print(f"  [!] Failed to send notification: {e}")
 
 
+# The exact chair: model number or its designer. Highest tier, always notified.
+EXACT_RE = re.compile(r"\bt[\s-]?2306\b|hre[sš][cč][aá]k")
+# Other Kodreta model codes seen on real listings (T-2403 armchair, T2407...).
+MODEL_CODE_RE = re.compile(r"\bt[\s-]?2[34]\d\d\b")
+
+
+def name_signal(title, text=""):
+    """'exact' (the T2306 itself), 'brand' (Kodreta/Chlebo/another model
+    code), or None. The model number may be anywhere in the ad; the
+    designer's surname only counts in the TITLE — in descriptions it was
+    usually just the seller's own name (see the fire-extinguisher ads)."""
+    ft, fx = fold(title), fold(text)
+    if re.search(r"\bt[\s-]?2306\b", ft + " " + fx) or re.search(r"hrescak", ft):
+        return "exact"
+    if text_has_strong_keyword(ft + " " + fx) or MODEL_CODE_RE.search(ft + " " + fx):
+        return "brand"
+    return None
+
+
 def text_has_strong_keyword(text):
     t = text.lower()
     return any(k in t for k in STRONG_KEYWORDS)
@@ -241,43 +260,194 @@ def text_has_weak_name_keyword(text):
     return any(k in t for k in WEAK_NAME_KEYWORDS)
 
 
-# Hard exclusion list: your chair is a chrome tubular frame with a fabric
-# sling seat/back. These are unambiguous category mismatches — a children's
-# chair, an office chair, or a garden/patio chair is never going to be it,
-# whatever an image score says. Checked BEFORE image scoring, so excluded
-# listings are skipped entirely (saves time too, not just precision).
-# Deliberately narrow and unambiguous: broader material terms like "dřevěná"
-# (wooden) are NOT included here, since this chair has wooden armrest
-# variants in the wild — a blanket wood exclusion would risk rejecting a
-# real near-match, which the image-similarity threshold is better placed to
-# judge case by case.
-EXCLUDE_KEYWORDS = [
-    # Children's furniture (CZ/SK/DE/PL)
-    "dětská", "dětské", "dětský", "detská", "detské", "detský",
-    "kinderstuhl", "kinderstoel", "fotelik dziecięcy", "krzesełko dziecięce",
-    "jedálenská stolička pre dieťa", "vysoká stolička", "jídelní židlička",
-    # Office furniture
-    "kancelářská", "kancelářské", "kancelárska", "kancelárske",
-    "bürostuhl", "fotel biurowy", "krzesło biurowe", "otočná stolička kancelárska",
-    # Plastic / resin garden furniture (as the PRIMARY material — distinct
-    # from a chrome-frame chair that just happens to be outdoors)
-    "plastová stolička", "plastová židle", "záhradná plastová", "zahradní plastová",
-    "gartenstuhl kunststoff", "krzesło plastikowe ogrodowe",
+# ---------------------------------------------------------------------------
+# Text filtering
+# ---------------------------------------------------------------------------
+# Everything below works on "folded" text: lowercase with accents stripped,
+# so one stem catches every Czech/Slovak inflection AND sellers who type
+# without diacritics. Confirmed necessary from real scan data: listings like
+# "Kancelarska stolicka", "Detska jedalenska stolička" and "kancelářských
+# židlí" all slipped past the old exact-word list.
+
+import unicodedata
+
+
+def fold(text):
+    t = unicodedata.normalize("NFKD", (text or "").lower())
+    return "".join(c for c in t if not unicodedata.combining(c))
+
+
+def _has_any(folded, stems):
+    return any(s in folded for s in stems)
+
+
+# A listing must actually be a CHAIR. Folded stems: židle/židlí/židlička,
+# stolička/stoličky/stoliček/stoličiek, křeslo/kreslo/kreslá, krzesło, Stuhl.
+# ("stolik"/"stolek" = small table, deliberately NOT here.)
+CHAIR_STEMS = ["zidl", "stolic", "kresl", "kresil", "krzes", "stuhl", "sessel", "chair"]
+
+# Other furniture from the collection (tables, sofas, loungers, coat racks...).
+FURNITURE_STEMS = ["stol", "stul", "pohovk", "sedack", "gauc", "lehatk", "lavic", "taburet",
+                   "vesiak", "vesak", "nabyt", "kreslo", "set", "souprav", "suprav", "tisch",
+                   "table", "sofa", "lamp", "regal", "polic"]
+# Exclusions that a Kodreta/Chlebo name OVERRIDES (it's part of the collection).
+COLLECTION_OVERRIDABLE = {"table, not a chair", "'pohovk'", "'gauc'", "'lehatk'", "'houpac'",
+                          "'hojdac'", "'skrin'", "'komoda'", "'barov'", "'otocn'", "wooden"}
+
+# "Wanted" ads — someone BUYING, not selling. Real scan data: your own
+# "Kúpim stoličku T2306" / "Koupím židli T2306" ads were the top 8 cards.
+WANTED_STEMS = ["kupim", "koupim", "hladam", "hledam", "shanim", "zhanam",
+                "poptavam", "suche ", "kaufe ", "szukam", "kupie "]
+
+# Hard category mismatches. Your chair = chrome tubular frame + fabric
+# sling seat and back. Every stem here was a real false positive.
+EXCLUDE_STEMS = [
+    # children
+    "detsk", "kinder", "dzieci", "peg perego", "cybex", "stokke", "chicco",
+    "vysoka stolick", "jidelni zidlick", "pre diet", "pro diet", "pre deti", "pro deti",
+    # office / swivel / wheels
+    "kancelar", "buro", "biurow", "otocn", "kolieck", "koleck", "herni ",
+    # bar & piano stools, fishing/camping
+    "barov", "barhock", "klavir", "rybar", "kemping", "camping",
+    # garden / outdoor
+    "zahrad", "ogrod", "garten", "teras", "venkovn", "vonkajs", "balkon",
+    "ratan", "pozink",
+    # medical aids
+    "zdravot", "vanov", "toaletn", "sprchov", "invalid",
+    # plastic seats (fabric AND leather versions are both wanted)
+    "plastov", "plast ",
+    # bentwood classics
+    "thonet",
+    # other furniture
+    "lehatk", "houpac", "hojdac", "pohovk", "gauc", "postel", "komoda", "skrin",
 ]
+# Wood words exclude ONLY when nothing metal is mentioned — a chrome chair
+# with wooden armrests is still worth seeing.
+WOOD_STEMS = ["dreven", "drevo", "dreva", "ohybane", "masiv", "teak", "bukov", "dubov", "rustik"]
+METAL_STEMS = ["chrom", "trubk", "trubic", "kov", "ocel", "metal", "stahl", "nerez"]
+# Table-only listings (no chair word) — e.g. the Kodreta coffee tables.
+TABLE_STEMS = ["stul", "stol ", "stolek", "stolik", "tisch", "table", "jidelni set", "jedalensky set"]
+
+# Bazoš files children's goods under its own subdomain regardless of wording.
+EXCLUDE_URL_SUBSTRINGS = ["deti.bazos.", "auto.bazos.", "motorky.bazos.", "stroje.bazos.",
+                          "sport.bazos.", "obleceni.bazos.", "oblecenie.bazos.", "pc.bazos.",
+                          "mobil.bazos.", "hudba.bazos.", "zvirata.bazos.", "zvierata.bazos."]
+
+_TON_RE = re.compile(r"\bton\b")
+# Word-START match only: "kov" must not match inside "bukového"/"teakového".
+_METAL_RE = re.compile(r"\b(" + "|".join(METAL_STEMS) + ")")
 
 
-def is_excluded(text):
-    t = text.lower()
-    return any(k in t for k in EXCLUDE_KEYWORDS)
+def is_wanted_ad(title):
+    f = " " + fold(title) + " "
+    return any((" " + s) in f for s in WANTED_STEMS)
+
+
+def has_chair_word(text):
+    return _has_any(fold(text), CHAIR_STEMS)
+
+
+def exclusion_reason(title, url=""):
+    """Returns why a listing is excluded, or None. Judged on the TITLE (what
+    the seller says the item is) — descriptions often mention unrelated
+    things ("also selling a table..."), which made description-based
+    exclusion too trigger-happy."""
+    f = fold(title) + " "
+    u = (url or "").lower()
+    if is_wanted_ad(title):
+        return "wanted ad"
+    for s in EXCLUDE_URL_SUBSTRINGS:
+        if s in u:
+            return f"category {s.split('.')[0]}"
+    for s in EXCLUDE_STEMS:
+        if s in f:
+            return f"'{s.strip()}'"
+    if _TON_RE.search(f):
+        return "'TON' bentwood"
+    if _has_any(f, WOOD_STEMS) and not _METAL_RE.search(f):
+        return "wooden"
+    if not has_chair_word(f) and _has_any(f, TABLE_STEMS):
+        return "table, not a chair"
+    return None
+
+
+def is_excluded(text, url=""):
+    return exclusion_reason(text, url) is not None
+
+
+def clean_title(raw):
+    """Aukro link text arrives as '1\\nReal title\\nŽiadne prihodenie\\n10,43 €'
+    — keep only the real title line."""
+    noise = ["prihoden", "prihoz", "kup ted", "kup teraz", "bezna cena", "rozbalen",
+             "pouzit", "zachovan", "top seller", "doprava zdarma"]
+    lines = [l.strip() for l in (raw or "").splitlines() if l.strip()]
+    good = []
+    for l in lines:
+        fl = fold(l)
+        if re.fullmatch(r"[\d\s.,%+-]+", l):
+            continue
+        if "€" in l or "kc" in fl.split() or re.search(r"\d\s*kc\b", fl):
+            continue
+        if any(n in fl for n in noise) and len(l) < 40:
+            continue
+        good.append(l)
+    return (good[0] if good else (lines[0] if lines else raw or "")).strip()
+
+
+def title_key(title):
+    """Identity for cross-site / repost de-duplication: same ad posted on
+    bazos.cz and bazos.sk, or re-posted under a new ID, collapses to one."""
+    return re.sub(r"[^a-z0-9]", "", fold(clean_title(title)))
 
 
 # ---------------------------------------------------------------------------
-# CLIP-based image similarity
+# CLIP image matching: similarity to your photos + "what is this a photo of"
 # ---------------------------------------------------------------------------
+# Real scan data showed photo-similarity alone CAN'T separate junk: genuine
+# chrome chairs scored 0.55-0.70, but kids' highchairs, wooden TON chairs and
+# office chairs also scored 0.55-0.60, and Aukro car parts/clothes 0.50-0.53.
+# No threshold works when the ranges overlap. So each photo is now also
+# CLASSIFIED with CLIP zero-shot: it's compared against text descriptions of
+# ~30 kinds of object and the closest kind wins. A photo of a car part is
+# far closer to "a photo of a car part" than to "a chrome tubular chair with
+# a fabric seat", whatever its raw similarity number to your reference
+# photos. This is relative (which description wins), so it doesn't depend
+# on hand-tuned absolute thresholds the way similarity does.
+
+CATEGORY_PROMPTS = {
+    "target": [
+        "a photo of a chair with a chrome tubular steel frame and a fabric seat and backrest",
+        "a photo of a vintage chrome tube chair with a canvas sling seat",
+        "a photo of a metal tube chair upholstered in woven beige fabric",
+        "a photo of a chair with a chrome tubular steel frame and a leather seat and backrest",
+        "a photo of a vintage chrome tube chair with a leather sling seat",
+    ],
+    "chrome_other": [
+        "a photo of a chrome cantilever chair",
+        "a photo of a chrome tubular armchair",
+        "a photo of a metal chair with a padded vinyl seat",
+    ],
+    "wooden_chair": ["a photo of a wooden chair", "a photo of a bentwood chair"],
+    "plastic_chair": ["a photo of a plastic chair"],
+    "office_chair": ["a photo of an office chair on wheels"],
+    "stool": ["a photo of a bar stool", "a photo of a stool"],
+    "kids": ["a photo of a baby high chair"],
+    "armchair_sofa": ["a photo of an upholstered armchair", "a photo of a sofa"],
+    "outdoor": ["a photo of rattan garden furniture", "a photo of a folding camping chair"],
+    "table": ["a photo of a table", "a photo of a dining table with chairs"],
+    "other": [
+        "a photo of a car part", "a photo of a car", "a photo of a motorcycle",
+        "a photo of clothing", "a photo of a tool", "a photo of an electronic device",
+        "a photo of wooden planks", "a photo of a household object",
+        "a photo of a fire extinguisher", "a photo of a lamp", "a photo of a bench",
+    ],
+}
+GOOD_CATEGORIES = ("target", "chrome_other")
+
 
 class ImageMatcher:
-    """Loads CLIP once, embeds the reference photos, and scores new images
-    against them by cosine similarity."""
+    """Loads CLIP once. For each listing photo returns similarity to your
+    reference photos AND zero-shot category probabilities."""
 
     def __init__(self, ref_dir):
         import open_clip
@@ -288,38 +458,140 @@ class ImageMatcher:
             "ViT-B-32", pretrained="laion2b_s34b_b79k"
         )
         self.model.eval()
+        tokenizer = open_clip.get_tokenizer("ViT-B-32")
+
+        self.prompt_cats = []
+        prompts = []
+        for cat, ps in CATEGORY_PROMPTS.items():
+            for p in ps:
+                prompts.append(p)
+                self.prompt_cats.append(cat)
+        with torch.no_grad():
+            t = self.model.encode_text(tokenizer(prompts))
+            self.text_emb = t / t.norm(dim=-1, keepdim=True)
+
         self.ref_embeddings = []
-        ref_files = list(Path(ref_dir).glob("*"))
-        if not ref_files:
-            sys.exit(f"No reference photos found in {ref_dir} — add at least one photo of the chair.")
         from PIL import Image
-        for f in ref_files:
+        for f in sorted(Path(ref_dir).glob("*")):
             if f.suffix.lower() not in (".jpg", ".jpeg", ".png", ".webp"):
                 continue
             try:
-                img = Image.open(f).convert("RGB")
-                emb = self._embed(img)
-                self.ref_embeddings.append(emb)
+                self.ref_embeddings.append(self._embed(Image.open(f).convert("RGB")))
             except Exception as e:
                 print(f"  [!] Could not load reference photo {f}: {e}")
         if not self.ref_embeddings:
             sys.exit("No usable reference photos could be loaded.")
         print(f"Loaded {len(self.ref_embeddings)} reference photo(s).")
+        # Sanity check printed to the Actions log: your own photos should
+        # classify as "target". If they don't, the prompts need adjusting.
+        for i, r in enumerate(self.ref_embeddings):
+            res = self._classify(r)
+            print(f"  reference photo {i + 1}: top category={res['category']} "
+                  f"p_target={res['p_target']:.2f} p_chrome={res['p_chrome']:.2f}")
 
     def _embed(self, pil_image):
         with self.torch.no_grad():
-            tensor = self.preprocess(pil_image).unsqueeze(0)
-            feats = self.model.encode_image(tensor)
+            feats = self.model.encode_image(self.preprocess(pil_image).unsqueeze(0))
             feats = feats / feats.norm(dim=-1, keepdim=True)
             return feats[0]
 
-    def score_image_bytes(self, img_bytes):
+    def _classify(self, emb):
+        logits = 100.0 * (emb @ self.text_emb.T)
+        probs = logits.softmax(dim=-1).tolist()
+        by_cat = {}
+        for cat, p in zip(self.prompt_cats, probs):
+            by_cat[cat] = by_cat.get(cat, 0.0) + p
+        top = max(by_cat, key=by_cat.get)
+        return {
+            "category": top,
+            "p_target": by_cat.get("target", 0.0),
+            "p_chrome": by_cat.get("target", 0.0) + by_cat.get("chrome_other", 0.0),
+        }
+
+    def analyze_image_bytes(self, img_bytes):
         from PIL import Image
         import io
-        img = Image.open(io.BytesIO(img_bytes)).convert("RGB")
-        emb = self._embed(img)
-        best = max(float(self.torch.cosine_similarity(emb.unsqueeze(0), r.unsqueeze(0))) for r in self.ref_embeddings)
-        return best
+        emb = self._embed(Image.open(io.BytesIO(img_bytes)).convert("RGB"))
+        sim = max(float(emb @ r) for r in self.ref_embeddings)
+        res = self._classify(emb)
+        res["sim"] = sim
+        return res
+
+    def score_image_bytes(self, img_bytes):  # kept for compatibility
+        return self.analyze_image_bytes(img_bytes)["sim"]
+
+
+_MATCHER = {"obj": None, "failed": False}
+
+
+def get_matcher():
+    """Loads CLIP lazily, once per run, only if something needs scoring."""
+    if _MATCHER["obj"] is None and not _MATCHER["failed"]:
+        try:
+            _MATCHER["obj"] = ImageMatcher(REF_DIR)
+        except Exception as e:
+            print(f"  [!] Image matcher unavailable: {e}")
+            _MATCHER["failed"] = True
+    return _MATCHER["obj"]
+
+
+def match_score(sim, p_target):
+    """One 0-1 number for ranking: 60% photo similarity (rescaled from its
+    real-world 0.45-0.80 range), 40% how confidently CLIP says 'chrome tube
+    chair with fabric seat'."""
+    if sim is None:
+        return None
+    s = min(1.0, max(0.0, (sim - 0.45) / 0.35))
+    return round(0.6 * s + 0.4 * (p_target or 0.0), 3)
+
+
+TIER_RANK = {"exact": 4, "keyword": 3, "strong": 2, "similar": 1, "collection": 0}
+NOTIFY_TIERS = ("exact", "keyword", "strong")
+
+
+def evaluate(title, text, url, analysis, config):
+    """Single source of truth for whether a listing is shown, and in which
+    tier. Used for new listings AND for re-checking stored ones, so old
+    entries obey the current rules too. Returns (tier or None, reason).
+
+    Tiers, best first:
+      exact      - names the T2306 (or Hreščák in the title) and is a chair
+      keyword    - a Kodreta/Chlebo chair
+      strong     - photo: chrome tube chair, very similar to your photos
+      similar    - photo: chrome tube chair, somewhat similar
+      collection - other Kodreta/Chlebo furniture (tables, sofas...), never notified
+    """
+    reason = exclusion_reason(title, url)
+    signal = name_signal(title, text)
+    chair = has_chair_word(title)
+    furniture = chair or _has_any(fold(title), FURNITURE_STEMS)
+    photo_is_junk = analysis is not None and analysis["category"] == "other"
+
+    if reason:
+        if signal and furniture and not photo_is_junk and reason in COLLECTION_OVERRIDABLE:
+            return "collection", f"collection piece ({reason})"
+        return None, f"excluded: {reason}"
+
+    if signal and not photo_is_junk:
+        if signal == "exact" and chair:
+            return "exact", "T2306 named"
+        if chair:
+            return "keyword", "Kodreta/Chlebo chair"
+        if furniture:
+            return "collection", "Kodreta/Chlebo furniture"
+
+    if analysis is None:
+        return None, "no photo and no name match"
+
+    sim, p_chrome, p_target = analysis["sim"], analysis["p_chrome"], analysis["p_target"]
+    looks_right = analysis["category"] in GOOD_CATEGORIES or p_chrome >= config.get("min_chrome_prob", 0.30)
+    if not looks_right:
+        return None, f"photo looks like: {analysis['category']}"
+    if sim >= config.get("similarity_threshold_notify", 0.55) and p_target >= config.get("min_target_prob_notify", 0.25):
+        return "strong", "photo match"
+    if sim >= config.get("similarity_threshold_list", 0.50):
+        return "similar", "photo similar"
+    return None, f"similarity {sim:.2f} too low"
 
 
 def download_image(url, timeout=15):
@@ -342,44 +614,96 @@ def download_image(url, timeout=15):
 # engine already puts the best matches first; there's little value digging
 # past page 1, and it's what keeps this step quick.
 WEB_SEARCH_QUERIES = [
-    "kodreta myjava stolička prodej",
-    "kodreta myjava kreslo predaj",
-    "Jaroslav Hreščák T2306 stolička",
-    "Viliam Chlebo kodreta křeslo bazar",
-    "site:aukro.cz kodreta",
-    "site:aukro.sk kodreta",
-    "site:sbazar.cz kodreta křeslo",
-    "site:olx.pl kodreta krzeslo",
-    "site:kleinanzeigen.de kodreta stuhl",
-    "site:vinted.com kodreta chair",
+    # The exact chair, anywhere
+    "T2306 židle", "T2306 stolička", "\"T 2306\" kodreta", "Hreščák kodreta židle",
+    # CZ/SK marketplaces (site: + chair word = individual ads, not overviews)
+    "site:bazos.cz kodreta židle", "site:bazos.sk kodreta stolička",
+    "site:sbazar.cz kodreta", "site:sbazar.cz chromová židle retro",
+    "site:aukro.cz kodreta", "site:aukro.sk kodreta",
+    "site:bazar.sk kodreta", "site:vinted.cz kodreta", "site:vinted.sk kodreta",
+    "site:onebid.cz kodreta",
+    # Czech/Slovak vintage-design dealers that carry Kodreta pieces
+    "site:pelmeldesign.cz Chlebo", "site:eterle.cz kodreta", "site:designrobot.cz Chlebo",
+    "site:studiolavish.com kodreta",
+    # International design marketplaces (Kodreta/Chlebo pieces confirmed on each)
+    "site:pamono.com kodreta", "site:1stdibs.com kodreta", "site:vinterior.co Chlebo",
+    "site:whoppah.com kodreta", "site:etsy.com kodreta chair", "site:ebay.com kodreta",
+    "site:design-market.eu kodreta", "site:catawiki.com kodreta",
+    # Neighbouring-country classifieds
+    "site:willhaben.at kodreta", "site:allegro.pl kodreta", "site:olx.pl kodreta",
+    "site:kleinanzeigen.de kodreta", "site:jofogas.hu kodreta",
 ]
 
+# Only INDIVIDUAL listing pages pass. Real scan data showed the old
+# "trust the whole domain" rule let through Bazoš category pages
+# ("Kodreta bazár - Nábytok | Bazoš.sk"), Sbazar search pages and a dozen
+# company-directory pages (dnb.com, zoznam.sk, cylex.sk...).
+LISTING_URL_PATTERNS = [re.compile(p) for p in [
+    r"bazos\.(cz|sk)/inzerat/\d+",
+    r"sbazar\.cz/(inzerat/\d+|[^/]+/detail/\d+)",
+    r"aukro\.(cz|sk)/[^/?#]+-\d{8,}",
+    r"bazar\.sk/.*\d{5,}",
+    r"vinted\.[a-z.]+/items/\d+",
+    r"onebid\.cz/.+/\d+",
+    r"pelmeldesign\.cz/(en/)?obchod/[^/]+",
+    r"eterle\.cz/eshop/produkt/",
+    r"designrobot\.cz/.+/produkt/",
+    r"studiolavish\.com/.*products/",
+    r"pamono\.[a-z.]+/[a-z0-9-]+$",
+    r"1stdibs\.com/.+/id-[a-z]_\d+",
+    r"vinterior\.co/.+sku\d+",
+    r"whoppah\.com/products/",
+    r"etsy\.com/[a-z/-]*listing/\d+",
+    r"ebay\.[a-z.]+/itm/",
+    r"design-market\.[a-z]+/\d+-",
+    r"catawiki\.com/.*/l/\d+",
+    r"willhaben\.at/iad/.+\d{6,}",
+    r"allegro\.(pl|cz)/(oferta|produkt)/",
+    r"olx\.pl/d/oferta/",
+    r"kleinanzeigen\.de/s-anzeige/",
+    r"jofogas\.hu/.+\.htm",
+    r"facebook\.com/marketplace/item/\d+",
+]]
 
-# Domains we trust to be actual marketplace listings — if a result is from
-# one of these, it's kept regardless of wording. Anything else (a
-# manufacturer's own site, Wikipedia, a blog post, a PDF catalog...) only
-# survives if it ALSO reads like someone actually selling something (see
-# _SELLING_LANGUAGE below). This is specifically what filters out things
-# like Kodreta's own company homepage showing up instead of a listing.
-_TRUSTED_LISTING_DOMAINS = [
-    "bazos.cz", "bazos.sk", "sbazar.cz", "aukro.cz", "aukro.sk",
-    "olx.pl", "kleinanzeigen.de", "vinted.com", "vinted.cz", "vinted.sk",
-    "1stdibs.com", "pamono.com", "etsy.com", "ebay.com", "ebay.de",
-    "ebay-kleinanzeigen.de", "modrykonik.sk", "sbazar.sk", "topanuncios",
-]
-_SELLING_LANGUAGE = [
-    "predám", "predam", "prodám", "prodam", "nabízím", "nabizim", "na predaj",
-    "na prodej", "kúpim", "kupim", "koupím", "koupim", "zu verkaufen",
-    "sprzedam", "for sale", "€", "kč", "eur", " zł", " kc ", " sk ",
-]
+
+def is_listing_url(url):
+    u = (url or "").lower()
+    return any(p.search(u) for p in LISTING_URL_PATTERNS)
 
 
-def _looks_like_a_listing(url, text):
-    domain = url.split("//")[-1].split("/")[0].lower()
-    if any(d in domain for d in _TRUSTED_LISTING_DOMAINS):
-        return True
-    t = text.lower()
-    return any(phrase in t for phrase in _SELLING_LANGUAGE)
+def site_label(url):
+    """Short source name for a web-search hit, e.g. 'pamono', 'sbazar'."""
+    host = (url.split("//")[-1].split("/")[0]).lower()
+    parts = [p for p in host.split(".") if p not in ("www", "en", "m", "cz", "sk", "com", "co", "pl", "de", "at", "hu", "eu", "uk")]
+    return parts[-1] if parts else host
+
+
+# Sites whose robots.txt disallows automated access: we link to them from
+# search results but never fetch their pages ourselves.
+NO_FETCH_DOMAINS = ("sbazar.cz", "facebook.com")
+
+
+def fetch_preview_image(url):
+    """The listing's own preview photo (og:image), so web-search hits can be
+    photo-checked like everything else. One request per NEW hit only."""
+    if any(d in url for d in NO_FETCH_DOMAINS):
+        return None
+    try:
+        r = requests.get(url, headers=HEADERS, timeout=12)
+        if r.status_code != 200:
+            return None
+        soup = BeautifulSoup(r.text, "html.parser")
+        tag = soup.find("meta", property="og:image") or soup.find("meta", attrs={"name": "twitter:image"})
+        img = tag.get("content") if tag else None
+        if img and img.startswith("//"):
+            img = "https:" + img
+        return img if img and img.startswith("http") else None
+    except Exception:
+        return None
+
+
+def _looks_like_a_listing(url, text):  # kept for compatibility
+    return is_listing_url(url)
 
 
 def _unwrap_duckduckgo_redirect(href):
@@ -410,7 +734,14 @@ def fetch_web_search(queries=None):
     of results only (DuckDuckGo already ranks best matches first).
     """
     results = []
-    for q in (queries or WEB_SEARCH_QUERIES):
+    if queries is None:
+        # The 4 exact-chair queries every run; the other ~30 rotate in
+        # thirds by the hour, so each is still searched every 3 hours
+        # without hammering the search engine (or slowing each run).
+        always, rest = WEB_SEARCH_QUERIES[:4], WEB_SEARCH_QUERIES[4:]
+        slot = int(time.time() // 3600) % 3
+        queries = always + rest[slot::3]
+    for q in queries:
         try:
             resp = requests.post(
                 "https://html.duckduckgo.com/html/",
@@ -431,15 +762,18 @@ def fetch_web_search(queries=None):
                 snippet = snippet_tag.get_text(strip=True) if snippet_tag else ""
                 if not href or not title:
                     continue
-                if not _looks_like_a_listing(href, f"{title} {snippet}"):
-                    continue  # e.g. the manufacturer's own homepage, not someone selling one
+                if not is_listing_url(href):
+                    continue  # company pages, category/search pages, directories
+                # Search engines append " - Bazoš.cz", " | Bazar" etc. to titles
+                title = re.split(r"\s+[|\-–]\s+(Bazoš|Bazar|Sbazar|Aukro|Vinted)", title)[0].strip()
                 results.append({
                     "url": href,
                     "title": title,
                     "text": f"{title} {snippet}",
-                    "image_urls": [],  # search snippets don't carry a usable photo
+                    "image_urls": [],  # filled in later from the page's preview image
+                    "source": site_label(href),
                 })
-            time.sleep(random.uniform(1.5, 2.5))
+            time.sleep(random.uniform(1.0, 2.0))
         except Exception as e:
             print(f"  [!] Web search error for '{q}': {e}")
     return results
@@ -637,6 +971,7 @@ def fetch_aukro_playwright(country="cz", keywords=None):
                         src = img_el.get_attribute("src") or img_el.get_attribute("data-src")
                         if src:
                             img_urls.append(src)
+                    title = clean_title(title)
                     results.append({"url": href, "title": title, "text": title, "image_urls": img_urls})
             except Exception as e:
                 print(f"  [!] Aukro {country} error for '{kw}': {e}")
@@ -726,6 +1061,58 @@ def fetch_facebook_marketplace(session_path=None, keywords=None, location="czech
     return results
 
 
+# Vinted's own web app is backed by a public JSON search API
+# (/api/v2/catalog/items) that needs only the anonymous session cookie the
+# homepage sets — no login. Built from documented third-party usage of this
+# API; it couldn't be tested live from here, so if the Actions log shows
+# "Vinted ... error" every run, the web-search module's site:vinted.cz /
+# site:vinted.sk queries still cover Vinted as a fallback.
+VINTED_KEYWORDS = {
+    "cz": ["kodreta", "t2306", "chromová židle", "trubková židle", "kovová židle retro", "retro židle chrom"],
+    "sk": ["kodreta", "t2306", "chrómová stolička", "kovová stolička retro", "retro stolička chróm", "trubková stolička"],
+}
+
+
+def fetch_vinted(country="cz", keywords=None):
+    base = f"https://www.vinted.{country}"
+    session = requests.Session()
+    session.headers.update({**HEADERS, "Accept": "application/json, text/plain, */*"})
+    results = []
+    try:
+        session.get(base + "/", timeout=20)  # sets the anonymous access cookie
+    except Exception as e:
+        print(f"  [!] Vinted {country}: could not open homepage: {e}")
+        return results
+    for kw in (keywords or VINTED_KEYWORDS.get(country, [])):
+        try:
+            resp = session.get(
+                f"{base}/api/v2/catalog/items",
+                params={"search_text": kw, "per_page": 48, "page": 1, "order": "newest_first"},
+                timeout=20,
+            )
+            resp.raise_for_status()
+            for it in resp.json().get("items", []):
+                item_id = it.get("id")
+                url = it.get("url") or (f"{base}/items/{item_id}" if item_id else None)
+                title = (it.get("title") or "").strip()
+                if not url or not title:
+                    continue
+                if url.startswith("/"):
+                    url = base + url
+                photo = it.get("photo") or {}
+                img = photo.get("url") or (photo.get("thumbnails") or [{}])[0].get("url")
+                results.append({
+                    "url": url,
+                    "title": title,
+                    "text": f"{title} {it.get('description') or ''}",
+                    "image_urls": [img] if img else [],
+                })
+            time.sleep(random.uniform(1.0, 2.0))
+        except Exception as e:
+            print(f"  [!] Vinted {country} error for '{kw}': {e}")
+    return results
+
+
 # sbazar and modry_konik are deliberately NOT registered here:
 # - Sbazar's robots.txt explicitly disallows automated access (confirmed
 #   directly against the live site) — scraping it would ignore that.
@@ -744,6 +1131,8 @@ SITE_MODULES = {
     "aukro_sk": lambda: fetch_aukro_playwright("sk"),
     "olx_pl": fetch_olx_pl,
     "kleinanzeigen_de": fetch_kleinanzeigen,
+    "vinted_cz": lambda: fetch_vinted("cz"),
+    "vinted_sk": lambda: fetch_vinted("sk"),
     "web_search": fetch_web_search,
 }
 
@@ -778,83 +1167,141 @@ def _listing_is_dead(url):
     return False
 
 
+RESCORE_PER_RUN = 300  # legacy entries re-analyzed per run (one-time migration)
+
+
+def _analyze(url_of_image):
+    m = get_matcher()
+    if not m or not url_of_image:
+        return None
+    try:
+        return m.analyze_image_bytes(download_image(url_of_image))
+    except Exception as e:
+        print(f"  [!] Could not analyze image {url_of_image[:80]}: {e}")
+        return None
+
+
+def _store_analysis(item, analysis):
+    if analysis is None:
+        item["score"] = None
+        item["match"] = None
+        return
+    item["score"] = round(analysis["sim"], 4)
+    item["p_target"] = round(analysis["p_target"], 3)
+    item["p_chrome"] = round(analysis["p_chrome"], 3)
+    item["category"] = analysis["category"]
+    item["match"] = match_score(analysis["sim"], analysis["p_target"])
+
+
+def _better(a, b):
+    """Which of two duplicate entries to keep: higher tier, then higher
+    match, then the newer one."""
+    rank = TIER_RANK
+    ka = (rank.get(a.get("tier"), -1), a.get("match") or a.get("score") or 0, a.get("found_at", ""))
+    kb = (rank.get(b.get("tier"), -1), b.get("match") or b.get("score") or 0, b.get("found_at", ""))
+    return a if ka >= kb else b
+
+
+def dedupe(items):
+    """Collapses entries sharing a URL or a title; keeps the best of each group."""
+    winners, index = [], {}
+    for it in items:
+        it["id"] = listing_id(it["url"])  # re-hash with the current URL normalizer
+        keys = ["id:" + it["id"]]
+        tk = title_key(it["title"])
+        if tk:
+            keys.append("t:" + tk)
+        hit = next((index[k] for k in keys if k in index), None)
+        if hit is None:
+            hit = len(winners)
+            winners.append(it)
+        else:
+            winners[hit] = _better(winners[hit], it)
+        for k in keys:
+            index[k] = hit
+    return winners
+
+
 def prune_found(found, config):
     """
-    Keeps the dashboard honest in two ways:
-    1. Relevance: re-checks every stored listing against the CURRENT
-       exclusion list and thresholds (using the score/keyword_hit already
-       stored, no network needed) — so tightening a threshold or adding an
-       exclusion term cleans up old entries too, not just future ones.
-    2. Liveness: a bounded batch of the longest-unchecked entries get a
-       real HTTP check each run, removing ones that are genuinely gone
-       (404, or an explicit "removed" page). Bounded on purpose so this
-       doesn't balloon scan time — it cycles through the whole list over
-       several runs instead of all at once.
+    Re-applies the CURRENT rules to every stored listing, so tightening the
+    rules also cleans up old entries — not just future ones:
+      1. title cleanup + de-duplication (same URL, re-posts, cz/sk mirrors)
+      2. web-search entries must be individual listing pages
+      3. legacy entries (stored before photo classification existed) get
+         their photo re-analyzed once, then go through evaluate() like new ones
+      4. a bounded liveness check removes listings that have been taken down
     """
-    notify_threshold = config.get("similarity_threshold_notify", 0.55)
-    list_threshold = config.get("similarity_threshold_list", 0.45)
+    before = len(found)
+    for it in found:
+        it["title"] = clean_title(it.get("title", ""))
+    found = dedupe(found)
+    dupes = before - len(found)
 
-    relevant = []
-    dropped_relevance = 0
+    kept, dropped = [], 0
+    rescored = 0
     for item in found:
-        text = item.get("title", "")
-        if is_excluded(text):
-            dropped_relevance += 1
+        if str(item.get("site", "")).startswith("web") and not is_listing_url(item["url"]):
+            dropped += 1
             continue
-        keyword_hit = item.get("keyword_hit", item.get("tier") == "keyword")
-        score = item.get("score")
-        if keyword_hit:
-            still_qualifies = True
-        elif score is not None and score >= list_threshold:
-            still_qualifies = True
-        else:
-            still_qualifies = False
-        if still_qualifies:
-            item.setdefault("keyword_hit", keyword_hit)
+        if item.get("image_url") and "category" not in item and rescored < RESCORE_PER_RUN:
+            # Cheap text check first: no need to download a photo for
+            # something the title already rules out.
+            if exclusion_reason(item["title"], item["url"]) is None:
+                a = _analyze(item["image_url"])
+                if a is not None:  # never wipe the old score on a failed download/model
+                    _store_analysis(item, a)
+                    rescored += 1
+        analysis = None
+        if item.get("category"):
+            analysis = {"sim": item["score"], "p_target": item.get("p_target", 0.0),
+                        "p_chrome": item.get("p_chrome", 0.0), "category": item["category"]}
+        elif item.get("image_url") and item.get("score") is not None:
+            # Not re-analyzed yet (matcher unavailable or batch cap) — keep
+            # the old similarity-only judgment for now.
+            # Without a classification, only trust it if the title says chair.
+            if has_chair_word(item["title"]):
+                cat = "target"
+            elif name_signal(item["title"], item.get("text", "")):
+                cat = "unclassified"  # possibly a collection piece; not treated as junk
+            else:
+                cat = "other"
+            analysis = {"sim": item["score"], "p_target": 0.0, "p_chrome": 1.0 if cat == "target" else 0.0,
+                        "category": cat}
+        tier, _ = evaluate(item["title"], item.get("text", ""), item["url"], analysis, config)
+        if tier:
+            item["tier"] = tier
+            item["keyword_hit"] = tier in ("exact", "keyword", "collection")
             item.setdefault("last_checked", item.get("found_at"))
-            relevant.append(item)
+            kept.append(item)
         else:
-            dropped_relevance += 1
+            dropped += 1
 
-    # Liveness check: a bounded batch of the longest-unchecked entries,
-    # each checked exactly once.
-    relevant.sort(key=lambda x: x.get("last_checked", ""))
-    to_check = relevant[:LIVENESS_CHECK_BATCH_SIZE]
+    kept.sort(key=lambda x: x.get("last_checked") or "")
     dead_ids = set()
-    for item in to_check:
+    for item in kept[:LIVENESS_CHECK_BATCH_SIZE]:
         if _listing_is_dead(item["url"]) is True:
             dead_ids.add(item["id"])
         else:
             item["last_checked"] = time.strftime("%Y-%m-%d %H:%M:%S")
+    final = [i for i in kept if i["id"] not in dead_ids]
 
-    final = [item for item in relevant if item["id"] not in dead_ids]
-
-    if dropped_relevance or dead_ids:
-        print(f"  Pruned {dropped_relevance} listing(s) no longer meeting current rules, "
-              f"{len(dead_ids)} dead link(s) (checked {len(to_check)}).")
+    print(f"  Clean-up: {dupes} duplicate(s) merged, {dropped} no longer matching the rules, "
+          f"{len(dead_ids)} dead link(s), {rescored} older photo(s) re-analyzed. {len(final)} kept.")
     return final
 
 
 def run_once(config):
     seen = load_seen()
-    found = load_found()
-    found = prune_found(found, config)
-    matcher = None
-    # Two tiers: "notify" = confident enough to push a notification;
-    # "list" = looser — shown in the dashboard for you to eyeball, but no push.
-    # This is what lets you browse "similar chairs" without getting spammed.
-    notify_threshold = config.get("similarity_threshold_notify", config.get("similarity_threshold", 0.30))
-    list_threshold = config.get("similarity_threshold_list", 0.20)
+    found = prune_found(load_found(), config)
+    known_titles = {title_key(i["title"]) for i in found}
     topic = config.get("ntfy_topic")
-    new_matches = 0
-    new_listed = 0
-    total_new_listings = 0
-    notify_worthy = []  # titles of this run's notify-tier matches, for the single batched notification at the end
-
-    enabled_sites = config.get("enabled_sites", list(SITE_MODULES.keys()))
+    new_matches, new_listed = 0, 0
+    notify_worthy = []
+    skipped = {}
 
     all_listings = []
-    for site_name in enabled_sites:
+    for site_name in config.get("enabled_sites", list(SITE_MODULES.keys())):
         fn = SITE_MODULES.get(site_name)
         if not fn:
             print(f"  [!] Unknown site '{site_name}' in config, skipping.")
@@ -865,114 +1312,87 @@ def run_once(config):
         except Exception as e:
             print(f"  [!] {site_name} failed entirely: {e}")
             listings = []
-        print(f"  -> {len(listings)} listings seen (before de-dup)")
+        print(f"  -> {len(listings)} results")
         for l in listings:
             l["site"] = site_name
+            l["title"] = clean_title(l.get("title", ""))
         all_listings.extend(listings)
 
     if config.get("facebook_session_path"):
-        fb_listings = fetch_facebook_marketplace(
-            config["facebook_session_path"],
-            location=config.get("facebook_location", "czech-republic"),
-        )
-        for l in fb_listings:
+        for l in fetch_facebook_marketplace(config["facebook_session_path"],
+                                            location=config.get("facebook_location", "czech-republic")):
             l["site"] = "facebook_marketplace"
-        all_listings.extend(fb_listings)
+            all_listings.append(l)
 
-    # De-duplicate by URL first: the same ad routinely gets returned by
-    # several different search queries (e.g. both "kodreta" and "t2306"
-    # find the same listing), and without this step each occurrence would
-    # be scored and notified separately — the same ad pinging your phone
-    # several times in one run. Keep the first occurrence of each URL.
-    deduped_by_url = {}
+    # One entry per URL AND per title — the same ad found by several
+    # queries, re-posted under a new ID, or mirrored on bazos.cz + bazos.sk.
+    unique, keys = [], set()
     for l in all_listings:
-        lid = listing_id(l["url"])
-        if lid not in deduped_by_url:
-            deduped_by_url[lid] = l
-    deduped_listings = list(deduped_by_url.values())
-
-    new_listings = [l for l in deduped_listings if listing_id(l["url"]) not in seen]
-    total_new_listings = len(new_listings)
-    print(f"\n{len(all_listings)} raw result(s) -> {len(deduped_listings)} unique listing(s) -> "
-          f"{total_new_listings} new (not seen before).\n")
-
-    if new_listings and config.get("use_image_matching", True):
-        matcher = ImageMatcher(REF_DIR)
+        lid, tk = listing_id(l["url"]), title_key(l["title"])
+        if lid in keys or tk in keys:
+            continue
+        keys.update({lid, tk})
+        unique.append(l)
+    new_listings = [l for l in unique
+                    if listing_id(l["url"]) not in seen and title_key(l["title"]) not in known_titles]
+    print(f"\n{len(all_listings)} raw -> {len(unique)} unique -> {len(new_listings)} new.\n")
 
     for l in new_listings:
         lid = listing_id(l["url"])
         seen.add(lid)
-        if is_excluded(l["text"]):
-            print(f"  [{l['site']}] {l['title'][:60]!r} -> excluded (category mismatch)")
+        text = l.get("text", "")
+        reason = exclusion_reason(l["title"], l["url"])
+        analysis = None
+        if l["site"] == "web_search":
+            l["site"] = "web:" + l.get("source", site_label(l["url"]))
+            if not l.get("image_urls") and (reason is None or name_signal(l["title"], text)):
+                img = fetch_preview_image(l["url"])
+                if img:
+                    l["image_urls"] = [img]
+        if config.get("use_image_matching", True) and l.get("image_urls") and (reason is None or name_signal(l["title"], text)):
+            analysis = _analyze(l["image_urls"][0])
+        tier, why = evaluate(l["title"], text, l["url"], analysis, config)
+        sc = f"sim={analysis['sim']:.2f} cat={analysis['category']} p_target={analysis['p_target']:.2f}" if analysis else "no photo"
+        print(f"  [{l['site']}] {l['title'][:55]!r} | {sc} -> {tier or 'skip'} ({why})")
+        if not tier:
+            bucket = why.split(":")[0]
+            skipped[bucket] = skipped.get(bucket, 0) + 1
             continue
 
-        keyword_hit = text_has_strong_keyword(l["text"])
-        weak_name_hit = text_has_weak_name_keyword(l["text"])  # logged only, doesn't auto-qualify a tier
-        best_score = None
-        if matcher and l.get("image_urls"):
-            try:
-                img_bytes = download_image(l["image_urls"][0])
-                best_score = matcher.score_image_bytes(img_bytes)
-            except Exception as e:
-                print(f"  [!] Could not score image for {l['url']}: {e}")
+        now_str = time.strftime("%Y-%m-%d %H:%M:%S")
+        item = {"id": lid, "url": l["url"], "title": l["title"], "text": text[:500], "site": l["site"],
+                "image_url": (l.get("image_urls") or [None])[0], "tier": tier,
+                "keyword_hit": tier in ("exact", "keyword", "collection"), "found_at": now_str, "last_checked": now_str}
+        _store_analysis(item, analysis)
+        found.append(item)
+        known_titles.add(title_key(l["title"]))
+        new_listed += 1
+        if tier in NOTIFY_TIERS:
+            new_matches += 1
+            notify_worthy.append(("⭐ " if tier == "exact" else "") + l["title"])
 
-        if keyword_hit:
-            tier = "keyword"
-        elif best_score is not None and best_score >= notify_threshold:
-            tier = "strong"
-        elif best_score is not None and best_score >= list_threshold:
-            tier = "similar"
-        else:
-            tier = None
+    if skipped:
+        print("\nSkipped by reason: " + ", ".join(f"{k}={v}" for k, v in sorted(skipped.items(), key=lambda x: -x[1])))
 
-        score_str = f"{best_score:.3f}" if best_score is not None else "n/a"
-        weak_note = " | weak_name_hit=True (not auto-trusted)" if weak_name_hit and not keyword_hit else ""
-        print(f"  [{l['site']}] {l['title'][:60]!r} | keyword_hit={keyword_hit} | score={score_str}{weak_note} -> {tier or 'skip'}")
-
-        if tier:
-            now_str = time.strftime("%Y-%m-%d %H:%M:%S")
-            found.append({
-                "id": lid,
-                "url": l["url"],
-                "title": l["title"],
-                "site": l["site"],
-                "image_url": (l.get("image_urls") or [None])[0],
-                "score": best_score,
-                "tier": tier,
-                "keyword_hit": keyword_hit,
-                "found_at": now_str,
-                "last_checked": now_str,
-            })
-            new_listed += 1
-            if tier in ("keyword", "strong"):
-                new_matches += 1
-                notify_worthy.append(l["title"])
-
-    # One notification for the whole run, not one per listing — a run that
-    # turns up several matches at once used to fire a separate push for
-    # each, which is what was flooding your phone. This fires at most once
-    # per scan, summarizing however many were found.
+    # One notification per scan, summarizing everything found.
     if new_matches and topic:
-        if new_matches == 1:
-            message = notify_worthy[0]
-        else:
-            preview = "\n".join(f"• {t}" for t in notify_worthy[:5])
-            more = f"\n…and {new_matches - 5} more" if new_matches > 5 else ""
-            message = f"{preview}{more}"
-        click_url = config.get("site_url")  # optional: your GitHub Pages URL, if set in config.json
+        preview = "\n".join(f"• {t}" for t in notify_worthy[:5])
+        more = f"\n…and {new_matches - 5} more" if new_matches > 5 else ""
+        exact = any(t.startswith("⭐") for t in notify_worthy)
         send_notification(
             topic,
-            title=f"{new_matches} possible chair match{'es' if new_matches != 1 else ''} found",
-            message=message,
-            url=click_url,
+            title=("T2306 found! " if exact else "") +
+                  f"{new_matches} possible chair match{'es' if new_matches != 1 else ''}",
+            message=preview + more,
+            url=config.get("site_url"),
         )
 
     found.sort(key=lambda x: x["found_at"], reverse=True)
     save_found(found)
     save_seen(seen)
-    print(f"\nDone. {new_matches} match(es) found this run ({'1 notification sent' if new_matches and topic else 'no notification'}), "
-          f"{new_listed} listing(s) added to dashboard, out of {total_new_listings} new listings checked.")
-    return {"new_matches": new_matches, "new_listed": new_listed, "total_new_listings": total_new_listings}
+    print(f"\nDone. {new_listed} new listing(s) added ({new_matches} strong/name matches"
+          f"{', 1 notification sent' if new_matches and topic else ''}).")
+    return {"new_matches": new_matches, "new_listed": new_listed, "total_new_listings": len(new_listings)}
 
 
 def main():
