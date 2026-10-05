@@ -1,18 +1,25 @@
 {
   "ntfy_topic": null,
-  "similarity_threshold_notify": 0.30,
-  "similarity_threshold_list": 0.20,
+  "site_url": null,
+  "similarity_threshold_notify": 0.55,
+  "similarity_threshold_list": 0.5,
   "use_image_matching": true,
   "enabled_sites": [
     "bazos_cz",
     "bazos_sk",
-    "sbazar",
-    "modry_konik",
     "aukro_cz",
     "aukro_sk",
     "olx_pl",
-    "kleinanzeigen_de"
+    "kleinanzeigen_de",
+    "vinted_cz",
+    "vinted_sk",
+    "web_search",
+    "tavily",
+    "serpapi"
   ],
   "facebook_session_path": null,
-  "facebook_location": "czech-republic"
+  "facebook_location": "czech-republic",
+  "min_chrome_prob": 0.3,
+  "min_target_prob_notify": 0.25,
+  "rss_feeds": []
 }
