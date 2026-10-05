@@ -1,5 +1,29 @@
 [
   {
+    "id": "398674ac49302448",
+    "url": "https://nabytek.bazos.cz/inzerat/224665418/zidle-skorepina-calounene-kresilko-na-koleckach-za-500-kc.php",
+    "title": "Židle skořepina čalouněné křesílko na kolečkách za 400 kč",
+    "site": "bazos_cz",
+    "image_url": "https://www.bazos.cz/img/1t/418/224665418.jpg?t=1791168518",
+    "score": 0.5738033056259155,
+    "tier": "strong",
+    "keyword_hit": false,
+    "found_at": "2026-10-05 03:25:20",
+    "last_checked": "2026-10-05 03:25:20"
+  },
+  {
+    "id": "3013e055e7c0f473",
+    "url": "https://nabytek.bazos.cz/inzerat/224665433/zidle-kovova-calounena-latkou-moderni-pouzita-300-kc.php",
+    "title": "Židle kovová čalouněná látkou moderní použitá 300 kč",
+    "site": "bazos_cz",
+    "image_url": "https://www.bazos.cz/img/1t/433/224665433.jpg?t=1791168567",
+    "score": 0.703245997428894,
+    "tier": "strong",
+    "keyword_hit": false,
+    "found_at": "2026-10-05 03:25:19",
+    "last_checked": "2026-10-05 03:25:19"
+  },
+  {
     "id": "652d7ad82021fb80",
     "url": "https://www.aukro.sk/objimka-plynovych-rukojeti-rychlopalu-7094369066",
     "title": "1\nobjímka plynových rukojetí - rýchlopalu\nŽiadne prihodenie\n6,14 €",
@@ -216,18 +240,6 @@
     "last_checked": "2026-10-04 21:04:13"
   },
   {
-    "id": "2e40ee40b1f87814",
-    "url": "https://www.aukro.sk/starozitna-damska-kosielka-c-12-7136052004",
-    "title": "1\nStarožitná dámska košieľka č. 12\nŽiadne prihodenie\n7,14 €",
-    "site": "aukro_sk",
-    "image_url": "https://cdn.aukro.sk/images/sk1790439780629/thumbnail/starozitna-damska-kosielka-c-12-297871807.jpeg",
-    "score": 0.5275251865386963,
-    "tier": "similar",
-    "keyword_hit": false,
-    "found_at": "2026-10-04 19:54:37",
-    "last_checked": "2026-10-04 19:54:37"
-  },
-  {
     "id": "c9d01cb46f3c7833",
     "url": "https://nabytek.bazos.cz/inzerat/224658087/robustni-jidelni-zidle-ton-krasny-stav-4-ks.php",
     "title": "Robustní jídelní židle TON, krásný stav, 4 ks.",
@@ -237,7 +249,7 @@
     "tier": "strong",
     "keyword_hit": false,
     "found_at": "2026-10-04 19:54:21",
-    "last_checked": "2026-10-04 19:54:21"
+    "last_checked": "2026-10-05 03:20:46"
   },
   {
     "id": "cd5cc8b0cf3a11f2",
@@ -249,7 +261,7 @@
     "tier": "strong",
     "keyword_hit": false,
     "found_at": "2026-10-04 19:54:20",
-    "last_checked": "2026-10-04 19:54:20"
+    "last_checked": "2026-10-05 03:20:46"
   },
   {
     "id": "1345b6f12cc4f0c7",
@@ -261,7 +273,7 @@
     "tier": "strong",
     "keyword_hit": false,
     "found_at": "2026-10-04 19:54:19",
-    "last_checked": "2026-10-04 19:54:19"
+    "last_checked": "2026-10-05 03:20:45"
   },
   {
     "id": "2ce017a2c1c53ff3",
@@ -525,7 +537,7 @@
     "tier": "keyword",
     "keyword_hit": true,
     "found_at": "2026-10-04 02:49:04",
-    "last_checked": "2026-10-04 20:14:12"
+    "last_checked": "2026-10-05 03:20:51"
   },
   {
     "id": "3cac81c7f471c466",
@@ -537,7 +549,7 @@
     "tier": "similar",
     "keyword_hit": false,
     "found_at": "2026-10-04 02:48:46",
-    "last_checked": "2026-10-04 20:14:11"
+    "last_checked": "2026-10-05 03:20:51"
   },
   {
     "id": "b945514b74ab5f0b",
@@ -549,55 +561,7 @@
     "tier": "similar",
     "keyword_hit": false,
     "found_at": "2026-10-04 02:48:45",
-    "last_checked": "2026-10-04 20:14:10"
-  },
-  {
-    "id": "d72815de1af3b4d2",
-    "url": "https://www.zoznam.sk/firma/86786/Kodreta-furniture-Myjava",
-    "title": "Kodreta furniture, s.r.o., Myjava | Zoznam.sk",
-    "site": "web_search",
-    "image_url": null,
-    "score": null,
-    "tier": "keyword",
-    "keyword_hit": true,
-    "found_at": "2026-10-03 20:42:07",
-    "last_checked": "2026-10-05 02:19:05"
-  },
-  {
-    "id": "32406e6be2d40559",
-    "url": "https://www.dnb.com/business-directory/company-profiles.kodreta_furniture_sro.5147031718ebc9d12b163d6f861f9906.html",
-    "title": "KODRETA furniture, s.r.o. Company Profile | Myjava, Trenčiansky kraj ...",
-    "site": "web_search",
-    "image_url": null,
-    "score": null,
-    "tier": "keyword",
-    "keyword_hit": true,
-    "found_at": "2026-10-03 20:42:07",
-    "last_checked": "2026-10-05 02:19:05"
-  },
-  {
-    "id": "5806bffb99e32a70",
-    "url": "https://www.zlatestranky.sk/firmy/Myjava/H768100/KODRETA+Slovakia,+s.r.o./",
-    "title": "KODRETA Slovakia, s.r.o., Myjava - Tel.: +421244454... >> Nábytok ...",
-    "site": "web_search",
-    "image_url": null,
-    "score": null,
-    "tier": "keyword",
-    "keyword_hit": true,
-    "found_at": "2026-10-03 20:42:07",
-    "last_checked": "2026-10-05 02:19:09"
-  },
-  {
-    "id": "31c4eac421920458",
-    "url": "https://www.dnb.com/business-directory/company-profiles.kodreta_furniture_sro.5272c7745835147d771da7b33aa13ffd.html",
-    "title": "KODRETA furniture, s.r.o. Company Profile | Stará Myjava, PT Javorina ...",
-    "site": "web_search",
-    "image_url": null,
-    "score": null,
-    "tier": "keyword",
-    "keyword_hit": true,
-    "found_at": "2026-10-03 20:42:07",
-    "last_checked": "2026-10-05 02:19:09"
+    "last_checked": "2026-10-05 03:20:50"
   },
   {
     "id": "4075411471cdec6d",
@@ -658,6 +622,54 @@
     "keyword_hit": true,
     "found_at": "2026-10-03 20:42:07",
     "last_checked": "2026-10-05 01:18:39"
+  },
+  {
+    "id": "d72815de1af3b4d2",
+    "url": "https://www.zoznam.sk/firma/86786/Kodreta-furniture-Myjava",
+    "title": "Kodreta furniture, s.r.o., Myjava | Zoznam.sk",
+    "site": "web_search",
+    "image_url": null,
+    "score": null,
+    "tier": "keyword",
+    "keyword_hit": true,
+    "found_at": "2026-10-03 20:42:07",
+    "last_checked": "2026-10-05 02:19:05"
+  },
+  {
+    "id": "32406e6be2d40559",
+    "url": "https://www.dnb.com/business-directory/company-profiles.kodreta_furniture_sro.5147031718ebc9d12b163d6f861f9906.html",
+    "title": "KODRETA furniture, s.r.o. Company Profile | Myjava, Trenčiansky kraj ...",
+    "site": "web_search",
+    "image_url": null,
+    "score": null,
+    "tier": "keyword",
+    "keyword_hit": true,
+    "found_at": "2026-10-03 20:42:07",
+    "last_checked": "2026-10-05 02:19:05"
+  },
+  {
+    "id": "5806bffb99e32a70",
+    "url": "https://www.zlatestranky.sk/firmy/Myjava/H768100/KODRETA+Slovakia,+s.r.o./",
+    "title": "KODRETA Slovakia, s.r.o., Myjava - Tel.: +421244454... >> Nábytok ...",
+    "site": "web_search",
+    "image_url": null,
+    "score": null,
+    "tier": "keyword",
+    "keyword_hit": true,
+    "found_at": "2026-10-03 20:42:07",
+    "last_checked": "2026-10-05 02:19:09"
+  },
+  {
+    "id": "31c4eac421920458",
+    "url": "https://www.dnb.com/business-directory/company-profiles.kodreta_furniture_sro.5272c7745835147d771da7b33aa13ffd.html",
+    "title": "KODRETA furniture, s.r.o. Company Profile | Stará Myjava, PT Javorina ...",
+    "site": "web_search",
+    "image_url": null,
+    "score": null,
+    "tier": "keyword",
+    "keyword_hit": true,
+    "found_at": "2026-10-03 20:42:07",
+    "last_checked": "2026-10-05 02:19:09"
   },
   {
     "id": "c62450fbd681ba7f",
@@ -1653,7 +1665,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:50:17",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 20:14:15"
+    "last_checked": "2026-10-05 03:20:54"
   },
   {
     "id": "47fd07ff50287266",
@@ -1665,7 +1677,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:50:16",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 20:14:14"
+    "last_checked": "2026-10-05 03:20:54"
   },
   {
     "id": "c51173b8a284bde4",
@@ -1689,7 +1701,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:50:12",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 20:14:13"
+    "last_checked": "2026-10-05 03:20:52"
   },
   {
     "id": "799c4bf2c888c386",
@@ -1701,7 +1713,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:50:11",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 20:14:13"
+    "last_checked": "2026-10-05 03:20:53"
   },
   {
     "id": "10826cc397bea39c",
@@ -1713,7 +1725,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:50:08",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 20:14:08"
+    "last_checked": "2026-10-05 03:20:49"
   },
   {
     "id": "c4fb027ba9a53b66",
@@ -1725,7 +1737,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:50:08",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 20:14:10"
+    "last_checked": "2026-10-05 03:20:51"
   },
   {
     "id": "3ae376f9bfd45f54",
@@ -1737,7 +1749,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:50:07",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 20:14:09"
+    "last_checked": "2026-10-05 03:20:49"
   },
   {
     "id": "8ac578e8b156b9a2",
@@ -1749,7 +1761,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:50:06",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 19:50:05"
+    "last_checked": "2026-10-05 03:20:44"
   },
   {
     "id": "61e8e8dd58de8a7f",
@@ -1761,7 +1773,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:50:05",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 19:50:03"
+    "last_checked": "2026-10-05 03:20:42"
   },
   {
     "id": "cfbc7eeee9e09e0f",
@@ -1773,7 +1785,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:49:53",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 19:50:02"
+    "last_checked": "2026-10-05 03:20:41"
   },
   {
     "id": "b1dc82ac2e765a19",
@@ -1785,7 +1797,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:49:53",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 19:50:04"
+    "last_checked": "2026-10-05 03:20:44"
   },
   {
     "id": "41a3b42961dd3e9a",
@@ -1797,7 +1809,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:49:50",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 19:50:03"
+    "last_checked": "2026-10-05 03:20:43"
   },
   {
     "id": "ab8d1613225d1e13",
@@ -1812,6 +1824,18 @@
     "last_checked": "2026-10-05 02:19:15"
   },
   {
+    "id": "09847b66fe8f6e00",
+    "url": "https://nabytek.bazos.cz/inzerat/223487546/glenn-barova-stolicka-6-ks.php",
+    "title": "GLENN Barová stolička 6 ks",
+    "site": "bazos_cz",
+    "image_url": "https://www.bazos.cz/img/1t/546/223487546.jpg",
+    "score": 0.5129579305648804,
+    "tier": "similar",
+    "found_at": "2026-10-03 16:49:47",
+    "keyword_hit": false,
+    "last_checked": "2026-10-05 03:20:41"
+  },
+  {
     "id": "21465ecb75005b60",
     "url": "https://nabytek.bazos.cz/inzerat/223592788/ikea-franklin-barova-stolicka-skladaci-chrom-briza.php",
     "title": "IKEA Franklin, barová stolička, skládací, chrom / bříza",
@@ -1822,18 +1846,6 @@
     "found_at": "2026-10-03 16:49:47",
     "keyword_hit": false,
     "last_checked": "2026-10-05 02:19:13"
-  },
-  {
-    "id": "09847b66fe8f6e00",
-    "url": "https://nabytek.bazos.cz/inzerat/223487546/glenn-barova-stolicka-6-ks.php",
-    "title": "GLENN Barová stolička 6 ks",
-    "site": "bazos_cz",
-    "image_url": "https://www.bazos.cz/img/1t/546/223487546.jpg",
-    "score": 0.5129579305648804,
-    "tier": "similar",
-    "found_at": "2026-10-03 16:49:47",
-    "keyword_hit": false,
-    "last_checked": "2026-10-04 19:50:02"
   },
   {
     "id": "1aff8f18520fcc36",
