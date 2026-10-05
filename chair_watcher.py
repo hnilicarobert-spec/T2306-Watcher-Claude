@@ -137,6 +137,9 @@ _ENV_CONFIG_MAP = {
 }
 
 
+CONFIG_ERRORS = []
+
+
 def load_config():
     """
     Loads config.json if present, then lets environment variables override
@@ -146,7 +149,23 @@ def load_config():
     """
     config = {}
     if CONFIG_PATH.exists():
-        config = json.loads(CONFIG_PATH.read_text())
+        try:
+            config = json.loads(CONFIG_PATH.read_text())
+        except json.JSONDecodeError as e:
+            # A typo in config.json used to crash every scan. Now the scan
+            # runs with the default settings and the page shows the error.
+            CONFIG_ERRORS.append(f"config.json has a typo (line {e.lineno}, column {e.colno}): {e.msg}. "
+                                 f"Using default settings until it's fixed.")
+            print("  [!] " + CONFIG_ERRORS[-1])
+            example = BASE_DIR / "config.example.json"
+            config = json.loads(example.read_text()) if example.exists() else {}
+    # Google Alerts feed links can simply be listed in feeds.txt, one per
+    # line — no JSON quotes/commas to get wrong.
+    feeds_file = BASE_DIR / "feeds.txt"
+    if feeds_file.exists():
+        extra = [l.strip() for l in feeds_file.read_text().splitlines()
+                 if l.strip().startswith("http")]
+        config["rss_feeds"] = list(dict.fromkeys(list(config.get("rss_feeds") or []) + extra))
 
     for env_key, (config_key, caster) in _ENV_CONFIG_MAP.items():
         raw = os.environ.get(env_key)
@@ -1010,9 +1029,13 @@ def fetch_aukro_playwright(country="cz", keywords=None):
                          else ["vysledky-vyhladavania", "vysledky-vyhledavani"])
                 anchors = []
                 for path in paths:
-                    page.goto(f"https://{domain}/{path}?text={quote(kw)}", timeout=30000)
-                    page.wait_for_load_state("networkidle", timeout=15000)
-                    time.sleep(1.5)
+                    page.goto(f"https://{domain}/{path}?text={quote(kw)}", timeout=30000,
+                              wait_until="domcontentloaded")
+                    try:  # pages with live widgets never go fully idle — that's fine
+                        page.wait_for_load_state("networkidle", timeout=10000)
+                    except Exception:
+                        pass
+                    time.sleep(2)
                     head = (page.title() or "").lower()
                     if "just a moment" in head or "captcha" in head or "access denied" in head:
                         warn(f"Aukro {country} served a bot check")
@@ -1142,43 +1165,102 @@ VINTED_KEYWORDS = {
 
 
 def fetch_vinted(country="cz", keywords=None):
-    base = f"https://www.vinted.{country}"
+    """Vinted search via its current API (since September 2026):
+    GET https://api.vinted.<tld>/svc-catalogue/items, authorised with the
+    anonymous 'access_token_web' (+ 'anon_id') cookies that Vinted itself
+    sets on a plain visit to its site. The old /api/v2/catalog/items address
+    now returns 404. The response format isn't publicly documented, so items
+    are read defensively; if it fails, the Sources panel shows why."""
+    site = f"https://www.vinted.{country}"
+    api = f"https://api.vinted.{country}/svc-catalogue/items"
     session = requests.Session()
-    session.headers.update({**HEADERS, "Accept": "application/json, text/plain, */*"})
+    session.headers.update(HEADERS)
     results = []
-    try:
-        session.get(base + "/", timeout=20)  # sets the anonymous access cookie
-    except Exception as e:
-        warn(f"Vinted {country}: could not open homepage: {e}")
+
+    def get_token():
+        for url in (f"{site}/catalog", f"{site}/"):
+            try:
+                session.head(url, timeout=20, allow_redirects=True)
+                session.get(url, timeout=20) if not session.cookies.get("access_token_web") else None
+            except Exception:
+                continue
+            if session.cookies.get("access_token_web"):
+                return True
+        return False
+
+    if not get_token():
+        warn(f"Vinted {country}: no anonymous token (site may block this server)")
         return results
+
     for kw in (keywords or VINTED_KEYWORDS.get(country, [])):
-        try:
-            resp = session.get(
-                f"{base}/api/v2/catalog/items",
-                params={"search_text": kw, "per_page": 48, "page": 1, "order": "newest_first"},
-                timeout=20,
-            )
-            resp.raise_for_status()
-            for it in resp.json().get("items", []):
-                item_id = it.get("id")
-                url = it.get("url") or (f"{base}/items/{item_id}" if item_id else None)
-                title = (it.get("title") or "").strip()
-                if not url or not title:
+        params = {"search_text": kw, "order": "newest_first", "page": 1, "per_page": 48}
+        data = None
+        for attempt in range(2):
+            headers = {"Accept": "application/json",
+                       "Authorization": f"Bearer {session.cookies.get('access_token_web')}"}
+            anon = session.cookies.get("anon_id")
+            if anon:
+                headers["x-anon-id"] = anon
+            try:
+                r = session.get(api, params=params, headers=headers, timeout=20)
+                if r.status_code in (401, 403) and attempt == 0:
+                    session.cookies.clear()
+                    get_token()
                     continue
-                if url.startswith("/"):
-                    url = base + url
-                photo = it.get("photo") or {}
-                img = photo.get("url") or (photo.get("thumbnails") or [{}])[0].get("url")
-                results.append({
-                    "url": url,
-                    "title": title,
-                    "text": f"{title} {it.get('description') or ''}",
-                    "image_urls": [img] if img else [],
-                })
-            time.sleep(random.uniform(1.0, 2.0))
-        except Exception as e:
-            warn(f"Vinted {country} error for '{kw}': {e}")
+                r.raise_for_status()
+                data = r.json()
+            except Exception as e:
+                warn(f"Vinted {country} error for '{kw}': {e}")
+            break
+        for it in _vinted_items(data):
+            item_id = it.get("id")
+            title = (it.get("title") or it.get("name") or "").strip()
+            url = it.get("url") or it.get("path") or (f"/items/{item_id}" if item_id else "")
+            if url.startswith("/"):
+                url = site + url
+            if not title or not url:
+                continue
+            img = _first_image_url(it)
+            results.append({"url": url, "title": title, "text": f"{title} {it.get('description') or ''}",
+                            "image_urls": [img] if img else []})
+        time.sleep(random.uniform(1.0, 2.0))
     return results
+
+
+def _vinted_items(data):
+    """Finds the list of items wherever the response keeps it."""
+    if not isinstance(data, dict):
+        return []
+    for key in ("items", "data", "results", "catalog_items"):
+        v = data.get(key)
+        if isinstance(v, list) and v and isinstance(v[0], dict):
+            return v
+        if isinstance(v, dict):
+            inner = _vinted_items(v)
+            if inner:
+                return inner
+    return []
+
+
+def _first_image_url(obj, depth=0):
+    """First photo URL anywhere inside an item (photo.url, photos[0].url ...)."""
+    if depth > 4:
+        return None
+    if isinstance(obj, str):
+        o = obj.lower()
+        return obj if o.startswith("http") and any(x in o for x in (".jpg", ".jpeg", ".webp", ".png", "images")) else None
+    if isinstance(obj, dict):
+        for k in ("photo", "photos", "image", "images", "url", "thumbnails"):
+            if k in obj:
+                found = _first_image_url(obj[k], depth + 1)
+                if found:
+                    return found
+    if isinstance(obj, list):
+        for x in obj[:3]:
+            found = _first_image_url(x, depth + 1)
+            if found:
+                return found
+    return None
 
 
 # ---------------------------------------------------------------------------
@@ -1312,6 +1394,10 @@ def fetch_rss_feeds(feeds=None):
     import xml.etree.ElementTree as ET
     results = []
     for feed in (feeds if feeds is not None else []):
+        if "google.com/alerts" in feed and "/alerts/feeds/" not in feed:
+            warn("This is the Google Alerts settings page, not a feed: copy the link of the "
+                 "RSS icon next to the alert instead (looks like google.com/alerts/feeds/…)")
+            continue
         try:
             r = requests.get(feed, headers=HEADERS, timeout=20)
             r.raise_for_status()
@@ -1638,6 +1724,7 @@ def run_once(config):
     save_found(found)
     save_seen(seen)
     STATUS_PATH.write_text(json.dumps({"checked_at": time.strftime("%Y-%m-%d %H:%M:%S"),
+                                       "config_errors": CONFIG_ERRORS,
                                        "sources": SOURCE_STATUS}, ensure_ascii=False, indent=1))
     print(f"\nDone. {new_listed} new listing(s) added ({new_matches} strong/name matches"
           f"{', 1 notification sent' if new_matches and topic else ''}).")
