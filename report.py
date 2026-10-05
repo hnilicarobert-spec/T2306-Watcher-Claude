@@ -246,8 +246,11 @@ def _sources_panel(status):
             if errs:
                 note += " · " + html.escape(errs[0])
         rows.append(f'<div class="src-row"><span>{mark} {name}</span><span class="src-note">{note}</span></div>')
-    return (f'<details class="sources"><summary>Sources — last checked {html.escape(status.get("checked_at", ""))}</summary>'
-            + "".join(rows) + "</details>")
+    cfg_err = "".join(f'<div class="src-row"><span>⚠️ Settings</span><span class="src-note">{html.escape(e)}</span></div>'
+                      for e in status.get("config_errors") or [])
+    open_attr = " open" if status.get("config_errors") else ""
+    return (f'<details class="sources"{open_attr}><summary>Sources — last checked {html.escape(status.get("checked_at", ""))}</summary>'
+            + cfg_err + "".join(rows) + "</details>")
 
 
 def render_static(found, last_run_text, repo_actions_url=None, source_status=None):
