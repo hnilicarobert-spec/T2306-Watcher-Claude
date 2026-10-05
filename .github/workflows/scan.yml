@@ -88,7 +88,9 @@ jobs:
           git config user.name "chair-watcher-bot"
           git config user.email "actions@users.noreply.github.com"
           git add found_listings.json seen.json docs/index.html
-          git add source_status.json api_usage.json 2>/dev/null || true
+          # add each optional file separately: one missing file must not
+          # stop the others (the API usage counter has to be saved)
+          for f in source_status.json api_usage.json; do if [ -f "$f" ]; then git add "$f"; fi; done
           git diff --quiet --cached || git commit -m "Update scan results [skip ci]"
           git push
 
