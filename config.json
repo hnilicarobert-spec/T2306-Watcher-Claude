@@ -9,17 +9,14 @@
     "bazos_sk",
     "aukro_cz",
     "aukro_sk",
-    "olx_pl",
-    "kleinanzeigen_de",
     "vinted_cz",
     "vinted_sk",
-    "web_search",
-    "tavily",
     "serpapi"
   ],
   "facebook_session_path": null,
   "facebook_location": "czech-republic",
   "min_chrome_prob": 0.3,
   "min_target_prob_notify": 0.25,
-  "rss_feeds": []
+  "rss_feeds": [],
+  "min_match_strong": 0.5
 }
