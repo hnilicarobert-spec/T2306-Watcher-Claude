@@ -76,6 +76,10 @@ HEAD_AND_STYLE = """
     .badge-keyword { background: #ffe4b8; color: #8a5600; }
     .badge-strong { background: #c9f2d8; color: #146c3a; }
     .badge-similar { background: #e3e3e3; color: #555; }
+    .sources { background: rgba(127,127,127,0.08); border-radius: 10px; padding: 8px 12px; margin-bottom: 12px; font-size: 0.82em; }
+    .sources summary { font-weight: 600; cursor: pointer; }
+    .src-row { display: flex; justify-content: space-between; gap: 10px; padding: 4px 0; border-top: 1px solid rgba(127,127,127,0.15); }
+    .src-note { color: #777; text-align: right; }
     .badge-exact { background: #2b6b4f; color: #fff; }
     .badge-collection { background: #e4e0f5; color: #4a3d8f; }
     .badge-new { background: #ff5c5c; color: white; }
@@ -217,7 +221,36 @@ def _sort_value(item):
     return -1
 
 
-def render_static(found, last_run_text, repo_actions_url=None):
+SOURCE_NAMES = {
+    "bazos_cz": "Bazoš.cz", "bazos_sk": "Bazoš.sk", "aukro_cz": "Aukro.cz", "aukro_sk": "Aukro.sk",
+    "vinted_cz": "Vinted.cz", "vinted_sk": "Vinted.sk", "olx_pl": "OLX.pl", "kleinanzeigen_de": "Kleinanzeigen.de",
+    "web_search": "DuckDuckGo search", "tavily": "Tavily search", "serpapi": "Google (SerpApi)",
+    "rss": "Google Alerts",
+}
+
+
+def _sources_panel(status):
+    if not status or not status.get("sources"):
+        return ""
+    rows = []
+    for key, st in status["sources"].items():
+        name = html.escape(SOURCE_NAMES.get(key, key))
+        errs = st.get("errors") or []
+        n, added = st.get("results", 0), st.get("added", 0)
+        if errs and n == 0:
+            mark, note = "⚠️", html.escape(errs[0])
+        elif n == 0:
+            mark, note = "·", "no results this run"
+        else:
+            mark, note = "✓", f"{n} result(s), {added} new added"
+            if errs:
+                note += " · " + html.escape(errs[0])
+        rows.append(f'<div class="src-row"><span>{mark} {name}</span><span class="src-note">{note}</span></div>')
+    return (f'<details class="sources"><summary>Sources — last checked {html.escape(status.get("checked_at", ""))}</summary>'
+            + "".join(rows) + "</details>")
+
+
+def render_static(found, last_run_text, repo_actions_url=None, source_status=None):
     found = sorted(found, key=_confidence_sort_key, reverse=True)
     status_line = (
         f"Last scan: {last_run_text} · "
@@ -275,6 +308,7 @@ def render_static(found, last_run_text, repo_actions_url=None):
 
     body = (
         f'  <div class="status">{status_line}</div>\n'
+        + _sources_panel(source_status)
         + scan_hint
         + SORT_CONTROLS
         + f'  <div id="cards-container">\n{cards_html}\n  </div>\n'
