@@ -665,7 +665,11 @@ def evaluate(title, text, url, analysis, config):
     looks_right = analysis["category"] in GOOD_CATEGORIES or p_chrome >= config.get("min_chrome_prob", 0.30)
     if not looks_right:
         return None, f"photo looks like: {analysis['category']}"
-    if sim >= config.get("similarity_threshold_notify", 0.55) and p_target >= config.get("min_target_prob_notify", 0.25):
+    # "Strong" (the tier that notifies you) needs a chrome-chair photo AND a
+    # high combined match. Tuned on real results: 0.50 kept the 12 closest
+    # chairs and moved 15 generic ones (Vitra, conference chairs…) to Similar.
+    if (analysis["category"] in GOOD_CATEGORIES
+            and match_score(sim, p_target) >= config.get("min_match_strong", 0.50)):
         return "strong", "photo match"
     if sim >= config.get("similarity_threshold_list", 0.50):
         return "similar", "photo similar"
@@ -1320,7 +1324,7 @@ def _usage_ok(api, monthly_budget):
     if used >= monthly_budget:
         warn(f"{api}: monthly free budget used ({used}/{monthly_budget}) — resumes next month")
         return False
-    usage = {month: usage.get(month, {})}  # drop old months
+    usage = {month: usage.get(month, {}), "state": usage.get("state", {})}  # drop old months
     usage[month][api] = used + 1
     API_USAGE_PATH.write_text(json.dumps(usage, indent=1))
     return True
@@ -1408,12 +1412,36 @@ def _lens_photo_urls():
     return [f"https://raw.githubusercontent.com/{repo}/{branch}/reference_photos/{quote(f)}" for f in ordered]
 
 
+SERPAPI_GAP_SECONDS = 2 * 3600 + 45 * 60  # ~3 h, minus slack for runs that start early
+
+
+def _api_state():
+    try:
+        return json.loads(API_USAGE_PATH.read_text())
+    except Exception:
+        return {}
+
+
 def _serpapi_slot():
-    """Which plan entry runs this hour, or None between slots."""
-    hour = int(time.time() // 3600)
-    if hour % 3:
-        return None, hour
-    return SERPAPI_PLAN[(hour // 3) % len(SERPAPI_PLAN)], hour
+    """The next search in SERPAPI_PLAN, if ~3 hours have passed since the
+    last one. Uses a saved position instead of the clock, so a scan that
+    GitHub starts late never causes a search to be skipped — it just runs
+    at the next scan, in order."""
+    st = _api_state().get("state", {})
+    since = time.time() - st.get("serpapi_last", 0)
+    if since < SERPAPI_GAP_SECONDS:
+        return None, int((SERPAPI_GAP_SECONDS - since) // 60)
+    return SERPAPI_PLAN[st.get("serpapi_next", 0) % len(SERPAPI_PLAN)], st.get("lens_next", 0)
+
+
+def _serpapi_advance(was_lens):
+    data = _api_state()
+    st = data.setdefault("state", {})
+    st["serpapi_last"] = int(time.time())
+    st["serpapi_next"] = st.get("serpapi_next", 0) + 1
+    if was_lens:
+        st["lens_next"] = st.get("lens_next", 0) + 1
+    API_USAGE_PATH.write_text(json.dumps(data, indent=1))
 
 
 def fetch_serpapi():
@@ -1422,13 +1450,13 @@ def fetch_serpapi():
     if not key:
         warn("not set up yet — add a free SERPAPI_KEY secret (see SETUP.md)")
         return []
-    plan, hour = _serpapi_slot()
+    plan, info = _serpapi_slot()
     if plan is None:
-        nxt = (3 - hour % 3) % 3 or 3
-        note(f"searches every 3 hours — next in about {nxt} h")
+        note(f"searches every 3 hours — next in about {info // 60} h {info % 60} min")
         return []
     if not _usage_ok("serpapi", 245):
         return []
+    _serpapi_advance(bool(plan.get("lens")))
     results = []
     try:
         if plan.get("lens"):
@@ -1436,7 +1464,7 @@ def fetch_serpapi():
             if not photos:
                 warn("Google Lens: no reference photo address available")
                 return []
-            photo = photos[(hour // 12) % len(photos)]  # a different photo each lens slot
+            photo = photos[info % len(photos)]  # a different photo each Lens search
             note(f"Google Lens with {photo.rsplit('/', 1)[-1]}")
             r = requests.get("https://serpapi.com/search.json", timeout=60, params={
                 "engine": "google_lens", "url": photo, "type": "visual_matches",
