@@ -240,9 +240,11 @@ def _sources_panel(status):
         if errs and n == 0:
             mark, note = "⚠️", html.escape(errs[0])
         elif n == 0:
-            mark, note = "·", "no results this run"
+            mark, note = "·", html.escape(st.get("note") or "no results this run")
         else:
             mark, note = "✓", f"{n} result(s), {added} new added"
+            if st.get("note"):
+                note += " · " + html.escape(st["note"])
             if errs:
                 note += " · " + html.escape(errs[0])
         rows.append(f'<div class="src-row"><span>{mark} {name}</span><span class="src-note">{note}</span></div>')
