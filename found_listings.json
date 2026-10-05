@@ -1,5 +1,41 @@
 [
   {
+    "id": "d2cbf081cab1a142",
+    "url": "https://www.sbazar.cz/hledej/chromovan%C3%A9%20k%C5%99eslo",
+    "title": "chromované křeslo Bazar a inzerce - Sbazar.cz",
+    "site": "web_search",
+    "image_url": null,
+    "score": null,
+    "tier": "keyword",
+    "keyword_hit": true,
+    "found_at": "2026-10-05 00:32:18",
+    "last_checked": "2026-10-05 00:32:18"
+  },
+  {
+    "id": "03aec47ce3969278",
+    "url": "https://www.aukro.cz/retro-kresla-antonin-suman-7089201533",
+    "title": "7\nRetro křesla Antonín Šuman..\nŽádný příhoz\n14 000 Kč",
+    "site": "aukro_cz",
+    "image_url": "https://cdn.aukro.cz/images/sk1747585631273/thumbnail/retro-kresla-antonin-suman-229335585.jpeg",
+    "score": 0.5923692584037781,
+    "tier": "strong",
+    "keyword_hit": false,
+    "found_at": "2026-10-05 00:32:09",
+    "last_checked": "2026-10-05 00:32:09"
+  },
+  {
+    "id": "744577234da04eba",
+    "url": "https://www.aukro.cz/metodicka-prirucka-pro-archivare-ceskoslovenskeho-archivu-7136111118",
+    "title": "TOP Seller\nPOUŽITÉ\nMetodická příručka pro archiváře Československého archivu\nKup teď\n330 Kč",
+    "site": "aukro_cz",
+    "image_url": "https://cdn.aukro.cz/images/sk1791142157368/thumbnail/metodicka-prirucka-pro-archivare-ceskoslovenskeho-archivu-299602901.jpeg",
+    "score": 0.5882195830345154,
+    "tier": "strong",
+    "keyword_hit": false,
+    "found_at": "2026-10-05 00:32:07",
+    "last_checked": "2026-10-05 00:32:07"
+  },
+  {
     "id": "a843311ec3e40ee6",
     "url": "https://www.sbazar.cz/inzerat/234399894-retro-kresla-kodreta-myjava-design-viliam-chlebo",
     "title": "Retro křesla Kodreta Myjava, design Viliam CHlebo - Tábor - Bazar",
@@ -276,18 +312,6 @@
     "last_checked": "2026-10-04 15:34:09"
   },
   {
-    "id": "d859fa5ce7aa8e57",
-    "url": "https://www.aukro.sk/stara-stojacia-retro-lampa-7120576640",
-    "title": "11\nStará stojacia retro lampa\nŽiadne prihodenie\n41,71 €",
-    "site": "aukro_sk",
-    "image_url": "https://cdn.aukro.sk/images/sk1779011957114/thumbnail/stara-stojacia-retro-lampa-274123783.jpeg",
-    "score": 0.513933539390564,
-    "tier": "similar",
-    "keyword_hit": false,
-    "found_at": "2026-10-04 15:22:28",
-    "last_checked": "2026-10-04 15:22:28"
-  },
-  {
     "id": "abf47bf8f439df67",
     "url": "https://nabytek.bazos.cz/inzerat/224648921/italsky-jidelni-stul-a-zidle.php",
     "title": "Italský jídelní stůl a židle",
@@ -297,7 +321,7 @@
     "tier": "strong",
     "keyword_hit": false,
     "found_at": "2026-10-04 15:22:14",
-    "last_checked": "2026-10-04 15:22:14"
+    "last_checked": "2026-10-05 00:27:33"
   },
   {
     "id": "19aa4c73d3e52c4f",
@@ -309,7 +333,7 @@
     "tier": "strong",
     "keyword_hit": false,
     "found_at": "2026-10-04 15:22:14",
-    "last_checked": "2026-10-04 15:22:14"
+    "last_checked": "2026-10-05 00:27:33"
   },
   {
     "id": "02a45da70b8ec6d1",
@@ -321,7 +345,7 @@
     "tier": "strong",
     "keyword_hit": false,
     "found_at": "2026-10-04 15:22:13",
-    "last_checked": "2026-10-04 15:22:13"
+    "last_checked": "2026-10-05 00:27:32"
   },
   {
     "id": "5af59e23f4fda738",
@@ -645,7 +669,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 20:20:43",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 15:29:31"
+    "last_checked": "2026-10-05 00:27:38"
   },
   {
     "id": "3901581a05d0a97c",
@@ -657,7 +681,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:52:24",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 15:29:29"
+    "last_checked": "2026-10-05 00:27:37"
   },
   {
     "id": "e8d32bab87631c5c",
@@ -669,7 +693,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:52:23",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 15:29:28"
+    "last_checked": "2026-10-05 00:27:36"
   },
   {
     "id": "4c584d23534f84d6",
@@ -681,7 +705,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:52:23",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 15:29:29"
+    "last_checked": "2026-10-05 00:27:37"
   },
   {
     "id": "9a25040efd5dd2f9",
@@ -693,7 +717,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:52:22",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 15:29:28"
+    "last_checked": "2026-10-05 00:27:36"
   },
   {
     "id": "d3c40b97f3fda626",
@@ -705,7 +729,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:52:21",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 15:29:26"
+    "last_checked": "2026-10-05 00:27:35"
   },
   {
     "id": "4bb43e7ebcb45fa9",
@@ -717,7 +741,19 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:52:21",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 15:29:27"
+    "last_checked": "2026-10-05 00:27:35"
+  },
+  {
+    "id": "1f1ace64548d3d49",
+    "url": "https://nabytok.bazos.sk/inzerat/195573800/starozitna-stolicka-thonet.php",
+    "title": "Starozitna stolicka THONET",
+    "site": "bazos_sk",
+    "image_url": "https://www.bazos.sk/img/1t/800/195573800.jpg",
+    "score": 0.5601256489753723,
+    "tier": "strong",
+    "found_at": "2026-10-03 16:52:19",
+    "keyword_hit": false,
+    "last_checked": "2026-10-05 00:27:35"
   },
   {
     "id": "44916b62ddfde632",
@@ -732,18 +768,6 @@
     "last_checked": "2026-10-04 23:16:23"
   },
   {
-    "id": "1f1ace64548d3d49",
-    "url": "https://nabytok.bazos.sk/inzerat/195573800/starozitna-stolicka-thonet.php",
-    "title": "Starozitna stolicka THONET",
-    "site": "bazos_sk",
-    "image_url": "https://www.bazos.sk/img/1t/800/195573800.jpg",
-    "score": 0.5601256489753723,
-    "tier": "strong",
-    "found_at": "2026-10-03 16:52:19",
-    "keyword_hit": false,
-    "last_checked": "2026-10-04 15:29:26"
-  },
-  {
     "id": "322222f1035ca606",
     "url": "https://nabytok.bazos.sk/inzerat/195980027/vintage-stolicky.php",
     "title": "Vintage stoličky",
@@ -753,7 +777,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:52:18",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 15:18:10"
+    "last_checked": "2026-10-05 00:27:31"
   },
   {
     "id": "5a76ed52ad1fe546",
@@ -765,7 +789,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:52:13",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 15:18:10"
+    "last_checked": "2026-10-05 00:27:32"
   },
   {
     "id": "faa7234720054fc3",
@@ -2085,7 +2109,7 @@
     "tier": "keyword",
     "found_at": "2026-10-03 16:07:42",
     "keyword_hit": true,
-    "last_checked": "2026-10-04 15:29:35"
+    "last_checked": "2026-10-05 00:27:40"
   },
   {
     "id": "6103c6966bc4e3ee",
@@ -2097,7 +2121,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:07:41",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 15:29:34"
+    "last_checked": "2026-10-05 00:27:40"
   },
   {
     "id": "0a677925762463f4",
@@ -2121,7 +2145,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:07:40",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 15:29:33"
+    "last_checked": "2026-10-05 00:27:39"
   },
   {
     "id": "1a2b77b76e3c9a50",
@@ -2133,7 +2157,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:07:39",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 15:29:33"
+    "last_checked": "2026-10-05 00:27:40"
   },
   {
     "id": "b3be3e4a02c9e8a6",
@@ -2145,7 +2169,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:07:38",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 15:29:31"
+    "last_checked": "2026-10-05 00:27:38"
   },
   {
     "id": "377f0d9d10426eaa",
@@ -2157,6 +2181,6 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:07:38",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 15:29:32"
+    "last_checked": "2026-10-05 00:27:39"
   }
 ]
