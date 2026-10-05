@@ -1,5 +1,41 @@
 [
   {
+    "id": "ea2ae174defe9d0c",
+    "url": "https://www.aukro.sk/tona-ursus-sekera-c-285-7136117204",
+    "title": "3\nPOUŽITÉ\nTona Ursus sekera č. 285\nKúp teraz\n13,35 €",
+    "site": "aukro_sk",
+    "image_url": "https://cdn.aukro.sk/images/sk1789324144016/thumbnail/tona-ursus-sekera-c-285-295535233.jpeg",
+    "score": 0.5003671646118164,
+    "tier": "similar",
+    "keyword_hit": false,
+    "found_at": "2026-10-05 08:27:02",
+    "last_checked": "2026-10-05 08:27:02"
+  },
+  {
+    "id": "edd580f62afeac09",
+    "url": "https://nabytok.bazos.sk/inzerat/196198247/stolicky.php",
+    "title": "Stoličky",
+    "site": "bazos_sk",
+    "image_url": "https://www.bazos.sk/img/1t/247/196198247.jpg",
+    "score": 0.5670518279075623,
+    "tier": "strong",
+    "keyword_hit": false,
+    "found_at": "2026-10-05 08:26:48",
+    "last_checked": "2026-10-05 08:26:48"
+  },
+  {
+    "id": "e7ac0e4bdb00f8e1",
+    "url": "https://nabytek.bazos.cz/inzerat/224681030/zidle-jidelni.php",
+    "title": "Židle jídelní",
+    "site": "bazos_cz",
+    "image_url": "https://www.bazos.cz/img/1t/030/224681030.jpg",
+    "score": 0.5749562978744507,
+    "tier": "strong",
+    "keyword_hit": false,
+    "found_at": "2026-10-05 08:26:47",
+    "last_checked": "2026-10-05 08:26:47"
+  },
+  {
     "id": "19c432af2904f28a",
     "url": "https://www.aukro.sk/damske-dlhe-sako-blejzer-velkost-m-l-7131860703",
     "title": "ZACHOVANÉ\nDámske dlhé sako, blejzer, veľkosť M-L\nKúp teraz\n25,03 €",
@@ -225,7 +261,7 @@
     "tier": "keyword",
     "keyword_hit": true,
     "found_at": "2026-10-04 23:20:49",
-    "last_checked": "2026-10-04 23:20:49"
+    "last_checked": "2026-10-05 08:22:16"
   },
   {
     "id": "29f5334de476f812",
@@ -237,19 +273,7 @@
     "tier": "keyword",
     "keyword_hit": true,
     "found_at": "2026-10-04 23:20:49",
-    "last_checked": "2026-10-04 23:20:49"
-  },
-  {
-    "id": "393c4e24ec315dcd",
-    "url": "https://aukro.cz/nabizim-retro-kresla-kodreta-myjava-design-viliam-chlebo-7133626143",
-    "title": "Nabízím retro křesla Kodreta Myjava,design Viliam Chlebo",
-    "site": "web_search",
-    "image_url": null,
-    "score": null,
-    "tier": "keyword",
-    "keyword_hit": true,
-    "found_at": "2026-10-04 23:20:49",
-    "last_checked": "2026-10-04 23:20:49"
+    "last_checked": "2026-10-05 08:22:17"
   },
   {
     "id": "2b64ba3d21cdb1c1",
@@ -261,7 +285,7 @@
     "tier": "keyword",
     "keyword_hit": true,
     "found_at": "2026-10-04 23:20:49",
-    "last_checked": "2026-10-04 23:20:49"
+    "last_checked": "2026-10-05 08:22:19"
   },
   {
     "id": "fef21d1153ecf1dc",
@@ -273,19 +297,7 @@
     "tier": "keyword",
     "keyword_hit": true,
     "found_at": "2026-10-04 23:20:49",
-    "last_checked": "2026-10-04 23:20:49"
-  },
-  {
-    "id": "dfafd2c3195f2436",
-    "url": "https://nabytok.bazos.sk/inzerat/188550338/kodreta-stolik-viliam-chleba-1990s.php",
-    "title": "KODRETA stolik Viliam Chlebo 1990s - Bratislava | Bazoš.sk",
-    "site": "web_search",
-    "image_url": null,
-    "score": null,
-    "tier": "keyword",
-    "keyword_hit": true,
-    "found_at": "2026-10-04 23:20:49",
-    "last_checked": "2026-10-04 23:20:49"
+    "last_checked": "2026-10-05 08:22:22"
   },
   {
     "id": "dbc05f7834a8b6f9",
@@ -297,7 +309,7 @@
     "tier": "keyword",
     "keyword_hit": true,
     "found_at": "2026-10-04 23:20:49",
-    "last_checked": "2026-10-04 23:20:49"
+    "last_checked": "2026-10-05 08:22:24"
   },
   {
     "id": "b217ae83c2c6363f",
@@ -309,7 +321,7 @@
     "tier": "keyword",
     "keyword_hit": true,
     "found_at": "2026-10-04 23:20:49",
-    "last_checked": "2026-10-04 23:20:49"
+    "last_checked": "2026-10-05 08:22:24"
   },
   {
     "id": "69ac2f7c62209c9c",
@@ -321,7 +333,7 @@
     "tier": "strong",
     "keyword_hit": false,
     "found_at": "2026-10-04 23:20:36",
-    "last_checked": "2026-10-04 23:20:36"
+    "last_checked": "2026-10-05 08:22:12"
   },
   {
     "id": "eafe1a332a94eaec",
@@ -885,7 +897,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:52:19",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 23:16:23"
+    "last_checked": "2026-10-05 08:22:12"
   },
   {
     "id": "1f1ace64548d3d49",
@@ -933,7 +945,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:52:11",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 23:16:22"
+    "last_checked": "2026-10-05 08:22:10"
   },
   {
     "id": "c074cdc15779575c",
@@ -945,7 +957,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:52:10",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 23:16:22"
+    "last_checked": "2026-10-05 08:22:11"
   },
   {
     "id": "67e03681dfccbf9a",
@@ -957,7 +969,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:52:08",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 23:16:21"
+    "last_checked": "2026-10-05 08:22:09"
   },
   {
     "id": "c3b0e7933024203d",
@@ -969,7 +981,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:52:06",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 23:16:21"
+    "last_checked": "2026-10-05 08:22:09"
   },
   {
     "id": "0678b91f4fb80456",
@@ -981,7 +993,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:52:03",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 23:16:19"
+    "last_checked": "2026-10-05 08:22:06"
   },
   {
     "id": "65cb21aa22415436",
@@ -993,7 +1005,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:52:01",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 23:16:20"
+    "last_checked": "2026-10-05 08:22:07"
   },
   {
     "id": "ee50ca2ec64f1155",
@@ -1005,7 +1017,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:52:00",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 23:16:20"
+    "last_checked": "2026-10-05 08:22:08"
   },
   {
     "id": "56570daa9c16733a",
@@ -1017,7 +1029,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:51:59",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 23:16:18"
+    "last_checked": "2026-10-05 08:22:05"
   },
   {
     "id": "3e82c460479c353f",
@@ -1029,7 +1041,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:51:58",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 23:16:19"
+    "last_checked": "2026-10-05 08:22:07"
   },
   {
     "id": "8b6567813957c52b",
@@ -1053,7 +1065,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:51:56",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 23:16:18"
+    "last_checked": "2026-10-05 08:22:05"
   },
   {
     "id": "c3c154136fb29eae",
