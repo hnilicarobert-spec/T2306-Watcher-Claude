@@ -1,5 +1,17 @@
 [
   {
+    "id": "42955ab49ea5f948",
+    "url": "https://hudba.bazos.cz/inzerat/224687376/klavirni-stolicka-proline-beethoven-buk-jako-nova.php",
+    "title": "Klavírní stolička Proline Beethoven, buk",
+    "site": "bazos_cz",
+    "image_url": "https://www.bazos.cz/img/1t/376/224687376.jpg?t=1791195403",
+    "score": 0.5230661630630493,
+    "tier": "similar",
+    "keyword_hit": false,
+    "found_at": "2026-10-05 10:25:00",
+    "last_checked": "2026-10-05 10:25:00"
+  },
+  {
     "id": "d656b37238bb6b8d",
     "url": "https://www.aukro.cz/zidle-7114019376",
     "title": "2\nŽidle\nŽádný příhoz\n2 100 Kč",
@@ -273,19 +285,7 @@
     "tier": "keyword",
     "keyword_hit": true,
     "found_at": "2026-10-05 00:32:18",
-    "last_checked": "2026-10-05 00:32:18"
-  },
-  {
-    "id": "03aec47ce3969278",
-    "url": "https://www.aukro.cz/retro-kresla-antonin-suman-7089201533",
-    "title": "7\nRetro křesla Antonín Šuman..\nŽádný příhoz\n14 000 Kč",
-    "site": "aukro_cz",
-    "image_url": "https://cdn.aukro.cz/images/sk1747585631273/thumbnail/retro-kresla-antonin-suman-229335585.jpeg",
-    "score": 0.5923692584037781,
-    "tier": "strong",
-    "keyword_hit": false,
-    "found_at": "2026-10-05 00:32:09",
-    "last_checked": "2026-10-05 00:32:09"
+    "last_checked": "2026-10-05 10:20:50"
   },
   {
     "id": "a843311ec3e40ee6",
@@ -741,7 +741,7 @@
     "tier": "keyword",
     "keyword_hit": true,
     "found_at": "2026-10-03 20:42:07",
-    "last_checked": "2026-10-05 01:18:38"
+    "last_checked": "2026-10-05 10:20:59"
   },
   {
     "id": "d3b2a26e65a1f66d",
@@ -753,7 +753,7 @@
     "tier": "keyword",
     "keyword_hit": true,
     "found_at": "2026-10-03 20:42:07",
-    "last_checked": "2026-10-05 01:18:38"
+    "last_checked": "2026-10-05 10:21:00"
   },
   {
     "id": "482de2d671f9baa6",
@@ -765,7 +765,7 @@
     "tier": "keyword",
     "keyword_hit": true,
     "found_at": "2026-10-03 20:42:07",
-    "last_checked": "2026-10-05 01:18:39"
+    "last_checked": "2026-10-05 10:21:00"
   },
   {
     "id": "88614b6df79bfa94",
@@ -777,7 +777,7 @@
     "tier": "keyword",
     "keyword_hit": true,
     "found_at": "2026-10-03 20:42:07",
-    "last_checked": "2026-10-05 01:18:39"
+    "last_checked": "2026-10-05 10:21:00"
   },
   {
     "id": "f9be10d29d9c9952",
@@ -924,18 +924,6 @@
     "last_checked": "2026-10-05 09:22:04"
   },
   {
-    "id": "1f1ace64548d3d49",
-    "url": "https://nabytok.bazos.sk/inzerat/195573800/starozitna-stolicka-thonet.php",
-    "title": "Starozitna stolicka THONET",
-    "site": "bazos_sk",
-    "image_url": "https://www.bazos.sk/img/1t/800/195573800.jpg",
-    "score": 0.5601256489753723,
-    "tier": "strong",
-    "found_at": "2026-10-03 16:52:19",
-    "keyword_hit": false,
-    "last_checked": "2026-10-05 09:22:05"
-  },
-  {
     "id": "44916b62ddfde632",
     "url": "https://nabytok.bazos.sk/inzerat/195782264/retro-stolicky-suman-vintage.php",
     "title": "Retro Stoličky Suman Vintage",
@@ -946,6 +934,18 @@
     "found_at": "2026-10-03 16:52:19",
     "keyword_hit": false,
     "last_checked": "2026-10-05 08:22:12"
+  },
+  {
+    "id": "1f1ace64548d3d49",
+    "url": "https://nabytok.bazos.sk/inzerat/195573800/starozitna-stolicka-thonet.php",
+    "title": "Starozitna stolicka THONET",
+    "site": "bazos_sk",
+    "image_url": "https://www.bazos.sk/img/1t/800/195573800.jpg",
+    "score": 0.5601256489753723,
+    "tier": "strong",
+    "found_at": "2026-10-03 16:52:19",
+    "keyword_hit": false,
+    "last_checked": "2026-10-05 09:22:05"
   },
   {
     "id": "322222f1035ca606",
@@ -2133,7 +2133,7 @@
     "tier": "keyword",
     "found_at": "2026-10-03 16:07:53",
     "keyword_hit": true,
-    "last_checked": "2026-10-05 01:18:35"
+    "last_checked": "2026-10-05 10:20:56"
   },
   {
     "id": "ce3b430ead996a40",
@@ -2145,7 +2145,7 @@
     "tier": "keyword",
     "found_at": "2026-10-03 16:07:53",
     "keyword_hit": true,
-    "last_checked": "2026-10-05 01:18:36"
+    "last_checked": "2026-10-05 10:20:57"
   },
   {
     "id": "2a54099679673b18",
@@ -2157,7 +2157,7 @@
     "tier": "keyword",
     "found_at": "2026-10-03 16:07:52",
     "keyword_hit": true,
-    "last_checked": "2026-10-05 01:18:35"
+    "last_checked": "2026-10-05 10:20:56"
   },
   {
     "id": "1413d364272632e1",
@@ -2169,7 +2169,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:07:51",
     "keyword_hit": false,
-    "last_checked": "2026-10-05 01:18:35"
+    "last_checked": "2026-10-05 10:20:56"
   },
   {
     "id": "89bd656bac741762",
@@ -2181,7 +2181,7 @@
     "tier": "keyword",
     "found_at": "2026-10-03 16:07:50",
     "keyword_hit": true,
-    "last_checked": "2026-10-05 01:18:34"
+    "last_checked": "2026-10-05 10:20:55"
   },
   {
     "id": "0a677925762463f4",
@@ -2193,7 +2193,7 @@
     "tier": "keyword",
     "found_at": "2026-10-03 16:07:49",
     "keyword_hit": true,
-    "last_checked": "2026-10-05 01:18:34"
+    "last_checked": "2026-10-05 10:20:55"
   },
   {
     "id": "0a677925762463f4",
@@ -2205,7 +2205,7 @@
     "tier": "keyword",
     "found_at": "2026-10-03 16:07:47",
     "keyword_hit": true,
-    "last_checked": "2026-10-05 01:18:33"
+    "last_checked": "2026-10-05 10:20:53"
   },
   {
     "id": "ce56266401f98705",
@@ -2217,7 +2217,7 @@
     "tier": "keyword",
     "found_at": "2026-10-03 16:07:46",
     "keyword_hit": true,
-    "last_checked": "2026-10-05 01:18:32"
+    "last_checked": "2026-10-05 10:20:53"
   },
   {
     "id": "0a677925762463f4",
@@ -2229,7 +2229,7 @@
     "tier": "keyword",
     "found_at": "2026-10-03 16:07:46",
     "keyword_hit": true,
-    "last_checked": "2026-10-05 01:18:33"
+    "last_checked": "2026-10-05 10:20:54"
   },
   {
     "id": "cfa78027135562ef",
@@ -2241,7 +2241,7 @@
     "tier": "keyword",
     "found_at": "2026-10-03 16:07:45",
     "keyword_hit": true,
-    "last_checked": "2026-10-05 01:18:30"
+    "last_checked": "2026-10-05 10:20:52"
   },
   {
     "id": "c30c83edaaa4f05c",
@@ -2253,7 +2253,7 @@
     "tier": "keyword",
     "found_at": "2026-10-03 16:07:44",
     "keyword_hit": true,
-    "last_checked": "2026-10-05 01:18:29"
+    "last_checked": "2026-10-05 10:20:51"
   },
   {
     "id": "4f4c34d1c01d8fce",
@@ -2265,7 +2265,7 @@
     "tier": "keyword",
     "found_at": "2026-10-03 16:07:44",
     "keyword_hit": true,
-    "last_checked": "2026-10-05 01:18:30"
+    "last_checked": "2026-10-05 10:20:52"
   },
   {
     "id": "32e90e12e3a44ad6",
@@ -2277,7 +2277,7 @@
     "tier": "keyword",
     "found_at": "2026-10-03 16:07:43",
     "keyword_hit": true,
-    "last_checked": "2026-10-05 01:18:28"
+    "last_checked": "2026-10-05 10:20:50"
   },
   {
     "id": "66f209f70e33099d",
@@ -2292,6 +2292,18 @@
     "last_checked": "2026-10-05 09:22:10"
   },
   {
+    "id": "0a677925762463f4",
+    "url": "https://nabytek.bazos.cz/inzerat/224374941/koupim-zidli-t2306-kodreta-myjava.php",
+    "title": "Koupím židli T2306 Kodreta Myjava",
+    "site": "bazos_cz",
+    "image_url": "https://www.bazos.cz/img/1t/941/224374941.jpg?t=1790674592",
+    "score": 0.9448773264884949,
+    "tier": "keyword",
+    "found_at": "2026-10-03 16:07:41",
+    "keyword_hit": true,
+    "last_checked": "2026-10-05 10:20:51"
+  },
+  {
     "id": "6103c6966bc4e3ee",
     "url": "https://nabytek.bazos.cz/inzerat/223495961/houpaci-kresilko.php",
     "title": "houpací křesílko",
@@ -2302,18 +2314,6 @@
     "found_at": "2026-10-03 16:07:41",
     "keyword_hit": false,
     "last_checked": "2026-10-05 09:22:10"
-  },
-  {
-    "id": "0a677925762463f4",
-    "url": "https://nabytek.bazos.cz/inzerat/224374941/koupim-zidli-t2306-kodreta-myjava.php",
-    "title": "Koupím židli T2306 Kodreta Myjava",
-    "site": "bazos_cz",
-    "image_url": "https://www.bazos.cz/img/1t/941/224374941.jpg?t=1790674592",
-    "score": 0.9448773264884949,
-    "tier": "keyword",
-    "found_at": "2026-10-03 16:07:41",
-    "keyword_hit": true,
-    "last_checked": "2026-10-05 01:18:28"
   },
   {
     "id": "fb2bf979a56b4044",
