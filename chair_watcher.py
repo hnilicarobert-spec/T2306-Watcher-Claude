@@ -418,9 +418,12 @@ CATEGORY_PROMPTS = {
     "target": [
         "a photo of a chair with a chrome tubular steel frame and a fabric seat and backrest",
         "a photo of a vintage chrome tube chair with a canvas sling seat",
-        "a photo of a metal tube chair upholstered in woven beige fabric",
+        "a photo of a metal tube chair upholstered in woven fabric",
         "a photo of a chair with a chrome tubular steel frame and a leather seat and backrest",
         "a photo of a vintage chrome tube chair with a leather sling seat",
+        # The frame is always the same chrome; the upholstery colour varies.
+        "a photo of a chrome tube chair with a red, blue, green, brown or black fabric seat",
+        "a photo of a chrome tube chair with a black, brown or white leather seat",
     ],
     "chrome_other": [
         "a photo of a chrome cantilever chair",
@@ -445,6 +448,10 @@ CATEGORY_PROMPTS = {
 GOOD_CATEGORIES = ("target", "chrome_other")
 
 
+def _grayscale(pil_image):
+    return pil_image.convert("L").convert("RGB")
+
+
 class ImageMatcher:
     """Loads CLIP once. For each listing photo returns similarity to your
     reference photos AND zero-shot category probabilities."""
@@ -460,17 +467,29 @@ class ImageMatcher:
         self.model.eval()
         tokenizer = open_clip.get_tokenizer("ViT-B-32")
 
+        # One class per chair category: its descriptions are AVERAGED into a
+        # single profile (standard CLIP "prompt ensembling"). Summing them
+        # instead would favour whichever category has the most descriptions
+        # — e.g. "target" with its colour/leather variants. The "other"
+        # descriptions stay separate classes: a car part and a coat have
+        # nothing in common, so averaging them would describe neither.
         self.prompt_cats = []
-        prompts = []
-        for cat, ps in CATEGORY_PROMPTS.items():
-            for p in ps:
-                prompts.append(p)
-                self.prompt_cats.append(cat)
+        class_embs = []
         with torch.no_grad():
-            t = self.model.encode_text(tokenizer(prompts))
-            self.text_emb = t / t.norm(dim=-1, keepdim=True)
+            for cat, ps in CATEGORY_PROMPTS.items():
+                t = self.model.encode_text(tokenizer(ps))
+                t = t / t.norm(dim=-1, keepdim=True)
+                if cat == "other":
+                    class_embs.extend(t)
+                    self.prompt_cats.extend([cat] * len(ps))
+                else:
+                    m = t.mean(dim=0)
+                    class_embs.append(m / m.norm())
+                    self.prompt_cats.append(cat)
+            self.text_emb = torch.stack(class_embs)
 
         self.ref_embeddings = []
+        self.ref_gray = []
         from PIL import Image
         try:  # iPhone photos are HEIC by default
             from pillow_heif import register_heif_opener
@@ -481,7 +500,9 @@ class ImageMatcher:
             if f.suffix.lower() not in (".jpg", ".jpeg", ".png", ".webp", ".heic", ".heif"):
                 continue
             try:
-                self.ref_embeddings.append(self._embed(Image.open(f).convert("RGB")))
+                img = Image.open(f).convert("RGB")
+                self.ref_embeddings.append(self._embed(img))
+                self.ref_gray.append(self._embed(_grayscale(img)))
             except Exception as e:
                 print(f"  [!] Could not load reference photo {f}: {e}")
         if not self.ref_embeddings:
@@ -516,10 +537,18 @@ class ImageMatcher:
     def analyze_image_bytes(self, img_bytes):
         from PIL import Image
         import io
-        emb = self._embed(Image.open(io.BytesIO(img_bytes)).convert("RGB"))
-        sim = max(float(emb @ r) for r in self.ref_embeddings)
+        img = Image.open(io.BytesIO(img_bytes)).convert("RGB")
+        emb = self._embed(img)
+        sim_color = max(float(emb @ r) for r in self.ref_embeddings)
+        # Colour-blind comparison: the chrome frame is always the same but
+        # the seat fabric/leather comes in many colours. In black-and-white
+        # a red or black seat on the same frame looks like your beige one,
+        # so the frame's shape decides. Take whichever comparison is higher.
+        emb_gray = self._embed(_grayscale(img))
+        sim_gray = max(float(emb_gray @ g) for g in self.ref_gray)
         res = self._classify(emb)
-        res["sim"] = sim
+        res["sim"] = max(sim_color, sim_gray)
+        res["sim_color"], res["sim_gray"] = sim_color, sim_gray
         return res
 
     def score_image_bytes(self, img_bytes):  # kept for compatibility
