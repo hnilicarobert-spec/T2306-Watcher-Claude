@@ -1,5 +1,65 @@
 [
   {
+    "id": "6e4a8999255c7b01",
+    "url": "https://deti.bazos.sk/inzerat/196210879/jedalenska-stolicka-lehatko-cybex-lemo-4v1-stone-blue.php",
+    "title": "Jedálenská stolička / lehátko Cybex Lemo 4v1 stone blue",
+    "site": "bazos_sk",
+    "image_url": "https://www.bazos.sk/img/1t/879/196210879.jpg?t=1791207009",
+    "score": 0.5174047946929932,
+    "tier": "similar",
+    "keyword_hit": false,
+    "found_at": "2026-10-05 14:27:55",
+    "last_checked": "2026-10-05 14:27:55"
+  },
+  {
+    "id": "56d390ff4c530714",
+    "url": "https://deti.bazos.sk/inzerat/196211808/skladacia-jedalenska-stolicka-pre-deti-stokke-clikk.php",
+    "title": "Skladacia jedálenská stolička pre deti Stokke Clikk",
+    "site": "bazos_sk",
+    "image_url": "https://www.bazos.sk/img/1t/808/196211808.jpg",
+    "score": 0.5161935091018677,
+    "tier": "similar",
+    "keyword_hit": false,
+    "found_at": "2026-10-05 14:27:54",
+    "last_checked": "2026-10-05 14:27:54"
+  },
+  {
+    "id": "b59ce42439ac7a1f",
+    "url": "https://nabytek.bazos.cz/inzerat/224694973/stoly-a-zidle-z-ucebny.php",
+    "title": "Stoly a židle z učebny",
+    "site": "bazos_cz",
+    "image_url": "https://www.bazos.cz/img/1t/973/224694973.jpg",
+    "score": 0.5060147643089294,
+    "tier": "similar",
+    "keyword_hit": false,
+    "found_at": "2026-10-05 14:27:53",
+    "last_checked": "2026-10-05 14:27:53"
+  },
+  {
+    "id": "ba823c22e0b900bd",
+    "url": "https://dum.bazos.cz/inzerat/224696425/zahradni-zidle.php",
+    "title": "Zahradní židle",
+    "site": "bazos_cz",
+    "image_url": "https://www.bazos.cz/img/1t/425/224696425.jpg",
+    "score": 0.5220746994018555,
+    "tier": "similar",
+    "keyword_hit": false,
+    "found_at": "2026-10-05 14:27:52",
+    "last_checked": "2026-10-05 14:27:52"
+  },
+  {
+    "id": "7c870f995d3b0a9c",
+    "url": "https://nabytek.bazos.cz/inzerat/224696402/jidelni-stul-1-zidle.php",
+    "title": "Jídelní stůl + 1 židle",
+    "site": "bazos_cz",
+    "image_url": "https://www.bazos.cz/img/1t/402/224696402.jpg",
+    "score": 0.5060363411903381,
+    "tier": "similar",
+    "keyword_hit": false,
+    "found_at": "2026-10-05 14:27:52",
+    "last_checked": "2026-10-05 14:27:52"
+  },
+  {
     "id": "338612e0e0f95390",
     "url": "https://www.aukro.sk/ojnica-lozisko-prvy-prebrus-sada-8ks-s-105-120-7127895644",
     "title": "Ojnica ložisko - prvý prebrus sada 8ks Š 105,120\nKúp teraz\n34,21 €",
@@ -288,18 +348,6 @@
     "last_checked": "2026-10-05 05:30:02"
   },
   {
-    "id": "ff6ab574bf829b18",
-    "url": "https://www.aukro.cz/batoh-vuch-tayte-small-men-grey-7136063989",
-    "title": "ZÁNOVNÍ\nBatoh Vuch Tayte Small Men Grey\nŽádný příhoz\n396 Kč\nKup teď\n550 Kč",
-    "site": "aukro_cz",
-    "image_url": "https://cdn.aukro.cz/images/sk1787331783898/thumbnail/batoh-vuch-tayte-small-men-grey-291594804.jpeg",
-    "score": 0.534936249256134,
-    "tier": "similar",
-    "keyword_hit": false,
-    "found_at": "2026-10-05 04:25:20",
-    "last_checked": "2026-10-05 04:25:20"
-  },
-  {
     "id": "398674ac49302448",
     "url": "https://nabytek.bazos.cz/inzerat/224665418/zidle-skorepina-calounene-kresilko-na-koleckach-za-500-kc.php",
     "title": "Židle skořepina čalouněné křesílko na kolečkách za 400 kč",
@@ -441,7 +489,7 @@
     "tier": "keyword",
     "keyword_hit": true,
     "found_at": "2026-10-04 21:04:28",
-    "last_checked": "2026-10-05 05:25:53"
+    "last_checked": "2026-10-05 14:23:31"
   },
   {
     "id": "bdb71755f5d8d1f6",
@@ -453,7 +501,7 @@
     "tier": "similar",
     "keyword_hit": false,
     "found_at": "2026-10-04 21:04:13",
-    "last_checked": "2026-10-05 05:25:52"
+    "last_checked": "2026-10-05 14:23:30"
   },
   {
     "id": "c9d01cb46f3c7833",
@@ -1473,7 +1521,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:51:06",
     "keyword_hit": false,
-    "last_checked": "2026-10-05 05:25:56"
+    "last_checked": "2026-10-05 14:23:34"
   },
   {
     "id": "072f1039aa548830",
@@ -1497,7 +1545,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:51:04",
     "keyword_hit": false,
-    "last_checked": "2026-10-05 05:25:54"
+    "last_checked": "2026-10-05 14:23:32"
   },
   {
     "id": "22cd995aeb89de38",
@@ -1509,7 +1557,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:51:04",
     "keyword_hit": false,
-    "last_checked": "2026-10-05 05:25:55"
+    "last_checked": "2026-10-05 14:23:33"
   },
   {
     "id": "5d5f1dea54677edc",
@@ -1533,7 +1581,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:51:02",
     "keyword_hit": false,
-    "last_checked": "2026-10-05 05:25:53"
+    "last_checked": "2026-10-05 14:23:32"
   },
   {
     "id": "1b3a9f1d4fd72c64",
@@ -1545,7 +1593,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:51:02",
     "keyword_hit": false,
-    "last_checked": "2026-10-05 05:25:55"
+    "last_checked": "2026-10-05 14:23:34"
   },
   {
     "id": "c2f27dce7462b5db",
@@ -1557,7 +1605,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:51:01",
     "keyword_hit": false,
-    "last_checked": "2026-10-05 05:25:54"
+    "last_checked": "2026-10-05 14:23:33"
   },
   {
     "id": "97df81152ffe6e69",
@@ -1569,7 +1617,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:51:00",
     "keyword_hit": false,
-    "last_checked": "2026-10-05 05:25:51"
+    "last_checked": "2026-10-05 14:23:29"
   },
   {
     "id": "6428e4c94d436b8f",
@@ -1581,7 +1629,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:50:59",
     "keyword_hit": false,
-    "last_checked": "2026-10-05 05:25:52"
+    "last_checked": "2026-10-05 14:23:31"
   },
   {
     "id": "1e12a269aebb4e24",
@@ -1593,7 +1641,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:50:58",
     "keyword_hit": false,
-    "last_checked": "2026-10-05 05:25:50"
+    "last_checked": "2026-10-05 14:23:28"
   },
   {
     "id": "1bdda3cd0b502fc3",
@@ -1605,7 +1653,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:50:55",
     "keyword_hit": false,
-    "last_checked": "2026-10-05 05:25:51"
+    "last_checked": "2026-10-05 14:23:29"
   },
   {
     "id": "19a933a3a93afee4",
@@ -1617,7 +1665,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:50:52",
     "keyword_hit": false,
-    "last_checked": "2026-10-05 05:25:49"
+    "last_checked": "2026-10-05 14:23:27"
   },
   {
     "id": "da169c47aeeac13c",
@@ -1629,7 +1677,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:50:51",
     "keyword_hit": false,
-    "last_checked": "2026-10-05 05:25:48"
+    "last_checked": "2026-10-05 14:23:26"
   },
   {
     "id": "7891fd6c818fb180",
@@ -1641,7 +1689,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:50:50",
     "keyword_hit": false,
-    "last_checked": "2026-10-05 05:25:50"
+    "last_checked": "2026-10-05 14:23:28"
   },
   {
     "id": "9f78c17ca12c52bf",
@@ -1653,7 +1701,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:50:49",
     "keyword_hit": false,
-    "last_checked": "2026-10-05 05:25:49"
+    "last_checked": "2026-10-05 14:23:27"
   },
   {
     "id": "7e00b7cb52bf8b0a",
@@ -1677,7 +1725,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:50:44",
     "keyword_hit": false,
-    "last_checked": "2026-10-05 04:21:09"
+    "last_checked": "2026-10-05 14:23:24"
   },
   {
     "id": "758a46e8c56d11a2",
@@ -1689,7 +1737,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:50:42",
     "keyword_hit": false,
-    "last_checked": "2026-10-05 04:21:09"
+    "last_checked": "2026-10-05 14:23:25"
   },
   {
     "id": "fb5e348a6e54846f",
@@ -1701,7 +1749,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:50:41",
     "keyword_hit": false,
-    "last_checked": "2026-10-05 04:21:08"
+    "last_checked": "2026-10-05 14:23:23"
   },
   {
     "id": "138b219c25f0717f",
