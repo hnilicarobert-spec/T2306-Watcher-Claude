@@ -472,8 +472,13 @@ class ImageMatcher:
 
         self.ref_embeddings = []
         from PIL import Image
+        try:  # iPhone photos are HEIC by default
+            from pillow_heif import register_heif_opener
+            register_heif_opener()
+        except ImportError:
+            print("  [i] pillow-heif not installed — .heic reference photos will be skipped")
         for f in sorted(Path(ref_dir).glob("*")):
-            if f.suffix.lower() not in (".jpg", ".jpeg", ".png", ".webp"):
+            if f.suffix.lower() not in (".jpg", ".jpeg", ".png", ".webp", ".heic", ".heif"):
                 continue
             try:
                 self.ref_embeddings.append(self._embed(Image.open(f).convert("RGB")))
