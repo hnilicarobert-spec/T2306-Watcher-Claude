@@ -15,6 +15,10 @@ the repo — there's no server to write that state back to. That means:
   seen.json already prevents re-discovering the same URL again).
 """
 
+import html
+
+TIER_RANK = {"exact": 4, "keyword": 3, "strong": 2, "similar": 1, "collection": 0}
+
 CARD_TEMPLATE = """
 <div class="card" data-id="{id}" data-score="{score_for_sort}" data-tier-rank="{tier_rank}" data-found-at="{found_at_raw}">
   <button class="dismiss-btn" aria-label="Remove this listing" title="Remove">✕</button>
@@ -72,6 +76,8 @@ HEAD_AND_STYLE = """
     .badge-keyword { background: #ffe4b8; color: #8a5600; }
     .badge-strong { background: #c9f2d8; color: #146c3a; }
     .badge-similar { background: #e3e3e3; color: #555; }
+    .badge-exact { background: #2b6b4f; color: #fff; }
+    .badge-collection { background: #e4e0f5; color: #4a3d8f; }
     .badge-new { background: #ff5c5c; color: white; }
     .dismiss-btn {
       position: absolute; top: 8px; right: 8px; z-index: 5;
@@ -198,10 +204,17 @@ def _confidence_sort_key(item):
     match that ALSO has a strong photo match (e.g. score 0.94) still sorts
     above one with no photo at all, and "similar" entries sort by how close
     they actually scored rather than by when they were found."""
-    tier_rank = {"keyword": 2, "strong": 1, "similar": 0}.get(item.get("tier"), -1)
-    score = item.get("score")
-    score_for_sort = score if score is not None else -1  # no photo available sorts last within its tier
-    return (tier_rank, score_for_sort)
+    return (TIER_RANK.get(item.get("tier"), -1), _sort_value(item))
+
+
+def _sort_value(item):
+    """Combined match (photo similarity + 'chrome tube with fabric seat'
+    confidence) when available, else raw similarity, else last."""
+    if item.get("match") is not None:
+        return item["match"]
+    if item.get("score") is not None:
+        return item["score"] - 0.5  # older entries without a classification yet
+    return -1
 
 
 def render_static(found, last_run_text, repo_actions_url=None):
@@ -225,15 +238,23 @@ def render_static(found, last_run_text, repo_actions_url=None):
         cards_html = ('<div class="empty">No candidate listings yet. '
                        'Trigger a scan from the Actions tab, or wait for the next automatic run.</div>')
     else:
-        tier_labels = {"keyword": "Name match", "strong": "Strong match", "similar": "Similar"}
-        tier_rank_map = {"keyword": 2, "strong": 1, "similar": 0}
+        tier_labels = {"exact": "T2306", "keyword": "Kodreta chair", "strong": "Strong match",
+                       "similar": "Similar", "collection": "Kodreta collection"}
+        tier_rank_map = TIER_RANK
         cards = []
         for item in found:
-            score = item.get("score")
-            score_label = f"similarity {score:.2f}" if score is not None else "keyword match"
-            score_for_sort = score if score is not None else -1
+            m = item.get("match")
+            if m is not None:
+                score_label = f"match {round(m * 100)}%"
+                if item.get("p_target") is not None:
+                    score_label += f" · chrome+fabric {round(item['p_target'] * 100)}%"
+            elif item.get("score") is not None:
+                score_label = f"similarity {item['score']:.2f}"
+            else:
+                score_label = "named in ad, no photo"
+            score_for_sort = _sort_value(item)
             img_html = (
-                f'<img src="{item["image_url"]}" loading="lazy" alt="">'
+                f'<img src="{html.escape(item["image_url"], quote=True)}" loading="lazy" alt="">'
                 if item.get("image_url") else ""
             )
             cards.append(CARD_TEMPLATE.format(
@@ -241,12 +262,12 @@ def render_static(found, last_run_text, repo_actions_url=None):
                 score_for_sort=score_for_sort,
                 tier_rank=tier_rank_map.get(item.get("tier"), -1),
                 found_at_raw=item.get("found_at", ""),
-                url=item["url"],
+                url=html.escape(item["url"], quote=True),
                 img_html=img_html,
                 tier=item.get("tier", "similar"),
                 tier_label=tier_labels.get(item.get("tier"), "Match"),
-                title=item["title"],
-                site=item["site"],
+                title=html.escape(item["title"]),
+                site=html.escape(str(item["site"])),
                 score_label=score_label,
                 found_at=item.get("found_at", ""),
             ))
