@@ -1,5 +1,41 @@
 [
   {
+    "id": "999d2f32a94fb1aa",
+    "url": "https://www.aukro.sk/pekny-liatinovy-maly-gril-7136077155",
+    "title": "ROZBALENÉ\nPekný liatinový malý gril\nŽiadne prihodenie\n16,23 €",
+    "site": "aukro_sk",
+    "image_url": "https://cdn.aukro.sk/images/sk1791129109226/thumbnail/pekny-liatinovy-maly-gril-299545898.jpeg",
+    "score": 0.5456228852272034,
+    "tier": "similar",
+    "keyword_hit": false,
+    "found_at": "2026-10-05 06:32:56",
+    "last_checked": "2026-10-05 06:32:56"
+  },
+  {
+    "id": "d5493f64152cf2c2",
+    "url": "https://www.aukro.sk/jawa-special-vzpera-predneho-blatnika-predna-7067045478",
+    "title": "17\nJawa Špeciál vzpera predného blatníka predná\n3x zakúpené\n14,60 €",
+    "site": "aukro_sk",
+    "image_url": "https://cdn.aukro.sk/images/sk1721155562996/thumbnail/jawa-special-vzpera-predneho-blatnika-predna-200362972.jpeg",
+    "score": 0.5284320712089539,
+    "tier": "similar",
+    "keyword_hit": false,
+    "found_at": "2026-10-05 06:32:55",
+    "last_checked": "2026-10-05 06:32:55"
+  },
+  {
+    "id": "e372e33be09bad7b",
+    "url": "https://www.aukro.cz/jidelni-stul-k20-4-7127270130",
+    "title": "6\nROZBALENO\nJídelní stůl K20-4\nŽádný příhoz\n14 999 Kč\nBěžná cena\n49 000 Kč\n-69 %\nKup teď\n15 000 Kč",
+    "site": "aukro_cz",
+    "image_url": "https://cdn.aukro.cz/images/sk1778067880429/thumbnail/jidelni-stul-k20-4-272373644.jpeg",
+    "score": 0.5481841564178467,
+    "tier": "similar",
+    "keyword_hit": false,
+    "found_at": "2026-10-05 06:32:50",
+    "last_checked": "2026-10-05 06:32:50"
+  },
+  {
     "id": "774f526fde858f84",
     "url": "https://www.aukro.cz/zastavovaci-svetlo-stop-z-ceskoslovenska-7135631368",
     "title": "1\nZastavovací světlo STOP z Československa\nŽádný příhoz\n2 700 Kč",
@@ -228,18 +264,6 @@
     "last_checked": "2026-10-04 23:20:36"
   },
   {
-    "id": "5bdd8cf1ab790901",
-    "url": "https://aukro.cz/koupim-zidli-t2306-kodreta-myjava-7135208694",
-    "title": "Koupím židli T2306 Kodreta Myjava | Aukro",
-    "site": "web_search",
-    "image_url": null,
-    "score": null,
-    "tier": "keyword",
-    "keyword_hit": true,
-    "found_at": "2026-10-04 21:41:03",
-    "last_checked": "2026-10-04 21:41:03"
-  },
-  {
     "id": "eafe1a332a94eaec",
     "url": "https://nabytek.bazos.cz/inzerat/224663099/jidelni-zidle-autronic.php",
     "title": "JÍDELNÍ ŽIDLE AUTRONIC",
@@ -249,7 +273,7 @@
     "tier": "strong",
     "keyword_hit": false,
     "found_at": "2026-10-04 21:40:47",
-    "last_checked": "2026-10-04 21:40:47"
+    "last_checked": "2026-10-05 06:28:15"
   },
   {
     "id": "c2cf14f267f26ada",
@@ -477,7 +501,7 @@
     "tier": "keyword",
     "keyword_hit": true,
     "found_at": "2026-10-04 07:55:56",
-    "last_checked": "2026-10-04 21:36:37"
+    "last_checked": "2026-10-05 06:28:10"
   },
   {
     "id": "6b056eefc8527e36",
@@ -489,7 +513,7 @@
     "tier": "strong",
     "keyword_hit": false,
     "found_at": "2026-10-04 07:55:36",
-    "last_checked": "2026-10-04 21:36:36"
+    "last_checked": "2026-10-05 06:28:08"
   },
   {
     "id": "4549ba87397d4606",
@@ -501,7 +525,7 @@
     "tier": "strong",
     "keyword_hit": false,
     "found_at": "2026-10-04 07:55:36",
-    "last_checked": "2026-10-04 21:36:37"
+    "last_checked": "2026-10-05 06:28:10"
   },
   {
     "id": "feff3506d8016e47",
@@ -513,7 +537,7 @@
     "tier": "strong",
     "keyword_hit": false,
     "found_at": "2026-10-04 07:55:34",
-    "last_checked": "2026-10-04 21:36:36"
+    "last_checked": "2026-10-05 06:28:09"
   },
   {
     "id": "5e4c498393140c3c",
@@ -549,7 +573,7 @@
     "tier": "strong",
     "keyword_hit": false,
     "found_at": "2026-10-04 07:55:28",
-    "last_checked": "2026-10-04 21:36:35"
+    "last_checked": "2026-10-05 06:28:08"
   },
   {
     "id": "dbbd1b43f43d9370",
@@ -1125,7 +1149,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:51:19",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 22:17:40"
+    "last_checked": "2026-10-05 06:28:22"
   },
   {
     "id": "ec79e384a4d22921",
@@ -1149,7 +1173,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:51:17",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 22:17:38"
+    "last_checked": "2026-10-05 06:28:20"
   },
   {
     "id": "22c05f40e5186775",
@@ -1161,7 +1185,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:51:17",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 22:17:39"
+    "last_checked": "2026-10-05 06:28:21"
   },
   {
     "id": "595b9ed9536b6cc0",
@@ -1173,7 +1197,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:51:16",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 22:17:39"
+    "last_checked": "2026-10-05 06:28:22"
   },
   {
     "id": "4a85720e85715bd6",
@@ -1185,7 +1209,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:51:15",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 22:17:37"
+    "last_checked": "2026-10-05 06:28:18"
   },
   {
     "id": "c3184ac58b416174",
@@ -1197,7 +1221,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:51:14",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 22:17:37"
+    "last_checked": "2026-10-05 06:28:19"
   },
   {
     "id": "c7ffb509865e6074",
@@ -1209,7 +1233,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:51:13",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 22:17:36"
+    "last_checked": "2026-10-05 06:28:17"
   },
   {
     "id": "1aa361b691970060",
@@ -1221,7 +1245,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:51:13",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 22:17:36"
+    "last_checked": "2026-10-05 06:28:17"
   },
   {
     "id": "a9e4d5e53fee48f1",
@@ -1233,7 +1257,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:51:12",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 21:36:39"
+    "last_checked": "2026-10-05 06:28:13"
   },
   {
     "id": "8ec0c128aa963351",
@@ -1245,7 +1269,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:51:11",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 21:36:38"
+    "last_checked": "2026-10-05 06:28:11"
   },
   {
     "id": "58d9e1ddf2cde830",
@@ -1257,7 +1281,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:51:11",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 21:36:40"
+    "last_checked": "2026-10-05 06:28:14"
   },
   {
     "id": "8cb6eb71f8387683",
@@ -1269,7 +1293,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:51:10",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 21:36:39"
+    "last_checked": "2026-10-05 06:28:14"
   },
   {
     "id": "ccdd6bc4a6ffee18",
@@ -1281,7 +1305,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:51:07",
     "keyword_hit": false,
-    "last_checked": "2026-10-04 21:36:38"
+    "last_checked": "2026-10-05 06:28:12"
   },
   {
     "id": "9c2b7956861ef5ce",
