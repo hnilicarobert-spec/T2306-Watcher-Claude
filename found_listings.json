@@ -1,5 +1,41 @@
 [
   {
+    "id": "a8d4b142358691f9",
+    "url": "https://www.aukro.cz/termoska-mountain-mons-made-in-china-7136181299",
+    "title": "4\nPOUŽITÉ\nTERMOSKA - MOUNTAIN MONS , MADE IN CHINA\nŽádný příhoz\n185 Kč",
+    "site": "aukro_cz",
+    "image_url": "https://cdn.aukro.cz/images/sk1662909915644/thumbnail/termoska-mountain-mons-made-in-china-131403870.jpeg",
+    "score": 0.5098816156387329,
+    "tier": "similar",
+    "keyword_hit": false,
+    "found_at": "2026-10-05 12:29:38",
+    "last_checked": "2026-10-05 12:29:38"
+  },
+  {
+    "id": "72cc2ee4cc41dd08",
+    "url": "https://nabytek.bazos.cz/inzerat/224690237/2x-kovova-zidle-na-zahradu.php",
+    "title": "2x kovová židle na zahradu",
+    "site": "bazos_cz",
+    "image_url": "https://www.bazos.cz/img/1t/237/224690237.jpg",
+    "score": 0.6124005913734436,
+    "tier": "strong",
+    "keyword_hit": false,
+    "found_at": "2026-10-05 12:29:37",
+    "last_checked": "2026-10-05 12:29:37"
+  },
+  {
+    "id": "f16034c699322c91",
+    "url": "https://nabytek.bazos.cz/inzerat/224692127/moderni-jidelni-zidle-hnedy-umely-semis-brousena-kuze.php",
+    "title": "Moderní jídelní židle – hnědý umělý semiš (broušená kůže)",
+    "site": "bazos_cz",
+    "image_url": "https://www.bazos.cz/img/1t/127/224692127.jpg",
+    "score": 0.5270947217941284,
+    "tier": "similar",
+    "keyword_hit": false,
+    "found_at": "2026-10-05 12:29:36",
+    "last_checked": "2026-10-05 12:29:36"
+  },
+  {
     "id": "2fd8327a4ac84451",
     "url": "https://nabytek.bazos.cz/inzerat/224689435/retro-stolicky-na-zavazadla-brusel-60-leta-4ks.php",
     "title": "Retro stoličky na zavazadla - Brusel 60. léta, 4ks",
@@ -264,18 +300,6 @@
     "last_checked": "2026-10-05 03:25:19"
   },
   {
-    "id": "652d7ad82021fb80",
-    "url": "https://www.aukro.sk/objimka-plynovych-rukojeti-rychlopalu-7094369066",
-    "title": "1\nobjímka plynových rukojetí - rýchlopalu\nŽiadne prihodenie\n6,14 €",
-    "site": "aukro_sk",
-    "image_url": "https://cdn.aukro.sk/images/sk1753611417002/thumbnail/objimka-plynovych-rukojeti-rychlopalu-235751232.jpeg",
-    "score": 0.5080036520957947,
-    "tier": "similar",
-    "keyword_hit": false,
-    "found_at": "2026-10-05 02:23:28",
-    "last_checked": "2026-10-05 02:23:28"
-  },
-  {
     "id": "d2cbf081cab1a142",
     "url": "https://www.sbazar.cz/hledej/chromovan%C3%A9%20k%C5%99eslo",
     "title": "chromované křeslo Bazar a inzerce - Sbazar.cz",
@@ -417,7 +441,7 @@
     "tier": "strong",
     "keyword_hit": false,
     "found_at": "2026-10-04 19:54:21",
-    "last_checked": "2026-10-05 03:20:46"
+    "last_checked": "2026-10-05 12:24:58"
   },
   {
     "id": "cd5cc8b0cf3a11f2",
@@ -429,7 +453,7 @@
     "tier": "strong",
     "keyword_hit": false,
     "found_at": "2026-10-04 19:54:20",
-    "last_checked": "2026-10-05 03:20:46"
+    "last_checked": "2026-10-05 12:24:59"
   },
   {
     "id": "1345b6f12cc4f0c7",
@@ -441,7 +465,7 @@
     "tier": "strong",
     "keyword_hit": false,
     "found_at": "2026-10-04 19:54:19",
-    "last_checked": "2026-10-05 03:20:45"
+    "last_checked": "2026-10-05 12:24:57"
   },
   {
     "id": "2ce017a2c1c53ff3",
@@ -705,7 +729,7 @@
     "tier": "keyword",
     "keyword_hit": true,
     "found_at": "2026-10-04 02:49:04",
-    "last_checked": "2026-10-05 03:20:51"
+    "last_checked": "2026-10-05 12:25:01"
   },
   {
     "id": "3cac81c7f471c466",
@@ -717,7 +741,7 @@
     "tier": "similar",
     "keyword_hit": false,
     "found_at": "2026-10-04 02:48:46",
-    "last_checked": "2026-10-05 03:20:51"
+    "last_checked": "2026-10-05 12:25:02"
   },
   {
     "id": "b945514b74ab5f0b",
@@ -729,7 +753,55 @@
     "tier": "similar",
     "keyword_hit": false,
     "found_at": "2026-10-04 02:48:45",
-    "last_checked": "2026-10-05 03:20:50"
+    "last_checked": "2026-10-05 12:25:01"
+  },
+  {
+    "id": "4075411471cdec6d",
+    "url": "http://www.kodreta.com/?lang=sk",
+    "title": "chrómovaný nábytok, kovové chrómované stoličky, kreslá, drevené stoličky",
+    "site": "web_search",
+    "image_url": null,
+    "score": null,
+    "tier": "keyword",
+    "keyword_hit": true,
+    "found_at": "2026-10-03 20:42:07",
+    "last_checked": "2026-10-05 10:20:59"
+  },
+  {
+    "id": "d3b2a26e65a1f66d",
+    "url": "https://www.furniturestoresfinder.com/SK/Myjava/336970629701162/KODRETA-furniture%2C-s.r.o.",
+    "title": "KODRETA furniture, s.r.o., Myjava (2026)",
+    "site": "web_search",
+    "image_url": null,
+    "score": null,
+    "tier": "keyword",
+    "keyword_hit": true,
+    "found_at": "2026-10-03 20:42:07",
+    "last_checked": "2026-10-05 10:21:00"
+  },
+  {
+    "id": "482de2d671f9baa6",
+    "url": "https://nabytok.bazos.sk/inzeraty/kodreta/",
+    "title": "Kodreta bazár - Nábytok | Bazoš.sk",
+    "site": "web_search",
+    "image_url": null,
+    "score": null,
+    "tier": "keyword",
+    "keyword_hit": true,
+    "found_at": "2026-10-03 20:42:07",
+    "last_checked": "2026-10-05 10:21:00"
+  },
+  {
+    "id": "88614b6df79bfa94",
+    "url": "https://www.furniture1000.com/SK/Myjava/336970629701162/KODRETA-furniture%2C-s.r.o.",
+    "title": "KODRETA furniture, s.r.o., Myjava (2025)",
+    "site": "web_search",
+    "image_url": null,
+    "score": null,
+    "tier": "keyword",
+    "keyword_hit": true,
+    "found_at": "2026-10-03 20:42:07",
+    "last_checked": "2026-10-05 10:21:00"
   },
   {
     "id": "f9be10d29d9c9952",
@@ -790,54 +862,6 @@
     "keyword_hit": true,
     "found_at": "2026-10-03 20:42:07",
     "last_checked": "2026-10-05 11:19:17"
-  },
-  {
-    "id": "4075411471cdec6d",
-    "url": "http://www.kodreta.com/?lang=sk",
-    "title": "chrómovaný nábytok, kovové chrómované stoličky, kreslá, drevené stoličky",
-    "site": "web_search",
-    "image_url": null,
-    "score": null,
-    "tier": "keyword",
-    "keyword_hit": true,
-    "found_at": "2026-10-03 20:42:07",
-    "last_checked": "2026-10-05 10:20:59"
-  },
-  {
-    "id": "d3b2a26e65a1f66d",
-    "url": "https://www.furniturestoresfinder.com/SK/Myjava/336970629701162/KODRETA-furniture%2C-s.r.o.",
-    "title": "KODRETA furniture, s.r.o., Myjava (2026)",
-    "site": "web_search",
-    "image_url": null,
-    "score": null,
-    "tier": "keyword",
-    "keyword_hit": true,
-    "found_at": "2026-10-03 20:42:07",
-    "last_checked": "2026-10-05 10:21:00"
-  },
-  {
-    "id": "482de2d671f9baa6",
-    "url": "https://nabytok.bazos.sk/inzeraty/kodreta/",
-    "title": "Kodreta bazár - Nábytok | Bazoš.sk",
-    "site": "web_search",
-    "image_url": null,
-    "score": null,
-    "tier": "keyword",
-    "keyword_hit": true,
-    "found_at": "2026-10-03 20:42:07",
-    "last_checked": "2026-10-05 10:21:00"
-  },
-  {
-    "id": "88614b6df79bfa94",
-    "url": "https://www.furniture1000.com/SK/Myjava/336970629701162/KODRETA-furniture%2C-s.r.o.",
-    "title": "KODRETA furniture, s.r.o., Myjava (2025)",
-    "site": "web_search",
-    "image_url": null,
-    "score": null,
-    "tier": "keyword",
-    "keyword_hit": true,
-    "found_at": "2026-10-03 20:42:07",
-    "last_checked": "2026-10-05 10:21:00"
   },
   {
     "id": "c62450fbd681ba7f",
@@ -1833,7 +1857,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:50:17",
     "keyword_hit": false,
-    "last_checked": "2026-10-05 03:20:54"
+    "last_checked": "2026-10-05 12:25:05"
   },
   {
     "id": "47fd07ff50287266",
@@ -1869,7 +1893,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:50:12",
     "keyword_hit": false,
-    "last_checked": "2026-10-05 03:20:52"
+    "last_checked": "2026-10-05 12:25:03"
   },
   {
     "id": "799c4bf2c888c386",
@@ -1881,7 +1905,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:50:11",
     "keyword_hit": false,
-    "last_checked": "2026-10-05 03:20:53"
+    "last_checked": "2026-10-05 12:25:04"
   },
   {
     "id": "10826cc397bea39c",
@@ -1893,7 +1917,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:50:08",
     "keyword_hit": false,
-    "last_checked": "2026-10-05 03:20:49"
+    "last_checked": "2026-10-05 12:24:59"
   },
   {
     "id": "c4fb027ba9a53b66",
@@ -1905,7 +1929,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:50:08",
     "keyword_hit": false,
-    "last_checked": "2026-10-05 03:20:51"
+    "last_checked": "2026-10-05 12:25:03"
   },
   {
     "id": "3ae376f9bfd45f54",
@@ -1917,7 +1941,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:50:07",
     "keyword_hit": false,
-    "last_checked": "2026-10-05 03:20:49"
+    "last_checked": "2026-10-05 12:25:00"
   },
   {
     "id": "8ac578e8b156b9a2",
@@ -1929,7 +1953,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:50:06",
     "keyword_hit": false,
-    "last_checked": "2026-10-05 03:20:44"
+    "last_checked": "2026-10-05 12:24:56"
   },
   {
     "id": "61e8e8dd58de8a7f",
@@ -1941,7 +1965,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:50:05",
     "keyword_hit": false,
-    "last_checked": "2026-10-05 03:20:42"
+    "last_checked": "2026-10-05 12:24:54"
   },
   {
     "id": "cfbc7eeee9e09e0f",
@@ -1953,7 +1977,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:49:53",
     "keyword_hit": false,
-    "last_checked": "2026-10-05 03:20:41"
+    "last_checked": "2026-10-05 12:24:53"
   },
   {
     "id": "b1dc82ac2e765a19",
@@ -1965,7 +1989,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:49:53",
     "keyword_hit": false,
-    "last_checked": "2026-10-05 03:20:44"
+    "last_checked": "2026-10-05 12:24:56"
   },
   {
     "id": "41a3b42961dd3e9a",
@@ -1977,7 +2001,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:49:50",
     "keyword_hit": false,
-    "last_checked": "2026-10-05 03:20:43"
+    "last_checked": "2026-10-05 12:24:55"
   },
   {
     "id": "ab8d1613225d1e13",
@@ -1989,7 +2013,19 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:49:49",
     "keyword_hit": false,
-    "last_checked": "2026-10-05 02:19:15"
+    "last_checked": "2026-10-05 12:24:50"
+  },
+  {
+    "id": "09847b66fe8f6e00",
+    "url": "https://nabytek.bazos.cz/inzerat/223487546/glenn-barova-stolicka-6-ks.php",
+    "title": "GLENN Barová stolička 6 ks",
+    "site": "bazos_cz",
+    "image_url": "https://www.bazos.cz/img/1t/546/223487546.jpg",
+    "score": 0.5129579305648804,
+    "tier": "similar",
+    "found_at": "2026-10-03 16:49:47",
+    "keyword_hit": false,
+    "last_checked": "2026-10-05 12:24:53"
   },
   {
     "id": "21465ecb75005b60",
@@ -2002,18 +2038,6 @@
     "found_at": "2026-10-03 16:49:47",
     "keyword_hit": false,
     "last_checked": "2026-10-05 11:19:20"
-  },
-  {
-    "id": "09847b66fe8f6e00",
-    "url": "https://nabytek.bazos.cz/inzerat/223487546/glenn-barova-stolicka-6-ks.php",
-    "title": "GLENN Barová stolička 6 ks",
-    "site": "bazos_cz",
-    "image_url": "https://www.bazos.cz/img/1t/546/223487546.jpg",
-    "score": 0.5129579305648804,
-    "tier": "similar",
-    "found_at": "2026-10-03 16:49:47",
-    "keyword_hit": false,
-    "last_checked": "2026-10-05 03:20:41"
   },
   {
     "id": "1aff8f18520fcc36",
