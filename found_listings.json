@@ -1,5 +1,53 @@
 [
   {
+    "id": "d656b37238bb6b8d",
+    "url": "https://www.aukro.cz/zidle-7114019376",
+    "title": "2\nŽidle\nŽádný příhoz\n2 100 Kč",
+    "site": "aukro_cz",
+    "image_url": "https://cdn.aukro.cz/images/sk1773578463266/thumbnail/zidle-263823569.jpeg",
+    "score": 0.5352451801300049,
+    "tier": "similar",
+    "keyword_hit": false,
+    "found_at": "2026-10-05 09:26:33",
+    "last_checked": "2026-10-05 09:26:33"
+  },
+  {
+    "id": "03bd774c55f4014b",
+    "url": "https://nabytek.bazos.cz/inzerat/224682400/zidle-bila-zn-ikea.php",
+    "title": "Židle bílá zn. Ikea",
+    "site": "bazos_cz",
+    "image_url": "https://www.bazos.cz/img/1t/400/224682400.jpg?t=1791189902",
+    "score": 0.5853219628334045,
+    "tier": "strong",
+    "keyword_hit": false,
+    "found_at": "2026-10-05 09:26:28",
+    "last_checked": "2026-10-05 09:26:28"
+  },
+  {
+    "id": "1ecbaef4808f42c3",
+    "url": "https://nabytek.bazos.cz/inzerat/222796016/jidelni-set-stul-4-zidle.php",
+    "title": "Jídelní set - stůl + 4 židle",
+    "site": "bazos_cz",
+    "image_url": "https://www.bazos.cz/img/1t/016/222796016.jpg?t=1791189121",
+    "score": 0.5246886610984802,
+    "tier": "similar",
+    "keyword_hit": false,
+    "found_at": "2026-10-05 09:26:27",
+    "last_checked": "2026-10-05 09:26:27"
+  },
+  {
+    "id": "34dbb88e6655f479",
+    "url": "https://nabytek.bazos.cz/inzerat/224682756/zidle-cerne-skladaci-2-ks.php",
+    "title": "Židle černé skládací 2 ks",
+    "site": "bazos_cz",
+    "image_url": "https://www.bazos.cz/img/1t/756/224682756.jpg",
+    "score": 0.5924615263938904,
+    "tier": "strong",
+    "keyword_hit": false,
+    "found_at": "2026-10-05 09:26:27",
+    "last_checked": "2026-10-05 09:26:27"
+  },
+  {
     "id": "ea2ae174defe9d0c",
     "url": "https://www.aukro.sk/tona-ursus-sekera-c-285-7136117204",
     "title": "3\nPOUŽITÉ\nTona Ursus sekera č. 285\nKúp teraz\n13,35 €",
@@ -240,18 +288,6 @@
     "last_checked": "2026-10-05 00:32:09"
   },
   {
-    "id": "744577234da04eba",
-    "url": "https://www.aukro.cz/metodicka-prirucka-pro-archivare-ceskoslovenskeho-archivu-7136111118",
-    "title": "TOP Seller\nPOUŽITÉ\nMetodická příručka pro archiváře Československého archivu\nKup teď\n330 Kč",
-    "site": "aukro_cz",
-    "image_url": "https://cdn.aukro.cz/images/sk1791142157368/thumbnail/metodicka-prirucka-pro-archivare-ceskoslovenskeho-archivu-299602901.jpeg",
-    "score": 0.5882195830345154,
-    "tier": "strong",
-    "keyword_hit": false,
-    "found_at": "2026-10-05 00:32:07",
-    "last_checked": "2026-10-05 00:32:07"
-  },
-  {
     "id": "a843311ec3e40ee6",
     "url": "https://www.sbazar.cz/inzerat/234399894-retro-kresla-kodreta-myjava-design-viliam-chlebo",
     "title": "Retro křesla Kodreta Myjava, design Viliam CHlebo - Tábor - Bazar",
@@ -465,7 +501,7 @@
     "tier": "strong",
     "keyword_hit": false,
     "found_at": "2026-10-04 15:22:14",
-    "last_checked": "2026-10-05 00:27:33"
+    "last_checked": "2026-10-05 09:22:02"
   },
   {
     "id": "19aa4c73d3e52c4f",
@@ -477,7 +513,7 @@
     "tier": "strong",
     "keyword_hit": false,
     "found_at": "2026-10-04 15:22:14",
-    "last_checked": "2026-10-05 00:27:33"
+    "last_checked": "2026-10-05 09:22:03"
   },
   {
     "id": "02a45da70b8ec6d1",
@@ -489,7 +525,7 @@
     "tier": "strong",
     "keyword_hit": false,
     "found_at": "2026-10-04 15:22:13",
-    "last_checked": "2026-10-05 00:27:32"
+    "last_checked": "2026-10-05 09:22:01"
   },
   {
     "id": "5af59e23f4fda738",
@@ -813,7 +849,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 20:20:43",
     "keyword_hit": false,
-    "last_checked": "2026-10-05 00:27:38"
+    "last_checked": "2026-10-05 09:22:07"
   },
   {
     "id": "3901581a05d0a97c",
@@ -825,7 +861,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:52:24",
     "keyword_hit": false,
-    "last_checked": "2026-10-05 00:27:37"
+    "last_checked": "2026-10-05 09:22:06"
   },
   {
     "id": "e8d32bab87631c5c",
@@ -837,7 +873,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:52:23",
     "keyword_hit": false,
-    "last_checked": "2026-10-05 00:27:36"
+    "last_checked": "2026-10-05 09:22:05"
   },
   {
     "id": "4c584d23534f84d6",
@@ -849,7 +885,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:52:23",
     "keyword_hit": false,
-    "last_checked": "2026-10-05 00:27:37"
+    "last_checked": "2026-10-05 09:22:07"
   },
   {
     "id": "9a25040efd5dd2f9",
@@ -861,7 +897,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:52:22",
     "keyword_hit": false,
-    "last_checked": "2026-10-05 00:27:36"
+    "last_checked": "2026-10-05 09:22:06"
   },
   {
     "id": "d3c40b97f3fda626",
@@ -873,7 +909,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:52:21",
     "keyword_hit": false,
-    "last_checked": "2026-10-05 00:27:35"
+    "last_checked": "2026-10-05 09:22:04"
   },
   {
     "id": "4bb43e7ebcb45fa9",
@@ -885,7 +921,19 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:52:21",
     "keyword_hit": false,
-    "last_checked": "2026-10-05 00:27:35"
+    "last_checked": "2026-10-05 09:22:04"
+  },
+  {
+    "id": "1f1ace64548d3d49",
+    "url": "https://nabytok.bazos.sk/inzerat/195573800/starozitna-stolicka-thonet.php",
+    "title": "Starozitna stolicka THONET",
+    "site": "bazos_sk",
+    "image_url": "https://www.bazos.sk/img/1t/800/195573800.jpg",
+    "score": 0.5601256489753723,
+    "tier": "strong",
+    "found_at": "2026-10-03 16:52:19",
+    "keyword_hit": false,
+    "last_checked": "2026-10-05 09:22:05"
   },
   {
     "id": "44916b62ddfde632",
@@ -900,18 +948,6 @@
     "last_checked": "2026-10-05 08:22:12"
   },
   {
-    "id": "1f1ace64548d3d49",
-    "url": "https://nabytok.bazos.sk/inzerat/195573800/starozitna-stolicka-thonet.php",
-    "title": "Starozitna stolicka THONET",
-    "site": "bazos_sk",
-    "image_url": "https://www.bazos.sk/img/1t/800/195573800.jpg",
-    "score": 0.5601256489753723,
-    "tier": "strong",
-    "found_at": "2026-10-03 16:52:19",
-    "keyword_hit": false,
-    "last_checked": "2026-10-05 00:27:35"
-  },
-  {
     "id": "322222f1035ca606",
     "url": "https://nabytok.bazos.sk/inzerat/195980027/vintage-stolicky.php",
     "title": "Vintage stoličky",
@@ -921,7 +957,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:52:18",
     "keyword_hit": false,
-    "last_checked": "2026-10-05 00:27:31"
+    "last_checked": "2026-10-05 09:22:01"
   },
   {
     "id": "5a76ed52ad1fe546",
@@ -933,7 +969,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:52:13",
     "keyword_hit": false,
-    "last_checked": "2026-10-05 00:27:32"
+    "last_checked": "2026-10-05 09:22:02"
   },
   {
     "id": "faa7234720054fc3",
@@ -2253,7 +2289,7 @@
     "tier": "keyword",
     "found_at": "2026-10-03 16:07:42",
     "keyword_hit": true,
-    "last_checked": "2026-10-05 00:27:40"
+    "last_checked": "2026-10-05 09:22:10"
   },
   {
     "id": "6103c6966bc4e3ee",
@@ -2265,7 +2301,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:07:41",
     "keyword_hit": false,
-    "last_checked": "2026-10-05 00:27:40"
+    "last_checked": "2026-10-05 09:22:10"
   },
   {
     "id": "0a677925762463f4",
@@ -2289,7 +2325,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:07:40",
     "keyword_hit": false,
-    "last_checked": "2026-10-05 00:27:39"
+    "last_checked": "2026-10-05 09:22:09"
   },
   {
     "id": "1a2b77b76e3c9a50",
@@ -2301,7 +2337,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:07:39",
     "keyword_hit": false,
-    "last_checked": "2026-10-05 00:27:40"
+    "last_checked": "2026-10-05 09:22:11"
   },
   {
     "id": "b3be3e4a02c9e8a6",
@@ -2313,7 +2349,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:07:38",
     "keyword_hit": false,
-    "last_checked": "2026-10-05 00:27:38"
+    "last_checked": "2026-10-05 09:22:08"
   },
   {
     "id": "377f0d9d10426eaa",
@@ -2325,6 +2361,6 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:07:38",
     "keyword_hit": false,
-    "last_checked": "2026-10-05 00:27:39"
+    "last_checked": "2026-10-05 09:22:09"
   }
 ]
