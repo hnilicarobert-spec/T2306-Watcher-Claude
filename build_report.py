@@ -29,7 +29,12 @@ def main():
 
     found = cw.load_found()
     last_run_text = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
-    html = report.render_static(found, last_run_text)
+    import json
+    try:
+        status = json.loads(cw.STATUS_PATH.read_text())
+    except Exception:
+        status = None
+    html = report.render_static(found, last_run_text, source_status=status)
 
     DOCS_DIR.mkdir(exist_ok=True)
     (DOCS_DIR / "index.html").write_text(html, encoding="utf-8")
