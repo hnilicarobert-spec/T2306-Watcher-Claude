@@ -111,3 +111,18 @@ to need occasional attention.
 - `reference_photos/` — your 3 chair photos used for visual matching.
 - `found_listings.json`, `seen.json` — auto-generated and auto-committed by the workflow; this is the scan's memory between runs.
 - `docs/index.html` — auto-generated; the page GitHub Pages serves.
+
+## Improving matches with more reference photos
+
+The scanner compares every listing photo against everything in
+`reference_photos/`. The most useful additions are:
+- the chair **in leather** (the current photos are all fabric),
+- **ordinary phone photos** of the chair at home, the kind sellers take
+  (the current ones are studio shots on a white background),
+- a **side or back view**,
+- a **pair or set** of the chairs together.
+
+Upload them in GitHub into `reference_photos/` (Add file → Upload files).
+Use JPG or PNG; any file name works. Every scan's Actions log prints a check
+line for each reference photo ("top category=target"). If one of yours shows
+something else, that photo is confusing the model and is better removed.
