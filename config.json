@@ -2,7 +2,7 @@
   "ntfy_topic": null,
   "site_url": "https://hnilicarobert-spec.github.io/T2306-Watcher-Claude/",
   "similarity_threshold_notify": 0.55,
-  "similarity_threshold_list": 0.50,
+  "similarity_threshold_list": 0.5,
   "use_image_matching": true,
   "enabled_sites": [
     "bazos_cz",
@@ -11,8 +11,12 @@
     "aukro_sk",
     "olx_pl",
     "kleinanzeigen_de",
+    "vinted_cz",
+    "vinted_sk",
     "web_search"
   ],
   "facebook_session_path": null,
-  "facebook_location": "czech-republic"
+  "facebook_location": "czech-republic",
+  "min_chrome_prob": 0.3,
+  "min_target_prob_notify": 0.25
 }
