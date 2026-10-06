@@ -1,5 +1,5 @@
 {
- "checked_at": "2026-10-06 10:23:25",
+ "checked_at": "2026-10-06 11:22:11",
  "config_errors": [],
  "sources": {
   "bazos_cz": {
@@ -11,7 +11,7 @@
    "errors": []
   },
   "aukro_cz": {
-   "results": 2,
+   "results": 1,
    "errors": []
   },
   "aukro_sk": {
@@ -29,7 +29,7 @@
   "serpapi": {
    "results": 0,
    "errors": [],
-   "note": "searched: (kodreta OR chlebo) (site:etsy.com OR site:ebay.com OR site:…"
+   "note": "searches every 3 hours — next in about 1 h 46 min"
   }
  }
 }
