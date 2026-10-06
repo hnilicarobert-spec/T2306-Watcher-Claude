@@ -9,7 +9,7 @@
     "tier": "strong",
     "keyword_hit": false,
     "found_at": "2026-10-05 22:22:53",
-    "last_checked": "2026-10-05 22:22:53",
+    "last_checked": "2026-10-06 02:18:23",
     "score": 0.7395,
     "p_target": 0.026,
     "p_chrome": 0.401,
@@ -162,24 +162,6 @@
     "via_search": true
   },
   {
-    "id": "bf48f3175f84e8b0",
-    "url": "https://www.pamono.it/sedie-da-pranzo-cromate-di-viliam-chlebo-cecoslovacchia-anni-39-80-set-di-4",
-    "title": "Sedie da pranzo cromate di Viliam Chlebo, Cecoslovacchia, anni '80, set di 4 in vendita su Pamono",
-    "text": "Sedie da pranzo cromate di Viliam Chlebo, Cecoslovacchia, anni '80, set di 4 in vendita su Pamono Pamono.it",
-    "site": "it (via Google Lens)",
-    "image_url": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTVNYjton8MDNvREt-5GIjWa51nydS_z-7I1iI_bfbFaQ0minoC",
-    "tier": "collection",
-    "keyword_hit": true,
-    "found_at": "2026-10-05 18:47:57",
-    "last_checked": "2026-10-06 01:18:39",
-    "score": 0.7715,
-    "p_target": 0.936,
-    "p_chrome": 0.997,
-    "category": "target",
-    "match": 0.925,
-    "via_search": true
-  },
-  {
     "id": "371b2a4b80cedf6c",
     "url": "https://www.1stdibs.com/furniture/seating/dining-room-chairs/set-of-four-design-chrome-dining-chairs-viliam-chlebo-czechoslovakia-1980s/id-f_23743182/",
     "title": "Set of Four Design Chrome Dining Chairs by Viliam Chlebo, Czechoslovakia, 1980s For Sale at 1stDibs | 1980s beach chair",
@@ -213,6 +195,24 @@
     "p_chrome": 0.997,
     "category": "target",
     "match": 0.974,
+    "via_search": true
+  },
+  {
+    "id": "bf48f3175f84e8b0",
+    "url": "https://www.pamono.it/sedie-da-pranzo-cromate-di-viliam-chlebo-cecoslovacchia-anni-39-80-set-di-4",
+    "title": "Sedie da pranzo cromate di Viliam Chlebo, Cecoslovacchia, anni '80, set di 4 in vendita su Pamono",
+    "text": "Sedie da pranzo cromate di Viliam Chlebo, Cecoslovacchia, anni '80, set di 4 in vendita su Pamono Pamono.it",
+    "site": "it (via Google Lens)",
+    "image_url": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTVNYjton8MDNvREt-5GIjWa51nydS_z-7I1iI_bfbFaQ0minoC",
+    "tier": "collection",
+    "keyword_hit": true,
+    "found_at": "2026-10-05 18:47:57",
+    "last_checked": "2026-10-06 01:18:39",
+    "score": 0.7715,
+    "p_target": 0.936,
+    "p_chrome": 0.997,
+    "category": "target",
+    "match": 0.925,
     "via_search": true
   },
   {
@@ -260,7 +260,7 @@
     "tier": "similar",
     "keyword_hit": false,
     "found_at": "2026-10-05 12:29:36",
-    "last_checked": "2026-10-05 22:18:22",
+    "last_checked": "2026-10-06 02:18:20",
     "p_target": 0.654,
     "p_chrome": 0.887,
     "category": "target",
@@ -324,7 +324,7 @@
     "tier": "strong",
     "keyword_hit": false,
     "found_at": "2026-10-05 03:25:19",
-    "last_checked": "2026-10-05 22:18:23",
+    "last_checked": "2026-10-06 02:18:21",
     "p_target": 0.525,
     "p_chrome": 0.882,
     "category": "target",
@@ -408,7 +408,7 @@
     "tier": "similar",
     "keyword_hit": false,
     "found_at": "2026-10-04 19:54:20",
-    "last_checked": "2026-10-05 22:18:21",
+    "last_checked": "2026-10-06 02:18:20",
     "p_target": 0.314,
     "p_chrome": 0.961,
     "category": "chrome_other",
@@ -424,7 +424,7 @@
     "tier": "similar",
     "keyword_hit": false,
     "found_at": "2026-10-04 19:54:19",
-    "last_checked": "2026-10-05 22:18:22",
+    "last_checked": "2026-10-06 02:18:21",
     "p_target": 0.025,
     "p_chrome": 0.713,
     "category": "chrome_other",
@@ -440,7 +440,7 @@
     "tier": "similar",
     "keyword_hit": false,
     "found_at": "2026-10-04 17:43:48",
-    "last_checked": "2026-10-05 22:18:17",
+    "last_checked": "2026-10-06 02:18:17",
     "p_target": 0.526,
     "p_chrome": 0.593,
     "category": "target",
@@ -792,7 +792,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:51:04",
     "keyword_hit": false,
-    "last_checked": "2026-10-05 23:16:27",
+    "last_checked": "2026-10-06 02:18:25",
     "p_target": 0.28,
     "p_chrome": 0.995,
     "category": "chrome_other",
@@ -872,7 +872,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:50:33",
     "keyword_hit": false,
-    "last_checked": "2026-10-05 23:16:25",
+    "last_checked": "2026-10-06 02:18:24",
     "p_target": 0.321,
     "p_chrome": 0.868,
     "category": "chrome_other",
@@ -904,7 +904,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:50:23",
     "keyword_hit": false,
-    "last_checked": "2026-10-05 23:16:26",
+    "last_checked": "2026-10-06 02:18:25",
     "p_target": 0.385,
     "p_chrome": 0.808,
     "category": "chrome_other",
@@ -920,7 +920,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:50:21",
     "keyword_hit": false,
-    "last_checked": "2026-10-05 22:18:23",
+    "last_checked": "2026-10-06 02:18:22",
     "p_target": 0.887,
     "p_chrome": 0.952,
     "category": "target",
@@ -936,7 +936,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:50:21",
     "keyword_hit": false,
-    "last_checked": "2026-10-05 22:18:24",
+    "last_checked": "2026-10-06 02:18:22",
     "p_target": 0.257,
     "p_chrome": 0.772,
     "category": "chrome_other",
@@ -952,7 +952,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:50:19",
     "keyword_hit": false,
-    "last_checked": "2026-10-05 23:16:24",
+    "last_checked": "2026-10-06 02:18:23",
     "p_target": 0.033,
     "p_chrome": 0.998,
     "category": "chrome_other",
@@ -968,7 +968,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:50:05",
     "keyword_hit": false,
-    "last_checked": "2026-10-05 22:18:20",
+    "last_checked": "2026-10-06 02:18:19",
     "p_target": 0.011,
     "p_chrome": 0.719,
     "category": "chrome_other",
@@ -984,7 +984,7 @@
     "tier": "collection",
     "found_at": "2026-10-03 16:07:56",
     "keyword_hit": true,
-    "last_checked": "2026-10-05 22:18:18"
+    "last_checked": "2026-10-06 02:18:17"
   },
   {
     "id": "98919c9b932e91aa",
@@ -996,7 +996,7 @@
     "tier": "collection",
     "found_at": "2026-10-03 16:07:55",
     "keyword_hit": true,
-    "last_checked": "2026-10-05 22:18:20"
+    "last_checked": "2026-10-06 02:18:19"
   },
   {
     "id": "ce3b430ead996a40",
@@ -1008,7 +1008,7 @@
     "tier": "collection",
     "found_at": "2026-10-03 16:07:53",
     "keyword_hit": true,
-    "last_checked": "2026-10-05 22:18:19"
+    "last_checked": "2026-10-06 02:18:18"
   },
   {
     "id": "1413d364272632e1",
@@ -1020,7 +1020,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:07:51",
     "keyword_hit": false,
-    "last_checked": "2026-10-05 22:18:16",
+    "last_checked": "2026-10-06 02:18:16",
     "p_target": 0.987,
     "p_chrome": 0.998,
     "category": "target",
@@ -1036,7 +1036,7 @@
     "tier": "collection",
     "found_at": "2026-10-03 16:07:45",
     "keyword_hit": true,
-    "last_checked": "2026-10-05 22:18:18"
+    "last_checked": "2026-10-06 02:18:18"
   },
   {
     "id": "c30c83edaaa4f05c",
@@ -1064,7 +1064,7 @@
     "tier": "collection",
     "found_at": "2026-10-03 16:07:43",
     "keyword_hit": true,
-    "last_checked": "2026-10-05 22:18:16"
+    "last_checked": "2026-10-06 02:18:16"
   },
   {
     "id": "66f209f70e33099d",
@@ -1076,7 +1076,7 @@
     "tier": "collection",
     "found_at": "2026-10-03 16:07:42",
     "keyword_hit": true,
-    "last_checked": "2026-10-05 22:18:15"
+    "last_checked": "2026-10-06 02:18:15"
   },
   {
     "id": "fb2bf979a56b4044",
