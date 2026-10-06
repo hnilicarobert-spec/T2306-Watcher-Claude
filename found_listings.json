@@ -27,7 +27,7 @@
     "tier": "strong",
     "keyword_hit": false,
     "found_at": "2026-10-05 18:48:02",
-    "last_checked": "2026-10-06 01:18:59",
+    "last_checked": "2026-10-06 05:18:09",
     "score": 0.7159,
     "p_target": 0.715,
     "p_chrome": 0.999,
@@ -45,7 +45,7 @@
     "tier": "strong",
     "keyword_hit": false,
     "found_at": "2026-10-05 18:48:02",
-    "last_checked": "2026-10-06 01:19:00",
+    "last_checked": "2026-10-06 05:18:10",
     "score": 0.701,
     "p_target": 0.784,
     "p_chrome": 0.998,
@@ -63,7 +63,7 @@
     "tier": "strong",
     "keyword_hit": false,
     "found_at": "2026-10-05 18:48:01",
-    "last_checked": "2026-10-06 01:18:55",
+    "last_checked": "2026-10-06 05:18:07",
     "score": 0.749,
     "p_target": 0.877,
     "p_chrome": 0.998,
@@ -81,7 +81,7 @@
     "tier": "strong",
     "keyword_hit": false,
     "found_at": "2026-10-05 18:48:01",
-    "last_checked": "2026-10-06 01:18:57",
+    "last_checked": "2026-10-06 05:18:08",
     "score": 0.7425,
     "p_target": 0.423,
     "p_chrome": 0.981,
@@ -99,7 +99,7 @@
     "tier": "strong",
     "keyword_hit": false,
     "found_at": "2026-10-05 18:48:00",
-    "last_checked": "2026-10-06 01:18:54",
+    "last_checked": "2026-10-06 05:18:07",
     "score": 0.7909,
     "p_target": 0.587,
     "p_chrome": 0.964,
@@ -225,7 +225,7 @@
     "tier": "strong",
     "keyword_hit": false,
     "found_at": "2026-10-05 17:35:05",
-    "last_checked": "2026-10-06 01:19:02",
+    "last_checked": "2026-10-06 05:18:11",
     "score": 0.7288,
     "p_target": 0.8,
     "p_chrome": 0.997,
@@ -260,7 +260,7 @@
     "tier": "similar",
     "keyword_hit": false,
     "found_at": "2026-10-05 12:29:36",
-    "last_checked": "2026-10-06 02:18:20",
+    "last_checked": "2026-10-06 05:18:17",
     "p_target": 0.654,
     "p_chrome": 0.887,
     "category": "target",
@@ -276,7 +276,7 @@
     "tier": "similar",
     "keyword_hit": false,
     "found_at": "2026-10-05 09:26:27",
-    "last_checked": "2026-10-06 01:19:02",
+    "last_checked": "2026-10-06 05:18:11",
     "p_target": 0.032,
     "p_chrome": 0.736,
     "category": "chrome_other",
@@ -440,7 +440,7 @@
     "tier": "similar",
     "keyword_hit": false,
     "found_at": "2026-10-04 17:43:48",
-    "last_checked": "2026-10-06 02:18:17",
+    "last_checked": "2026-10-06 05:18:14",
     "p_target": 0.526,
     "p_chrome": 0.593,
     "category": "target",
@@ -968,7 +968,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:50:05",
     "keyword_hit": false,
-    "last_checked": "2026-10-06 02:18:19",
+    "last_checked": "2026-10-06 05:18:16",
     "p_target": 0.011,
     "p_chrome": 0.719,
     "category": "chrome_other",
@@ -984,7 +984,7 @@
     "tier": "collection",
     "found_at": "2026-10-03 16:07:56",
     "keyword_hit": true,
-    "last_checked": "2026-10-06 02:18:17"
+    "last_checked": "2026-10-06 05:18:15"
   },
   {
     "id": "98919c9b932e91aa",
@@ -996,7 +996,7 @@
     "tier": "collection",
     "found_at": "2026-10-03 16:07:55",
     "keyword_hit": true,
-    "last_checked": "2026-10-06 02:18:19"
+    "last_checked": "2026-10-06 05:18:17"
   },
   {
     "id": "ce3b430ead996a40",
@@ -1008,7 +1008,7 @@
     "tier": "collection",
     "found_at": "2026-10-03 16:07:53",
     "keyword_hit": true,
-    "last_checked": "2026-10-06 02:18:18"
+    "last_checked": "2026-10-06 05:18:15"
   },
   {
     "id": "1413d364272632e1",
@@ -1020,7 +1020,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:07:51",
     "keyword_hit": false,
-    "last_checked": "2026-10-06 02:18:16",
+    "last_checked": "2026-10-06 05:18:13",
     "p_target": 0.987,
     "p_chrome": 0.998,
     "category": "target",
@@ -1036,7 +1036,7 @@
     "tier": "collection",
     "found_at": "2026-10-03 16:07:45",
     "keyword_hit": true,
-    "last_checked": "2026-10-06 02:18:18"
+    "last_checked": "2026-10-06 05:18:16"
   },
   {
     "id": "c30c83edaaa4f05c",
@@ -1048,7 +1048,7 @@
     "tier": "keyword",
     "found_at": "2026-10-03 16:07:44",
     "keyword_hit": true,
-    "last_checked": "2026-10-06 01:19:04",
+    "last_checked": "2026-10-06 05:18:12",
     "p_target": 0.157,
     "p_chrome": 0.168,
     "category": "outdoor",
@@ -1064,7 +1064,7 @@
     "tier": "collection",
     "found_at": "2026-10-03 16:07:43",
     "keyword_hit": true,
-    "last_checked": "2026-10-06 02:18:16"
+    "last_checked": "2026-10-06 05:18:14"
   },
   {
     "id": "66f209f70e33099d",
@@ -1076,7 +1076,7 @@
     "tier": "collection",
     "found_at": "2026-10-03 16:07:42",
     "keyword_hit": true,
-    "last_checked": "2026-10-06 02:18:15"
+    "last_checked": "2026-10-06 05:18:13"
   },
   {
     "id": "fb2bf979a56b4044",
@@ -1088,7 +1088,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:07:40",
     "keyword_hit": false,
-    "last_checked": "2026-10-06 01:19:01",
+    "last_checked": "2026-10-06 05:18:10",
     "p_target": 0.538,
     "p_chrome": 0.977,
     "category": "target",
@@ -1104,7 +1104,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:07:38",
     "keyword_hit": false,
-    "last_checked": "2026-10-06 01:19:03",
+    "last_checked": "2026-10-06 05:18:12",
     "p_target": 0.261,
     "p_chrome": 0.966,
     "category": "chrome_other",
