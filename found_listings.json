@@ -9,7 +9,7 @@
     "tier": "similar",
     "keyword_hit": false,
     "found_at": "2026-10-07 10:24:35",
-    "last_checked": "2026-10-07 10:24:35",
+    "last_checked": "2026-10-07 15:30:17",
     "score": 0.6736,
     "p_target": 0.179,
     "p_chrome": 0.996,
@@ -207,7 +207,7 @@
     "tier": "collection",
     "keyword_hit": true,
     "found_at": "2026-10-07 01:24:05",
-    "last_checked": "2026-10-07 10:20:08",
+    "last_checked": "2026-10-07 15:30:11",
     "score": null,
     "match": null,
     "via_search": true
@@ -456,7 +456,7 @@
     "tier": "strong",
     "keyword_hit": false,
     "found_at": "2026-10-05 22:22:53",
-    "last_checked": "2026-10-07 10:20:09",
+    "last_checked": "2026-10-07 15:30:11",
     "score": 0.7395,
     "p_target": 0.026,
     "p_chrome": 0.401,
@@ -573,24 +573,6 @@
     "via_search": true
   },
   {
-    "id": "450a0878273b2faf",
-    "url": "https://www.sbazar.cz/inzerat/231767184-retro-nerezove-kozenkove-cerne-zidle-70leta",
-    "title": "Retro, nerezové, koženkové, černé židle (70léta). - Karlovy Vary",
-    "text": "Retro, nerezové, koženkové, černé židle (70léta). - Karlovy Vary Sbazar",
-    "site": "sbazar (via Google Lens)",
-    "image_url": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQfJ-e9m8eNInV63TeoWHBSetLX5L3u8XOuxdljb4lI4cYtwYVc",
-    "tier": "strong",
-    "keyword_hit": false,
-    "found_at": "2026-10-05 18:47:58",
-    "last_checked": "2026-10-07 14:20:58",
-    "score": 0.7255,
-    "p_target": 0.517,
-    "p_chrome": 0.998,
-    "category": "target",
-    "match": 0.679,
-    "via_search": true
-  },
-  {
     "id": "cc83c08da65c869e",
     "url": "https://www.pamono.de/chrom-esszimmerstuehle-von-viliam-chlebo-tschechoslowakei-1980er-4er-set",
     "title": "Chrom Esszimmerstühle von Viliam Chlebo, Tschechoslowakei, 1980er, 4er Set bei Pamono kaufen",
@@ -606,6 +588,24 @@
     "p_chrome": 0.993,
     "category": "target",
     "match": 0.982,
+    "via_search": true
+  },
+  {
+    "id": "450a0878273b2faf",
+    "url": "https://www.sbazar.cz/inzerat/231767184-retro-nerezove-kozenkove-cerne-zidle-70leta",
+    "title": "Retro, nerezové, koženkové, černé židle (70léta). - Karlovy Vary",
+    "text": "Retro, nerezové, koženkové, černé židle (70léta). - Karlovy Vary Sbazar",
+    "site": "sbazar (via Google Lens)",
+    "image_url": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQfJ-e9m8eNInV63TeoWHBSetLX5L3u8XOuxdljb4lI4cYtwYVc",
+    "tier": "strong",
+    "keyword_hit": false,
+    "found_at": "2026-10-05 18:47:58",
+    "last_checked": "2026-10-07 14:20:58",
+    "score": 0.7255,
+    "p_target": 0.517,
+    "p_chrome": 0.998,
+    "category": "target",
+    "match": 0.679,
     "via_search": true
   },
   {
@@ -707,7 +707,7 @@
     "tier": "similar",
     "keyword_hit": false,
     "found_at": "2026-10-05 12:29:36",
-    "last_checked": "2026-10-07 10:20:03",
+    "last_checked": "2026-10-07 15:30:06",
     "p_target": 0.654,
     "p_chrome": 0.887,
     "category": "target",
@@ -771,7 +771,7 @@
     "tier": "strong",
     "keyword_hit": false,
     "found_at": "2026-10-05 03:25:19",
-    "last_checked": "2026-10-07 10:20:04",
+    "last_checked": "2026-10-07 15:30:07",
     "p_target": 0.525,
     "p_chrome": 0.882,
     "category": "target",
@@ -855,7 +855,7 @@
     "tier": "similar",
     "keyword_hit": false,
     "found_at": "2026-10-04 19:54:20",
-    "last_checked": "2026-10-07 10:20:05",
+    "last_checked": "2026-10-07 15:30:08",
     "p_target": 0.314,
     "p_chrome": 0.961,
     "category": "chrome_other",
@@ -871,7 +871,7 @@
     "tier": "similar",
     "keyword_hit": false,
     "found_at": "2026-10-04 19:54:19",
-    "last_checked": "2026-10-07 10:20:10",
+    "last_checked": "2026-10-07 15:30:13",
     "p_target": 0.025,
     "p_chrome": 0.713,
     "category": "chrome_other",
@@ -1239,7 +1239,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:51:04",
     "keyword_hit": false,
-    "last_checked": "2026-10-07 10:20:13",
+    "last_checked": "2026-10-07 15:30:15",
     "p_target": 0.28,
     "p_chrome": 0.995,
     "category": "chrome_other",
@@ -1271,7 +1271,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:51:02",
     "keyword_hit": false,
-    "last_checked": "2026-10-07 10:20:15",
+    "last_checked": "2026-10-07 15:30:17",
     "p_target": 0.088,
     "p_chrome": 0.964,
     "category": "chrome_other",
@@ -1319,7 +1319,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:50:33",
     "keyword_hit": false,
-    "last_checked": "2026-10-07 10:20:11",
+    "last_checked": "2026-10-07 15:30:13",
     "p_target": 0.321,
     "p_chrome": 0.868,
     "category": "chrome_other",
@@ -1351,7 +1351,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:50:23",
     "keyword_hit": false,
-    "last_checked": "2026-10-07 10:20:14",
+    "last_checked": "2026-10-07 15:30:16",
     "p_target": 0.385,
     "p_chrome": 0.808,
     "category": "chrome_other",
@@ -1367,7 +1367,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:50:21",
     "keyword_hit": false,
-    "last_checked": "2026-10-07 10:20:12",
+    "last_checked": "2026-10-07 15:30:14",
     "p_target": 0.887,
     "p_chrome": 0.952,
     "category": "target",
@@ -1383,7 +1383,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:50:21",
     "keyword_hit": false,
-    "last_checked": "2026-10-07 10:20:13",
+    "last_checked": "2026-10-07 15:30:15",
     "p_target": 0.257,
     "p_chrome": 0.772,
     "category": "chrome_other",
@@ -1415,7 +1415,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:50:05",
     "keyword_hit": false,
-    "last_checked": "2026-10-07 10:20:01",
+    "last_checked": "2026-10-07 15:30:04",
     "p_target": 0.011,
     "p_chrome": 0.719,
     "category": "chrome_other",
@@ -1431,7 +1431,7 @@
     "tier": "collection",
     "found_at": "2026-10-03 16:07:56",
     "keyword_hit": true,
-    "last_checked": "2026-10-07 10:20:00"
+    "last_checked": "2026-10-07 15:30:03"
   },
   {
     "id": "98919c9b932e91aa",
@@ -1443,7 +1443,7 @@
     "tier": "collection",
     "found_at": "2026-10-03 16:07:55",
     "keyword_hit": true,
-    "last_checked": "2026-10-07 10:20:11"
+    "last_checked": "2026-10-07 15:30:14"
   },
   {
     "id": "ce3b430ead996a40",
@@ -1455,7 +1455,7 @@
     "tier": "collection",
     "found_at": "2026-10-03 16:07:53",
     "keyword_hit": true,
-    "last_checked": "2026-10-07 10:20:04"
+    "last_checked": "2026-10-07 15:30:07"
   },
   {
     "id": "1413d364272632e1",
@@ -1483,7 +1483,7 @@
     "tier": "collection",
     "found_at": "2026-10-03 16:07:45",
     "keyword_hit": true,
-    "last_checked": "2026-10-07 10:20:09"
+    "last_checked": "2026-10-07 15:30:12"
   },
   {
     "id": "c30c83edaaa4f05c",
@@ -1511,7 +1511,7 @@
     "tier": "collection",
     "found_at": "2026-10-03 16:07:43",
     "keyword_hit": true,
-    "last_checked": "2026-10-07 10:20:02"
+    "last_checked": "2026-10-07 15:30:05"
   },
   {
     "id": "66f209f70e33099d",
@@ -1523,7 +1523,7 @@
     "tier": "collection",
     "found_at": "2026-10-03 16:07:42",
     "keyword_hit": true,
-    "last_checked": "2026-10-07 10:20:01"
+    "last_checked": "2026-10-07 15:30:04"
   },
   {
     "id": "fb2bf979a56b4044",
