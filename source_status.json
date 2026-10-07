@@ -1,5 +1,5 @@
 {
- "checked_at": "2026-10-07 12:30:03",
+ "checked_at": "2026-10-07 13:27:50",
  "config_errors": [],
  "sources": {
   "bazos_cz": {
@@ -20,11 +20,7 @@
   },
   "vinted_cz": {
    "results": 0,
-   "errors": [
-    "Vinted cz error for 'chromová židle': 500 Server Error: Internal Server Error for url: https://api.vinted.cz/svc-catalogue/items?search_text=chromov%C3%A1+%C5%B",
-    "Vinted cz error for 'trubková židle': 500 Server Error: Internal Server Error for url: https://api.vinted.cz/svc-catalogue/items?search_text=trubkov%C3%A1+%C5%B",
-    "Vinted cz error for 'kovová židle retro': 500 Server Error: Internal Server Error for url: https://api.vinted.cz/svc-catalogue/items?search_text=kovov%C3%A1+%C5"
-   ]
+   "errors": []
   },
   "vinted_sk": {
    "results": 0,
@@ -32,8 +28,10 @@
   },
   "serpapi": {
    "results": 0,
-   "errors": [],
-   "note": "searches every 3 hours — next in about 0 h 39 min"
+   "errors": [
+    "SerpApi error: HTTPSConnectionPool(host='serpapi.com', port=443): Read timed out. (read timeout=30)"
+   ],
+   "note": "searched: (kodreta OR \"chromová židle\" OR \"trubková židle\" OR \"chrómov…"
   }
  }
 }
