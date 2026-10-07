@@ -1,5 +1,23 @@
 [
   {
+    "id": "c92c29428da1231d",
+    "url": "https://nabytek.bazos.cz/inzerat/224773436/funkcionalisticka-chromovana-zidle-kovona.php",
+    "title": "Funkcionalistická chromovaná židle KOVONA",
+    "text": "Funkcionalistická chromovaná židle KOVONA Stav po renovaci\r\n!\r\nMožnost zaslání",
+    "site": "bazos_cz",
+    "image_url": "https://www.bazos.cz/img/1t/436/224773436.jpg",
+    "tier": "similar",
+    "keyword_hit": false,
+    "found_at": "2026-10-07 10:24:35",
+    "last_checked": "2026-10-07 10:24:35",
+    "score": 0.6736,
+    "p_target": 0.179,
+    "p_chrome": 0.996,
+    "category": "chrome_other",
+    "match": 0.455,
+    "via_search": false
+  },
+  {
     "id": "c32a52ba747dba4e",
     "url": "https://nabytok.bazos.sk/inzerat/196268595/stolicky-kodreta-slovensky-vyrobca.php",
     "title": "Stoličky Kodreta - slovensky vyrobca",
@@ -279,7 +297,7 @@
     "tier": "collection",
     "keyword_hit": true,
     "found_at": "2026-10-07 01:24:05",
-    "last_checked": "2026-10-07 06:22:44",
+    "last_checked": "2026-10-07 10:20:08",
     "score": null,
     "match": null,
     "via_search": true
@@ -528,7 +546,7 @@
     "tier": "strong",
     "keyword_hit": false,
     "found_at": "2026-10-05 22:22:53",
-    "last_checked": "2026-10-07 06:22:46",
+    "last_checked": "2026-10-07 10:20:09",
     "score": 0.7395,
     "p_target": 0.026,
     "p_chrome": 0.401,
@@ -573,24 +591,6 @@
     "via_search": true
   },
   {
-    "id": "52cd3d46fcbbd854",
-    "url": "https://nabytek.bazos.cz/inzerat/223420487/funkcionalismus-chromovane-zidle.php",
-    "title": "Funkcionalismus, chromované židle - Plzeň",
-    "text": "Funkcionalismus, chromované židle - Plzeň Bazos.cz",
-    "site": "bazos (via Google Lens)",
-    "image_url": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcT666BZrOiEzXKzIeLY2X99ftpgn8cW5W37TA-n_WckvDapFk-U",
-    "tier": "strong",
-    "keyword_hit": false,
-    "found_at": "2026-10-05 18:48:01",
-    "last_checked": "2026-10-07 09:19:57",
-    "score": 0.7425,
-    "p_target": 0.423,
-    "p_chrome": 0.981,
-    "category": "chrome_other",
-    "match": 0.67,
-    "via_search": true
-  },
-  {
     "id": "88c1f7f289d58ca4",
     "url": "https://www.1stdibs.com/it/arredi/sedute/sedie/sedie-moderne-italiane-in-pelle-nera-e-metallo-tubolare-anni-80/id-f_32374632/",
     "title": "Sedie moderne italiane in pelle nera e metallo tubolare, anni '80 in vendita su 1stDibs Italia",
@@ -606,6 +606,24 @@
     "p_chrome": 0.998,
     "category": "target",
     "match": 0.863,
+    "via_search": true
+  },
+  {
+    "id": "52cd3d46fcbbd854",
+    "url": "https://nabytek.bazos.cz/inzerat/223420487/funkcionalismus-chromovane-zidle.php",
+    "title": "Funkcionalismus, chromované židle - Plzeň",
+    "text": "Funkcionalismus, chromované židle - Plzeň Bazos.cz",
+    "site": "bazos (via Google Lens)",
+    "image_url": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcT666BZrOiEzXKzIeLY2X99ftpgn8cW5W37TA-n_WckvDapFk-U",
+    "tier": "strong",
+    "keyword_hit": false,
+    "found_at": "2026-10-05 18:48:01",
+    "last_checked": "2026-10-07 09:19:57",
+    "score": 0.7425,
+    "p_target": 0.423,
+    "p_chrome": 0.981,
+    "category": "chrome_other",
+    "match": 0.67,
     "via_search": true
   },
   {
@@ -681,24 +699,6 @@
     "via_search": true
   },
   {
-    "id": "bf48f3175f84e8b0",
-    "url": "https://www.pamono.it/sedie-da-pranzo-cromate-di-viliam-chlebo-cecoslovacchia-anni-39-80-set-di-4",
-    "title": "Sedie da pranzo cromate di Viliam Chlebo, Cecoslovacchia, anni '80, set di 4 in vendita su Pamono",
-    "text": "Sedie da pranzo cromate di Viliam Chlebo, Cecoslovacchia, anni '80, set di 4 in vendita su Pamono Pamono.it",
-    "site": "it (via Google Lens)",
-    "image_url": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTVNYjton8MDNvREt-5GIjWa51nydS_z-7I1iI_bfbFaQ0minoC",
-    "tier": "collection",
-    "keyword_hit": true,
-    "found_at": "2026-10-05 18:47:57",
-    "last_checked": "2026-10-07 09:19:54",
-    "score": 0.7715,
-    "p_target": 0.936,
-    "p_chrome": 0.997,
-    "category": "target",
-    "match": 0.925,
-    "via_search": true
-  },
-  {
     "id": "371b2a4b80cedf6c",
     "url": "https://www.1stdibs.com/furniture/seating/dining-room-chairs/set-of-four-design-chrome-dining-chairs-viliam-chlebo-czechoslovakia-1980s/id-f_23743182/",
     "title": "Set of Four Design Chrome Dining Chairs by Viliam Chlebo, Czechoslovakia, 1980s For Sale at 1stDibs | 1980s beach chair",
@@ -732,6 +732,24 @@
     "p_chrome": 0.997,
     "category": "target",
     "match": 0.974,
+    "via_search": true
+  },
+  {
+    "id": "bf48f3175f84e8b0",
+    "url": "https://www.pamono.it/sedie-da-pranzo-cromate-di-viliam-chlebo-cecoslovacchia-anni-39-80-set-di-4",
+    "title": "Sedie da pranzo cromate di Viliam Chlebo, Cecoslovacchia, anni '80, set di 4 in vendita su Pamono",
+    "text": "Sedie da pranzo cromate di Viliam Chlebo, Cecoslovacchia, anni '80, set di 4 in vendita su Pamono Pamono.it",
+    "site": "it (via Google Lens)",
+    "image_url": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTVNYjton8MDNvREt-5GIjWa51nydS_z-7I1iI_bfbFaQ0minoC",
+    "tier": "collection",
+    "keyword_hit": true,
+    "found_at": "2026-10-05 18:47:57",
+    "last_checked": "2026-10-07 09:19:54",
+    "score": 0.7715,
+    "p_target": 0.936,
+    "p_chrome": 0.997,
+    "category": "target",
+    "match": 0.925,
     "via_search": true
   },
   {
@@ -779,7 +797,7 @@
     "tier": "similar",
     "keyword_hit": false,
     "found_at": "2026-10-05 12:29:36",
-    "last_checked": "2026-10-07 05:19:35",
+    "last_checked": "2026-10-07 10:20:03",
     "p_target": 0.654,
     "p_chrome": 0.887,
     "category": "target",
@@ -843,7 +861,7 @@
     "tier": "strong",
     "keyword_hit": false,
     "found_at": "2026-10-05 03:25:19",
-    "last_checked": "2026-10-07 06:22:41",
+    "last_checked": "2026-10-07 10:20:04",
     "p_target": 0.525,
     "p_chrome": 0.882,
     "category": "target",
@@ -927,7 +945,7 @@
     "tier": "similar",
     "keyword_hit": false,
     "found_at": "2026-10-04 19:54:20",
-    "last_checked": "2026-10-07 06:22:41",
+    "last_checked": "2026-10-07 10:20:05",
     "p_target": 0.314,
     "p_chrome": 0.961,
     "category": "chrome_other",
@@ -943,7 +961,7 @@
     "tier": "similar",
     "keyword_hit": false,
     "found_at": "2026-10-04 19:54:19",
-    "last_checked": "2026-10-07 06:22:46",
+    "last_checked": "2026-10-07 10:20:10",
     "p_target": 0.025,
     "p_chrome": 0.713,
     "category": "chrome_other",
@@ -1311,7 +1329,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:51:04",
     "keyword_hit": false,
-    "last_checked": "2026-10-07 06:22:49",
+    "last_checked": "2026-10-07 10:20:13",
     "p_target": 0.28,
     "p_chrome": 0.995,
     "category": "chrome_other",
@@ -1343,7 +1361,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:51:02",
     "keyword_hit": false,
-    "last_checked": "2026-10-07 06:22:51",
+    "last_checked": "2026-10-07 10:20:15",
     "p_target": 0.088,
     "p_chrome": 0.964,
     "category": "chrome_other",
@@ -1391,7 +1409,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:50:33",
     "keyword_hit": false,
-    "last_checked": "2026-10-07 06:22:47",
+    "last_checked": "2026-10-07 10:20:11",
     "p_target": 0.321,
     "p_chrome": 0.868,
     "category": "chrome_other",
@@ -1423,7 +1441,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:50:23",
     "keyword_hit": false,
-    "last_checked": "2026-10-07 06:22:50",
+    "last_checked": "2026-10-07 10:20:14",
     "p_target": 0.385,
     "p_chrome": 0.808,
     "category": "chrome_other",
@@ -1439,7 +1457,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:50:21",
     "keyword_hit": false,
-    "last_checked": "2026-10-07 06:22:48",
+    "last_checked": "2026-10-07 10:20:12",
     "p_target": 0.887,
     "p_chrome": 0.952,
     "category": "target",
@@ -1455,7 +1473,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:50:21",
     "keyword_hit": false,
-    "last_checked": "2026-10-07 06:22:49",
+    "last_checked": "2026-10-07 10:20:13",
     "p_target": 0.257,
     "p_chrome": 0.772,
     "category": "chrome_other",
@@ -1487,7 +1505,7 @@
     "tier": "similar",
     "found_at": "2026-10-03 16:50:05",
     "keyword_hit": false,
-    "last_checked": "2026-10-07 05:19:34",
+    "last_checked": "2026-10-07 10:20:01",
     "p_target": 0.011,
     "p_chrome": 0.719,
     "category": "chrome_other",
@@ -1503,7 +1521,7 @@
     "tier": "collection",
     "found_at": "2026-10-03 16:07:56",
     "keyword_hit": true,
-    "last_checked": "2026-10-07 05:19:33"
+    "last_checked": "2026-10-07 10:20:00"
   },
   {
     "id": "98919c9b932e91aa",
@@ -1515,7 +1533,7 @@
     "tier": "collection",
     "found_at": "2026-10-03 16:07:55",
     "keyword_hit": true,
-    "last_checked": "2026-10-07 06:22:47"
+    "last_checked": "2026-10-07 10:20:11"
   },
   {
     "id": "ce3b430ead996a40",
@@ -1527,7 +1545,7 @@
     "tier": "collection",
     "found_at": "2026-10-03 16:07:53",
     "keyword_hit": true,
-    "last_checked": "2026-10-07 06:22:40"
+    "last_checked": "2026-10-07 10:20:04"
   },
   {
     "id": "1413d364272632e1",
@@ -1539,7 +1557,7 @@
     "tier": "strong",
     "found_at": "2026-10-03 16:07:51",
     "keyword_hit": false,
-    "last_checked": "2026-10-07 05:19:32",
+    "last_checked": "2026-10-07 10:19:59",
     "p_target": 0.987,
     "p_chrome": 0.998,
     "category": "target",
@@ -1555,7 +1573,7 @@
     "tier": "collection",
     "found_at": "2026-10-03 16:07:45",
     "keyword_hit": true,
-    "last_checked": "2026-10-07 06:22:45"
+    "last_checked": "2026-10-07 10:20:09"
   },
   {
     "id": "c30c83edaaa4f05c",
@@ -1583,7 +1601,7 @@
     "tier": "collection",
     "found_at": "2026-10-03 16:07:43",
     "keyword_hit": true,
-    "last_checked": "2026-10-07 05:19:34"
+    "last_checked": "2026-10-07 10:20:02"
   },
   {
     "id": "66f209f70e33099d",
@@ -1595,7 +1613,7 @@
     "tier": "collection",
     "found_at": "2026-10-03 16:07:42",
     "keyword_hit": true,
-    "last_checked": "2026-10-07 05:19:33"
+    "last_checked": "2026-10-07 10:20:01"
   },
   {
     "id": "fb2bf979a56b4044",
