@@ -1,9 +1,9 @@
 {
- "checked_at": "2026-10-07 15:34:21",
+ "checked_at": "2026-10-07 16:26:37",
  "config_errors": [],
  "sources": {
   "bazos_cz": {
-   "results": 191,
+   "results": 192,
    "errors": []
   },
   "bazos_sk": {
@@ -29,7 +29,7 @@
   "serpapi": {
    "results": 0,
    "errors": [],
-   "note": "searches every 3 hours — next in about 0 h 37 min"
+   "note": "searched: kodreta (site:facebook.com OR site:vinted.cz OR site:vinted.…"
   }
  }
 }
