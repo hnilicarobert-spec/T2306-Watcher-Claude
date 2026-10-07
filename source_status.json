@@ -1,9 +1,9 @@
 {
- "checked_at": "2026-10-07 11:23:32",
+ "checked_at": "2026-10-07 12:30:03",
  "config_errors": [],
  "sources": {
   "bazos_cz": {
-   "results": 191,
+   "results": 192,
    "errors": []
   },
   "bazos_sk": {
@@ -20,7 +20,11 @@
   },
   "vinted_cz": {
    "results": 0,
-   "errors": []
+   "errors": [
+    "Vinted cz error for 'chromová židle': 500 Server Error: Internal Server Error for url: https://api.vinted.cz/svc-catalogue/items?search_text=chromov%C3%A1+%C5%B",
+    "Vinted cz error for 'trubková židle': 500 Server Error: Internal Server Error for url: https://api.vinted.cz/svc-catalogue/items?search_text=trubkov%C3%A1+%C5%B",
+    "Vinted cz error for 'kovová židle retro': 500 Server Error: Internal Server Error for url: https://api.vinted.cz/svc-catalogue/items?search_text=kovov%C3%A1+%C5"
+   ]
   },
   "vinted_sk": {
    "results": 0,
@@ -29,7 +33,7 @@
   "serpapi": {
    "results": 0,
    "errors": [],
-   "note": "searches every 3 hours — next in about 1 h 45 min"
+   "note": "searches every 3 hours — next in about 0 h 39 min"
   }
  }
 }
