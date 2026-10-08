@@ -1,5 +1,5 @@
 {
- "checked_at": "2026-10-08 03:24:14",
+ "checked_at": "2026-10-08 04:24:22",
  "config_errors": [],
  "sources": {
   "bazos_cz": {
@@ -7,7 +7,7 @@
    "errors": []
   },
   "bazos_sk": {
-   "results": 167,
+   "results": 169,
    "errors": []
   },
   "aukro_cz": {
@@ -28,8 +28,10 @@
   },
   "serpapi": {
    "results": 0,
-   "errors": [],
-   "note": "searches every 3 hours — next in about 0 h 45 min"
+   "errors": [
+    "SerpApi error: HTTPSConnectionPool(host='serpapi.com', port=443): Read timed out. (read timeout=30)"
+   ],
+   "note": "searched: (kodreta OR chlebo OR czechoslovakia OR czechoslovakian) chr…"
   }
  }
 }
