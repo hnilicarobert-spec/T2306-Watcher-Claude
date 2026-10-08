@@ -1,5 +1,5 @@
 {
- "checked_at": "2026-10-08 09:24:22",
+ "checked_at": "2026-10-08 10:26:32",
  "config_errors": [],
  "sources": {
   "bazos_cz": {
@@ -28,8 +28,10 @@
   },
   "serpapi": {
    "results": 0,
-   "errors": [],
-   "note": "searches every 3 hours — next in about 0 h 46 min"
+   "errors": [
+    "SerpApi error: HTTPSConnectionPool(host='serpapi.com', port=443): Read timed out. (read timeout=30)"
+   ],
+   "note": "searched: (kodreta OR chlebo) (site:etsy.com OR site:ebay.com OR site:…"
   }
  }
 }
