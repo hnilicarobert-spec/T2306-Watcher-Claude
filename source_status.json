@@ -1,10 +1,11 @@
 {
- "checked_at": "2026-10-09 05:23:58",
+ "checked_at": "2026-10-09 06:29:03",
  "config_errors": [],
  "sources": {
   "bazos_cz": {
    "results": 191,
-   "errors": []
+   "errors": [],
+   "added": 1
   },
   "bazos_sk": {
    "results": 169,
@@ -29,7 +30,7 @@
   "serpapi": {
    "results": 0,
    "errors": [],
-   "note": "searches every 3 hours — next in about 1 h 45 min"
+   "note": "searches every 3 hours — next in about 0 h 40 min"
   }
  }
 }
