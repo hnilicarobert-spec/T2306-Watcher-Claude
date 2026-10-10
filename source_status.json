@@ -1,5 +1,5 @@
 {
- "checked_at": "2026-10-10 01:23:43",
+ "checked_at": "2026-10-10 02:22:55",
  "config_errors": [],
  "sources": {
   "bazos_cz": {
@@ -27,9 +27,9 @@
    "errors": []
   },
   "serpapi": {
-   "results": 2,
+   "results": 0,
    "errors": [],
-   "note": "searched: (kodreta OR \"viliam chlebo\") (židle OR stolička OR křeslo OR…"
+   "note": "searches every 3 hours — next in about 1 h 45 min"
   }
  }
 }
