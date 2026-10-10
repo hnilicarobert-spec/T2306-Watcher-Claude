@@ -1,5 +1,5 @@
 {
- "checked_at": "2026-10-10 08:24:35",
+ "checked_at": "2026-10-10 09:22:29",
  "config_errors": [],
  "sources": {
   "bazos_cz": {
@@ -8,30 +8,15 @@
   },
   "bazos_sk": {
    "results": 170,
-   "errors": [],
-   "added": 2
+   "errors": []
   },
   "aukro_cz": {
-   "results": 0,
-   "errors": [
-    "Aukro cz served a bot check",
-    "Aukro cz served a bot check",
-    "Aukro cz served a bot check",
-    "Aukro cz served a bot check",
-    "Aukro cz served a bot check",
-    "Aukro cz served a bot check"
-   ]
+   "results": 1,
+   "errors": []
   },
   "aukro_sk": {
-   "results": 0,
-   "errors": [
-    "Aukro sk served a bot check",
-    "Aukro sk served a bot check",
-    "Aukro sk served a bot check",
-    "Aukro sk served a bot check",
-    "Aukro sk served a bot check",
-    "Aukro sk served a bot check"
-   ]
+   "results": 2,
+   "errors": []
   },
   "vinted_cz": {
    "results": 0,
@@ -44,7 +29,7 @@
   "serpapi": {
    "results": 0,
    "errors": [],
-   "note": "searches every 3 hours — next in about 1 h 43 min"
+   "note": "searches every 3 hours — next in about 0 h 45 min"
   }
  }
 }
