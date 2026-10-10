@@ -1,5 +1,5 @@
 {
- "checked_at": "2026-10-10 18:23:53",
+ "checked_at": "2026-10-10 19:22:01",
  "config_errors": [],
  "sources": {
   "bazos_cz": {
@@ -27,9 +27,10 @@
    "errors": []
   },
   "serpapi": {
-   "results": 0,
+   "results": 25,
    "errors": [],
-   "note": "searches every 3 hours — next in about 0 h 42 min"
+   "note": "Google Lens with IMG_3804.jpeg",
+   "added": 9
   }
  }
 }
