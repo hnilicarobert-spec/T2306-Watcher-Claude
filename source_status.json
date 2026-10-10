@@ -1,5 +1,5 @@
 {
- "checked_at": "2026-10-10 06:27:12",
+ "checked_at": "2026-10-10 07:23:22",
  "config_errors": [],
  "sources": {
   "bazos_cz": {
@@ -8,7 +8,8 @@
   },
   "bazos_sk": {
    "results": 170,
-   "errors": []
+   "errors": [],
+   "added": 1
   },
   "aukro_cz": {
    "results": 1,
@@ -27,9 +28,10 @@
    "errors": []
   },
   "serpapi": {
-   "results": 0,
+   "results": 22,
    "errors": [],
-   "note": "searches every 3 hours — next in about 0 h 41 min"
+   "note": "Google Lens with chair_ref_1.jpeg",
+   "added": 1
   }
  }
 }
