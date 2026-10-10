@@ -1,5 +1,5 @@
 {
- "checked_at": "2026-10-10 07:23:22",
+ "checked_at": "2026-10-10 08:24:35",
  "config_errors": [],
  "sources": {
   "bazos_cz": {
@@ -9,15 +9,29 @@
   "bazos_sk": {
    "results": 170,
    "errors": [],
-   "added": 1
+   "added": 2
   },
   "aukro_cz": {
-   "results": 1,
-   "errors": []
+   "results": 0,
+   "errors": [
+    "Aukro cz served a bot check",
+    "Aukro cz served a bot check",
+    "Aukro cz served a bot check",
+    "Aukro cz served a bot check",
+    "Aukro cz served a bot check",
+    "Aukro cz served a bot check"
+   ]
   },
   "aukro_sk": {
-   "results": 2,
-   "errors": []
+   "results": 0,
+   "errors": [
+    "Aukro sk served a bot check",
+    "Aukro sk served a bot check",
+    "Aukro sk served a bot check",
+    "Aukro sk served a bot check",
+    "Aukro sk served a bot check",
+    "Aukro sk served a bot check"
+   ]
   },
   "vinted_cz": {
    "results": 0,
@@ -28,10 +42,9 @@
    "errors": []
   },
   "serpapi": {
-   "results": 22,
+   "results": 0,
    "errors": [],
-   "note": "Google Lens with chair_ref_1.jpeg",
-   "added": 1
+   "note": "searches every 3 hours — next in about 1 h 43 min"
   }
  }
 }
