@@ -1,11 +1,10 @@
 {
- "checked_at": "2026-10-11 13:24:11",
+ "checked_at": "2026-10-11 14:21:32",
  "config_errors": [],
  "sources": {
   "bazos_cz": {
    "results": 192,
-   "errors": [],
-   "added": 1
+   "errors": []
   },
   "bazos_sk": {
    "results": 171,
@@ -16,7 +15,7 @@
    "errors": []
   },
   "aukro_sk": {
-   "results": 2,
+   "results": 1,
    "errors": []
   },
   "vinted_cz": {
@@ -30,7 +29,7 @@
   "serpapi": {
    "results": 0,
    "errors": [],
-   "note": "searched: (kodreta OR \"chromová židle\" OR \"trubková židle\" OR \"chrómov…"
+   "note": "searches every 3 hours — next in about 1 h 47 min"
   }
  }
 }
