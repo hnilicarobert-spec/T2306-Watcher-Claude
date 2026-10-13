@@ -1,11 +1,10 @@
 {
- "checked_at": "2026-10-13 15:28:08",
+ "checked_at": "2026-10-13 16:27:49",
  "config_errors": [],
  "sources": {
   "bazos_cz": {
    "results": 192,
-   "errors": [],
-   "added": 1
+   "errors": []
   },
   "bazos_sk": {
    "results": 172,
@@ -13,9 +12,7 @@
   },
   "aukro_cz": {
    "results": 1,
-   "errors": [
-    "Aukro cz error for 't2306': Page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://aukro.cz/vysledky-vyhledavani?text=t2306\", waiting until \""
-   ]
+   "errors": []
   },
   "aukro_sk": {
    "results": 1,
@@ -32,7 +29,7 @@
   "serpapi": {
    "results": 0,
    "errors": [],
-   "note": "searches every 3 hours — next in about 1 h 44 min"
+   "note": "searches every 3 hours — next in about 0 h 45 min"
   }
  }
 }
