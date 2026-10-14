@@ -1,5 +1,5 @@
 {
- "checked_at": "2026-10-14 04:35:45",
+ "checked_at": "2026-10-14 05:34:54",
  "config_errors": [],
  "sources": {
   "bazos_cz": {
@@ -27,9 +27,9 @@
    "errors": []
   },
   "serpapi": {
-   "results": 0,
+   "results": 1,
    "errors": [],
-   "note": "searches every 3 hours — next in about 0 h 41 min"
+   "note": "searched: (kodreta OR chlebo OR czechoslovakia OR czechoslovakian) chr…"
   }
  }
 }
