@@ -1,22 +1,22 @@
 {
- "checked_at": "2026-10-14 14:37:21",
+ "checked_at": "2026-10-14 15:40:04",
  "config_errors": [],
  "sources": {
   "bazos_cz": {
    "results": 191,
-   "errors": [],
-   "added": 1
+   "errors": []
   },
   "bazos_sk": {
    "results": 172,
-   "errors": []
+   "errors": [],
+   "added": 2
   },
   "aukro_cz": {
    "results": 1,
    "errors": []
   },
   "aukro_sk": {
-   "results": 2,
+   "results": 1,
    "errors": []
   },
   "vinted_cz": {
@@ -29,10 +29,8 @@
   },
   "serpapi": {
    "results": 0,
-   "errors": [
-    "SerpApi error: HTTPSConnectionPool(host='serpapi.com', port=443): Read timed out. (read timeout=30)"
-   ],
-   "note": "searched: (kodreta OR \"chromová židle\" OR \"trubková židle\" OR \"chrómov…"
+   "errors": [],
+   "note": "searches every 3 hours — next in about 1 h 41 min"
   }
  }
 }
