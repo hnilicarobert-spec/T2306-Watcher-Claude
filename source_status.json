@@ -1,9 +1,9 @@
 {
- "checked_at": "2026-10-14 20:34:06",
+ "checked_at": "2026-10-14 21:33:59",
  "config_errors": [],
  "sources": {
   "bazos_cz": {
-   "results": 191,
+   "results": 189,
    "errors": []
   },
   "bazos_sk": {
@@ -15,7 +15,7 @@
    "errors": []
   },
   "aukro_sk": {
-   "results": 2,
+   "results": 1,
    "errors": []
   },
   "vinted_cz": {
@@ -27,10 +27,9 @@
    "errors": []
   },
   "serpapi": {
-   "results": 24,
+   "results": 0,
    "errors": [],
-   "note": "Google Lens with IMG_3804.jpeg",
-   "added": 3
+   "note": "searches every 3 hours — next in about 1 h 44 min"
   }
  }
 }
