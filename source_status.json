@@ -1,13 +1,13 @@
 {
- "checked_at": "2026-10-15 22:33:01",
+ "checked_at": "2026-10-15 23:28:30",
  "config_errors": [],
  "sources": {
   "bazos_cz": {
-   "results": 188,
+   "results": 187,
    "errors": []
   },
   "bazos_sk": {
-   "results": 172,
+   "results": 171,
    "errors": []
   },
   "aukro_cz": {
@@ -28,8 +28,10 @@
   },
   "serpapi": {
    "results": 0,
-   "errors": [],
-   "note": "searches every 3 hours — next in about 0 h 43 min"
+   "errors": [
+    "SerpApi error: HTTPSConnectionPool(host='serpapi.com', port=443): Read timed out. (read timeout=30)"
+   ],
+   "note": "searched: T2306 OR \"T 2306\" OR \"T-2306\" OR hreščák OR hrescak…"
   }
  }
 }
