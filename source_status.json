@@ -1,11 +1,10 @@
 {
- "checked_at": "2026-10-15 19:36:14",
+ "checked_at": "2026-10-15 20:31:46",
  "config_errors": [],
  "sources": {
   "bazos_cz": {
    "results": 188,
-   "errors": [],
-   "added": 1
+   "errors": []
   },
   "bazos_sk": {
    "results": 172,
@@ -28,9 +27,10 @@
    "errors": []
   },
   "serpapi": {
-   "results": 0,
+   "results": 22,
    "errors": [],
-   "note": "searches every 3 hours — next in about 0 h 44 min"
+   "note": "Google Lens with IMG_3807.jpeg",
+   "added": 3
   }
  }
 }
