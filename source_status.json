@@ -1,16 +1,14 @@
 {
- "checked_at": "2026-10-16 20:30:14",
+ "checked_at": "2026-10-16 21:30:55",
  "config_errors": [],
  "sources": {
   "bazos_cz": {
    "results": 187,
-   "errors": [],
-   "added": 1
+   "errors": []
   },
   "bazos_sk": {
    "results": 173,
-   "errors": [],
-   "added": 1
+   "errors": []
   },
   "aukro_cz": {
    "results": 1,
@@ -29,10 +27,9 @@
    "errors": []
   },
   "serpapi": {
-   "results": 23,
+   "results": 0,
    "errors": [],
-   "note": "Google Lens with IMG_3806.jpeg",
-   "added": 17
+   "note": "searches every 3 hours — next in about 1 h 43 min"
   }
  }
 }
