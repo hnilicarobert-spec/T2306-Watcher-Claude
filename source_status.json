@@ -1,11 +1,10 @@
 {
- "checked_at": "2026-10-17 07:37:25",
+ "checked_at": "2026-10-17 08:30:02",
  "config_errors": [],
  "sources": {
   "bazos_cz": {
    "results": 186,
-   "errors": [],
-   "added": 1
+   "errors": []
   },
   "bazos_sk": {
    "results": 173,
@@ -28,9 +27,9 @@
    "errors": []
   },
   "serpapi": {
-   "results": 0,
+   "results": 24,
    "errors": [],
-   "note": "searches every 3 hours — next in about 0 h 37 min"
+   "note": "Google Lens with chair_ref_3.jpeg"
   }
  }
 }
