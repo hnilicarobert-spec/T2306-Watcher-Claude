@@ -1,9 +1,9 @@
 {
- "checked_at": "2026-10-17 22:26:58",
+ "checked_at": "2026-10-17 23:25:18",
  "config_errors": [],
  "sources": {
   "bazos_cz": {
-   "results": 186,
+   "results": 184,
    "errors": []
   },
   "bazos_sk": {
@@ -29,7 +29,7 @@
   "serpapi": {
    "results": 0,
    "errors": [],
-   "note": "searches every 3 hours — next in about 0 h 46 min"
+   "note": "searched: T2306 OR \"T 2306\" OR \"T-2306\" OR hreščák OR hrescak…"
   }
  }
 }
