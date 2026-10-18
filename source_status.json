@@ -1,44 +1,50 @@
 {
- "checked_at": "2026-10-18 18:33:12",
+ "checked_at": "2026-10-18 19:28:30",
  "config_errors": [],
  "sources": {
   "bazos_cz": {
    "results": 184,
-   "errors": []
+   "errors": [],
+   "added": 1
   },
   "bazos_sk": {
    "results": 173,
    "errors": []
   },
   "aukro_cz": {
-   "results": 1,
-   "errors": []
+   "results": 0,
+   "errors": [
+    "Aukro cz served a bot check",
+    "Aukro cz served a bot check",
+    "Aukro cz served a bot check",
+    "Aukro cz served a bot check",
+    "Aukro cz served a bot check",
+    "Aukro cz served a bot check"
+   ]
   },
   "aukro_sk": {
-   "results": 1,
-   "errors": []
+   "results": 0,
+   "errors": [
+    "Aukro sk served a bot check",
+    "Aukro sk served a bot check",
+    "Aukro sk served a bot check",
+    "Aukro sk served a bot check",
+    "Aukro sk served a bot check",
+    "Aukro sk served a bot check"
+   ]
   },
   "vinted_cz": {
    "results": 0,
-   "errors": [
-    "Vinted cz error for 'kodreta': 403 Client Error: Forbidden for url: https://api.vinted.cz/svc-catalogue/items?search_text=kodreta&order=newest_first&page=1&per_",
-    "Vinted cz error for 't2306': 403 Client Error: Forbidden for url: https://api.vinted.cz/svc-catalogue/items?search_text=t2306&order=newest_first&page=1&per_page",
-    "Vinted cz error for 'chromová židle': 403 Client Error: Forbidden for url: https://api.vinted.cz/svc-catalogue/items?search_text=chromov%C3%A1+%C5%BEidle&order=",
-    "Vinted cz error for 'trubková židle': 403 Client Error: Forbidden for url: https://api.vinted.cz/svc-catalogue/items?search_text=trubkov%C3%A1+%C5%BEidle&order=",
-    "Vinted cz error for 'kovová židle retro': 403 Client Error: Forbidden for url: https://api.vinted.cz/svc-catalogue/items?search_text=kovov%C3%A1+%C5%BEidle+retr",
-    "Vinted cz error for 'retro židle chrom': 403 Client Error: Forbidden for url: https://api.vinted.cz/svc-catalogue/items?search_text=retro+%C5%BEidle+chrom&order"
-   ]
+   "errors": []
   },
   "vinted_sk": {
    "results": 0,
-   "errors": [
-    "Vinted sk: no anonymous token (site may block this server)"
-   ]
+   "errors": []
   },
   "serpapi": {
    "results": 0,
    "errors": [],
-   "note": "searches every 3 hours — next in about 1 h 40 min"
+   "note": "searches every 3 hours — next in about 0 h 45 min"
   }
  }
 }
