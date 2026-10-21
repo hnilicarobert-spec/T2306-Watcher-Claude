@@ -1,5 +1,5 @@
 {
- "checked_at": "2026-10-21 09:37:43",
+ "checked_at": "2026-10-21 10:38:52",
  "config_errors": [],
  "sources": {
   "bazos_cz": {
@@ -43,7 +43,7 @@
   "serpapi": {
    "results": 0,
    "errors": [],
-   "note": "searches every 3 hours — next in about 1 h 47 min"
+   "note": "searches every 3 hours — next in about 0 h 46 min"
   }
  }
 }
