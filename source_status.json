@@ -1,9 +1,9 @@
 {
- "checked_at": "2026-10-23 10:38:42",
+ "checked_at": "2026-10-23 11:37:49",
  "config_errors": [],
  "sources": {
   "bazos_cz": {
-   "results": 184,
+   "results": 185,
    "errors": []
   },
   "bazos_sk": {
@@ -41,9 +41,9 @@
    "errors": []
   },
   "serpapi": {
-   "results": 0,
+   "results": 10,
    "errors": [],
-   "note": "searches every 3 hours — next in about 0 h 49 min"
+   "note": "searched: (kodreta OR chlebo) (site:etsy.com OR site:ebay.com OR site:…"
   }
  }
 }
