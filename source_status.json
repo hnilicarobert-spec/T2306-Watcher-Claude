@@ -1,5 +1,5 @@
 {
- "checked_at": "2026-10-23 13:44:18",
+ "checked_at": "2026-10-23 14:57:27",
  "config_errors": [],
  "sources": {
   "bazos_cz": {
@@ -9,7 +9,8 @@
   },
   "bazos_sk": {
    "results": 170,
-   "errors": []
+   "errors": [],
+   "added": 2
   },
   "aukro_cz": {
    "results": 0,
@@ -42,9 +43,9 @@
    "errors": []
   },
   "serpapi": {
-   "results": 0,
+   "results": 2,
    "errors": [],
-   "note": "searches every 3 hours — next in about 0 h 38 min"
+   "note": "searched: (kodreta OR \"chromová židle\" OR \"trubková židle\" OR \"chrómov…"
   }
  }
 }
