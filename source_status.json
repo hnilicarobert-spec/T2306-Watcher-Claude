@@ -1,49 +1,32 @@
 {
- "checked_at": "2026-10-24 05:32:37",
+ "checked_at": "2026-10-24 06:52:05",
  "config_errors": [],
  "sources": {
   "bazos_cz": {
-   "results": 184,
-   "errors": []
+   "results": 339,
+   "errors": [],
+   "added": 6
   },
   "bazos_sk": {
-   "results": 169,
-   "errors": []
-  },
-  "aukro_cz": {
-   "results": 0,
-   "errors": [
-    "Aukro cz served a bot check",
-    "Aukro cz served a bot check",
-    "Aukro cz served a bot check",
-    "Aukro cz served a bot check",
-    "Aukro cz served a bot check",
-    "Aukro cz served a bot check"
-   ]
-  },
-  "aukro_sk": {
-   "results": 0,
-   "errors": [
-    "Aukro sk served a bot check",
-    "Aukro sk served a bot check",
-    "Aukro sk served a bot check",
-    "Aukro sk served a bot check",
-    "Aukro sk served a bot check",
-    "Aukro sk served a bot check"
-   ]
+   "results": 317,
+   "errors": [],
+   "added": 6
   },
   "vinted_cz": {
    "results": 0,
-   "errors": []
+   "errors": [],
+   "note": "241 items from Vinted, none in Czech/Slovak or naming Kodreta"
   },
   "vinted_sk": {
    "results": 0,
-   "errors": []
+   "errors": [],
+   "note": "240 items from Vinted, none in Czech/Slovak or naming Kodreta"
   },
   "serpapi": {
-   "results": 0,
+   "results": 2,
    "errors": [],
-   "note": "searches every 3 hours — next in about 0 h 46 min"
+   "note": "searched: (\"viliam chlebo\" OR kodreta) (\"dining chairs\" OR Esszimmerst…",
+   "added": 2
   }
  }
 }
