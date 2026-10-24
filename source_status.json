@@ -1,5 +1,5 @@
 {
- "checked_at": "2026-10-24 13:35:47",
+ "checked_at": "2026-10-24 14:31:18",
  "config_errors": [],
  "sources": {
   "bazos_cz": {
@@ -23,7 +23,7 @@
   "serpapi": {
    "results": 0,
    "errors": [],
-   "note": "searched: (kodreta OR \"viliam chlebo\" OR czechoslovakia) chrome chairs…"
+   "note": "searches every 3 hours — next in about 1 h 49 min"
   }
  }
 }
