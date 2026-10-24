@@ -290,7 +290,7 @@
     "tier": "similar",
     "keyword_hit": false,
     "found_at": "2026-10-23 20:48:33",
-    "last_checked": "2026-10-23 20:48:33",
+    "last_checked": "2026-10-24 07:38:01",
     "score": 0.7717,
     "p_target": 0.748,
     "p_chrome": 1.0,
@@ -309,7 +309,7 @@
     "tier": "similar",
     "keyword_hit": false,
     "found_at": "2026-10-23 20:48:28",
-    "last_checked": "2026-10-23 20:48:28",
+    "last_checked": "2026-10-24 07:38:00",
     "score": 0.7678,
     "p_target": 0.946,
     "p_chrome": 0.978,
@@ -461,7 +461,7 @@
     "tier": "similar",
     "keyword_hit": false,
     "found_at": "2026-10-22 20:35:13",
-    "last_checked": "2026-10-23 20:42:38",
+    "last_checked": "2026-10-24 07:37:50",
     "score": 0.6725,
     "p_target": 0.4,
     "p_chrome": 0.846,
@@ -480,7 +480,7 @@
     "tier": "similar",
     "keyword_hit": false,
     "found_at": "2026-10-22 20:35:13",
-    "last_checked": "2026-10-23 20:42:39",
+    "last_checked": "2026-10-24 07:37:51",
     "score": 0.6908,
     "p_target": 0.356,
     "p_chrome": 0.932,
@@ -518,7 +518,7 @@
     "tier": "similar",
     "keyword_hit": false,
     "found_at": "2026-10-22 09:41:28",
-    "last_checked": "2026-10-23 20:42:45",
+    "last_checked": "2026-10-24 07:37:54",
     "score": 0.7217,
     "p_target": 0.171,
     "p_chrome": 0.557,
@@ -727,7 +727,7 @@
     "tier": "similar",
     "keyword_hit": false,
     "found_at": "2026-10-21 12:42:38",
-    "last_checked": "2026-10-23 20:42:41",
+    "last_checked": "2026-10-24 07:37:52",
     "score": 0.6724,
     "p_target": 0.349,
     "p_chrome": 0.953,
@@ -746,7 +746,7 @@
     "tier": "collection",
     "keyword_hit": true,
     "found_at": "2026-10-21 02:36:20",
-    "last_checked": "2026-10-23 19:36:19",
+    "last_checked": "2026-10-24 07:37:50",
     "score": 0.7464,
     "p_target": 0.676,
     "p_chrome": 1.0,
@@ -765,7 +765,7 @@
     "tier": "similar",
     "keyword_hit": false,
     "found_at": "2026-10-20 17:47:53",
-    "last_checked": "2026-10-23 20:42:47",
+    "last_checked": "2026-10-24 07:37:56",
     "score": 0.7466,
     "p_target": 0.086,
     "p_chrome": 0.811,
@@ -841,7 +841,7 @@
     "tier": "similar",
     "keyword_hit": false,
     "found_at": "2026-10-20 07:47:01",
-    "last_checked": "2026-10-23 20:42:38",
+    "last_checked": "2026-10-24 07:37:51",
     "score": 0.7444,
     "p_target": 0.218,
     "p_chrome": 0.956,
@@ -1069,7 +1069,7 @@
     "tier": "similar",
     "keyword_hit": false,
     "found_at": "2026-10-18 08:30:38",
-    "last_checked": "2026-10-23 19:36:17",
+    "last_checked": "2026-10-24 07:37:50",
     "score": 0.6961,
     "p_target": 0.464,
     "p_chrome": 0.76,
@@ -1183,7 +1183,7 @@
     "tier": "similar",
     "keyword_hit": false,
     "found_at": "2026-10-17 15:30:23",
-    "last_checked": "2026-10-23 20:42:51",
+    "last_checked": "2026-10-24 07:37:59",
     "score": 0.6623,
     "p_target": 0.091,
     "p_chrome": 0.349,
@@ -1633,7 +1633,8 @@
     "p_chrome": 0.33,
     "category": "armchair_sofa",
     "match": 0.339,
-    "via_search": false
+    "via_search": false,
+    "phash": "fefecee9c34ed4fc"
   },
   {
     "id": "a9b782b9b0830cc9",
@@ -1651,7 +1652,8 @@
     "p_chrome": 0.625,
     "category": "chrome_other",
     "match": 0.523,
-    "via_search": false
+    "via_search": false,
+    "phash": "022262220b054000"
   },
   {
     "id": "7b588271398621f1",
@@ -1669,7 +1671,8 @@
     "p_chrome": 0.995,
     "category": "chrome_other",
     "match": 0.602,
-    "via_search": true
+    "via_search": true,
+    "phash": "88c893cccc848280"
   },
   {
     "id": "273b997bf80e816b",
@@ -1687,7 +1690,8 @@
     "p_chrome": 0.997,
     "category": "target",
     "match": 0.943,
-    "via_search": true
+    "via_search": true,
+    "phash": "0f17a8ac55551f0f"
   },
   {
     "id": "106452932fbd2654",
@@ -1705,7 +1709,8 @@
     "p_chrome": 0.942,
     "category": "chrome_other",
     "match": 0.409,
-    "via_search": false
+    "via_search": false,
+    "phash": "18181898c1c02040"
   },
   {
     "id": "09685874bab841f5",
@@ -1723,7 +1728,8 @@
     "p_chrome": 0.921,
     "category": "chrome_other",
     "match": 0.644,
-    "via_search": false
+    "via_search": false,
+    "phash": "17373373129c6078"
   },
   {
     "id": "348c1466ee5eca8f",
@@ -1735,13 +1741,14 @@
     "tier": "strong",
     "keyword_hit": false,
     "found_at": "2026-10-13 12:31:43",
-    "last_checked": "2026-10-23 20:42:43",
+    "last_checked": "2026-10-24 07:37:53",
     "score": 0.6621,
     "p_target": 0.887,
     "p_chrome": 0.969,
     "category": "target",
     "match": 0.719,
-    "via_search": false
+    "via_search": false,
+    "phash": "0006b991c714136b"
   },
   {
     "id": "d81b737574bce5ab",
@@ -1759,7 +1766,8 @@
     "p_chrome": 0.998,
     "category": "chrome_other",
     "match": 0.475,
-    "via_search": false
+    "via_search": false,
+    "phash": "460fcfe6e0fcddeb"
   },
   {
     "id": "1ad0b308fd0c1e2b",
@@ -1777,7 +1785,8 @@
     "p_chrome": 0.816,
     "category": "chrome_other",
     "match": 0.336,
-    "via_search": false
+    "via_search": false,
+    "phash": "03909999f3b2e4e0"
   },
   {
     "id": "538294036f7a0159",
@@ -1795,7 +1804,8 @@
     "p_chrome": 0.985,
     "category": "target",
     "match": 0.536,
-    "via_search": false
+    "via_search": false,
+    "phash": "13cccce0cc377155"
   },
   {
     "id": "f70a409def71afc4",
@@ -1813,7 +1823,8 @@
     "p_chrome": 0.648,
     "category": "chrome_other",
     "match": 0.565,
-    "via_search": false
+    "via_search": false,
+    "phash": "9b830a6730b11337"
   },
   {
     "id": "5a95e825f7af37cc",
@@ -1831,7 +1842,8 @@
     "p_chrome": 0.981,
     "category": "target",
     "match": 0.685,
-    "via_search": false
+    "via_search": false,
+    "phash": "068083e07ccc682b"
   },
   {
     "id": "ca0705e4138bf9d9",
@@ -1849,7 +1861,8 @@
     "p_chrome": 0.999,
     "category": "target",
     "match": 0.925,
-    "via_search": false
+    "via_search": false,
+    "phash": "0d8f8f050ee0f0d4"
   },
   {
     "id": "e9b68425e2795f44",
@@ -1867,7 +1880,8 @@
     "p_chrome": 0.502,
     "category": "wooden_chair",
     "match": 0.588,
-    "via_search": false
+    "via_search": false,
+    "phash": "ecee94b8f9f9fbef"
   },
   {
     "id": "8734f2199b887310",
@@ -1885,7 +1899,8 @@
     "p_chrome": 0.393,
     "category": "wooden_chair",
     "match": 0.488,
-    "via_search": false
+    "via_search": false,
+    "phash": "7ea6e767a796cfed"
   },
   {
     "id": "87f0704cfecd43e3",
@@ -1903,7 +1918,8 @@
     "p_chrome": 0.936,
     "category": "target",
     "match": 0.869,
-    "via_search": false
+    "via_search": false,
+    "phash": "c464a6a5f8f8fccc"
   },
   {
     "id": "30591539193b507e",
@@ -1921,7 +1937,8 @@
     "p_chrome": 0.867,
     "category": "chrome_other",
     "match": 0.567,
-    "via_search": false
+    "via_search": false,
+    "phash": "191911e0e6ae6cd3"
   },
   {
     "id": "7955141b989b13fd",
@@ -1939,7 +1956,8 @@
     "p_chrome": 0.813,
     "category": "target",
     "match": 0.636,
-    "via_search": false
+    "via_search": false,
+    "phash": "0d0d2ba6cdd9d3e7"
   },
   {
     "id": "39cd342fb58c2643",
@@ -1957,7 +1975,8 @@
     "p_chrome": 0.982,
     "category": "chrome_other",
     "match": 0.564,
-    "via_search": false
+    "via_search": false,
+    "phash": "0033200162731b03"
   },
   {
     "id": "7afc2a151156b3f1",
@@ -1975,7 +1994,8 @@
     "p_chrome": 0.842,
     "category": "chrome_other",
     "match": 0.559,
-    "via_search": false
+    "via_search": false,
+    "phash": "d6dd1d85a9cbc99b"
   },
   {
     "id": "fd30e926a88e6116",
@@ -1993,7 +2013,8 @@
     "p_chrome": 0.95,
     "category": "target",
     "match": 0.722,
-    "via_search": false
+    "via_search": false,
+    "phash": "f8f87ff9f9f05b99"
   },
   {
     "id": "414616a9f28e742e",
@@ -2005,13 +2026,14 @@
     "tier": "similar",
     "keyword_hit": false,
     "found_at": "2026-10-09 18:25:57",
-    "last_checked": "2026-10-23 19:36:16",
+    "last_checked": "2026-10-24 07:37:48",
     "score": 0.7153,
     "p_target": 0.112,
     "p_chrome": 0.994,
     "category": "chrome_other",
     "match": 0.5,
-    "via_search": false
+    "via_search": false,
+    "phash": "9a5c0df0cce1330a"
   },
   {
     "id": "941aeb632a6d629d",
@@ -2029,7 +2051,8 @@
     "p_chrome": 0.783,
     "category": "chrome_other",
     "match": 0.551,
-    "via_search": false
+    "via_search": false,
+    "phash": "c8e08cf8f0e1c4c2"
   },
   {
     "id": "40fb915ad48a1d89",
@@ -2047,7 +2070,8 @@
     "p_chrome": 0.407,
     "category": "kids",
     "match": 0.534,
-    "via_search": false
+    "via_search": false,
+    "phash": "9ad86869699e1e1e"
   },
   {
     "id": "b2c3a1d5b152a3ec",
@@ -2059,13 +2083,14 @@
     "tier": "similar",
     "keyword_hit": false,
     "found_at": "2026-10-09 12:26:37",
-    "last_checked": "2026-10-23 20:42:39",
+    "last_checked": "2026-10-24 07:37:52",
     "score": 0.662,
     "p_target": 0.451,
     "p_chrome": 1.0,
     "category": "chrome_other",
     "match": 0.544,
-    "via_search": false
+    "via_search": false,
+    "phash": "21030c8cecfa8302"
   },
   {
     "id": "7e1b6cdaa91d5a8d",
@@ -2083,7 +2108,8 @@
     "p_chrome": 1.0,
     "category": "chrome_other",
     "match": 0.346,
-    "via_search": false
+    "via_search": false,
+    "phash": "0f9fc1e870f06000"
   },
   {
     "id": "5cdced2b1752e7b4",
@@ -2101,7 +2127,8 @@
     "p_chrome": 0.987,
     "category": "chrome_other",
     "match": 0.648,
-    "via_search": false
+    "via_search": false,
+    "phash": "3f351c5a1e189892"
   },
   {
     "id": "9e000ab925c71306",
@@ -2119,7 +2146,8 @@
     "p_chrome": 0.454,
     "category": "chrome_other",
     "match": 0.496,
-    "via_search": false
+    "via_search": false,
+    "phash": "32a2056b6ac5d5e9"
   },
   {
     "id": "2bd147ec0d786545",
@@ -2137,7 +2165,8 @@
     "p_chrome": 0.997,
     "category": "chrome_other",
     "match": 0.423,
-    "via_search": false
+    "via_search": false,
+    "phash": "4541ccc8d8b91840"
   },
   {
     "id": "e8b45935bbc21778",
@@ -2155,7 +2184,8 @@
     "p_chrome": 0.669,
     "category": "chrome_other",
     "match": 0.454,
-    "via_search": false
+    "via_search": false,
+    "phash": "4d05c3c0c0c40c5c"
   },
   {
     "id": "323aadfea5844853",
@@ -2173,7 +2203,8 @@
     "p_chrome": 0.968,
     "category": "target",
     "match": 0.722,
-    "via_search": false
+    "via_search": false,
+    "phash": "9797ddcf838fbd7f"
   },
   {
     "id": "38debea5dbc1d469",
@@ -2191,7 +2222,8 @@
     "p_chrome": 1.0,
     "category": "target",
     "match": 0.714,
-    "via_search": true
+    "via_search": true,
+    "phash": "1f0f1d3cf8f8f6fd"
   },
   {
     "id": "432d15de40cdc3ed",
@@ -2209,7 +2241,8 @@
     "p_chrome": 0.508,
     "category": "target",
     "match": 0.528,
-    "via_search": false
+    "via_search": false,
+    "phash": "0e0ea6f87cdcdef7"
   },
   {
     "id": "22736eec7fa1daa7",
@@ -2227,7 +2260,8 @@
     "p_chrome": 1.0,
     "category": "target",
     "match": 0.686,
-    "via_search": false
+    "via_search": false,
+    "phash": "1e1e3d64751b7cfd"
   },
   {
     "id": "318b96dded23aa5e",
@@ -2245,7 +2279,8 @@
     "p_chrome": 0.376,
     "category": "plastic_chair",
     "match": 0.516,
-    "via_search": false
+    "via_search": false,
+    "phash": "3234591b66e0e002"
   },
   {
     "id": "4e88b969c2b85849",
@@ -2263,7 +2298,8 @@
     "p_chrome": 0.999,
     "category": "chrome_other",
     "match": 0.494,
-    "via_search": false
+    "via_search": false,
+    "phash": "1f7979f0f0f0d271"
   },
   {
     "id": "d1805aefccd87c62",
@@ -2281,7 +2317,8 @@
     "p_chrome": 0.999,
     "category": "chrome_other",
     "match": 0.494,
-    "via_search": false
+    "via_search": false,
+    "phash": "1f7979f0f0f0d271"
   },
   {
     "id": "3ebecc2661a7c38f",
@@ -2299,7 +2336,8 @@
     "p_chrome": 0.903,
     "category": "target",
     "match": 0.81,
-    "via_search": false
+    "via_search": false,
+    "phash": "0c078cccccce8e1c"
   },
   {
     "id": "07cb23bf682e4e0b",
@@ -2317,7 +2355,8 @@
     "p_chrome": 0.953,
     "category": "chrome_other",
     "match": 0.494,
-    "via_search": false
+    "via_search": false,
+    "phash": "d9f8e8fcf4fcfcfc"
   },
   {
     "id": "036ee8446a34154c",
@@ -2335,7 +2374,8 @@
     "p_chrome": 0.951,
     "category": "target",
     "match": 0.879,
-    "via_search": true
+    "via_search": true,
+    "phash": "81e9f1f0e1f0f080"
   },
   {
     "id": "c92c29428da1231d",
@@ -2353,7 +2393,8 @@
     "p_chrome": 0.996,
     "category": "chrome_other",
     "match": 0.455,
-    "via_search": false
+    "via_search": false,
+    "phash": "0f137b73f3e06394"
   },
   {
     "id": "c32a52ba747dba4e",
@@ -2371,7 +2412,8 @@
     "p_chrome": 0.572,
     "category": "target",
     "match": 0.639,
-    "via_search": false
+    "via_search": false,
+    "phash": "1a1cd4d0c163ae9d"
   },
   {
     "id": "6ecd4881d7504020",
@@ -2389,7 +2431,8 @@
     "p_chrome": 0.996,
     "category": "chrome_other",
     "match": 0.455,
-    "via_search": false
+    "via_search": false,
+    "phash": "0f137b73f3e06394"
   },
   {
     "id": "bded9dceb5e1ddfe",
@@ -2407,7 +2450,8 @@
     "p_chrome": 0.998,
     "category": "target",
     "match": 0.593,
-    "via_search": true
+    "via_search": true,
+    "phash": "0038f8c8cc393c24"
   },
   {
     "id": "fedaf06b8b229353",
@@ -2425,7 +2469,8 @@
     "p_chrome": 0.997,
     "category": "chrome_other",
     "match": 0.603,
-    "via_search": true
+    "via_search": true,
+    "phash": "7f7754d6faffffff"
   },
   {
     "id": "5dcd1e0ce98bbc33",
@@ -2443,7 +2488,8 @@
     "p_chrome": 0.998,
     "category": "target",
     "match": 0.766,
-    "via_search": true
+    "via_search": true,
+    "phash": "1ef63c64361e9839"
   },
   {
     "id": "9e90623255c99435",
@@ -2461,7 +2507,8 @@
     "p_chrome": 0.999,
     "category": "target",
     "match": 0.625,
-    "via_search": true
+    "via_search": true,
+    "phash": "3b2b33a884f0d0e8"
   },
   {
     "id": "3231d5cf7ea13f31",
@@ -2479,7 +2526,8 @@
     "p_chrome": 0.999,
     "category": "target",
     "match": 0.754,
-    "via_search": true
+    "via_search": true,
+    "phash": "cecec0d7e3f9b98d"
   },
   {
     "id": "ee9d2f7da713474f",
@@ -2497,7 +2545,8 @@
     "p_chrome": 0.946,
     "category": "target",
     "match": 0.499,
-    "via_search": true
+    "via_search": true,
+    "phash": "cfc76360ecfcf87c"
   },
   {
     "id": "ebcd74736af4bee1",
@@ -2515,7 +2564,8 @@
     "p_chrome": 1.0,
     "category": "chrome_other",
     "match": 0.641,
-    "via_search": true
+    "via_search": true,
+    "phash": "00d0d0b2b24c6800"
   },
   {
     "id": "cdbaddfc45a12d4b",
@@ -2527,7 +2577,7 @@
     "tier": "collection",
     "keyword_hit": true,
     "found_at": "2026-10-07 01:24:05",
-    "last_checked": "2026-10-23 20:42:50",
+    "last_checked": "2026-10-24 07:37:59",
     "score": null,
     "match": null,
     "via_search": true
@@ -2548,7 +2598,8 @@
     "p_chrome": 0.678,
     "category": "chrome_other",
     "match": 0.555,
-    "via_search": true
+    "via_search": true,
+    "phash": "9736231b0c199283"
   },
   {
     "id": "aa02a3b14273cd40",
@@ -2566,7 +2617,8 @@
     "p_chrome": 0.978,
     "category": "target",
     "match": 0.743,
-    "via_search": true
+    "via_search": true,
+    "phash": "d1d197859783c084"
   },
   {
     "id": "e56d8b6ec7497512",
@@ -2584,7 +2636,8 @@
     "p_chrome": 0.938,
     "category": "chrome_other",
     "match": 0.687,
-    "via_search": false
+    "via_search": false,
+    "phash": "8d9998d8e1c6c6de"
   },
   {
     "id": "75f5ebb3215e744b",
@@ -2602,7 +2655,8 @@
     "p_chrome": 0.991,
     "category": "chrome_other",
     "match": 0.595,
-    "via_search": false
+    "via_search": false,
+    "phash": "9791b1d1c3c3c8e7"
   },
   {
     "id": "841eef5e432c8a0c",
@@ -2620,7 +2674,8 @@
     "p_chrome": 0.657,
     "category": "chrome_other",
     "match": 0.444,
-    "via_search": false
+    "via_search": false,
+    "phash": "69c989a9c1c0cbec"
   },
   {
     "id": "533f909941232f52",
@@ -2638,7 +2693,8 @@
     "p_chrome": 0.489,
     "category": "chrome_other",
     "match": 0.284,
-    "via_search": false
+    "via_search": false,
+    "phash": "00c0dad296d4d400"
   },
   {
     "id": "bb7c6e9eb184c8da",
@@ -2656,7 +2712,8 @@
     "p_chrome": 0.407,
     "category": "chrome_other",
     "match": 0.349,
-    "via_search": false
+    "via_search": false,
+    "phash": "3071c7c3c3c3c30f"
   },
   {
     "id": "4b2e1969051cd74a",
@@ -2674,7 +2731,8 @@
     "p_chrome": 0.878,
     "category": "target",
     "match": 0.596,
-    "via_search": true
+    "via_search": true,
+    "phash": "c6232b2b2beaea09"
   },
   {
     "id": "83651187b63a363a",
@@ -2686,13 +2744,14 @@
     "tier": "similar",
     "keyword_hit": false,
     "found_at": "2026-10-05 22:22:53",
-    "last_checked": "2026-10-23 20:42:52",
+    "last_checked": "2026-10-24 07:38:00",
     "score": 0.7395,
     "p_target": 0.026,
     "p_chrome": 0.401,
     "category": "chrome_other",
     "match": 0.507,
-    "via_search": false
+    "via_search": false,
+    "phash": "ad8a4ec6cfc6cfcd"
   },
   {
     "id": "040f40c5ac986d6f",
@@ -2710,7 +2769,8 @@
     "p_chrome": 0.998,
     "category": "target",
     "match": 0.744,
-    "via_search": true
+    "via_search": true,
+    "phash": "0c1c1c85a0fce01c"
   },
   {
     "id": "52cd3d46fcbbd854",
@@ -2728,7 +2788,8 @@
     "p_chrome": 0.981,
     "category": "chrome_other",
     "match": 0.67,
-    "via_search": true
+    "via_search": true,
+    "phash": "2f2b3637b3ecd91d"
   },
   {
     "id": "cc83c08da65c869e",
@@ -2746,7 +2807,8 @@
     "p_chrome": 0.993,
     "category": "target",
     "match": 0.982,
-    "via_search": true
+    "via_search": true,
+    "phash": "1ff4c4e8c67a1f0f"
   },
   {
     "id": "371b2a4b80cedf6c",
@@ -2764,7 +2826,8 @@
     "p_chrome": 0.997,
     "category": "target",
     "match": 0.858,
-    "via_search": true
+    "via_search": true,
+    "phash": "00c66ccccc944400"
   },
   {
     "id": "88d784d772f91996",
@@ -2782,7 +2845,8 @@
     "p_chrome": 0.997,
     "category": "target",
     "match": 0.974,
-    "via_search": true
+    "via_search": true,
+    "phash": "076c68b084390787"
   },
   {
     "id": "bf48f3175f84e8b0",
@@ -2800,7 +2864,8 @@
     "p_chrome": 0.997,
     "category": "target",
     "match": 0.925,
-    "via_search": true
+    "via_search": true,
+    "phash": "0f2fdfaaaa571f0f"
   },
   {
     "id": "54b84e833963893e",
@@ -2818,7 +2883,8 @@
     "p_chrome": 0.997,
     "category": "target",
     "match": 0.798,
-    "via_search": false
+    "via_search": false,
+    "phash": "b3f29e9ef7f1d6f2"
   },
   {
     "id": "06a9929892f95e3b",
@@ -2835,7 +2901,8 @@
     "p_target": 0.885,
     "p_chrome": 0.988,
     "category": "target",
-    "match": 0.58
+    "match": 0.58,
+    "phash": "010307078f9e0020"
   },
   {
     "id": "f16034c699322c91",
@@ -2851,7 +2918,8 @@
     "p_target": 0.654,
     "p_chrome": 0.887,
     "category": "target",
-    "match": 0.394
+    "match": 0.394,
+    "phash": "8bbacce582c0cc66"
   },
   {
     "id": "34dbb88e6655f479",
@@ -2867,7 +2935,8 @@
     "p_target": 0.032,
     "p_chrome": 0.736,
     "category": "chrome_other",
-    "match": 0.257
+    "match": 0.257,
+    "phash": "bece9edd6df85e30"
   },
   {
     "id": "e7ac0e4bdb00f8e1",
@@ -2883,7 +2952,8 @@
     "p_target": 0.345,
     "p_chrome": 0.38,
     "category": "plastic_chair",
-    "match": 0.352
+    "match": 0.352,
+    "phash": "f0800c191a1e6063"
   },
   {
     "id": "e1ecc0fa3232ef74",
@@ -2899,7 +2969,8 @@
     "p_target": 0.526,
     "p_chrome": 0.644,
     "category": "target",
-    "match": 0.547
+    "match": 0.547,
+    "phash": "48607266c7b7cfcb"
   },
   {
     "id": "3013e055e7c0f473",
@@ -2911,11 +2982,12 @@
     "tier": "strong",
     "keyword_hit": false,
     "found_at": "2026-10-05 03:25:19",
-    "last_checked": "2026-10-23 20:42:44",
+    "last_checked": "2026-10-24 07:37:53",
     "p_target": 0.525,
     "p_chrome": 0.882,
     "category": "target",
-    "match": 0.644
+    "match": 0.644,
+    "phash": "1f1ca7c596939131"
   },
   {
     "id": "29f5334de476f812",
@@ -2943,7 +3015,8 @@
     "p_target": 0.072,
     "p_chrome": 0.81,
     "category": "chrome_other",
-    "match": 0.273
+    "match": 0.273,
+    "phash": "2b330f1fa924664a"
   },
   {
     "id": "eafe1a332a94eaec",
@@ -2959,7 +3032,8 @@
     "p_target": 0.806,
     "p_chrome": 0.985,
     "category": "target",
-    "match": 0.604
+    "match": 0.604,
+    "phash": "49696969ccb8b0b0"
   },
   {
     "id": "cd5cc8b0cf3a11f2",
@@ -2971,11 +3045,12 @@
     "tier": "similar",
     "keyword_hit": false,
     "found_at": "2026-10-04 19:54:20",
-    "last_checked": "2026-10-23 20:42:45",
+    "last_checked": "2026-10-24 07:37:54",
     "p_target": 0.314,
     "p_chrome": 0.961,
     "category": "chrome_other",
-    "match": 0.425
+    "match": 0.425,
+    "phash": "ddccd9d8e06a6eaf"
   },
   {
     "id": "1345b6f12cc4f0c7",
@@ -2991,7 +3066,8 @@
     "p_target": 0.025,
     "p_chrome": 0.713,
     "category": "chrome_other",
-    "match": 0.285
+    "match": 0.285,
+    "phash": "e0cccdccece0e0f6"
   },
   {
     "id": "02a45da70b8ec6d1",
@@ -3007,7 +3083,8 @@
     "p_target": 0.165,
     "p_chrome": 0.872,
     "category": "chrome_other",
-    "match": 0.249
+    "match": 0.249,
+    "phash": "f8d8fef0e0acecf0"
   },
   {
     "id": "5af59e23f4fda738",
@@ -3023,7 +3100,8 @@
     "p_target": 0.368,
     "p_chrome": 0.517,
     "category": "target",
-    "match": 0.42
+    "match": 0.42,
+    "phash": "012a2a2a88105555"
   },
   {
     "id": "f6be32f5d22226ab",
@@ -3039,7 +3117,8 @@
     "p_target": 0.647,
     "p_chrome": 0.686,
     "category": "target",
-    "match": 0.346
+    "match": 0.346,
+    "phash": "b39cf8e0e1e0f0f0"
   },
   {
     "id": "370a069977176831",
@@ -3055,7 +3134,8 @@
     "p_target": 0.772,
     "p_chrome": 0.897,
     "category": "target",
-    "match": 0.556
+    "match": 0.556,
+    "phash": "071717175569e813"
   },
   {
     "id": "734fe6eee77152e2",
@@ -3071,7 +3151,8 @@
     "p_target": 0.162,
     "p_chrome": 0.981,
     "category": "chrome_other",
-    "match": 0.269
+    "match": 0.269,
+    "phash": "06078bc484890102"
   },
   {
     "id": "feff3506d8016e47",
@@ -3087,7 +3168,8 @@
     "p_target": 0.022,
     "p_chrome": 0.946,
     "category": "chrome_other",
-    "match": 0.234
+    "match": 0.234,
+    "phash": "f9f1f9fd392b1f3f"
   },
   {
     "id": "5e4c498393140c3c",
@@ -3103,7 +3185,8 @@
     "p_target": 0.24,
     "p_chrome": 0.94,
     "category": "chrome_other",
-    "match": 0.231
+    "match": 0.231,
+    "phash": "f0f0f1e3f1c6defd"
   },
   {
     "id": "08de668ca6343c11",
@@ -3119,7 +3202,8 @@
     "p_target": 0.19,
     "p_chrome": 0.999,
     "category": "chrome_other",
-    "match": 0.252
+    "match": 0.252,
+    "phash": "3e3e34e880204206"
   },
   {
     "id": "c62450fbd681ba7f",
@@ -3135,7 +3219,8 @@
     "p_target": 0.032,
     "p_chrome": 0.682,
     "category": "chrome_other",
-    "match": 0.186
+    "match": 0.186,
+    "phash": "081848c8c8c00000"
   },
   {
     "id": "322222f1035ca606",
@@ -3151,7 +3236,8 @@
     "p_target": 0.417,
     "p_chrome": 0.96,
     "category": "chrome_other",
-    "match": 0.395
+    "match": 0.395,
+    "phash": "391e8e8eebabc842"
   },
   {
     "id": "ee50ca2ec64f1155",
@@ -3167,7 +3253,8 @@
     "p_target": 0.019,
     "p_chrome": 0.926,
     "category": "chrome_other",
-    "match": 0.256
+    "match": 0.256,
+    "phash": "2abcac1c0ca6b737"
   },
   {
     "id": "639b7ac2ce4cf43a",
@@ -3183,7 +3270,8 @@
     "p_target": 0.049,
     "p_chrome": 0.63,
     "category": "chrome_other",
-    "match": 0.427
+    "match": 0.427,
+    "phash": "181c0c8b07c4cb47"
   },
   {
     "id": "5fe1dbac8ad110f0",
@@ -3199,7 +3287,8 @@
     "p_target": 0.561,
     "p_chrome": 0.958,
     "category": "target",
-    "match": 0.565
+    "match": 0.565,
+    "phash": "330c4c9c90d4ec4c"
   },
   {
     "id": "5399229fe8abdfef",
@@ -3215,7 +3304,8 @@
     "p_target": 0.623,
     "p_chrome": 0.906,
     "category": "target",
-    "match": 0.547
+    "match": 0.547,
+    "phash": "a090502173101001"
   },
   {
     "id": "234022afe1f02cda",
@@ -3231,7 +3321,8 @@
     "p_target": 0.335,
     "p_chrome": 0.97,
     "category": "chrome_other",
-    "match": 0.314
+    "match": 0.314,
+    "phash": "0505812530d0941e"
   },
   {
     "id": "4a85720e85715bd6",
@@ -3247,7 +3338,8 @@
     "p_target": 0.077,
     "p_chrome": 0.798,
     "category": "chrome_other",
-    "match": 0.215
+    "match": 0.215,
+    "phash": "beaeaaececd4f6ac"
   },
   {
     "id": "c3184ac58b416174",
@@ -3263,7 +3355,8 @@
     "p_target": 0.307,
     "p_chrome": 0.741,
     "category": "chrome_other",
-    "match": 0.318
+    "match": 0.318,
+    "phash": "3c3f1d07a212998d"
   },
   {
     "id": "c7ffb509865e6074",
@@ -3279,7 +3372,8 @@
     "p_target": 0.361,
     "p_chrome": 0.992,
     "category": "chrome_other",
-    "match": 0.505
+    "match": 0.505,
+    "phash": "6064442023235c06"
   },
   {
     "id": "072f1039aa548830",
@@ -3311,7 +3405,8 @@
     "p_target": 0.28,
     "p_chrome": 0.995,
     "category": "chrome_other",
-    "match": 0.458
+    "match": 0.458,
+    "phash": "607f7ffed2f8f0f2"
   },
   {
     "id": "5d5f1dea54677edc",
@@ -3327,7 +3422,8 @@
     "p_target": 0.023,
     "p_chrome": 0.966,
     "category": "chrome_other",
-    "match": 0.316
+    "match": 0.316,
+    "phash": "331f36785ce8e4c4"
   },
   {
     "id": "2cb058714e1d1178",
@@ -3343,7 +3439,8 @@
     "p_target": 0.088,
     "p_chrome": 0.964,
     "category": "chrome_other",
-    "match": 0.431
+    "match": 0.431,
+    "phash": "31b1393131706000"
   },
   {
     "id": "1b3a9f1d4fd72c64",
@@ -3359,7 +3456,8 @@
     "p_target": 0.042,
     "p_chrome": 0.32,
     "category": "stool",
-    "match": 0.301
+    "match": 0.301,
+    "phash": "33558531190e0f01"
   },
   {
     "id": "19a933a3a93afee4",
@@ -3375,7 +3473,8 @@
     "p_target": 0.715,
     "p_chrome": 0.733,
     "category": "target",
-    "match": 0.518
+    "match": 0.518,
+    "phash": "4a8cc5830ffdf8cc"
   },
   {
     "id": "6a49b6edc56014f0",
@@ -3391,7 +3490,8 @@
     "p_target": 0.321,
     "p_chrome": 0.868,
     "category": "chrome_other",
-    "match": 0.359
+    "match": 0.359,
+    "phash": "00e0c880c414500f"
   },
   {
     "id": "fb93e2babdd53435",
@@ -3407,7 +3507,8 @@
     "p_target": 0.081,
     "p_chrome": 0.916,
     "category": "chrome_other",
-    "match": 0.149
+    "match": 0.149,
+    "phash": "1f0ccc8338e4c4c3"
   },
   {
     "id": "78f02b3d21733d28",
@@ -3423,7 +3524,8 @@
     "p_target": 0.385,
     "p_chrome": 0.808,
     "category": "chrome_other",
-    "match": 0.327
+    "match": 0.327,
+    "phash": "1fe1c9f1f3304310"
   },
   {
     "id": "89c94ef98dc59bc2",
@@ -3439,7 +3541,8 @@
     "p_target": 0.887,
     "p_chrome": 0.952,
     "category": "target",
-    "match": 0.757
+    "match": 0.757,
+    "phash": "dcdcc4d0a284c4e8"
   },
   {
     "id": "4b8cf8baed5ec775",
@@ -3455,7 +3558,8 @@
     "p_target": 0.257,
     "p_chrome": 0.772,
     "category": "chrome_other",
-    "match": 0.332
+    "match": 0.332,
+    "phash": "8e63636a264a4484"
   },
   {
     "id": "eb16bb1da97227c7",
@@ -3471,7 +3575,8 @@
     "p_target": 0.033,
     "p_chrome": 0.998,
     "category": "chrome_other",
-    "match": 0.154
+    "match": 0.154,
+    "phash": "c8c6c3899d2526f6"
   },
   {
     "id": "61e8e8dd58de8a7f",
@@ -3487,7 +3592,8 @@
     "p_target": 0.011,
     "p_chrome": 0.719,
     "category": "chrome_other",
-    "match": 0.161
+    "match": 0.161,
+    "phash": "c686860e1cf863b1"
   },
   {
     "id": "ce3b430ead996a40",
@@ -3499,7 +3605,8 @@
     "tier": "collection",
     "found_at": "2026-10-03 16:07:53",
     "keyword_hit": true,
-    "last_checked": "2026-10-23 20:42:46"
+    "last_checked": "2026-10-24 07:37:55",
+    "phash": "a2b49ede8a0d4d5f"
   },
   {
     "id": "cfa78027135562ef",
@@ -3511,7 +3618,8 @@
     "tier": "collection",
     "found_at": "2026-10-03 16:07:45",
     "keyword_hit": true,
-    "last_checked": "2026-10-23 22:28:48"
+    "last_checked": "2026-10-23 22:28:48",
+    "phash": "4161e1a1a2828c40"
   },
   {
     "id": "c30c83edaaa4f05c",
@@ -3527,7 +3635,8 @@
     "p_target": 0.157,
     "p_chrome": 0.168,
     "category": "outdoor",
-    "match": 0.467
+    "match": 0.467,
+    "phash": "9936363e2636f0d7"
   },
   {
     "id": "32e90e12e3a44ad6",
@@ -3539,7 +3648,8 @@
     "tier": "collection",
     "found_at": "2026-10-03 16:07:43",
     "keyword_hit": true,
-    "last_checked": "2026-10-24 06:47:17"
+    "last_checked": "2026-10-24 06:47:17",
+    "phash": "31f0f8393c7c5c7c"
   },
   {
     "id": "66f209f70e33099d",
@@ -3551,7 +3661,8 @@
     "tier": "collection",
     "found_at": "2026-10-03 16:07:42",
     "keyword_hit": true,
-    "last_checked": "2026-10-23 19:36:16"
+    "last_checked": "2026-10-24 07:37:49",
+    "phash": "ce1b53f9637fe7c1"
   },
   {
     "id": "fb2bf979a56b4044",
@@ -3567,7 +3678,8 @@
     "p_target": 0.538,
     "p_chrome": 0.977,
     "category": "target",
-    "match": 0.432
+    "match": 0.432,
+    "phash": "0060603038486969"
   },
   {
     "id": "377f0d9d10426eaa",
@@ -3583,6 +3695,7 @@
     "p_target": 0.261,
     "p_chrome": 0.966,
     "category": "chrome_other",
-    "match": 0.411
+    "match": 0.411,
+    "phash": "302e8d8f8372f0f1"
   }
 ]
