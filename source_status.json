@@ -1,5 +1,5 @@
 {
- "checked_at": "2026-10-24 09:33:12",
+ "checked_at": "2026-10-24 10:31:10",
  "config_errors": [],
  "sources": {
   "bazos_cz": {
@@ -18,12 +18,13 @@
   "vinted_sk": {
    "results": 0,
    "errors": [],
-   "note": "240 items from Vinted, none in Czech/Slovak or naming Kodreta"
+   "note": "241 items from Vinted, none in Czech/Slovak or naming Kodreta"
   },
   "serpapi": {
-   "results": 0,
+   "results": 18,
    "errors": [],
-   "note": "searches every 3 hours — next in about 0 h 2 min"
+   "note": "Google Lens with T2306_view6.jpg",
+   "added": 4
   }
  }
 }
