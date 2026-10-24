@@ -93,7 +93,7 @@ WEAK_NAME_KEYWORDS = ["hreščák", "hrescak"]
 
 # Name/model search terms — searched directly on every site, in case a
 # seller who DOES know what they have used these exact words.
-NAME_KEYWORDS = ["kodreta", "jaroslav hreščák", "hreščák", "t2306"]
+NAME_KEYWORDS = ["kodreta", "jaroslav hreščák", "hreščák", "t2306", "chlebo"]
 
 # Broad, generic terms — these catch listings where the seller has NO idea
 # what the chair is and just described it by material/appearance (e.g. just
@@ -113,6 +113,13 @@ BROAD_KEYWORDS_CZ_SK = [
     "židle chrom", "židle kov", "kovová židle", "kovová stolička",
     "jídelní židle kov", "jedálenská stolička kov",
     "retro kovová židle", "vintage stolička kov",
+    # (8) How someone who doesn't know the name would list a T2306: by the
+    # fabric/leather seat, era or just "retro". Broad on purpose — the photo
+    # check does the filtering, and Bazoš lists newest first, so the first
+    # page per hour is enough.
+    "látkové židle", "látková židle", "židle látka chrom", "chromované židle",
+    "retro židle", "jídelní židle retro", "židle 80. léta", "socialistické židle",
+    "látkové stoličky", "retro stoličky", "chrómované stoličky", "jedálenské stoličky retro",
 ] + NAME_KEYWORDS
 BROAD_KEYWORDS_DE = [
     "Kodreta stuhl", "Stahlrohr stuhl Leinen Vintage",
@@ -252,6 +259,79 @@ def normalize_url(url):
         return url
 
 
+# (4) The same listing under many addresses: Etsy shows one listing on .com,
+# /uk/, /ca-fr/, /mx/…; 1stDibs adds /de/, /fr/, /es/; Pamono uses .com/.de/
+# .eu/.ca. Real data: one Etsy chair was stored 6×. These patterns pull out
+# the marketplace's own listing number so all copies collapse to one.
+_CANONICAL_PATTERNS = [
+    ("etsy", re.compile(r"etsy\.com/(?:[a-z-]+/)?listing/(\d+)")),
+    ("1stdibs", re.compile(r"1stdibs\.com/.*?id-([a-z]_\d+)")),
+    ("vinterior", re.compile(r"vinterior\.co/.*?sku(\d+)")),
+    ("whoppah", re.compile(r"whoppah\.com/(?:[a-z-]+/)?products/[^/?#]*?-([A-Za-z0-9]{8,})(?:[/?#]|$)")),
+    ("ebay", re.compile(r"ebay\.[a-z.]+/itm/(?:[^/]+/)?(\d{9,})")),
+    ("aukro", re.compile(r"aukro\.(?:cz|sk)/[^/?#]+-(\d{8,})")),
+    ("bazos", re.compile(r"bazos\.(?:cz|sk)/inzerat/(\d+)")),
+    ("vinted", re.compile(r"vinted\.[a-z.]+/items/(\d+)")),
+    ("sbazar", re.compile(r"sbazar\.cz/(?:inzerat/|[^/]+/detail/)(\d+)")),
+    ("catawiki", re.compile(r"catawiki\.com/.*?/l/(\d+)")),
+    ("pamono", re.compile(r"pamono\.[a-z.]+/([a-z0-9-]{12,})(?:[/?#]|$)")),
+]
+
+
+def canonical_key(url):
+    u = unquote_url(url or "")
+    for name, rx in _CANONICAL_PATTERNS:
+        m = rx.search(u)
+        if m:
+            return f"{name}:{m.group(1).lower()}"
+    return None
+
+
+def unquote_url(url):
+    from urllib.parse import unquote
+    return unquote(url)
+
+
+def image_fingerprint(img_bytes):
+    """64-bit difference hash: the same photo stays (almost) identical after
+    resizing/recompressing, so the German and English pages of one Pamono
+    listing — different titles, same photo — are recognised as one."""
+    try:
+        from PIL import Image
+        import io
+        im = Image.open(io.BytesIO(img_bytes)).convert("L").resize((9, 8))
+        px = list(im.getdata())
+        bits = 0
+        for row in range(8):
+            for col in range(8):
+                bits = (bits << 1) | (px[row * 9 + col] > px[row * 9 + col + 1])
+        return f"{bits:016x}"
+    except Exception:
+        return None
+
+
+# Marketplaces whose canonical key is a real listing NUMBER. Two different
+# numbers there are two different listings, even with an identical photo
+# (e.g. a site returning its logo as the preview image). Pamono's key is a
+# translated title slug, so its language copies may still merge by photo.
+TRUE_ID_MARKETS = {"etsy", "1stdibs", "vinterior", "whoppah", "ebay", "aukro", "bazos",
+                   "vinted", "sbazar", "catawiki"}
+
+
+def photo_merge_allowed(url_a, url_b):
+    ka, kb = canonical_key(url_a), canonical_key(url_b)
+    if ka and kb and ka != kb and ka.split(":")[0] == kb.split(":")[0] \
+            and ka.split(":")[0] in TRUE_ID_MARKETS:
+        return False
+    return True
+
+
+def same_photo(a, b, max_bits=5):
+    if not a or not b:
+        return False
+    return bin(int(a, 16) ^ int(b, 16)).count("1") <= max_bits
+
+
 def listing_id(url):
     return hashlib.sha256(normalize_url(url).encode()).hexdigest()[:16]
 
@@ -324,12 +404,88 @@ def _has_any(folded, stems):
 # A listing must actually be a CHAIR. Folded stems: židle/židlí/židlička,
 # stolička/stoličky/stoliček/stoličiek, křeslo/kreslo/kreslá, krzesło, Stuhl.
 # ("stolik"/"stolek" = small table, deliberately NOT here.)
-CHAIR_STEMS = ["zidl", "stolic", "kresl", "kresil", "krzes", "stuhl", "sessel", "chair"]
+CHAIR_STEMS = ["zidl", "stolic", "kresl", "kresil", "krzes", "stuhl", "sessel", "chair",
+               # dealer sites translate titles: FR, IT, ES, PT, NL, HU, PL-variant
+               "chaise", "fauteuil", "sedia", "sedie", "poltron", "silla", "sillon", "butaca",
+               "cadeira", "stoel", "szek", "krzesl"]
+
+# (1) Collector knowledge: the T2306 is a SIDE (dining) chair. Kodreta's
+# well-known Viliam Chlebo pieces are the T-2403/T-2407 ARMCHAIRS/lounge
+# chairs. Dealers abroad sell the T2306 as "Chrome dining chairs by Viliam
+# Chlebo", so a Chlebo/Kodreta name + side-chair word is a prime lead, while
+# Chlebo/Kodreta + armchair word is the armchair family (collection tier).
+ARMCHAIR_STEMS = ["kresl", "kresil", "armchair", "lounge", "sessel", "fauteuil", "poltron",
+                  "sillon", "butaca", "loungestoel", "dvojkresl", "dvoukresl", "t-2403", "t2403",
+                  "t 2403", "t2407", "t-2407"]
+SIDE_CHAIR_STEMS = ["zidl", "stolic", "dining", "esszimmer", "salle a manger", "pranzo", "comedor",
+                    "eetkamer", "jidelni", "jedalensk", "side chair", "desk chair", "chaise", "sedia",
+                    "sedie", "silla", "stuhl", "stuhle", "stoelen", "krzes", "krzesl", "szek"]
+
+
+def is_armchair_only(title):
+    f = fold(title)
+    return _has_any(f, ARMCHAIR_STEMS) and not _has_any(f, SIDE_CHAIR_STEMS)
+
+
+# (3) A listing that names ANOTHER designer/maker/model, or a non-Czechoslovak
+# origin, is not the T2306. Real examples from your scans: Breuer B5/B33/B34,
+# Mart Stam S34, Matteo Grassi MG5, Arper, Wegner, Carini/Planula, Mourgue,
+# Aulenti/Elam, Navrátil, Kovona, Leolux, "Italian", "French", "Belgian"...
+# Word-start matching on accent-free text ("stam" must not hit "stamp").
+OTHER_MAKER_RE = re.compile(r"\b(" + "|".join([
+    r"breuer", r"mart stam", r"stam\b", r"mies\b", r"van der rohe", r"cesca", r"wassily",
+    r"arper", r"wegner", r"carini", r"planula", r"mourgue", r"aulenti", r"elam\b",
+    r"matteo grassi", r"grassi\b", r"mg ?5\b", r"mucchi", r"halabala", r"kovona", r"kovobel",
+    r"navratil", r"belgo ?chrom", r"effezeta", r"baughman", r"hoffmann", r"roland rainer",
+    r"foersom", r"lammhults", r"lindau", r"arrben", r"fasem", r"martin visser", r"spectrum",
+    r"philippon", r"lecoq", r"gottwald", r"ladislav zak", r"vichr", r"tecta", r"le corbusier",
+    r"corbusier", r"eames", r"bertoia", r"kartell", r"ikea", r"vitra", r"starck", r"fritz hansen",
+    r"jacobsen", r"magistretti", r"cassina", r"knoll", r"suman\b", r"jiroutek", r"leolux",
+    r"calligaris", r"bonaldo", r"kristalia", r"cattelan", r"gavina", r"flototto", r"mucke",
+    r"slezak", r"up zavody", r"airborne", r"thonet", r"stol kamnik", r"ch ?66\b",
+    # model codes written together only — "d 40" / "s 35" in a Czech title are dimensions
+    r"jh-?813", r"b3[2-5]\b", r"b40\b", r"b5\b", r"s3[2-5]\b", r"s43\b", r"d40\b",
+]) + r")")
+OTHER_ORIGIN_RE = re.compile(r"\b(" + "|".join([
+    r"itali", r"italsk", r"french", r"francais", r"franzos", r"frances", r"francouz", r"francuz",
+    r"belg", r"danish", r"danois", r"danes", r"dansk", r"danemark", r"dutch", r"holland",
+    r"nederland", r"niederl", r"holandsk", r"german", r"deutsch", r"allemand", r"tedesc",
+    r"alemana", r"nemeck", r"hungar", r"ungar", r"magyar", r"madarsk", r"british", r"anglick",
+    r"swed", r"schwed", r"svedsk", r"suedois", r"scandinav", r"spanish", r"spanisch", r"spagnol",
+    r"spanelsk", r"american", r"usa\b", r"japan", r"brazil",
+]) + r")")
+
+
+# Construction the T2306 does NOT have: it stands on four legs (no
+# cantilever / "Freischwinger"), doesn't fold and has no armrests.
+WRONG_SHAPE_RE = re.compile(r"\b(" + "|".join([
+    r"cantilever", r"freischwing", r"konzolov", r"perujic", r"swinging",
+    r"folding", r"klappstuhl", r"pieghevol", r"plegabl", r"skladac", r"skladaci", r"rozkladac",
+]) + r")")
+# "Bauhaus" alone: international dealers use it for Breuer/Stam-style chairs;
+# the T2306 is sold abroad as "Viliam Chlebo / Czechoslovakia".
+GENERIC_STYLE_RE = re.compile(r"\b(bauhaus|mid-century modern style|breuer style)")
+
+
+def other_maker_reason(title):
+    """Why a title points away from the T2306, or None."""
+    f = fold(title)
+    m = OTHER_MAKER_RE.search(f)
+    if m:
+        return f"names another maker ({m.group(1)})"
+    m = OTHER_ORIGIN_RE.search(f)
+    if m:
+        return f"other origin ({m.group(1)})"
+    m = WRONG_SHAPE_RE.search(f)
+    if m:
+        return f"different construction ({m.group(1)})"
+    return None
 
 # Other furniture from the collection (tables, sofas, loungers, coat racks...).
 FURNITURE_STEMS = ["stol", "stul", "pohovk", "sedack", "gauc", "lehatk", "lavic", "taburet",
                    "vesiak", "vesak", "nabyt", "kreslo", "set", "souprav", "suprav", "tisch",
-                   "table", "sofa", "lamp", "regal", "polic"]
+                   "table", "sofa", "lamp", "regal", "polic", "skrin", "komod", "vitrin",
+                   "konferen", "mobel", "furniture", "desk", "bench", "sessel", "armchair"]
 # Exclusions that a Kodreta/Chlebo name OVERRIDES (it's part of the collection).
 COLLECTION_OVERRIDABLE = {"table, not a chair", "'pohovk'", "'gauc'", "'lehatk'", "'houpac'",
                           "'hojdac'", "'skrin'", "'komoda'", "'barov'", "'otocn'", "wooden"}
@@ -627,23 +783,31 @@ TIER_RANK = {"exact": 4, "keyword": 3, "strong": 2, "similar": 1, "collection": 
 NOTIFY_TIERS = ("exact", "keyword", "strong")
 
 
-def evaluate(title, text, url, analysis, config):
+def evaluate(title, text, url, analysis, config, via_search=False):
     """Single source of truth for whether a listing is shown, and in which
     tier. Used for new listings AND for re-checking stored ones, so old
     entries obey the current rules too. Returns (tier or None, reason).
 
     Tiers, best first:
       exact      - names the T2306 (or Hreščák in the title) and is a chair
-      keyword    - a Kodreta/Chlebo chair
+      keyword    - a Kodreta/Chlebo SIDE chair (how dealers sell the T2306)
       strong     - photo: chrome tube chair, very similar to your photos
       similar    - photo: chrome tube chair, somewhat similar
-      collection - other Kodreta/Chlebo furniture (tables, sofas...), never notified
+      collection - other Kodreta/Chlebo pieces (T-2403 armchairs, tables, sofas…), never notified
+    via_search: found through Google/Lens rather than a marketplace search.
     """
     reason = exclusion_reason(title, url)
     signal = name_signal(title, text)
+    other = other_maker_reason(title)
+    brand_in_title = signal is not None and name_signal(title) is not None
+    if signal == "brand" and not brand_in_title and other and other.startswith("names another maker"):
+        signal = None  # e.g. "Polohovací křeslo, Jindřich Halabala" with "kodreta" only in a snippet
     chair = has_chair_word(title)
     furniture = chair or _has_any(fold(title), FURNITURE_STEMS)
-    photo_is_junk = analysis is not None and analysis["category"] == "other"
+    # Kodreta/Chlebo named in the TITLE: trust the name over the photo
+    # classifier (it is tuned for chairs and can call a table or lamp "other").
+    photo_is_junk = (analysis is not None and analysis["category"] == "other"
+                     and not brand_in_title)
 
     if reason:
         if signal and furniture and not photo_is_junk and reason in COLLECTION_OVERRIDABLE:
@@ -653,8 +817,10 @@ def evaluate(title, text, url, analysis, config):
     if signal and not photo_is_junk:
         if signal == "exact" and chair:
             return "exact", "T2306 named"
+        if chair and is_armchair_only(title):
+            return "collection", "Kodreta/Chlebo armchair (T-2403 family, not the T2306)"
         if chair:
-            return "keyword", "Kodreta/Chlebo chair"
+            return "keyword", "Kodreta/Chlebo side chair"
         if furniture:
             return "collection", "Kodreta/Chlebo furniture"
 
@@ -665,11 +831,31 @@ def evaluate(title, text, url, analysis, config):
     looks_right = analysis["category"] in GOOD_CATEGORIES or p_chrome >= config.get("min_chrome_prob", 0.30)
     if not looks_right:
         return None, f"photo looks like: {analysis['category']}"
+
+    # A title naming another designer/maker or a non-Czechoslovak origin is
+    # not the T2306, however similar the photo (studio shots of Bauhaus
+    # chairs score as high as your own photos). Google/Lens hits are dropped;
+    # marketplace ads stay visible as "similar" but never notify — a local
+    # seller might mislabel things.
+    if other:
+        if via_search:
+            return None, other
+        if sim >= config.get("similarity_threshold_list", 0.50):
+            return "similar", other
+        return None, other
+
+    # Search hits titled only "Bauhaus …" or describing an armchair: keep
+    # visible as "similar" (a dealer might not know the origin), never notify.
+    if via_search and (GENERIC_STYLE_RE.search(fold(title)) or (chair and is_armchair_only(title))):
+        if sim >= config.get("similarity_threshold_list", 0.50):
+            return "similar", "generic Bauhaus/armchair title"
+        return None, "generic Bauhaus/armchair title"
+
     # "Strong" (the tier that notifies you) needs a chrome-chair photo AND a
     # high combined match. Tuned on real results: 0.50 kept the 12 closest
     # chairs and moved 15 generic ones (Vitra, conference chairs…) to Similar.
     if (analysis["category"] in GOOD_CATEGORIES
-            and match_score(sim, p_target) >= config.get("min_match_strong", 0.50)):
+            and match_score(sim, p_target) >= config.get("min_match_strong", 0.60)):
         return "strong", "photo match"
     if sim >= config.get("similarity_threshold_list", 0.50):
         return "similar", "photo similar"
@@ -745,6 +931,14 @@ LISTING_URL_PATTERNS = [re.compile(p) for p in [
     r"kleinanzeigen\.de/s-anzeige/",
     r"jofogas\.hu/.+\.htm",
     r"facebook\.com/marketplace/item/\d+",
+    # auction houses / aggregators / design marketplaces (deep links only)
+    r"barnebys\.[a-z.]+/[^?#]*\d{4,}",
+    r"auctionet\.com/[^?#]*\d{5,}",
+    r"dorotheum\.com/[^?#]*\d{5,}",
+    r"lauritz\.com/[^?#]*\d{6,}",
+    r"selency\.[a-z.]+/[^?#]*(?:product|produit|\d{4,})",
+    r"chairish\.com/product/\d+",
+    r"vntg\.com/\d+/",
 ]]
 
 
@@ -1207,6 +1401,7 @@ def fetch_vinted(country="cz", keywords=None):
         warn(f"Vinted {country}: no anonymous token (site may block this server)")
         return results
 
+    raw_total = 0
     for kw in (keywords or VINTED_KEYWORDS.get(country, [])):
         params = {"search_text": kw, "order": "newest_first", "page": 1, "per_page": 48}
         data = None
@@ -1227,7 +1422,11 @@ def fetch_vinted(country="cz", keywords=None):
             except Exception as e:
                 warn(f"Vinted {country} error for '{kw}': {e}")
             break
-        for it in _vinted_items(data):
+        items = _vinted_items(data)
+        raw_total += len(items)
+        if data is not None and not items:
+            note(f"Vinted answered but with no items (response keys: {', '.join(list(data)[:6])})")
+        for it in items:
             item_id = it.get("id")
             title = (it.get("title") or it.get("name") or "").strip()
             url = it.get("url") or it.get("path") or (f"/items/{item_id}" if item_id else "")
@@ -1244,6 +1443,8 @@ def fetch_vinted(country="cz", keywords=None):
             results.append({"url": url, "title": title, "text": f"{title} {it.get('description') or ''}",
                             "image_urls": [img] if img else []})
         time.sleep(random.uniform(1.0, 2.0))
+    if raw_total and not results:
+        note(f"{raw_total} items from Vinted, none in Czech/Slovak or naming Kodreta")
     return results
 
 
@@ -1381,24 +1582,39 @@ def fetch_tavily():
 # targeted 1stDibs.) "recent" limits a search to the past month — used for
 # fast-moving classifieds; dealer listings stay up for months, so no limit.
 SERPAPI_PLAN = [
+    # (6) Lens found ~85% of everything useful from search (about 100 kept
+    # results vs about 16 from text queries in 19 days), so it now gets 4 of
+    # the 8 daily slots, alternating with text searches.
     {"lens": True},
-    {"q": 'T2306 OR "T 2306" OR "T-2306" OR hreščák OR hrescak', "recent": False},
-    {"q": '(kodreta OR "viliam chlebo") (židle OR stolička OR křeslo OR kreslo OR chair OR stuhl)', "recent": True},
-    {"q": '(kodreta OR chlebo OR czechoslovakia OR czechoslovakian) chrome chair '
-          '(site:1stdibs.com OR site:pamono.com OR site:vinterior.co OR site:whoppah.com '
-          'OR site:design-market.eu OR site:catawiki.com)', "recent": False},
+    # The exact chair, anywhere on the web
+    {"q": 'T2306 OR "T 2306" OR "T-2306" OR hreščák OR hrescak OR "kodreta myjava" OR "viliam chlebo"', "recent": False},
     {"lens": True},
-    {"q": '(kodreta OR chlebo) (site:etsy.com OR site:ebay.com OR site:ebay.de OR site:ebay.co.uk '
-          'OR site:willhaben.at OR site:allegro.pl OR site:kleinanzeigen.de)', "recent": False},
-    {"q": '(kodreta OR "chromová židle" OR "trubková židle" OR "chrómová stolička") '
-          '(site:sbazar.cz OR site:aukro.cz OR site:aukro.sk OR site:bazar.sk)', "recent": True},
-    {"q": 'kodreta (site:facebook.com OR site:vinted.cz OR site:vinted.sk OR site:onebid.cz '
-          'OR site:pelmeldesign.cz OR site:eterle.cz)', "recent": False},
+    # (7) How dealers actually title it: "Chrome dining chairs by Viliam
+    # Chlebo, Czechoslovakia, 1980s" — Pamono/1stDibs translate it, too.
+    {"q": '("viliam chlebo" OR kodreta) ("dining chairs" OR Esszimmerstühle OR chaises OR sedie '
+          'OR sillas OR stoelen OR židle OR stoličky)', "recent": False},
+    {"lens": True},
+    # Auction houses, auction aggregators and design marketplaces
+    {"q": '(kodreta OR "viliam chlebo" OR czechoslovakia) chrome chairs (site:barnebys.com OR '
+          'site:catawiki.com OR site:auctionet.com OR site:dorotheum.com OR site:lauritz.com OR '
+          'site:selency.com OR site:chairish.com OR site:vntg.com OR site:1stdibs.com OR '
+          'site:pamono.com OR site:whoppah.com)', "recent": False},
+    {"lens": True},
+    # Czech/Slovak classifieds, wording of a seller who doesn't know the name
+    {"q": '(kodreta OR "chromová židle" OR "chromované židle" OR "látkové židle" OR "trubková židle" '
+          'OR "chrómová stolička") (site:sbazar.cz OR site:aukro.cz OR '
+          'site:aukro.sk OR site:bazar.sk OR site:vinted.cz OR site:vinted.sk OR site:facebook.com)',
+     "recent": True},
 ]
 # Photos used for reverse-image search, best first; missing files are skipped,
 # and any other photo you add to reference_photos/ joins the rotation too.
-LENS_PREFERRED = ["IMG_3808.webp", "chair_ref_1.jpeg", "IMG_3804.jpeg", "IMG_3765.jpeg",
-                  "IMG_3807.jpeg", "chair_ref_2.jpeg"]
+# Order mixes angles, colours and photo styles: a home snapshot (IMG_3804)
+# finds classified ads, studio shots find dealers. The 8-view collage was
+# split into single views — Lens and CLIP both work on one chair per photo.
+LENS_PREFERRED = ["T2306_view1.jpg", "IMG_3804.jpeg", "T2306_grey_front.jpg", "IMG_3808.webp",
+                  "T2306_view4.jpg", "IMG_3806.jpeg", "chair_ref_1.jpeg", "T2306_view2.jpg",
+                  "T2306_view6.jpg", "T2306_view3.jpg", "T2306_view5.jpg", "T2306_view7.jpg",
+                  "T2306_view8.jpg", "chair_ref_2.jpeg", "chair_ref_3.jpeg"]
 
 
 def _lens_photo_urls():
@@ -1608,18 +1824,37 @@ def _listing_is_dead(url):
 RESCORE_PER_RUN = 300  # legacy entries re-analyzed per run (one-time migration)
 
 
-def _analyze(url_of_image):
-    m = get_matcher()
-    if not m or not url_of_image:
-        return None
+def _analyze_full(url_of_image):
+    """Downloads a listing photo once; returns (CLIP analysis or None,
+    photo fingerprint or None). The fingerprint needs no AI model."""
+    if not url_of_image:
+        return None, None
     try:
-        return m.analyze_image_bytes(download_image(url_of_image))
+        data = download_image(url_of_image)
+    except Exception as e:
+        warn(f"Could not download image {url_of_image[:80]}: {e}")
+        return None, None
+    fp = image_fingerprint(data)
+    m = get_matcher()
+    if not m:
+        return None, fp
+    try:
+        return m.analyze_image_bytes(data), fp
     except Exception as e:
         warn(f"Could not analyze image {url_of_image[:80]}: {e}")
-        return None
+        return None, fp
 
 
-def _store_analysis(item, analysis):
+def _analyze(url_of_image):
+    return _analyze_full(url_of_image)[0]
+
+
+FINGERPRINT_BACKFILL_PER_RUN = 120  # older entries get a photo fingerprint, a batch per run
+
+
+def _store_analysis(item, analysis, fingerprint=None):
+    if fingerprint:
+        item["phash"] = fingerprint
     if analysis is None:
         item["score"] = None
         item["match"] = None
@@ -1641,7 +1876,9 @@ def _better(a, b):
 
 
 def dedupe(items):
-    """Collapses entries sharing a URL or a title; keeps the best of each group."""
+    """Collapses entries that are the same listing — same address, same
+    marketplace listing number (country/language copies), same title, or
+    the same photo — keeping the best of each group."""
     winners, index = [], {}
     for it in items:
         it["id"] = listing_id(it["url"])  # re-hash with the current URL normalizer
@@ -1649,7 +1886,14 @@ def dedupe(items):
         tk = title_key(it["title"])
         if tk:
             keys.append("t:" + tk)
+        ck = canonical_key(it["url"])
+        if ck:
+            keys.append("c:" + ck)
         hit = next((index[k] for k in keys if k in index), None)
+        if hit is None and it.get("phash"):
+            hit = next((i for i, w in enumerate(winners)
+                        if same_photo(w.get("phash"), it["phash"]) and photo_merge_allowed(w["url"], it["url"])),
+                       None)
         if hit is None:
             hit = len(winners)
             winners.append(it)
@@ -1671,8 +1915,19 @@ def prune_found(found, config):
       4. a bounded liveness check removes listings that have been taken down
     """
     before = len(found)
+    backfilled = 0
     for it in found:
         it["title"] = clean_title(it.get("title", ""))
+        # Older entries have no photo fingerprint yet: add one (a plain image
+        # download, no AI model) so translated copies can be merged.
+        if it.get("image_url") and not it.get("phash") and backfilled < FINGERPRINT_BACKFILL_PER_RUN:
+            try:
+                fp = image_fingerprint(download_image(it["image_url"]))
+            except Exception:
+                fp = None
+            if fp:
+                it["phash"] = fp
+                backfilled += 1
     found = dedupe(found)
     dupes = before - len(found)
 
@@ -1690,9 +1945,9 @@ def prune_found(found, config):
             # Cheap text check first: no need to download a photo for
             # something the title already rules out.
             if exclusion_reason(item["title"], item["url"]) is None:
-                a = _analyze(item["image_url"])
+                a, fp = _analyze_full(item["image_url"])
                 if a is not None:  # never wipe the old score on a failed download/model
-                    _store_analysis(item, a)
+                    _store_analysis(item, a, fp)
                     rescored += 1
         analysis = None
         if item.get("category"):
@@ -1710,7 +1965,9 @@ def prune_found(found, config):
                 cat = "other"
             analysis = {"sim": item["score"], "p_target": 0.0, "p_chrome": 1.0 if cat == "target" else 0.0,
                         "category": cat}
-        tier, _ = evaluate(item["title"], item.get("text", ""), item["url"], analysis, config)
+        via = bool(item.get("via_search")) or "(via " in str(item.get("site", "")) \
+            or str(item.get("site", "")).startswith("web")
+        tier, _ = evaluate(item["title"], item.get("text", ""), item["url"], analysis, config, via_search=via)
         if tier:
             item["tier"] = tier
             item["keyword_hit"] = tier in ("exact", "keyword", "collection")
@@ -1729,7 +1986,8 @@ def prune_found(found, config):
     final = [i for i in kept if i["id"] not in dead_ids]
 
     print(f"  Clean-up: {dupes} duplicate(s) merged, {dropped} no longer matching the rules, "
-          f"{len(dead_ids)} dead link(s), {rescored} older photo(s) re-analyzed. {len(final)} kept.")
+          f"{len(dead_ids)} dead link(s), {rescored} older photo(s) re-analyzed, "
+          f"{backfilled} fingerprint(s) added. {len(final)} kept.")
     return final
 
 
@@ -1737,6 +1995,8 @@ def run_once(config):
     seen = load_seen()
     found = prune_found(load_found(), config)
     known_titles = {title_key(i["title"]) for i in found}
+    known_keys = {k for k in (canonical_key(i["url"]) for i in found) if k}
+    known_photos = [(i["phash"], i["url"]) for i in found if i.get("phash")]
     topic = config.get("ntfy_topic")
     new_matches, new_listed = 0, 0
     notify_worthy = []
@@ -1777,13 +2037,14 @@ def run_once(config):
     # queries, re-posted under a new ID, or mirrored on bazos.cz + bazos.sk.
     unique, keys = [], set()
     for l in all_listings:
-        lid, tk = listing_id(l["url"]), title_key(l["title"])
-        if lid in keys or tk in keys:
+        lid, tk, ck = listing_id(l["url"]), title_key(l["title"]), canonical_key(l["url"])
+        if lid in keys or tk in keys or (ck and ck in keys):
             continue
-        keys.update({lid, tk})
+        keys.update({lid, tk} | ({ck} if ck else set()))
         unique.append(l)
     new_listings = [l for l in unique
-                    if listing_id(l["url"]) not in seen and title_key(l["title"]) not in known_titles]
+                    if listing_id(l["url"]) not in seen and title_key(l["title"]) not in known_titles
+                    and canonical_key(l["url"]) not in known_keys]
     print(f"\n{len(all_listings)} raw -> {len(unique)} unique -> {len(new_listings)} new.\n")
 
     for l in new_listings:
@@ -1803,9 +2064,15 @@ def run_once(config):
                 img = fetch_preview_image(l["url"])
                 if img:
                     l["image_urls"] = [img]
+        fingerprint = None
         if config.get("use_image_matching", True) and l.get("image_urls") and (reason is None or name_signal(l["title"], text)):
-            analysis = _analyze(l["image_urls"][0])
-        tier, why = evaluate(l["title"], text, l["url"], analysis, config)
+            analysis, fingerprint = _analyze_full(l["image_urls"][0])
+        if fingerprint and any(same_photo(fingerprint, p) and photo_merge_allowed(u, l["url"])
+                               for p, u in known_photos):
+            print(f"  [{l['site']}] {l['title'][:55]!r} -> skip (same photo as a stored listing)")
+            skipped["duplicate photo"] = skipped.get("duplicate photo", 0) + 1
+            continue
+        tier, why = evaluate(l["title"], text, l["url"], analysis, config, via_search=bool(l.get("via_search")))
         sc = f"sim={analysis['sim']:.2f} cat={analysis['category']} p_target={analysis['p_target']:.2f}" if analysis else "no photo"
         print(f"  [{l['site']}] {l['title'][:55]!r} | {sc} -> {tier or 'skip'} ({why})")
         if not tier:
@@ -1817,8 +2084,13 @@ def run_once(config):
         item = {"id": lid, "url": l["url"], "title": l["title"], "text": text[:500], "site": l["site"],
                 "image_url": (l.get("image_urls") or [None])[0], "tier": tier,
                 "keyword_hit": tier in ("exact", "keyword", "collection"), "found_at": now_str, "last_checked": now_str}
-        _store_analysis(item, analysis)
+        _store_analysis(item, analysis, fingerprint)
         item["via_search"] = bool(l.get("via_search"))
+        if fingerprint:
+            known_photos.append((fingerprint, l["url"]))
+        ck = canonical_key(l["url"])
+        if ck:
+            known_keys.add(ck)
         found.append(item)
         SOURCE_STATUS.setdefault(engine, {"results": 0, "errors": []})
         SOURCE_STATUS[engine]["added"] = SOURCE_STATUS[engine].get("added", 0) + 1
