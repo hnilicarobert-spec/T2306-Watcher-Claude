@@ -1,9 +1,9 @@
 {
- "checked_at": "2026-10-24 14:31:18",
+ "checked_at": "2026-10-24 15:29:49",
  "config_errors": [],
  "sources": {
   "bazos_cz": {
-   "results": 341,
+   "results": 342,
    "errors": []
   },
   "bazos_sk": {
@@ -23,7 +23,7 @@
   "serpapi": {
    "results": 0,
    "errors": [],
-   "note": "searches every 3 hours — next in about 1 h 49 min"
+   "note": "searches every 3 hours — next in about 0 h 50 min"
   }
  }
 }
