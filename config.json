@@ -7,8 +7,6 @@
   "enabled_sites": [
     "bazos_cz",
     "bazos_sk",
-    "aukro_cz",
-    "aukro_sk",
     "vinted_cz",
     "vinted_sk",
     "serpapi"
@@ -18,5 +16,5 @@
   "min_chrome_prob": 0.3,
   "min_target_prob_notify": 0.25,
   "rss_feeds": [],
-  "min_match_strong": 0.5
+  "min_match_strong": 0.6
 }
