@@ -1,5 +1,5 @@
 {
- "checked_at": "2026-10-25 07:41:09",
+ "checked_at": "2026-10-25 08:31:58",
  "config_errors": [],
  "sources": {
   "bazos_cz": {
@@ -7,7 +7,7 @@
    "errors": []
   },
   "bazos_sk": {
-   "results": 317,
+   "results": 318,
    "errors": []
   },
   "vinted_cz": {
@@ -23,7 +23,7 @@
   "serpapi": {
    "results": 0,
    "errors": [],
-   "note": "searched: (\"viliam chlebo\" OR kodreta) (\"dining chairs\" OR Esszimmerst…"
+   "note": "searches every 3 hours — next in about 1 h 54 min"
   }
  }
 }
