@@ -1,5 +1,5 @@
 {
- "checked_at": "2026-10-25 00:37:10",
+ "checked_at": "2026-10-25 01:34:51",
  "config_errors": [],
  "sources": {
   "bazos_cz": {
@@ -18,12 +18,13 @@
   "vinted_sk": {
    "results": 0,
    "errors": [],
-   "note": "240 items from Vinted, none in Czech/Slovak or naming Kodreta"
+   "note": "241 items from Vinted, none in Czech/Slovak or naming Kodreta"
   },
   "serpapi": {
-   "results": 0,
+   "results": 4,
    "errors": [],
-   "note": "searches every 3 hours — next in about 0 h 37 min"
+   "note": "searched: T2306 OR \"T 2306\" OR \"T-2306\" OR hreščák OR hrescak OR \"kodr…",
+   "added": 3
   }
  }
 }
