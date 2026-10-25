@@ -1,9 +1,9 @@
 {
- "checked_at": "2026-10-25 04:33:21",
+ "checked_at": "2026-10-25 05:32:04",
  "config_errors": [],
  "sources": {
   "bazos_cz": {
-   "results": 342,
+   "results": 343,
    "errors": []
   },
   "bazos_sk": {
@@ -21,10 +21,9 @@
    "note": "241 items from Vinted, none in Czech/Slovak or naming Kodreta"
   },
   "serpapi": {
-   "results": 24,
+   "results": 0,
    "errors": [],
-   "note": "Google Lens with T2306_view7.jpg",
-   "added": 7
+   "note": "searches every 3 hours — next in about 1 h 46 min"
   }
  }
 }
