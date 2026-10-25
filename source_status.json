@@ -1,5 +1,5 @@
 {
- "checked_at": "2026-10-25 10:29:32",
+ "checked_at": "2026-10-25 11:28:56",
  "config_errors": [],
  "sources": {
   "bazos_cz": {
@@ -8,7 +8,7 @@
    "added": 1
   },
   "bazos_sk": {
-   "results": 318,
+   "results": 319,
    "errors": []
   },
   "vinted_cz": {
@@ -24,7 +24,7 @@
   "serpapi": {
    "results": 0,
    "errors": [],
-   "note": "Google Lens with T2306_view8.jpg"
+   "note": "searches every 3 hours — next in about 1 h 45 min"
   }
  }
 }
