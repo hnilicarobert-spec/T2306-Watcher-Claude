@@ -1,10 +1,11 @@
 {
- "checked_at": "2026-10-26 17:42:27",
+ "checked_at": "2026-10-26 18:48:18",
  "config_errors": [],
  "sources": {
   "bazos_cz": {
    "results": 344,
-   "errors": []
+   "errors": [],
+   "added": 1
   },
   "bazos_sk": {
    "results": 317,
@@ -13,7 +14,7 @@
   "vinted_cz": {
    "results": 0,
    "errors": [],
-   "note": "241 items from Vinted, none in Czech/Slovak or naming Kodreta"
+   "note": "242 items from Vinted, none in Czech/Slovak or naming Kodreta"
   },
   "vinted_sk": {
    "results": 0,
@@ -21,10 +22,9 @@
    "note": "241 items from Vinted, none in Czech/Slovak or naming Kodreta"
   },
   "serpapi": {
-   "results": 17,
+   "results": 0,
    "errors": [],
-   "note": "Google Lens with IMG_3804.jpeg",
-   "added": 2
+   "note": "searches every 3 hours — next in about 1 h 39 min"
   }
  }
 }
