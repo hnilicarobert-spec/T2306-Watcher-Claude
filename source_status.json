@@ -1,19 +1,20 @@
 {
- "checked_at": "2026-10-26 05:36:48",
+ "checked_at": "2026-10-26 06:45:12",
  "config_errors": [],
  "sources": {
   "bazos_cz": {
    "results": 345,
-   "errors": []
+   "errors": [],
+   "added": 1
   },
   "bazos_sk": {
-   "results": 318,
+   "results": 317,
    "errors": []
   },
   "vinted_cz": {
    "results": 0,
    "errors": [],
-   "note": "240 items from Vinted, none in Czech/Slovak or naming Kodreta"
+   "note": "241 items from Vinted, none in Czech/Slovak or naming Kodreta"
   },
   "vinted_sk": {
    "results": 0,
@@ -23,7 +24,7 @@
   "serpapi": {
    "results": 0,
    "errors": [],
-   "note": "searches every 3 hours — next in about 1 h 47 min"
+   "note": "searches every 3 hours — next in about 0 h 38 min"
   }
  }
 }
