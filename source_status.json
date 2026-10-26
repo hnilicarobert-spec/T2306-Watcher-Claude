@@ -1,5 +1,5 @@
 {
- "checked_at": "2026-10-26 04:39:08",
+ "checked_at": "2026-10-26 05:36:48",
  "config_errors": [],
  "sources": {
   "bazos_cz": {
@@ -8,8 +8,7 @@
   },
   "bazos_sk": {
    "results": 318,
-   "errors": [],
-   "added": 1
+   "errors": []
   },
   "vinted_cz": {
    "results": 0,
@@ -22,10 +21,9 @@
    "note": "241 items from Vinted, none in Czech/Slovak or naming Kodreta"
   },
   "serpapi": {
-   "results": 18,
+   "results": 0,
    "errors": [],
-   "note": "Google Lens with IMG_3890.jpeg",
-   "added": 5
+   "note": "searches every 3 hours — next in about 1 h 47 min"
   }
  }
 }
