@@ -1,10 +1,11 @@
 {
- "checked_at": "2026-10-27 05:38:34",
+ "checked_at": "2026-10-27 06:42:34",
  "config_errors": [],
  "sources": {
   "bazos_cz": {
-   "results": 343,
-   "errors": []
+   "results": 344,
+   "errors": [],
+   "added": 1
   },
   "bazos_sk": {
    "results": 315,
@@ -18,14 +19,12 @@
   "vinted_sk": {
    "results": 0,
    "errors": [],
-   "note": "241 items from Vinted, none in Czech/Slovak or naming Kodreta"
+   "note": "242 items from Vinted, none in Czech/Slovak or naming Kodreta"
   },
   "serpapi": {
    "results": 0,
-   "errors": [
-    "SerpApi error: HTTPSConnectionPool(host='serpapi.com', port=443): Read timed out. (read timeout=60)"
-   ],
-   "note": "Google Lens with IMG_3808.webp"
+   "errors": [],
+   "note": "searches every 3 hours — next in about 1 h 40 min"
   }
  }
 }
