@@ -1,14 +1,16 @@
 {
- "checked_at": "2026-10-27 17:53:29",
+ "checked_at": "2026-10-27 18:57:16",
  "config_errors": [],
  "sources": {
   "bazos_cz": {
-   "results": 348,
-   "errors": []
+   "results": 349,
+   "errors": [],
+   "added": 1
   },
   "bazos_sk": {
    "results": 315,
-   "errors": []
+   "errors": [],
+   "added": 1
   },
   "vinted_cz": {
    "results": 0,
@@ -21,9 +23,9 @@
    "note": "Vinted answered but with no items (response keys: items, pagination, search_tracking_params)"
   },
   "serpapi": {
-   "results": 24,
+   "results": 0,
    "errors": [],
-   "note": "Google Lens with IMG_3806.jpeg"
+   "note": "searches every 3 hours — next in about 1 h 41 min"
   }
  }
 }
