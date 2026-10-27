@@ -1,9 +1,9 @@
 {
- "checked_at": "2026-10-27 13:53:13",
+ "checked_at": "2026-10-27 14:50:55",
  "config_errors": [],
  "sources": {
   "bazos_cz": {
-   "results": 348,
+   "results": 349,
    "errors": []
   },
   "bazos_sk": {
@@ -21,9 +21,10 @@
    "note": "Vinted answered but with no items (response keys: items, pagination, search_tracking_params)"
   },
   "serpapi": {
-   "results": 0,
+   "results": 3,
    "errors": [],
-   "note": "searches every 3 hours — next in about 0 h 30 min"
+   "note": "searched: (kodreta OR \"viliam chlebo\" OR czechoslovakia) chrome chairs…",
+   "added": 1
   }
  }
 }
