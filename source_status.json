@@ -1,5 +1,5 @@
 {
- "checked_at": "2026-10-28 01:56:51",
+ "checked_at": "2026-10-28 02:48:44",
  "config_errors": [],
  "sources": {
   "bazos_cz": {
@@ -21,9 +21,9 @@
    "note": "Vinted answered but with no items (response keys: items, pagination, search_tracking_params)"
   },
   "serpapi": {
-   "results": 0,
+   "results": 6,
    "errors": [],
-   "note": "searches every 3 hours — next in about 0 h 23 min"
+   "note": "searched: T2306 OR \"T 2306\" OR \"T-2306\" OR hreščák OR hrescak OR \"kodr…"
   }
  }
 }
