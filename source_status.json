@@ -1,15 +1,15 @@
 {
- "checked_at": "2026-10-28 06:50:40",
+ "checked_at": "2026-10-28 07:59:56",
  "config_errors": [],
  "sources": {
   "bazos_cz": {
    "results": 349,
-   "errors": [],
-   "added": 1
+   "errors": []
   },
   "bazos_sk": {
    "results": 315,
-   "errors": []
+   "errors": [],
+   "added": 1
   },
   "vinted_cz": {
    "results": 0,
@@ -24,7 +24,7 @@
   "serpapi": {
    "results": 0,
    "errors": [],
-   "note": "searches every 3 hours — next in about 1 h 38 min"
+   "note": "searches every 3 hours — next in about 0 h 29 min"
   }
  }
 }
