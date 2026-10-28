@@ -1,9 +1,9 @@
 {
- "checked_at": "2026-10-27 23:35:23",
+ "checked_at": "2026-10-28 00:50:21",
  "config_errors": [],
  "sources": {
   "bazos_cz": {
-   "results": 350,
+   "results": 349,
    "errors": []
   },
   "bazos_sk": {
@@ -21,10 +21,9 @@
    "note": "Vinted answered but with no items (response keys: items, pagination, search_tracking_params)"
   },
   "serpapi": {
-   "results": 23,
+   "results": 0,
    "errors": [],
-   "note": "Google Lens with T2306_view2.jpg",
-   "added": 2
+   "note": "searches every 3 hours — next in about 1 h 29 min"
   }
  }
 }
