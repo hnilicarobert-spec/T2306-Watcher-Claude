@@ -1,5 +1,5 @@
 {
- "checked_at": "2026-10-29 16:55:15",
+ "checked_at": "2026-10-29 21:48:57",
  "config_errors": [],
  "sources": {
   "bazos_cz": {
@@ -22,9 +22,9 @@
    "note": "Vinted answered but with no items (response keys: items, pagination, search_tracking_params)"
   },
   "serpapi": {
-   "results": 24,
+   "results": 3,
    "errors": [],
-   "note": "Google Lens with T2306_view7.jpg",
+   "note": "searched: T2306 OR \"T 2306\" OR \"T-2306\" OR hreščák OR hrescak OR \"kodr…",
    "added": 2
   }
  }
