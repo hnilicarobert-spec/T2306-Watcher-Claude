@@ -1,30 +1,31 @@
 {
- "checked_at": "2026-10-30 08:32:50",
+ "checked_at": "2026-10-30 15:52:00",
  "config_errors": [],
  "sources": {
   "bazos_cz": {
-   "results": 347,
-   "errors": [],
-   "added": 2
+   "results": 346,
+   "errors": []
   },
   "bazos_sk": {
-   "results": 308,
-   "errors": []
+   "results": 309,
+   "errors": [],
+   "added": 1
   },
   "vinted_cz": {
    "results": 0,
    "errors": [],
-   "note": "3 items from Vinted, none in Czech/Slovak or naming Kodreta"
+   "note": "Vinted answered but with no items (response keys: items, pagination, search_tracking_params)"
   },
   "vinted_sk": {
    "results": 0,
    "errors": [],
-   "note": "3 items from Vinted, none in Czech/Slovak or naming Kodreta"
+   "note": "Vinted answered but with no items (response keys: items, pagination, search_tracking_params)"
   },
   "serpapi": {
-   "results": 0,
+   "results": 32,
    "errors": [],
-   "note": "searched: (\"viliam chlebo\" OR kodreta) (\"dining chairs\" OR Esszimmerst…"
+   "note": "Google Lens with chair_ref_2.jpeg",
+   "added": 1
   }
  }
 }
