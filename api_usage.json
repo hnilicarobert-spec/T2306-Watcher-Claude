@@ -1,10 +1,10 @@
 {
  "2026-11": {
-  "serpapi": 4
+  "serpapi": 5
  },
  "state": {
-  "serpapi_last": 1793570480,
-  "serpapi_next": 199,
+  "serpapi_last": 1793583040,
+  "serpapi_next": 200,
   "lens_next": 63
  }
 }

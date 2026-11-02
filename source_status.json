@@ -1,9 +1,9 @@
 {
- "checked_at": "2026-11-01 22:01:45",
+ "checked_at": "2026-11-02 01:30:54",
  "config_errors": [],
  "sources": {
   "bazos_cz": {
-   "results": 584,
+   "results": 582,
    "errors": []
   },
   "bazos_sk": {
@@ -21,9 +21,9 @@
    "note": "Vinted answered but with no items (response keys: items, pagination, search_tracking_params)"
   },
   "serpapi": {
-   "results": 23,
+   "results": 0,
    "errors": [],
-   "note": "Google Lens with T2306_grey_front.jpg"
+   "note": "searched: (kodreta OR \"chromová židle\" OR \"chromované židle\" OR \"látko…"
   }
  }
 }
