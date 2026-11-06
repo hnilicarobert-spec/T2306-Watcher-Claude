@@ -1,14 +1,14 @@
 {
- "checked_at": "2026-11-05 18:45:24",
+ "checked_at": "2026-11-06 00:06:43",
  "config_errors": [],
  "sources": {
   "bazos_cz": {
-   "results": 582,
+   "results": 581,
    "errors": [],
    "added": 1
   },
   "bazos_sk": {
-   "results": 477,
+   "results": 476,
    "errors": []
   },
   "vinted_cz": {
@@ -22,9 +22,10 @@
    "note": "Vinted answered but with no items (response keys: items, pagination, search_tracking_params)"
   },
   "serpapi": {
-   "results": 0,
+   "results": 20,
    "errors": [],
-   "note": "searched: (\"viliam chlebo\" OR kodreta) (\"dining chairs\" OR Esszimmerst…"
+   "note": "Google Lens with T2306_view5.jpg",
+   "added": 1
   }
  }
 }
