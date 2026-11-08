@@ -1,14 +1,14 @@
 {
- "checked_at": "2026-11-08 10:10:18",
+ "checked_at": "2026-11-08 17:04:30",
  "config_errors": [],
  "sources": {
   "bazos_cz": {
-   "results": 582,
+   "results": 583,
    "errors": [],
-   "added": 2
+   "added": 3
   },
   "bazos_sk": {
-   "results": 481,
+   "results": 480,
    "errors": []
   },
   "vinted_cz": {
@@ -22,9 +22,9 @@
    "note": "Vinted answered but with no items (response keys: items, pagination, search_tracking_params)"
   },
   "serpapi": {
-   "results": 18,
+   "results": 0,
    "errors": [],
-   "note": "Google Lens with IMG_3890.jpeg"
+   "note": "searched: (kodreta OR \"chromová židle\" OR \"chromované židle\" OR \"látko…"
   }
  }
 }
