@@ -1,5 +1,5 @@
 {
- "checked_at": "2026-11-14 02:15:47",
+ "checked_at": "2026-11-14 10:07:19",
  "config_errors": [],
  "sources": {
   "bazos_cz": {
@@ -22,8 +22,10 @@
   },
   "serpapi": {
    "results": 0,
-   "errors": [],
-   "note": "searched: T2306 OR \"T 2306\" OR \"T-2306\" OR hreščák OR hrescak OR \"kodr…"
+   "errors": [
+    "SerpApi error: HTTPSConnectionPool(host='serpapi.com', port=443): Read timed out. (read timeout=60)"
+   ],
+   "note": "Google Lens with T2306_view5.jpg"
   }
  }
 }
