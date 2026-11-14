@@ -1,14 +1,13 @@
 {
- "checked_at": "2026-11-13 21:58:39",
+ "checked_at": "2026-11-14 02:15:47",
  "config_errors": [],
  "sources": {
   "bazos_cz": {
-   "results": 577,
-   "errors": [],
-   "added": 1
+   "results": 574,
+   "errors": []
   },
   "bazos_sk": {
-   "results": 489,
+   "results": 487,
    "errors": []
   },
   "vinted_cz": {
@@ -22,10 +21,9 @@
    "note": "Vinted answered but with no items (response keys: items, pagination, search_tracking_params)"
   },
   "serpapi": {
-   "results": 18,
+   "results": 0,
    "errors": [],
-   "note": "Google Lens with T2306_view3.jpg",
-   "added": 1
+   "note": "searched: T2306 OR \"T 2306\" OR \"T-2306\" OR hreščák OR hrescak OR \"kodr…"
   }
  }
 }
