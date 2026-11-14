@@ -1,14 +1,16 @@
 {
- "checked_at": "2026-11-14 10:07:19",
+ "checked_at": "2026-11-14 17:02:21",
  "config_errors": [],
  "sources": {
   "bazos_cz": {
-   "results": 574,
-   "errors": []
+   "results": 571,
+   "errors": [],
+   "added": 3
   },
   "bazos_sk": {
-   "results": 487,
-   "errors": []
+   "results": 485,
+   "errors": [],
+   "added": 2
   },
   "vinted_cz": {
    "results": 0,
@@ -22,10 +24,8 @@
   },
   "serpapi": {
    "results": 0,
-   "errors": [
-    "SerpApi error: HTTPSConnectionPool(host='serpapi.com', port=443): Read timed out. (read timeout=60)"
-   ],
-   "note": "Google Lens with T2306_view5.jpg"
+   "errors": [],
+   "note": "searched: (\"viliam chlebo\" OR kodreta) (\"dining chairs\" OR Esszimmerst…"
   }
  }
 }
