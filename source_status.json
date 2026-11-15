@@ -1,16 +1,15 @@
 {
- "checked_at": "2026-11-15 17:01:12",
+ "checked_at": "2026-11-15 21:43:00",
  "config_errors": [],
  "sources": {
   "bazos_cz": {
    "results": 574,
    "errors": [],
-   "added": 2
+   "added": 1
   },
   "bazos_sk": {
-   "results": 486,
-   "errors": [],
-   "added": 2
+   "results": 487,
+   "errors": []
   },
   "vinted_cz": {
    "results": 0,
@@ -23,9 +22,10 @@
    "note": "1 items from Vinted, none in Czech/Slovak or naming Kodreta"
   },
   "serpapi": {
-   "results": 0,
+   "results": 23,
    "errors": [],
-   "note": "searched: (kodreta OR \"chromová židle\" OR \"chromované židle\" OR \"látko…"
+   "note": "Google Lens with chair_ref_2.jpeg",
+   "added": 1
   }
  }
 }
