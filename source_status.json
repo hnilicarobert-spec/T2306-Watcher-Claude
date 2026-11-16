@@ -1,15 +1,15 @@
 {
- "checked_at": "2026-11-16 01:50:51",
+ "checked_at": "2026-11-16 09:27:31",
  "config_errors": [],
  "sources": {
   "bazos_cz": {
    "results": 572,
-   "errors": []
+   "errors": [],
+   "added": 1
   },
   "bazos_sk": {
    "results": 486,
-   "errors": [],
-   "added": 1
+   "errors": []
   },
   "vinted_cz": {
    "results": 0,
@@ -24,7 +24,7 @@
   "serpapi": {
    "results": 0,
    "errors": [],
-   "note": "searched: T2306 OR \"T 2306\" OR \"T-2306\" OR hreščák OR hrescak OR \"kodr…"
+   "note": "Google Lens with chair_ref_3.jpeg"
   }
  }
 }
