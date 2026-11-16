@@ -1,15 +1,15 @@
 {
- "checked_at": "2026-11-15 21:43:00",
+ "checked_at": "2026-11-16 01:50:51",
  "config_errors": [],
  "sources": {
   "bazos_cz": {
-   "results": 574,
-   "errors": [],
-   "added": 1
+   "results": 572,
+   "errors": []
   },
   "bazos_sk": {
-   "results": 487,
-   "errors": []
+   "results": 486,
+   "errors": [],
+   "added": 1
   },
   "vinted_cz": {
    "results": 0,
@@ -22,10 +22,9 @@
    "note": "1 items from Vinted, none in Czech/Slovak or naming Kodreta"
   },
   "serpapi": {
-   "results": 23,
+   "results": 0,
    "errors": [],
-   "note": "Google Lens with chair_ref_2.jpeg",
-   "added": 1
+   "note": "searched: T2306 OR \"T 2306\" OR \"T-2306\" OR hreščák OR hrescak OR \"kodr…"
   }
  }
 }
