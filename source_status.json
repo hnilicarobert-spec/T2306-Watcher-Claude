@@ -1,14 +1,14 @@
 {
- "checked_at": "2026-11-19 12:51:22",
+ "checked_at": "2026-11-19 21:24:36",
  "config_errors": [],
  "sources": {
   "bazos_cz": {
-   "results": 581,
+   "results": 585,
    "errors": [],
-   "added": 2
+   "added": 9
   },
   "bazos_sk": {
-   "results": 489,
+   "results": 488,
    "errors": []
   },
   "vinted_cz": {
@@ -22,9 +22,10 @@
    "note": "1 items from Vinted, none in Czech/Slovak or naming Kodreta"
   },
   "serpapi": {
-   "results": 0,
+   "results": 23,
    "errors": [],
-   "note": "searched: (\"viliam chlebo\" OR kodreta) (\"dining chairs\" OR Esszimmerst…"
+   "note": "Google Lens with IMG_3808.webp",
+   "added": 4
   }
  }
 }
