@@ -1,10 +1,11 @@
 {
- "checked_at": "2026-11-20 11:20:29",
+ "checked_at": "2026-11-20 19:58:40",
  "config_errors": [],
  "sources": {
   "bazos_cz": {
-   "results": 584,
-   "errors": []
+   "results": 585,
+   "errors": [],
+   "added": 1
   },
   "bazos_sk": {
    "results": 488,
@@ -22,10 +23,9 @@
    "note": "1 items from Vinted, none in Czech/Slovak or naming Kodreta"
   },
   "serpapi": {
-   "results": 20,
+   "results": 0,
    "errors": [],
-   "note": "Google Lens with T2306_view4.jpg",
-   "added": 1
+   "note": "searched: (kodreta OR \"chromová židle\" OR \"chromované židle\" OR \"látko…"
   }
  }
 }
