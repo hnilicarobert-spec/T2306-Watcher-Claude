@@ -1,16 +1,16 @@
 {
- "checked_at": "2026-11-22 11:13:30",
+ "checked_at": "2026-11-22 19:30:28",
  "config_errors": [],
  "sources": {
   "bazos_cz": {
    "results": 590,
    "errors": [],
-   "added": 4
+   "added": 5
   },
   "bazos_sk": {
    "results": 488,
    "errors": [],
-   "added": 2
+   "added": 1
   },
   "vinted_cz": {
    "results": 0,
@@ -23,9 +23,9 @@
    "note": "1 items from Vinted, none in Czech/Slovak or naming Kodreta"
   },
   "serpapi": {
-   "results": 0,
+   "results": 23,
    "errors": [],
-   "note": "searched: (kodreta OR \"viliam chlebo\" OR czechoslovakia) chrome chairs…"
+   "note": "Google Lens with T2306_view3.jpg"
   }
  }
 }
