@@ -1,14 +1,14 @@
 {
- "checked_at": "2026-11-23 21:13:03",
+ "checked_at": "2026-11-24 05:55:44",
  "config_errors": [],
  "sources": {
   "bazos_cz": {
    "results": 591,
    "errors": [],
-   "added": 3
+   "added": 2
   },
   "bazos_sk": {
-   "results": 486,
+   "results": 485,
    "errors": []
   },
   "vinted_cz": {
@@ -22,9 +22,10 @@
    "note": "1 items from Vinted, none in Czech/Slovak or naming Kodreta"
   },
   "serpapi": {
-   "results": 0,
+   "results": 20,
    "errors": [],
-   "note": "searched: T2306 OR \"T 2306\" OR \"T-2306\" OR hreščák OR hrescak OR \"kodr…"
+   "note": "Google Lens with T2306_view7.jpg",
+   "added": 1
   }
  }
 }
