@@ -1,15 +1,16 @@
 {
- "checked_at": "2026-11-24 05:55:44",
+ "checked_at": "2026-11-24 17:29:17",
  "config_errors": [],
  "sources": {
   "bazos_cz": {
-   "results": 591,
+   "results": 593,
    "errors": [],
-   "added": 2
+   "added": 4
   },
   "bazos_sk": {
-   "results": 485,
-   "errors": []
+   "results": 487,
+   "errors": [],
+   "added": 2
   },
   "vinted_cz": {
    "results": 0,
@@ -22,10 +23,10 @@
    "note": "1 items from Vinted, none in Czech/Slovak or naming Kodreta"
   },
   "serpapi": {
-   "results": 20,
+   "results": 4,
    "errors": [],
-   "note": "Google Lens with T2306_view7.jpg",
-   "added": 1
+   "note": "searched: (\"viliam chlebo\" OR kodreta) (\"dining chairs\" OR Esszimmerst…",
+   "added": 2
   }
  }
 }
