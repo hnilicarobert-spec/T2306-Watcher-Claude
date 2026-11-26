@@ -1,32 +1,30 @@
 {
- "checked_at": "2026-11-25 22:25:19",
+ "checked_at": "2026-11-26 05:00:46",
  "config_errors": [],
  "sources": {
   "bazos_cz": {
-   "results": 592,
-   "errors": [],
-   "added": 2
-  },
-  "bazos_sk": {
-   "results": 488,
+   "results": 590,
    "errors": [],
    "added": 1
+  },
+  "bazos_sk": {
+   "results": 484,
+   "errors": []
   },
   "vinted_cz": {
    "results": 0,
    "errors": [],
-   "note": "1 items from Vinted, none in Czech/Slovak or naming Kodreta"
+   "note": "Vinted answered but with no items (response keys: items, pagination, search_tracking_params)"
   },
   "vinted_sk": {
    "results": 0,
    "errors": [],
-   "note": "1 items from Vinted, none in Czech/Slovak or naming Kodreta"
+   "note": "Vinted answered but with no items (response keys: items, pagination, search_tracking_params)"
   },
   "serpapi": {
-   "results": 27,
+   "results": 2,
    "errors": [],
-   "note": "Google Lens with chair_ref_2.jpeg",
-   "added": 1
+   "note": "searched: (kodreta OR \"chromová židle\" OR \"chromované židle\" OR \"látko…"
   }
  }
 }
