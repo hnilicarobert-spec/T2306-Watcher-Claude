@@ -1,5 +1,5 @@
 {
- "checked_at": "2026-11-27 18:13:21",
+ "checked_at": "2026-11-28 01:30:22",
  "config_errors": [],
  "sources": {
   "bazos_cz": {
@@ -8,8 +8,9 @@
    "added": 4
   },
   "bazos_sk": {
-   "results": 487,
-   "errors": []
+   "results": 486,
+   "errors": [],
+   "added": 1
   },
   "vinted_cz": {
    "results": 0,
@@ -22,9 +23,9 @@
    "note": "Vinted answered but with no items (response keys: items, pagination, search_tracking_params)"
   },
   "serpapi": {
-   "results": 0,
+   "results": 20,
    "errors": [],
-   "note": "searched: (\"viliam chlebo\" OR kodreta) (\"dining chairs\" OR Esszimmerst…"
+   "note": "Google Lens with T2306_view1.jpg"
   }
  }
 }
